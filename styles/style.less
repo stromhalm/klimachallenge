@@ -1,0 +1,66 @@
+// out: style.css, compress: true
+
+body {
+   background: linear-gradient(rgb(68, 138, 255), #BBDEFB);
+}
+html {
+   background-color: #BBDEFB;
+}
+
+md-tabs {
+   z-index: 20;
+}
+
+md-whiteframe {
+   z-index: 10;
+   display: block;
+   position: relative;
+
+   md-toolbar {
+      color: white;
+      padding: 20px 0;
+
+      .points {
+         font-size: 100px;
+      }
+
+      .desciption {
+         font-size: 40px;
+         margin-top: -10px;
+      }
+
+      .add-project {
+         margin-bottom: -53px;
+         z-index: 30;
+      }
+
+   }
+
+   md-content {
+      padding: 24px;
+   }
+}
+
+.jumbotron {
+   height: 350px;
+   z-index: 40;
+   background-image: url(http://www.henner.info/gut/Rathaus_HD_FH100.jpg);
+   background-position: top;
+   background-size: cover;
+   position: relative;
+}
+
+#physics-world {
+   height: 500px;
+}
+
+.md-button.md-fab {
+   line-height: 36px;
+}
+
+@media (min-width: 960px) {
+
+   md-whiteframe, md-pagination-wrapper, .jumbotron {
+      margin: 0 15%;
+   }
+}
