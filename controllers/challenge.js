@@ -5,8 +5,6 @@ klimaChallenge.controller('ChallengeCtrl', function($scope) {
        World = Matter.World,
        Bodies = Matter.Bodies;
 
-
-
    var canvasWidth = document.getElementById('physics-world').offsetWidth;
    var canvasHeight = document.getElementById('physics-world').offsetHeight;
 
@@ -43,7 +41,10 @@ klimaChallenge.controller('ChallengeCtrl', function($scope) {
 
    bodies.push(Bodies.rectangle(canvasWidth/2, canvasHeight+1, 2000, 1, { isStatic: true })); // bottom
    bodies.push(Bodies.rectangle(-1, canvasHeight/2, 1, 2000, { isStatic: true })); // left
-   bodies.push(Bodies.rectangle(canvasWidth+1, canvasHeight/2, 1, 2000, { isStatic: true })); // right
+
+   var right = Bodies.rectangle(canvasWidth+1, canvasHeight/2, 1, 2000, { isStatic: true })
+   Matter.Body.rotate(right, Math.PI );
+   bodies.push(right); // right
    bodies.push(Bodies.rectangle(canvasWidth/2, -200, 2000, 1, { isStatic: true })); // top
 
    // add all of the bodies to the world
