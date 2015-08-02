@@ -28,7 +28,7 @@ klimaChallenge.controller('ChallengeCtrl', function($scope, $http) {
             wireframes: false,
             width: canvasWidth,
             height: canvasHeight,
-            background: 'white'
+            background: 'transparent'
          }
       }
    });
@@ -44,20 +44,21 @@ klimaChallenge.controller('ChallengeCtrl', function($scope, $http) {
 
    // Create balls
    var bodies = Array();
-   for (var i = 0; i < 11; i++) {
-      bodies.push(Bodies.circle(canvasWidth/2, 0, canvasWidth/15, {render: {
-            fillStyle: 'rgb(68, 138, 255)',
-            strokeStyle: 'rgb(68, 138, 255)'
+   var numberProjects = 10;
+   for (var i = 0; i < numberProjects; i++) {
+      bodies.push(Bodies.circle(canvasWidth/2, 0, Math.sqrt(canvasWidth*canvasHeight)/1.5/numberProjects+20, {render: {
+            fillStyle: '#59c134',
+            strokeStyle: '#59c134'
        }}));
    }
 
-   bodies.push(Bodies.rectangle(canvasWidth/2, canvasHeight+1, 2000, 1, { isStatic: true })); // bottom
+   bodies.push(Bodies.rectangle(canvasWidth/2, canvasHeight+1, 10000, 1, { isStatic: true })); // bottom
    bodies.push(Bodies.rectangle(-1, canvasHeight/2, 1, 2000, { isStatic: true })); // left
 
-   var right = Bodies.rectangle(canvasWidth+1, canvasHeight/2, 1, 2000, { isStatic: true })
-   Matter.Body.rotate(right, Math.PI );
+   var right = Bodies.rectangle(canvasWidth+1, canvasHeight/2, 1, 10000, { isStatic: true })
+   Matter.Body.rotate(right, Math.PI);
    bodies.push(right); // right
-   bodies.push(Bodies.rectangle(canvasWidth/2, -200, 2000, 1, { isStatic: true })); // top
+   bodies.push(Bodies.rectangle(canvasWidth/2, -200, 10000, 1, { isStatic: true })); // top
 
    // add all of the bodies to the world
    World.add(engine.world, bodies);
