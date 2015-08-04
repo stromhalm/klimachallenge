@@ -14,17 +14,18 @@ md-tabs-canvas {
 }
 
 md-tab-content {
-   position: relative;
 
    .physics-background {
       background-color: #2d71c1;
       color: white;
-      font-family: Orator Std;
       padding-top: 3%;
+      font-family: Orator Std;
 
-      h2 {
-         margin-bottom: 0;
-         margin-top: 0;
+      h1 {
+         margin-bottom: 25px;
+      }
+
+      h1, h2 {
          color: #c6ecb8;
       }
 
@@ -37,13 +38,15 @@ md-tab-content {
          height: 100%;
       }
    }
-
-
-   .physics-background, .ng-scope, #physics-world {
+   .physics-background, #physics-world {
       height: 100%;
       position: absolute;
       width: 100%;
       z-index: 10;
+   }
+
+   .news-background {
+      background-color: #c6ecb8;
    }
 }
 
