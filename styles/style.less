@@ -1,84 +1,60 @@
 // out: style.css, compress: true
 
-body {
-   background: linear-gradient(rgb(68, 138, 255), #BBDEFB);
-}
-html {
-   background-color: #BBDEFB;
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro);
+
+html, body, md-tabs, md-tab-content {
+   height: 100%;
 }
 
-md-tabs {
+md-tabs-wrapper {
+   background-color: #2d71c1 !important;
+}
+
+md-tabs-canvas {
+   box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .14), 0 6px 10px 0 rgba(0, 0, 0, .098), 0 1px 18px 0 rgba(0, 0, 0, .084);
    z-index: 20;
 }
 
-md-whiteframe {
-   z-index: 10;
-   display: block;
-   position: relative;
+md-tab-content {
 
-   md-toolbar {
+   .physics-background {
+      background-color: #2d71c1;
       color: white;
-      padding: 40px 0 20px 0;
+      padding-top: 3%;
+      font-family: 'Source Sans Pro', sans-serif;
 
-      .points {
-         font-size: 100px;
+      h1 {
+         margin-bottom: 25px;
       }
 
-      .desciption {
-         font-size: 40px;
-         margin-top: -10px;
+      h1, h2 {
+         color: #c6ecb8;
       }
 
-      .add-project {
-         margin-bottom: -55px;
-         z-index: 30;
+      p {
+         margin-top: 10px;
+         margin-bottom: 25px;
       }
 
+      div {
+         height: 100%;
+      }
+   }
+   .physics-background, #physics-world {
+      height: 100%;
+      position: absolute;
+      width: 100%;
+      z-index: 10;
    }
 
-   md-content {
-      padding: 24px;
-   }
-}
-
-.jumbotron {
-   height: 450px;
-   z-index: 40;
-   background-image: url(http://www.henner.info/gut/Rathaus_HD_FH100.jpg);
-   background-position: middle;
-   background-size: cover;
-   position: relative;
-
-   .jumbotron-caption {
-      background-color: rgba(0,0,0,.5);
-      text-align: left;
-      margin-left: 75%;
-      padding: 10px;
-      color: white;
+   .news-background {
+      background-color: #c6ecb8;
    }
 }
 
-.button-row {
-   margin-top: -40px;
-   margin-bottom: -40px;
-   background-color: rgb(139, 195, 74);
-
-   .info-button {
-      z-index: 55;
-      margin: 0 8%;
-      width: 80px;
-      height: 80px;
-      background-color: #00BCD4;
-
-      ng-md-icon {
-         margin-top: -15px;
-         margin-left: -15px;
-      }
-   }
-}
-
-#physics-world {
-   height: 500px;
+#logo {
+   width: 100%;
+   max-width: 575px;
 }
 
 .md-button.md-fab {
@@ -87,7 +63,7 @@ md-whiteframe {
 
 @media (min-width: 960px) {
 
-   md-whiteframe, md-pagination-wrapper {
-      margin: 0 15%;
+   md-pagination-wrapper {
+      margin: 0 10%;
    }
 }

@@ -1,26 +1,62 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
    <link rel="stylesheet" href="bower_components/angular-material-icons/angular-material-icons.css">
    <link rel="stylesheet" href="styles/style.css">
+   <meta charset="utf-8">
    <title>Klima-Challenge</title>
 </head>
 <body ng-app="Klima-Challenge" ng-controller="tabCtrl">
 
-   <div style="width: 2000px; height: 2000px; background-color: #1976D2; border-radius: 50%; position: fixed; left: -200px; top: -100px" class="md-whiteframe-z1"></div>
-   <div style="width: 1800px; height: 1800px; background-color: #4CAF50; border-radius: 50%; position: fixed; left: -100px; top: 0px" class="md-whiteframe-z1"></div>
-   <div style="width: 1600px; height: 1600px; background-color: #8BC34A; border-radius: 50%; position: fixed; left: 0px; top: 100px" class="md-whiteframe-z1"></div>
-   <div style="width: 1400px; height: 1400px; background-color: #00BCD4; border-radius: 50%; position: fixed; left: 100px; top: 200px" class="md-whiteframe-z1"></div>
-
-   <md-tabs md-selected="selectedIndex" md-center-tabs="false" class="md-accent md-whiteframe-z3">
-      <md-tab label="Challenge"></md-tab>
-      <md-tab label="News"></md-tab>
+   <md-tabs md-dynamic-height="false" md-center-tabs="false" class="md-accent">
+      <md-tab label="Challenge">
+         <div class="physics-background">
+            <div layout="row">
+               <div flex="50" offset-gt-md="10" class="md-padding">
+                  <h1>Alle Projekte</h1>
+                  <h2>Inspirieren lassen</h2>
+                  <p>
+                     Viele Jugendverbände haben bereits Projekte für den Klimaschutz eingereicht.
+                     Klick dich durch!
+                  </p>
+                  <h2>Aktiv werden</h2>
+                  <p>
+                     Du bist selbst in einem Jugendverband aktiv?<br>
+                     Dann reicht euer Projekt ein!
+                  </p>
+               </div>
+               <div flex id="logo" class="md-padding">
+                  <img src="img/logo.png" id="logo">
+               </div>
+            </div>
+         </div>
+         <div id="physics-world" ng-controller="ChallengeCtrl">
+         </div>
+      </md-tab>
+      <md-tab label="News">
+         <md-content ng-controller="newsCtrl" class="news-background">
+            <div layout="row" layout-wrap>
+               <div flex-sm="100" flex-gt-sm="50" flex-gt-md="33" flex-gt-lg="25" ng-repeat="news in facebookImages">
+                  <md-card>
+                     <img ng-src="{{news.images[1].source}}" class="md-card-image">
+                     <md-card-content>
+                        <p>
+                           {{news.name}}
+                        </p>
+                     </md-card-content>
+                     <div class="md-actions" layout="row" layout-align="end center">
+                       <md-button><a target="_blank" ng-href="{{news.link}}"><ng-md-icon icon="thumb_up"></ng-md-icon></a></md-button>
+                       <md-button><a target="_blank" ng-href="{{news.link}}"><ng-md-icon icon="comment"></ng-md-icon></a></md-button>
+                     </div>
+                  </md-card>
+               </div>
+            </div>
+         </md-content>
+      </md-tab>
       <md-tab label="Ideen"></md-tab>
    </md-tabs>
-
-   <div ui-view></div>
 
    <script src="bower_components/matter-js/build/matter.min.js"></script>
    <script src="bower_components/angular/angular.min.js"></script>
@@ -36,5 +72,6 @@
    <script src="routes.js"></script>
    <script src="theme.js"></script>
    <script src="controllers/challenge.js"></script>
+   <script src="controllers/news.js"></script>
 </body>
 </html>

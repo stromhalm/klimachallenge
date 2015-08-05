@@ -1,21 +1,10 @@
 klimaChallenge.controller('ChallengeCtrl', function($scope, $http) {
 
-   $http.get('https://graph.facebook.com/v2.4/natgeo/photos/uploaded?fields=link,height,name,images,picture&limit=20&access_token=846767055411205|UKF39DbxTvvEeA9BuKkWsJgiuLE').
-   success(function(data, status, headers, config) {
-
-      $scope.facebookImages = Array();
-      angular.forEach(data.data, function(image, key) {
-         if(image.height >= 500) {
-            $scope.facebookImages.push(image)
-         }
-      });
-      $scope.jumbotron = $scope.facebookImages[0];
-   })
-
    // Matter.js module aliases
    var Engine = Matter.Engine,
        World = Matter.World,
        Bodies = Matter.Bodies;
+       Body = Matter.Body;
 
    var canvasWidth = document.getElementById('physics-world').offsetWidth;
    var canvasHeight = document.getElementById('physics-world').offsetHeight;
@@ -28,7 +17,7 @@ klimaChallenge.controller('ChallengeCtrl', function($scope, $http) {
             wireframes: false,
             width: canvasWidth,
             height: canvasHeight,
-            background: 'white'
+            background: 'transparent'
          }
       }
    });
@@ -44,20 +33,25 @@ klimaChallenge.controller('ChallengeCtrl', function($scope, $http) {
 
    // Create balls
    var bodies = Array();
-   for (var i = 0; i < 11; i++) {
-      bodies.push(Bodies.circle(canvasWidth/2, 0, canvasWidth/15, {render: {
-            fillStyle: 'rgb(68, 138, 255)',
-            strokeStyle: 'rgb(68, 138, 255)'
-       }}));
+   var numberProjects = 8;
+   for (var i = 0; i < numberProjects; i++) {
+      var radius = Math.sqrt(canvasWidth*canvasHeight/20/numberProjects)+15;
+      var project = Bodies.circle(canvasWidth/2, 0-radius*i, radius, {
+         render: {
+            fillStyle: '#59c134',
+            strokeStyle: '#59c134'
+         },
+         restitution: 0.5
+      });
+      Body.applyForce(project, project.position, {x: (Math.random()-0.5)*0.1, y: (Math.random()-0.5)*0.5});
+      bodies.push(project);
    }
 
-   bodies.push(Bodies.rectangle(canvasWidth/2, canvasHeight+1, 2000, 1, { isStatic: true })); // bottom
+   bodies.push(Bodies.rectangle(canvasWidth/2, canvasHeight+1, 99999, 1, { isStatic: true })); // bottom
    bodies.push(Bodies.rectangle(-1, canvasHeight/2, 1, 2000, { isStatic: true })); // left
-
-   var right = Bodies.rectangle(canvasWidth+1, canvasHeight/2, 1, 2000, { isStatic: true })
-   Matter.Body.rotate(right, Math.PI );
+   var right = Bodies.rectangle(canvasWidth+1, canvasHeight/2, 1, 99999, { isStatic: true });
+   Body.rotate(right, Math.PI);
    bodies.push(right); // right
-   bodies.push(Bodies.rectangle(canvasWidth/2, -200, 2000, 1, { isStatic: true })); // top
 
    // add all of the bodies to the world
    World.add(engine.world, bodies);
