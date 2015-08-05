@@ -1,17 +1,5 @@
 klimaChallenge.controller('ChallengeCtrl', function($scope, $http) {
 
-   $http.get('https://graph.facebook.com/v2.4/natgeo/photos/uploaded?fields=link,height,name,images,picture&limit=20&access_token=846767055411205|UKF39DbxTvvEeA9BuKkWsJgiuLE').
-   success(function(data, status, headers, config) {
-
-      $scope.facebookImages = Array();
-      angular.forEach(data.data, function(image, key) {
-         if(image.height >= 500) {
-            $scope.facebookImages.push(image)
-         }
-      });
-      $scope.jumbotron = $scope.facebookImages[0];
-   })
-
    // Matter.js module aliases
    var Engine = Matter.Engine,
        World = Matter.World,
@@ -45,7 +33,7 @@ klimaChallenge.controller('ChallengeCtrl', function($scope, $http) {
 
    // Create balls
    var bodies = Array();
-   var numberProjects = 50;
+   var numberProjects = 8;
    for (var i = 0; i < numberProjects; i++) {
       var radius = Math.sqrt(canvasWidth*canvasHeight/20/numberProjects)+15;
       var project = Bodies.circle(canvasWidth/2, 0-radius*i, radius, {
