@@ -33,7 +33,7 @@ klimaChallenge.controller('ChallengeCtrl', function($scope, $http) {
 
    // Create balls
    var bodies = Array();
-   var numberProjects = 8;
+   var numberProjects = 30;
    for (var i = 0; i < numberProjects; i++) {
       var radius = Math.sqrt(canvasWidth*canvasHeight/20/numberProjects)+15;
       var project = Bodies.circle(canvasWidth/2, 0-radius*i, radius, {
