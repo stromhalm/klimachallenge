@@ -8,8 +8,69 @@
    <meta charset="utf-8">
    <title>Klima-Challenge</title>
 </head>
-<body ng-app="Klima-Challenge" ng-controller="tabCtrl">
+<body ng-app="Klima-Challenge" ng-controller="ChallengeCtrl">
 
+   <div id="physics-world">
+   </div>
+
+   <md-tabs md-center-tabs="false" class="md-accent md-whiteframe-z3" md-selected="selectedIndex">
+      <md-tab label="Challenge"></md-tab>
+      <md-tab label="News"></md-tab>
+      <md-tab label="Ideen"></md-tab>
+   </md-tabs>
+
+   <header layout="row" layout-wrap>
+      <div flex-gt-md="50" offset-gt-md="25" flex="90" offset="5">
+         <img src="img/logo.png" alt="logo" /><br>
+      </div>
+      <h2 flex="90" offset="5">Gemeinsam Punkten für den Klimaschutz</h2>
+   </header>
+
+   <div layout="row" layout-wrap class="background-transition">
+      <div flex="100" flex-gt-md="80" offset-gt-md="10">
+         <md-content layout-margin layout-padding layout-wrap layout="row" layout-sm="column">
+            <md-whiteframe flex class="md-whiteframe-z2 action-card">
+               <h2>Inspirieren lassen</h2>
+               <p>
+                  Viele Jugendverbände haben bereits Projekte für den Klimaschutz eingereicht.
+                  Klick dich durch die Ideen!
+               </p>
+               <div class="md-actions" layout="row" layout-align="end center">
+                  <md-button ng-href="#ideen" target="_blank">Zu den Ideen</md-button>
+               </div>
+            </md-whiteframe>
+            <md-whiteframe flex class="md-whiteframe-z2">
+               <h2>Aktiv werden</h2>
+               <p>
+                  Du bist selbst in einem Jugendverband aktiv?<br>
+                  Dann reicht euer Projekt ein!
+               </p>
+               <div class="md-actions" layout="row" layout-align="end center">
+                  <md-button ng-href="#ideen" target="_blank">Zu den Ideen</md-button>
+               </div>
+            </md-whiteframe>
+         </md-content>
+         <md-content layout-margin layout-padding layout="row" layout-sm="column">
+            <md-whiteframe flex class="md-whiteframe-z2">
+               <h2>News</h2>
+               <p>
+                  Was gibt's Neues im Wettbewerb? Hier findest du die Updates!
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+               </p>
+            </md-whiteframe>
+            <md-whiteframe flex class="md-whiteframe-z2" style="background-position: center; background-size: cover; background-image: url(https://scontent-fra3-1.xx.fbcdn.net/hphotos-xfp1/t31.0-8/1911031_10152909046213951_4560039218640562970_o.jpg)">
+            </md-whiteframe>
+         </md-content>
+      </div>
+   </div>
+
+   <div class="ball-box">
+
+   </div>
+
+
+
+   <!--
    <md-tabs md-dynamic-height="false" md-center-tabs="false" class="md-accent">
       <md-tab label="Challenge">
          <div class="physics-background">
@@ -57,8 +118,9 @@
       </md-tab>
       <md-tab label="Ideen"></md-tab>
    </md-tabs>
+-->
 
-   <script src="bower_components/matter-js/build/matter.min.js"></script>
+   <script src="physicsjs/dist/physicsjs-full.min.js"></script>
    <script src="bower_components/angular/angular.min.js"></script>
    <script src="bower_components/angular-aria/angular-aria.min.js"></script>
    <script src="bower_components/angular-animate/angular-animate.min.js"></script>

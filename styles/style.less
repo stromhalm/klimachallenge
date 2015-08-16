@@ -2,59 +2,92 @@
 
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro);
 
-html, body, md-tabs, md-tab-content {
-   height: 100%;
+html, body {
+   height: auto;
+   background-color: #fafafa;
+   position: relative;
 }
 
-md-tabs-wrapper {
-   background-color: #2d71c1 !important;
+h2 {
+   font-family: 'Source Sans Pro', sans-serif;
 }
 
-md-tabs-canvas {
-   box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .14), 0 6px 10px 0 rgba(0, 0, 0, .098), 0 1px 18px 0 rgba(0, 0, 0, .084);
-   z-index: 20;
-}
+header {
+   text-align: center;
 
-md-tab-content {
+   h2 {
+     text-transform: uppercase;
+     font-size: 23pt;
+     margin-top: 10px;
+   }
 
-   .physics-background {
-      background-color: #2d71c1;
-      color: white;
-      padding-top: 3%;
-      font-family: 'Source Sans Pro', sans-serif;
-
-      h1 {
-         margin-bottom: 25px;
-      }
-
-      h1, h2 {
-         color: #c6ecb8;
-      }
-
-      p {
-         margin-top: 10px;
-         margin-bottom: 25px;
-      }
-
-      div {
-         height: 100%;
+   @media (max-width: 637px) {
+      h2 {
+         font-size: 19px;
       }
    }
-   .physics-background, #physics-world {
-      height: 100%;
-      position: absolute;
+
+   img {
       width: 100%;
-      z-index: 10;
-   }
-
-   .news-background {
-      background-color: #c6ecb8;
+      margin-top: 10px;
    }
 }
 
-#logo {
-   width: 100%;
-   max-width: 575px;
+.background-transition {
+   background: -webkit-linear-gradient(#fafafa, #2d71c1); /* For Safari 5.1 to 6.0 */
+   background: -o-linear-gradient(#fafafa, #2d71c1); /* For Opera 11.1 to 12.0 */
+   background: -moz-linear-gradient(#fafafa, #2d71c1); /* For Firefox 3.6 to 15 */
+   background: linear-gradient(#fafafa, #2d71c1); /* Standard syntax */
+}
+
+md-content {
+   background-color: transparent;
+   margin-top: 0 !important;
+   margin-bottom: 0 !important;
+   padding-top: 0 !important;
+   padding-bottom: 0 !important;
+
+   md-whiteframe {
+      padding: 18px !important;
+      background-color: #00cc36;
+      color: white;
+
+      h2 {
+         margin-top: 0;
+      }
+   }
+
+   .action-card {
+      padding-bottom: 0 !important;
+   }
+}
+
+#physics-world {
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   z-index: 0;
+}
+
+md-tabs {
+
+   min-height: 0 !important;
+
+   md-tabs-wrapper {
+      background-color: #2d71c1 !important;
+   }
+
+   md-tabs-canvas {
+      box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .14), 0 6px 10px 0 rgba(0, 0, 0, .098), 0 1px 18px 0 rgba(0, 0, 0, .084);
+      z-index: 20;
+   }
+}
+
+.ball-box {
+   height: 500px;
+   background-color: #2d71c1;
 }
 
 .md-button.md-fab {
