@@ -49,7 +49,7 @@ klimaChallenge.controller('ChallengeCtrl', function($scope, $http) {
         vx: 0.3,
         radius: radius,
         styles: {
-            fillStyle: '#59c134'
+            fillStyle: '#8bc34a'
         }
       });
       world.add(project);

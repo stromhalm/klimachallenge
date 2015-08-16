@@ -1,15 +1,17 @@
 // out: style.css, compress: true
 
-@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro);
+@import url(http://fonts.googleapis.com/css?family=Roboto+Condensed);
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,300);
 
 html, body {
    height: auto;
    background-color: #fafafa;
    position: relative;
+   font-family: 'Roboto', sans-serif;
 }
 
 h2 {
-   font-family: 'Source Sans Pro', sans-serif;
+   font-family: 'Roboto', sans-serif;
 }
 
 header {
@@ -19,6 +21,8 @@ header {
      text-transform: uppercase;
      font-size: 23pt;
      margin-top: 10px;
+     font-family: 'Roboto Condensed', sans-serif;
+     color: #222e34;
    }
 
    @media (max-width: 637px) {
@@ -34,10 +38,9 @@ header {
 }
 
 .background-transition {
-   background: -webkit-linear-gradient(#fafafa, #2d71c1); /* For Safari 5.1 to 6.0 */
-   background: -o-linear-gradient(#fafafa, #2d71c1); /* For Opera 11.1 to 12.0 */
-   background: -moz-linear-gradient(#fafafa, #2d71c1); /* For Firefox 3.6 to 15 */
-   background: linear-gradient(#fafafa, #2d71c1); /* Standard syntax */
+   background-color: #fbc02d;
+   padding: 20px 0;
+   margin-top: 10px;
 }
 
 md-content {
@@ -49,11 +52,13 @@ md-content {
 
    md-whiteframe {
       padding: 18px !important;
-      background-color: #00cc36;
-      color: white;
+      background-color: white;
+      color: #455a64;
+      border-radius: 2px;
 
       h2 {
          margin-top: 0;
+         color: #8bc34a;
       }
    }
 
@@ -76,7 +81,7 @@ md-tabs {
    min-height: 0 !important;
 
    md-tabs-wrapper {
-      background-color: #2d71c1 !important;
+      background-color: #0288d1 !important;
    }
 
    md-tabs-canvas {
@@ -87,7 +92,15 @@ md-tabs {
 
 .ball-box {
    height: 500px;
-   background-color: #2d71c1;
+   background-color: #0288d1;
+   padding: 30px;
+
+   h2 {
+      font-size: 3em;
+      font-weight: 300;
+      color: white;
+      margin-top: 0;
+   }
 }
 
 .md-button.md-fab {
