@@ -24,9 +24,9 @@
          <img src="img/logo.png" alt="logo" /><br>
       </div>
       <div class="space-box counter" flex-gt-md="40" flex="100" offset-gt-md="5">
-         <h2>152.000</h2>
+         <h2 count-to="152000" value="0" duration="2"></h2>
          Klimapunkte
-         <h2>17</h2>
+         <h2 count-to="17" value="0" duration="2">17</h2>
          Projekte
       </div>
       <!--<h2 flex="90" offset="5">Gemeinsam Punkten für den Klimaschutz</h2>-->
@@ -137,16 +137,17 @@
    </md-tabs>
 -->
 
-   <script src="physicsjs/dist/physicsjs-full.min.js"></script>
+   <script src="libs/physicsjs/dist/physicsjs-full.min.js"></script>
    <script src="bower_components/angular/angular.min.js"></script>
    <script src="bower_components/angular-aria/angular-aria.min.js"></script>
    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
    <script src="bower_components/angular-material/angular-material.min.js"></script>
    <script src="bower_components/angular-material-icons/angular-material-icons.min.js"></script>
    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+   <script src="libs/angular-count-to/angular-count-to.min.js"></script>
 
    <script>
-      var klimaChallenge = angular.module('Klima-Challenge', ['ngMaterial', 'ngMdIcons', 'ui.router']);
+      var klimaChallenge = angular.module('Klima-Challenge', ['ngMaterial', 'ngMdIcons', 'ui.router', 'countTo']);
    </script>
    <script src="routes.js"></script>
    <script src="theme.js"></script>

@@ -42,10 +42,11 @@ klimaChallenge.controller('ChallengeCtrl', function($scope, $http) {
     // create some bodies
    var numberProjects = 25;
    for (var i = 0; i < numberProjects; i++) {
-      var radius = Math.sqrt(renderer.width*1000/20/numberProjects)+15;
+      var radius = Math.sqrt(renderer.width*20/numberProjects)+21;
+      radius = radius * (Math.random() * 1.3 + 0.7);
       var project = Physics.body('circle', {
-        x: renderer.width * 0.4,
-        y: renderer.height * 0,
+        x: renderer.width * 0.5,
+        y: -i*1000,
         vx: 0.3,
         radius: radius,
         styles: {
