@@ -19,11 +19,17 @@
       <md-tab label="Ideen"></md-tab>
    </md-tabs>
 
-   <header layout="row" layout-wrap>
-      <div flex-gt-md="50" offset-gt-md="25" flex="90" offset="5">
+   <header layout="row" layout-wrap layout-align="start center">
+      <div flex-gt-md="50" flex="90" offset="5">
          <img src="img/logo.png" alt="logo" /><br>
       </div>
-      <h2 flex="90" offset="5">Gemeinsam Punkten für den Klimaschutz</h2>
+      <div class="space-box counter" flex-gt-md="40" flex="100" offset-gt-md="5">
+         <h2>152.000</h2>
+         Klimapunkte
+         <h2>17</h2>
+         Projekte
+      </div>
+      <!--<h2 flex="90" offset="5">Gemeinsam Punkten für den Klimaschutz</h2>-->
    </header>
 
    <div layout="row" layout-wrap class="info-box" layout-sm="column">
@@ -50,8 +56,10 @@
             </md-whiteframe>
          </md-content>
       </div>
-      <div flex style="min-height: 400px; background-position: center; background-size: cover; background-image: url(https://scontent-fra3-1.xx.fbcdn.net/hphotos-xfp1/t31.0-8/1911031_10152909046213951_4560039218640562970_o.jpg)">
-         
+      <div layout="row" layout-align="end end" flex style="min-height: 400px; background-position: center; background-size: cover; background-image: url(https://scontent-fra3-1.xx.fbcdn.net/hphotos-xfp1/t31.0-8/1911031_10152909046213951_4560039218640562970_o.jpg)">
+         <md-button class="md-raised">
+            <ng-md-icon style="fill: white" icon="filter"></ng-md-icon> Mehr News
+         </md-button>
       </div>
    </div>
    <div class="space-box add-project">

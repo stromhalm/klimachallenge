@@ -2,9 +2,12 @@
  * Angular Material Design
  * https://github.com/angular/material
  * @license MIT
- * v0.10.0
+ * v0.10.1-master-f491e6d
  */
 /* mixin definition ; sets LTR and RTL within the same style call */
+/**
+ * Position a FAB button.
+ */
 @-webkit-keyframes md-autocomplete-list-out {
   0% {
     -webkit-animation-timing-function: linear;
@@ -94,6 +97,8 @@ md-autocomplete {
     position: relative;
     overflow: visible;
     height: 40px; }
+    md-autocomplete md-autocomplete-wrap.md-menu-showing {
+      z-index: 51; }
     md-autocomplete md-autocomplete-wrap md-progress-linear[md-mode=indeterminate] {
       position: absolute;
       bottom: 0;
@@ -114,16 +119,16 @@ md-autocomplete {
         md-autocomplete md-autocomplete-wrap md-progress-linear[md-mode=indeterminate].ng-leave.ng-leave-active {
           opacity: 0; }
   md-autocomplete input:not(.md-input) {
-    width: 100%;
+    font-size: 14px;
     box-sizing: border-box;
     border: none;
     box-shadow: none;
-    padding: 0 15px;
-    font-size: 14px;
-    line-height: 40px;
-    height: 40px;
     outline: none;
-    background: transparent; }
+    background: transparent;
+    width: 100%;
+    padding: 0 15px;
+    line-height: 40px;
+    height: 40px; }
     md-autocomplete input:not(.md-input)::-ms-clear {
       display: none; }
   md-autocomplete button {

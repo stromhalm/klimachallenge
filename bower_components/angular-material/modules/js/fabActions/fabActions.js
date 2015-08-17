@@ -2,7 +2,7 @@
  * Angular Material Design
  * https://github.com/angular/material
  * @license MIT
- * v0.10.0
+ * v0.10.1-master-f491e6d
  */
 (function( window, angular, undefined ){
 "use strict";
@@ -17,7 +17,7 @@
   /**
    * @ngdoc directive
    * @name mdFabActions
-   * @module material.components.fabSpeedDial
+   * @module material.components.fabActions
    *
    * @restrict E
    *
@@ -35,24 +35,26 @@
 
       require: ['^?mdFabSpeedDial', '^?mdFabToolbar'],
 
-      link: function(scope, element, attributes, controllers) {
-        // Grab whichever parent controller is used
-        var controller = controllers[0] || controllers[1];
+      compile: function(element, attributes) {
+        var children = element.children();
 
-        // Make the children open/close their parent directive
-        if (controller) {
-          angular.forEach(element.children(), function(child) {
-            angular.element(child).on('focus', controller.open);
-            angular.element(child).on('blur', controller.close);
-          });
+        var hasNgRepeat = false;
+
+        angular.forEach(['', 'data-', 'x-'], function(prefix) {
+          hasNgRepeat = hasNgRepeat || (children.attr(prefix + 'ng-repeat') ? true : false);
+        });
+
+        // Support both ng-repeat and static content
+        if (hasNgRepeat) {
+          children.addClass('md-fab-action-item');
+        } else {
+          // Wrap every child in a new div and add a class that we can scale/fling independently
+          children.wrap('<div class="md-fab-action-item">');
         }
-
-        // After setting up the listeners, wrap every child in a new div and add a class that we can
-        // scale/fling independently
-        element.children().wrap('<div class="md-fab-action-item">');
       }
     }
   }
 
 })();
+
 })(window, window.angular);

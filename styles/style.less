@@ -34,12 +34,24 @@ header {
    img {
       width: 100%;
       margin-top: 10px;
+      margin-bottom: 50px;
+   }
+
+   .counter {
+      color: #222e34;
+      padding: 16px;
+      font-size: 2em;
+
+      h2 {
+         color: #222e34;
+         font-size: 3em;
+         margin-bottom: -15px;
+      }
    }
 }
 
 .info-box {
-   background-color: #fbc02d;
-   margin-top: 10px;
+   background-color: #607d8b;
 }
 
 .info-cards {
@@ -125,8 +137,18 @@ md-tabs {
    color: white;
 }
 
-.md-button {
+button.md-raised.md-button.md-default-theme {
+   background-color: #0288d1;
+   color: white;
+
+   &:hover {
+      background-color: #0288d1;
+   }
+}
+
+button.md-raised.md-button.md-default-theme.md-button.md-primary {
    color: white !important;
+   background-color: #8bc34a;
 }
 
 @media (min-width: 960px) {
