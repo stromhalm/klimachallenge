@@ -37,10 +37,16 @@ header {
    }
 }
 
-.background-transition {
+.info-box {
    background-color: #fbc02d;
-   padding: 20px 0;
    margin-top: 10px;
+}
+
+.info-cards {
+   padding: 48px 0;
+   @media (min-width: 600px) {
+      margin-right: -80px;
+   }
 }
 
 md-content {
@@ -109,7 +115,7 @@ md-tabs {
 }
 
 .ball-box {
-   height: 500px;
+   height: 600px;
    background-color: #0288d1;
    color: rgba(255, 255, 255, 0.6);
 }
