@@ -19,6 +19,15 @@
       <md-tab label="Ideen"></md-tab>
    </md-tabs>
 
+   <div class="social-bar">
+      <md-button class="md-primary" target="_blank" ng-href="http://instagram.com">
+         <ng-md-icon style="fill: white" icon="photo_camera"></ng-md-icon>
+      </md-button>
+      <md-button class="md-primary" target="_blank" ng-href="http://facebook.de">
+         <ng-md-icon style="fill: white" icon="facebook"></ng-md-icon>
+      </md-button>
+   </div>
+
    <header layout="row" layout-wrap layout-align="start center">
       <div flex-gt-md="50" flex="90" offset="5">
          <img src="img/logo.png" alt="logo" /><br>
@@ -36,30 +45,40 @@
       <div flex flex-gt-sm="50" flex-gt-md="50" offset-gt-md="5" class="info-cards">
          <md-content layout-margin layout-padding layout-wrap layout="row" layout-sm="column">
             <md-whiteframe flex class="md-whiteframe-z2 action-card">
+               <h2>Wusstest du...</h2>
+               <p>
+                  Manche Vögel werden mit offenen Augen geboren: Enten und Gänse zum Beispiel.
+               </p>
+               <div class="md-actions" layout="row" layout-align="end center">
+                  <md-button class="md-primary" ng-href="#ideen"><ng-md-icon style="fill: #8bc34a" icon="refresh"></ng-md-icon> Neu</md-button>
+               </div>
+            </md-whiteframe>
+         </md-content>
+         <md-content layout-margin layout-padding layout="row" layout-sm="column">
+            <md-whiteframe flex class="md-whiteframe-z2 action-card">
                <h2>Inspirieren lassen</h2>
                <p>
                   Viele Jugendverbände haben bereits Projekte für den Klimaschutz eingereicht.
                   Klick dich durch die Ideen!
                </p>
                <div class="md-actions" layout="row" layout-align="end center">
-                  <md-button ng-href="#ideen" target="_blank">Zu den Ideen</md-button>
+                  <md-button class="md-primary" ng-href="#ideen"><ng-md-icon style="fill: #8bc34a" icon="star"></ng-md-icon> Zu den Ideen</md-button>
                </div>
             </md-whiteframe>
          </md-content>
-         <md-content layout-margin layout-padding layout="row" layout-sm="column">
-            <md-whiteframe flex class="md-whiteframe-z2">
-               <h2>News</h2>
-               <p>
-                  Was gibt's Neues im Wettbewerb? Hier findest du die Updates!
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-               </p>
-            </md-whiteframe>
-         </md-content>
       </div>
-      <div layout="row" layout-align="end end" flex style="min-height: 400px; background-position: center; background-size: cover; background-image: url(https://scontent-fra3-1.xx.fbcdn.net/hphotos-xfp1/t31.0-8/1911031_10152909046213951_4560039218640562970_o.jpg)">
+      <div class="news-box space-box" layout-align="start end" layout="row" class="space-box news-caption" flex>
+
+         <div flex class="news-wrapper">
+            <h2>News</h2>
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+         </div>
+
+         <!--
          <md-button class="md-raised">
             <ng-md-icon style="fill: white" icon="filter"></ng-md-icon> Mehr News
          </md-button>
+      -->
       </div>
    </div>
    <div class="space-box add-project">

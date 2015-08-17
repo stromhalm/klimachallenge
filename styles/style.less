@@ -14,6 +14,14 @@ h2 {
    font-family: 'Roboto', sans-serif;
 }
 
+.social-bar {
+   right: 0;
+   margin-right: 20px;
+   margin-top: -48px;
+   z-index: 200;
+   position: absolute;
+}
+
 header {
    text-align: center;
 
@@ -59,14 +67,44 @@ header {
    @media (min-width: 600px) {
       margin-right: -80px;
    }
+   z-index: 50;
+}
+
+.news-box {
+   min-height: 400px;
+   background-position: center;
+   background-size: cover;
+   position: relative;
+   background-image: url(https://scontent-fra3-1.xx.fbcdn.net/hphotos-xfp1/t31.0-8/1911031_10152909046213951_4560039218640562970_o.jpg);
+
+   .news-wrapper {
+      position: absolute;
+      padding: 12px;
+      padding-bottom: 15px;
+      background-color: rgba(69, 90, 100, 0.71);
+      color: white;
+      bottom: 0;
+
+      @media (min-width: 600px) {
+         padding-left: 80px;
+      }
+
+      h2 {
+         font-size: 2em;
+      }
+   }
+
+   .md-button {
+      bottom: 10px;
+      right: 8px;
+      position: absolute;
+   }
 }
 
 md-content {
    background-color: transparent;
-   margin-top: 0 !important;
-   margin-bottom: 0 !important;
-   padding-top: 0 !important;
-   padding-bottom: 0 !important;
+   margin: 0 !important;
+   z-index: 200;
 
    md-whiteframe {
       padding: 18px !important;
@@ -75,7 +113,7 @@ md-content {
       border-radius: 2px;
 
       h2 {
-         margin-top: 0;
+         margin: 0;
          color: #8bc34a;
       }
    }
@@ -91,7 +129,7 @@ md-content {
    left: 0;
    right: 0;
    bottom: 0;
-   z-index: 0;
+   z-index: 5;
 }
 
 md-tabs {
@@ -132,6 +170,11 @@ md-tabs {
    color: rgba(255, 255, 255, 0.6);
 }
 
+.md-button {
+   z-index: 200;
+   min-width: 0;
+}
+
 .md-button.md-fab {
    line-height: 36px;
    color: white;
@@ -155,5 +198,9 @@ button.md-raised.md-button.md-default-theme.md-button.md-primary {
 
    md-pagination-wrapper {
       margin: 0 10%;
+   }
+
+   .social-bar {
+      margin-right: 10%;
    }
 }
