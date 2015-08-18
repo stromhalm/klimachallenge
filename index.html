@@ -30,7 +30,7 @@
 
    <header layout="row" layout-wrap layout-align="start center">
       <div flex-gt-md="50" flex="90" offset="5">
-         <img src="img/logo.png" alt="logo" /><br>
+         <img src="img/logo2.png" alt="logo" /><br>
       </div>
       <div class="space-box counter" flex-gt-md="40" flex="100" offset-gt-md="5">
          <h2 count-to="152000" value="0" duration="2"></h2>
@@ -38,7 +38,6 @@
          <h2 count-to="17" value="0" duration="2">17</h2>
          Projekte
       </div>
-      <!--<h2 flex="90" offset="5">Gemeinsam Punkten für den Klimaschutz</h2>-->
    </header>
 
    <div layout="row" layout-wrap class="info-box" layout-sm="column">
@@ -73,12 +72,6 @@
             <h2>News</h2>
             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
          </div>
-
-         <!--
-         <md-button class="md-raised">
-            <ng-md-icon style="fill: white" icon="filter"></ng-md-icon> Mehr News
-         </md-button>
-      -->
       </div>
    </div>
    <div class="space-box add-project">
@@ -103,58 +96,6 @@
          </div>
       </div>
    </div>
-
-
-
-   <!--
-   <md-tabs md-dynamic-height="false" md-center-tabs="false" class="md-accent">
-      <md-tab label="Challenge">
-         <div class="physics-background">
-            <div layout="row">
-               <div flex="50" offset-gt-md="10" class="md-padding">
-                  <h1>Alle Projekte</h1>
-                  <h2>Inspirieren lassen</h2>
-                  <p>
-                     Viele Jugendverbände haben bereits Projekte für den Klimaschutz eingereicht.
-                     Klick dich durch!
-                  </p>
-                  <h2>Aktiv werden</h2>
-                  <p>
-                     Du bist selbst in einem Jugendverband aktiv?<br>
-                     Dann reicht euer Projekt ein!
-                  </p>
-               </div>
-               <div flex id="logo" class="md-padding">
-                  <img src="img/logo.png" id="logo">
-               </div>
-            </div>
-         </div>
-         <div id="physics-world" ng-controller="ChallengeCtrl">
-         </div>
-      </md-tab>
-      <md-tab label="News">
-         <md-content ng-controller="newsCtrl" class="news-background">
-            <div layout="row" layout-wrap>
-               <div flex-sm="100" flex-gt-sm="50" flex-gt-md="33" flex-gt-lg="25" ng-repeat="news in facebookImages">
-                  <md-card>
-                     <img ng-src="{{news.images[1].source}}" class="md-card-image">
-                     <md-card-content>
-                        <p>
-                           {{news.name}}
-                        </p>
-                     </md-card-content>
-                     <div class="md-actions" layout="row" layout-align="end center">
-                       <md-button><a target="_blank" ng-href="{{news.link}}"><ng-md-icon icon="thumb_up"></ng-md-icon></a></md-button>
-                       <md-button><a target="_blank" ng-href="{{news.link}}"><ng-md-icon icon="comment"></ng-md-icon></a></md-button>
-                     </div>
-                  </md-card>
-               </div>
-            </div>
-         </md-content>
-      </md-tab>
-      <md-tab label="Ideen"></md-tab>
-   </md-tabs>
--->
 
    <script src="libs/physicsjs/dist/physicsjs-full.min.js"></script>
    <script src="bower_components/angular/angular.min.js"></script>
