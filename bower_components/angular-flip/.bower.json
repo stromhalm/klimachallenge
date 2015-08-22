@@ -1,0 +1,32 @@
+{
+  "name": "angular-flip",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.0.3",
+    "angular": "~1.2.26"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.2.26"
+  },
+  "main": [
+    "src/angular-flip.js",
+    "src/flip.css"
+  ],
+  "homepage": "https://github.com/lemming/angular-flip",
+  "_release": "e527574c2b",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "e527574c2b80da9158c7c4e5b52b031198100769"
+  },
+  "_source": "git://github.com/lemming/angular-flip.git",
+  "_target": "*",
+  "_originalSource": "angular-flip",
+  "_direct": true
+}
