@@ -16,7 +16,7 @@ h2 {
 
 .social-bar {
    right: 0;
-   margin-right: 20px;
+   margin-right: 15px;
    margin-top: -48px;
    z-index: 200;
    position: absolute;
@@ -47,7 +47,6 @@ header {
 
    .counter {
       color: #222e34;
-      padding: 16px;
       font-size: 2em;
 
       h2 {
@@ -60,6 +59,47 @@ header {
 
 .info-box {
    background-color: #607d8b;
+}
+
+.project-progress {
+   background-color: #8bc34a;
+   color: white;
+
+   .inline-points {
+      opacity: 0.6;
+      text-align: center;
+      font-size: 1.5em;
+      margin-bottom: 10px;
+   }
+
+   .progress-legend {
+      margin-bottom: 39px;
+      position: relative;
+      z-index: 199;
+
+      .goal {
+         padding-left: 4px;
+         border-left: 1px solid white;
+         position: absolute;
+         margin-left: -2px;
+         cursor: pointer;
+
+         .goal-points {
+            margin-bottom: 0;
+         }
+      }
+   }
+
+   .project-bar {
+      margin-bottom: 60px;
+   }
+
+   .side-tab {
+      background-color: white;
+      color: #222e34;
+      padding: 0 20px;
+      font-size: .8em;
+   }
 }
 
 .info-cards {
@@ -132,9 +172,10 @@ md-content {
    z-index: 5;
 }
 
-md-tabs {
+.nav {
    min-height: 0 !important;
    border-radius: 0;
+   z-index: 190;
 
    md-tabs-wrapper {
       background-color: #0288d1 !important;
@@ -170,7 +211,7 @@ md-tabs {
    color: rgba(255, 255, 255, 0.6);
 }
 
-.md-button {
+.md-button, md-tabs {
    z-index: 200;
    min-width: 0;
 }
@@ -194,12 +235,16 @@ button.md-raised.md-button.md-default-theme.md-button.md-primary {
    background-color: #8bc34a;
 }
 
+md-tabs-wrapper md-prev-button md-icon, md-tabs-wrapper md-next-button md-icon {
+   color: white;
+}
+
 @media (min-width: 960px) {
-   md-pagination-wrapper {
-      margin: 0 10%;
+   .nav md-pagination-wrapper {
+      margin: 0 7%;
    }
 
    .social-bar {
-      margin-right: 10%;
+      margin-right: 7%;
    }
 }

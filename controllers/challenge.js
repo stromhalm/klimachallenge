@@ -1,6 +1,6 @@
 klimaChallenge.controller('ChallengeCtrl', function($scope, $http, $timeout) {
 
-   var numberProjects = 50;
+   var numberProjects = 15;
    var ballRadius = Math.pow(window.innerWidth, 1/2) * Math.pow(1/numberProjects, 1/10) + 30;
 
    Physics(function (world) {
