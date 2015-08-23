@@ -1,0 +1,54 @@
+<div class="space-box project-progress">
+   <div layout="row" layout-align="start center" layout-sm="column" layout-padding>
+      <div style="width: 100%;" flex-gt-sm="65" offset-gt-md="5">
+         <h2>Ziele</h2>
+         <div class="progress-legend">
+            <div style="margin-left: 25%;" class="goal" ng-click="selectedGoal=0">
+               <ng-md-icon icon="system_update_tv" style="fill: white" size="22"></ng-md-icon><br>
+               <p class="goal-points">2.000</p>
+            </div>
+            <div style="margin-left: 50%;" class="goal" ng-click="selectedGoal=1">
+               <ng-md-icon icon="local_movies" style="fill: white" size="22"></ng-md-icon><br>
+               <p class="goal-points">4.000</p>
+            </div>
+            <div style="margin-left: 75%;" class="goal" ng-click="selectedGoal=2">
+               <ng-md-icon icon="face" style="fill: white" size="22"></ng-md-icon><br>
+               <p class="goal-points">6.000</p>
+            </div>
+         </div>
+         <md-progress-linear class="project-bar md-accent" md-mode="buffer" value="35" md-buffer-value="100"></md-progress-linear>
+         <p class="inline-points"><span count-to="15200" value="0" duration=".8"></span> Klimapunkte</p>
+      </div>
+      <div flex style="width: 100%">
+         <md-tabs md-center-tabs="false" class="md-accent md-whiteframe-z3" md-selected="selectedGoal">
+            <md-tab>
+               <md-tab-label>
+                  <ng-md-icon style="fill: white" icon="system_update_tv"></ng-md-icon>
+              </md-tab-label>
+              <md-tab-content class="side-tab">
+                 <h3>Abseilen</h3>
+                 <p>Der Minister seilt sich von einem Dach ab.</p>
+              </md-tab-content>
+            </md-tab>
+            <md-tab>
+               <md-tab-label>
+                  <ng-md-icon style="fill: white" icon="local_movies"></ng-md-icon>
+              </md-tab-label>
+              <md-tab-content class="side-tab">
+                 <h3>Film</h3>
+                 <p>Der Minister strampelt für den Strom – ihr guckt den Film.</p>
+              </md-tab-content>
+            </md-tab>
+            <md-tab>
+               <md-tab-label>
+                  <ng-md-icon style="fill: white" icon="face"></ng-md-icon>
+              </md-tab-label>
+              <md-tab-content class="side-tab">
+                 <h3>Eis am Maschsee</h3>
+                 <p>Der Minister verteilt Eis am Maschsee an alle Jugendlichen.</p>
+              </md-tab-content>
+            </md-tab>
+         </md-tabs>
+      </div>
+   </div>
+</div>

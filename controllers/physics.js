@@ -1,4 +1,4 @@
-klimaChallenge.controller('ChallengeCtrl', function($scope, $http, $timeout) {
+klimaChallenge.controller('PhysicsCtrl', function($scope, $timeout) {
 
    var numberProjects = 15;
    var ballRadius = Math.pow(window.innerWidth, 1/2) * Math.pow(1/numberProjects, 1/10) + 30;
@@ -31,7 +31,6 @@ klimaChallenge.controller('ChallengeCtrl', function($scope, $http, $timeout) {
        window.addEventListener('resize', function () {
            viewportBounds = Physics.aabb(0, 0, renderer.width, renderer.height);
            edgeBounce.setAABB(viewportBounds);
-
        }, true);
 
        // At init the canvas won't load the correct window height, so refresh aufter 0.5s
@@ -40,7 +39,6 @@ klimaChallenge.controller('ChallengeCtrl', function($scope, $http, $timeout) {
        }, 500);
 
        // create some bodies
-
       for (var i = 0; i < numberProjects; i++) {
          var thisRadius = ballRadius * (Math.random() * 1.05 + 0.95);
          var project = Physics.body('circle', {
@@ -55,7 +53,7 @@ klimaChallenge.controller('ChallengeCtrl', function($scope, $http, $timeout) {
          world.add(project);
       }
 
-       // add things to the world
+       // add behaviors to the world
        world.add([
           Physics.behavior('interactive', { el: renderer.container }),
           Physics.behavior('constant-acceleration', {acc: { x : 0, y: 0.0005 }}),
@@ -71,8 +69,7 @@ klimaChallenge.controller('ChallengeCtrl', function($scope, $http, $timeout) {
        });
    });
 
-   $scope.ballAreaHeight = function() {
-
+   $scope.getBallAreaHeight = function() {
       var areaHeight = Math.pow(ballRadius*2, 2) * numberProjects/window.innerWidth * 2.1 + 220;
 
       // Ball area shall be at least 400px high
