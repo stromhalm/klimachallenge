@@ -3,6 +3,13 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto+Condensed);
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,300);
 
+/* Colors */
+@green: #8bc34a;
+@blue: #0288d1;
+@dark-font: #222e34;
+@light-grey: #607d8b;
+@dark-grey: #455a64;
+
 html, body {
    height: auto;
    background-color: #fafafa;
@@ -32,12 +39,12 @@ header {
    }
 
    .counter {
-      color: #222e34;
+      color: @dark-font;
       font-size: 1em;
       padding: 70px 0;
 
       h2 {
-         color: #222e34;
+         color: @dark-font;
          font-size: 3.5em;
          margin-bottom: -5px;
       }
@@ -57,12 +64,31 @@ header {
    }
 }
 
+.counter-bar {
+   background-color: @dark-grey;
+
+   .counter-background {
+      background: url(../img/count-bar.png);
+      background-repeat: repeat-x;
+   }
+
+   .counter-filled {
+      background-color: @green;
+      text-align: right;
+      color: white;
+   }
+
+   .counter-inner {
+      padding: 16px 10px 10px 10px;
+   }
+}
+
 .info-box {
-   background-color: #607d8b;
+   background-color: @light-grey;
 }
 
 .project-progress {
-   background-color: #8bc34a;
+   background-color: @green;
    color: white;
 
    .inline-points {
@@ -96,7 +122,7 @@ header {
 
    .side-tab {
       background-color: white;
-      color: #222e34;
+      color: @dark-font;
       padding: 0 20px;
       font-size: .8em;
    }
@@ -149,12 +175,12 @@ md-content {
    md-whiteframe {
       padding: 18px !important;
       background-color: white;
-      color: #455a64;
+      color: @dark-grey;
       border-radius: 2px;
 
       h2 {
          margin: 0;
-         color: #8bc34a;
+         color: @green;
       }
    }
 
@@ -178,7 +204,7 @@ md-content {
    z-index: 190;
 
    md-tabs-wrapper {
-      background-color: #0288d1 !important;
+      background-color: @blue !important;
    }
 
    md-tabs-canvas {
@@ -201,13 +227,13 @@ md-content {
 }
 
 .add-project {
-   background-color: #455a64;
+   background-color: @dark-grey;
    color: #b3cbd8;
 }
 
 .ball-box {
    height: 600px;
-   background-color: #0288d1;
+   background-color: @blue;
    color: rgba(255, 255, 255, 0.6);
 }
 
@@ -222,17 +248,17 @@ md-content {
 }
 
 button.md-raised.md-button.md-default-theme {
-   background-color: #0288d1;
+   background-color: @blue;
    color: white;
 
    &:hover {
-      background-color: #0288d1;
+      background-color: @blue;
    }
 }
 
 button.md-raised.md-button.md-default-theme.md-button.md-primary {
    color: white !important;
-   background-color: #8bc34a;
+   background-color: @green;
 }
 
 md-tabs-wrapper md-prev-button md-icon, md-tabs-wrapper md-next-button md-icon {
