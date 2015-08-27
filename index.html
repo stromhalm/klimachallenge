@@ -4,6 +4,7 @@
    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
    <link rel="stylesheet" href="bower_components/angular-material-icons/angular-material-icons.css">
+   <link rel="stylesheet" href="bower_components/angular-chart.js/dist/angular-chart.css" />
    <link rel="stylesheet" href="styles/style.css">
    <meta charset="utf-8">
    <title>Klima-Challenge</title>
@@ -49,15 +50,17 @@
       <div flex-gt-sm="50" flex="90" offset="5">
          <img src="img/logo2.png" alt="logo" /><br>
       </div>
-      <div class="space-box counter" flex-gt-sm="40" flex="100" offset="0" offset-gt-md="5">
-         <h2 count-to="15200" value="0" duration="2"></h2>
-         Klimapunkte
-         <div ng-show="bigHeader">
-            <h2 count-to="17" value="0" duration="2">17</h2>
-            Projekte
-         </div>
+      <div class="space-box counter" flex-gt-sm="40" flex="100" offset="0" offset-gt-md="5" layout="row" layout-align="center center">
+
+         <md-progress-circular md-mode="determinate" value="85"></md-progress-circular>
+         <legend>
+            <h2>
+               15%
+            </h2>
+            Bis zum nächsten Zwischenziel
       </div>
    </header>
+
 
    <ui-view>
    </ui-view>
@@ -78,10 +81,12 @@
    <script src="bower_components/angular-material/angular-material.min.js"></script>
    <script src="bower_components/angular-material-icons/angular-material-icons.min.js"></script>
    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+   <script src="bower_components/Chart.js/Chart.min.js"></script>
+   <script src="bower_components/angular-chart.js/dist/angular-chart.min.js"></script>
    <script src="libs/angular-count-to/angular-count-to.min.js"></script>
 
    <script>
-      var klimaChallenge = angular.module('Klima-Challenge', ['ngMaterial', 'ngMdIcons', 'ui.router', 'countTo']);
+      var klimaChallenge = angular.module('Klima-Challenge', ['ngMaterial', 'ngMdIcons', 'ui.router', 'countTo', 'chart.js']);
    </script>
    <script src="routes.js"></script>
    <script src="theme.js"></script>
