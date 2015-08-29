@@ -1,3 +1,10 @@
 klimaChallenge.controller('challengeCtrl', function($scope, instaMedia) {
-   $scope.newsImageUrl = instaMedia.lastPhotoUrl();
+
+   instaMedia.getRecentPhotos().success(function (instagramResponse) {
+
+      var recentPhoto = instagramResponse.data[0];
+
+      $scope.newsImageUrl = recentPhoto.images.standard_resolution.url;
+      $scope.newsCaption = recentPhoto.caption.text;
+   })
 });
