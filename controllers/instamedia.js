@@ -1,7 +1,7 @@
 klimaChallenge.service('instaMedia', function($http) {
 
    // Read only token for instagram profile, generated with http://instafeedjs.com
-   var instagramToken = '2148293488.467ede5.4a43e7ff57b94143b00381380bf61002';
+   var instagramToken = '2148293488.7336d98.847543cf7196453d95288b71e9b28aef';
    var instagramResponse = '';
    var isError = true;
 
