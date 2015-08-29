@@ -65,7 +65,7 @@ klimaChallenge.controller('PhysicsCtrl', function($scope, $timeout) {
 
        // subscribe to ticker to advance the simulation
        Physics.util.ticker.on(function( time ) {
-           world.step( time );
+           //world.step( time );
        });
    });
 

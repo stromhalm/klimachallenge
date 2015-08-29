@@ -10,6 +10,18 @@
 @light-grey: #607d8b;
 @dark-grey: #455a64;
 
+.noisy-background(@color) {
+   @darken: 6%;
+   background-color: @color  !important;
+   background-image: url("//instagramstatic-a.akamaihd.net/bluebar/0a851cc/images/shared/noise-1.png"), -webkit-gradient(linear, left top, left bottom, from(@color), darken(@color, @darken)) !important;
+   background-image: url("//instagramstatic-a.akamaihd.net/bluebar/0a851cc/images/shared/noise-1.png"), -webkit-linear-gradient(top, @color, darken(@color, @darken)) !important;
+   background-image: url("//instagramstatic-a.akamaihd.net/bluebar/0a851cc/images/shared/noise-1.png"), -moz-linear-gradient(top, @color, darken(@color, @darken)) !important;
+   background-image: url("//instagramstatic-a.akamaihd.net/bluebar/0a851cc/images/shared/noise-1.png"), -o-linear-gradient(top, @color, darken(@color, @darken)) !important;
+   background-image: url("//instagramstatic-a.akamaihd.net/bluebar/0a851cc/images/shared/noise-1.png"), -ms-linear-gradient(top, @color, darken(@color, @darken)) !important;
+   background-image: url("//instagramstatic-a.akamaihd.net/bluebar/0a851cc/images/shared/noise-1.png"), linear-gradient(top, @color, darken(@color, @darken)) !important;
+   background-position: 50% 50%;
+}
+
 html, body {
    height: auto;
    background-color: #fafafa;
@@ -74,7 +86,7 @@ header {
 }
 
 .counter-bar {
-   background-color: @dark-grey;
+   .noisy-background(@dark-grey);
 
    .counter-background {
       background: url(../img/count-bar.png);
@@ -82,7 +94,7 @@ header {
    }
 
    .counter-filled {
-      background-color: @green;
+      .noisy-background(@green);
       text-align: right;
       color: white;
    }
@@ -150,7 +162,6 @@ header {
    background-position: center;
    background-size: cover;
    position: relative;
-   background-image: url(https://scontent-fra3-1.xx.fbcdn.net/hphotos-xfp1/t31.0-8/1911031_10152909046213951_4560039218640562970_o.jpg);
 
    .news-wrapper {
       position: absolute;
@@ -213,7 +224,7 @@ md-content {
    z-index: 190;
 
    md-tabs-wrapper {
-      background-color: @blue !important;
+      .noisy-background(@blue);
    }
 
    md-tabs-canvas {
