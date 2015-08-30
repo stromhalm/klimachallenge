@@ -197,17 +197,34 @@ $button-fab-padding: rem(1.60) !default;
 }
 
 
-/* mixin definition ; sets LTR and RTL within the same style call */
+// mixin definition ; sets LTR and RTL within the same style call
+// @see https://css-tricks.com/almanac/properties/d/direction/
+
 @mixin rtl($prop, $value, $rtl-value) {
   #{$prop}: $value;
+
   html[dir=rtl] & {
     #{$prop}: $rtl-value;
+    unicode-bidi: embed;
   }
+  body[dir=rtl] & {
+    #{$prop}: $rtl-value;
+    unicode-bidi: embed;
+  }
+
+  bdo[dir=rtl] {
+    direction: rtl;
+    unicode-bidi: bidi-override;
+  }
+  bdo[dir=ltr] {
+    direction: ltr;
+    unicode-bidi: bidi-override;
+  }
+
+
 }
 
-/**
- * Position a FAB button.
- */
+// Position a FAB button.
 @mixin fab-position($spot, $top: auto, $right: auto, $bottom: auto, $left: auto) {
   &.md-fab-#{$spot} {
     top: $top;
@@ -341,16 +358,13 @@ input {
 
 .md-ripple {
   position: absolute;
-  transform: scale(0);
+  transform: translate(-50%, -50%) scale(0);
   transform-origin: 50% 50%;
   opacity: 0;
   border-radius: 50%;
   &.md-ripple-placed {
-    $positionDuration: 0.9s * 2;
-    $sizeDuration: 0.65s * 2;
-    transition: left $positionDuration $swift-ease-out-timing-function,
-                top $positionDuration $swift-ease-out-timing-function,
-                margin $sizeDuration $swift-ease-out-timing-function,
+    $sizeDuration: 0.45s * 2;
+    transition: margin $sizeDuration $swift-ease-out-timing-function,
                 border $sizeDuration $swift-ease-out-timing-function,
                 width $sizeDuration $swift-ease-out-timing-function,
                 height $sizeDuration $swift-ease-out-timing-function,
@@ -358,7 +372,7 @@ input {
                 transform $sizeDuration $swift-ease-out-timing-function;
   }
   &.md-ripple-scaled {
-    transform: scale(1);
+    transform: translate(-50%, -50%) scale(1);
   }
   &.md-ripple-active, &.md-ripple-full, &.md-ripple-visible {
     opacity: 0.20;
@@ -506,7 +520,7 @@ input {
   1200 <= size         PC
 */
 
-[layout] {
+.layout {
   box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
@@ -516,67 +530,67 @@ input {
   display: flex;
 }
 
-[layout=column] {
+.layout-column {
   flex-direction: column;
   -webkit-flex-direction: column;
 }
 
-[layout=row] {
+.layout-row {
   flex-direction: row;
   -webkit-flex-direction: row;
 }
 
-[layout-padding] > [flex-sm],
-[layout-padding] > [flex-lt-md]
+.layout-padding > .flex-sm,
+.layout-padding > .flex-lt-md
 {
   padding: $layout-gutter-width / 4;
 }
-[layout-padding],
-[layout-padding] > [flex],
-[layout-padding] > [flex-gt-sm],
-[layout-padding] > [flex-md],
-[layout-padding] > [flex-lt-lg]
+.layout-padding,
+.layout-padding > .flex,
+.layout-padding > .flex-gt-sm,
+.layout-padding > .flex-md,
+.layout-padding > .flex-lt-lg
 {
   padding: $layout-gutter-width / 2;
 }
-[layout-padding] > [flex-gt-md],
-[layout-padding] > [flex-lg]
+.layout-padding > .flex-gt-md,
+.layout-padding > .flex-lg
 {
   padding: $layout-gutter-width / 1;
 }
 
 
-[layout-margin] > [flex-sm],
-[layout-margin] > [flex-lt-md]
+.layout-margin > .flex-sm,
+.layout-margin > .flex-lt-md
 {
   margin: $layout-gutter-width / 4;
 }
-[layout-margin],
-[layout-margin] > [flex],
-[layout-margin] > [flex-gt-sm],
-[layout-margin] > [flex-md],
-[layout-margin] > [flex-lt-lg] {
+.layout-margin,
+.layout-margin > .flex,
+.layout-margin > .flex-gt-sm,
+.layout-margin > .flex-md,
+.layout-margin > .flex-lt-lg {
   margin: $layout-gutter-width / 2;
 }
-[layout-margin] > [flex-gt-md],
-[layout-margin] > [flex-lg]
+.layout-margin > .flex-gt-md,
+.layout-margin > .flex-lg
 {
   margin: $layout-gutter-width / 1;
 }
 
 
 
-[layout-wrap] {
+.layout-wrap {
   flex-wrap: wrap;
 }
 
-[layout-fill] {
+.layout-fill {
   margin: 0;
   min-height: 100%;
   width: 100%;
 }
 @-moz-document url-prefix() {
-  [layout-fill] {
+  .layout-fill {
     margin: 0;
     width: 100%;
     min-height: auto;
@@ -589,20 +603,20 @@ input {
   @if $suffix != null {
     $selector: 'flex-order-#{$suffix}';
   }
-  [#{$selector}="0"] { order: 0; }
-  [#{$selector}="1"] { order: 1; }
-  [#{$selector}="2"] { order: 2; }
-  [#{$selector}="3"] { order: 3; }
-  [#{$selector}="4"] { order: 4; }
-  [#{$selector}="5"] { order: 5; }
-  [#{$selector}="6"] { order: 6; }
-  [#{$selector}="7"] { order: 7; }
-  [#{$selector}="8"] { order: 8; }
-  [#{$selector}="9"] { order: 9; }
+  .#{$selector}-0 { order: 0; }
+  .#{$selector}-1 { order: 1; }
+  .#{$selector}-2 { order: 2; }
+  .#{$selector}-3 { order: 3; }
+  .#{$selector}-4 { order: 4; }
+  .#{$selector}-5 { order: 5; }
+  .#{$selector}-6 { order: 6; }
+  .#{$selector}-7 { order: 7; }
+  .#{$selector}-8 { order: 8; }
+  .#{$selector}-9 { order: 9; }
 }
 
 @mixin layout-for-name($name) {
-  [layout-#{$name}] {
+  .layout-#{$name} {
     box-sizing: border-box;
     display: -webkit-box;
     display: -webkit-flex;
@@ -611,10 +625,10 @@ input {
     display: -ms-flexbox;
     display: flex;
   }
-  [layout-#{$name}=column] {
+  .layout-#{$name}-column {
     flex-direction: column;
   }
-  [layout-#{$name}=row] {
+  .layout-#{$name}-row {
     flex-direction: row;
   }
 }
@@ -625,14 +639,14 @@ input {
     $offsetName: 'offset-#{$name}';
   }
   @for $i from 1 through 19 {
-    [#{$offsetName}="#{$i * 5}"] {
+    .#{$offsetName}-#{$i * 5} {
       margin-left: #{$i * 5 + '%'};
     }
   }
-  [#{$offsetName}="33"], [#{$offsetName}="34"] {
+  .#{$offsetName}-33, .#{$offsetName}-34 {
     margin-left: 33.33%;
   }
-  [#{$offsetName}="66"], [#{$offsetName}="67"] {
+  .#{$offsetName}-66, .#{$offsetName}-67 {
     margin-left: 66.66%;
   }
 }
@@ -643,7 +657,7 @@ input {
     $flexName: 'flex-#{$name}';
   }
 
-  [#{$flexName}] {
+  .#{$flexName} {
     box-sizing: border-box;
     flex: 1;
   }
@@ -651,37 +665,37 @@ input {
 
   // (0-20) * 5 = 0-100%
   @for $i from 0 through 20 {
-    [#{$flexName}="#{$i * 5}"] {
+    .#{$flexName}-#{$i * 5} {
       flex: 0 0 #{$i * 5 + '%'};
     }
-    [layout="row"] > [#{$flexName}="#{$i * 5}"] {
+    .layout-row > .#{$flexName}-#{$i * 5} {
       max-width: #{$i * 5 + '%'};
     }
-    [layout="column"] > [#{$flexName}="#{$i * 5}"] {
+    .layout-column > .#{$flexName}-#{$i * 5} {
       max-height: #{$i * 5 + '%'};
     }
   }
 
-  [#{$flexName}="33"], [#{$flexName}="34"] {
+  .#{$flexName}-33, .#{$flexName}-34 {
     flex: 0 0 33.33%;
   }
-  [#{$flexName}="66"], [#{$flexName}="67"] {
+  .#{$flexName}-66, .#{$flexName}-67 {
     flex: 0 0 66.66%;
   }
 
-  [layout="row"] {
-    > [#{$flexName}="33"], > [#{$flexName}="34"] {
+  .layout-row {
+    > .#{$flexName}-33, > .#{$flexName}-34 {
       max-width: 33.33%;
     }
-    > [#{$flexName}="66"], > [#{$flexName}="67"] {
+    > .#{$flexName}-66, > .#{$flexName}-67 {
       max-width: 66.66%;
     }
   }
-  [layout="column"] {
-    > [#{$flexName}="33"], > [#{$flexName}="34"] {
+  .layout-column {
+    > .#{$flexName}-33, > .#{$flexName}-34 {
       max-height: 33.33%;
     }
-    > [#{$flexName}="66"], > [#{$flexName}="67"] {
+    > .#{$flexName}-66, > .#{$flexName}-67 {
       max-height: 66.66%;
     }
   }
@@ -700,34 +714,34 @@ input {
   }
 
   // Main Axis Center
-  [#{$name}="center"], //stretch
-  [#{$name}="center center"],
-  [#{$name}="center start"],
-  [#{$name}="center end"] {
+  .#{$name}-center, //stretch
+  .#{$name}-center-center,
+  .#{$name}-center-start,
+  .#{$name}-center-end {
     justify-content: center;
   }
 
   // Main Axis End
-  [#{$name}="end"], //stretch
-  [#{$name}="end center"],
-  [#{$name}="end start"],
-  [#{$name}="end end"] {
+  .#{$name}-end, //stretch
+  .#{$name}-end-center,
+  .#{$name}-end-start,
+  .#{$name}-end-end {
     justify-content: flex-end;
   }
 
   // Main Axis Space Around
-  [#{$name}="space-around"], //stretch
-  [#{$name}="space-around center"],
-  [#{$name}="space-around start"],
-  [#{$name}="space-around end"] {
+  .#{$name}-space-around, //stretch
+  .#{$name}-space-around-center,
+  .#{$name}-space-around-start,
+  .#{$name}-space-around-end {
     justify-content: space-around;
   }
 
   // Main Axis Space Between
-  [#{$name}="space-between"], //stretch
-  [#{$name}="space-between center"],
-  [#{$name}="space-between start"],
-  [#{$name}="space-between end"] {
+  .#{$name}-space-between, //stretch
+  .#{$name}-space-between-center,
+  .#{$name}-space-between-start,
+  .#{$name}-space-between-end {
     justify-content: space-between;
   }
 
@@ -738,29 +752,29 @@ input {
   // ------------------------------
 
   // Cross Axis Center
-  [#{$name}="center center"],
-  [#{$name}="start center"],
-  [#{$name}="end center"],
-  [#{$name}="space-between center"],
-  [#{$name}="space-around center"] {
+  .#{$name}-center-center,
+  .#{$name}-start-center,
+  .#{$name}-end-center,
+  .#{$name}-space-between-center,
+  .#{$name}-space-around-center {
     align-items: center;
   }
 
   // Cross Axis Start
-  [#{$name}="center start"],
-  [#{$name}="start start"],
-  [#{$name}="end start"],
-  [#{$name}="space-between start"],
-  [#{$name}="space-around start"] {
+  .#{$name}-center-start,
+  .#{$name}-start-start,
+  .#{$name}-end-start,
+  .#{$name}-space-between-start,
+  .#{$name}-space-around-start {
     align-items: flex-start;
   }
 
   // Cross Axis End
-  [#{$name}="center end"],
-  [#{$name}="start end"],
-  [#{$name}="end end"],
-  [#{$name}="space-between end"],
-  [#{$name}="space-around end"] {
+  .#{$name}-center-end,
+  .#{$name}-start-end,
+  .#{$name}-end-end,
+  .#{$name}-space-between-end,
+  .#{$name}-space-around-end {
     align-items: flex-end;
   }
 
@@ -782,8 +796,8 @@ input {
 
 // SMALL SCREEN
 @media (max-width: $layout-breakpoint-sm - 1) {
-  [hide-sm], [hide] {
-    &:not([show-sm]):not([show]) {
+  .hide-sm, .hide {
+    &:not(.show-sm):not(.show) {
       display: none;
     }
   }
@@ -806,12 +820,12 @@ input {
 
 // MEDIUM SCREEN
 @media (min-width: $layout-breakpoint-sm) and (max-width: $layout-breakpoint-md - 1) {
-  [hide], [hide-gt-sm] {
-    &:not([show-gt-sm]):not([show-md]):not([show]) {
+  .hide, .hide-gt-sm {
+    &:not(.show-gt-sm):not(.show-md):not(.show) {
       display: none;
     }
   }
-  [hide-md]:not([show-md]):not([show]) {
+  .hide-md:not(.show-md):not(.show) {
     display: none;
   }
 
@@ -833,12 +847,12 @@ input {
 
 // LARGE SCREEN
 @media (min-width: $layout-breakpoint-md) and (max-width: $layout-breakpoint-lg - 1) {
-  [hide], [hide-gt-sm], [hide-gt-md] {
-    &:not([show-gt-sm]):not([show-gt-md]):not([show-lg]):not([show]) {
+  .hide, .hide-gt-sm, .hide-gt-md {
+    &:not(.show-gt-sm):not(.show-gt-md):not(.show-lg):not(.show) {
       display: none;
     }
   }
-  [hide-lg]:not([show-lg]):not([show]) {
+  .hide-lg:not(.show-lg):not(.show) {
     display: none;
   }
 
@@ -851,8 +865,8 @@ input {
 
 // BIGGER THAN LARGE SCREEN
 @media (min-width: $layout-breakpoint-lg) {
-  [hide-gt-sm], [hide-gt-md], [hide-gt-lg], [hide] {
-    &:not([show-gt-sm]):not([show-gt-md]):not([show-gt-lg]):not([show]) {
+  .hide-gt-sm, .hide-gt-md, .hide-gt-lg, .hide {
+    &:not(.show-gt-sm):not(.show-gt-md):not(.show-gt-lg):not(.show) {
       display: none;
     }
   }
@@ -1036,14 +1050,18 @@ md-autocomplete {
     }
   }
 }
-.md-autocomplete-suggestions {
+
+.md-virtual-repeat-container.md-autocomplete-suggestions-container {
   position: absolute;
+  box-shadow: 0 2px 5px rgba(black, 0.25);
+  height: 41px * 5.5;
+  max-height: 41px * 5.5;
+  z-index: $z-index-tooltip;
+}
+.md-autocomplete-suggestions {
   margin: 0;
   list-style: none;
   padding: 0;
-  overflow: auto;
-  max-height: 41px * 5.5;
-  z-index: $z-index-tooltip;
   li {
     cursor: pointer;
     font-size: 14px;
@@ -1055,23 +1073,13 @@ md-autocomplete {
     margin: 0;
     white-space: nowrap;
     text-overflow: ellipsis;
-    &.ng-enter,
-    &.ng-hide-remove {
-      transition: none;
-      animation: md-autocomplete-list-in 0.2s;
-    }
-    &.ng-leave,
-    &.ng-hide-add {
-      transition: none;
-      animation: md-autocomplete-list-out 0.2s;
-    }
 
     &:focus {
-        outline: none;
-      }
-
+      outline: none;
+    }
   }
 }
+
 @media screen and (-ms-high-contrast: active) {
   md-autocomplete,
   .md-autocomplete-suggestions {
@@ -1079,9 +1087,22 @@ md-autocomplete {
   }
 }
 
+// !!Important - Theme-based Background-color can be configured in backdrop-theme.scss
+//             - Animate background-color opacityy only for `.md-opaque` styles
+
 md-backdrop {
+  transition: opacity 450ms;
+
+  position: absolute;
+  top:0;
+  bottom:0;
+  left: 0;
+  right: 0;
+
   z-index: $z-index-backdrop;
+
   &.md-menu-backdrop {
+    position: fixed !important;
     z-index: $z-index-menu - 1;
   }
   &.md-select-backdrop {
@@ -1098,25 +1119,28 @@ md-backdrop {
     z-index: $z-index-sidenav - 1;
   }
 
-  opacity: 1;
-
-  // - Animate background-color alpha only for `.md-opaque` stylings
-  // !!Important - Theme-based Background-color and animations can be enabled in backdrop-theme.scss
-
-  transition: background-color 450ms $swift-ease-in-timing-function;
-
-  position: absolute;
-  top:0;
-  bottom:0;
-  left: 0;
-  right: 0;
 
   &.md-click-catcher {
     position: absolute;
   }
 
-  &.md-opaque.ng-leave {
-    transition: background-color 400ms linear;
+  &.md-opaque {
+
+    opacity: .48;
+
+    &.ng-enter {
+      opacity: 0;
+    }
+    &.ng-enter.md-opaque.ng-enter-active {
+      opacity: .48;
+    }
+    &.ng-leave {
+      opacity: .48;
+      transition: opacity 400ms;
+    }
+    &.ng-leave.md-opaque.ng-leave-active {
+      opacity: 0;
+    }
   }
 
 }
@@ -1308,6 +1332,10 @@ md-bottom-sheet {
   }
 }
 
+$button-border-radius: 3px !default;
+$button-fab-border-radius: 50% !default;
+$button-icon-border-radius: $button-fab-border-radius;
+
 $button-line-height: rem(3.60) !default;
 $button-padding: 0 rem(0.600) !default;
 $button-margin: rem(0.600) rem(0.800) !default;
@@ -1326,6 +1354,7 @@ $icon-button-width: rem(4.800) !default;
 $icon-button-margin: rem(0.600) !default;
 
 .md-button {
+  border-radius: $button-border-radius;
   box-sizing: border-box;
   color: currentColor;
 
@@ -1362,11 +1391,6 @@ $icon-button-margin: rem(0.600) !default;
   transition: box-shadow $swift-ease-out-duration $swift-ease-out-timing-function,
               background-color $swift-ease-out-duration $swift-ease-out-timing-function;
 
-  *,
-  *:before,
-  *:after {
-    box-sizing: border-box;
-  }
   &:focus {
     outline: none;
   }
@@ -1402,9 +1426,9 @@ $icon-button-margin: rem(0.600) !default;
     padding-left: 0;
     padding-right: 0;
     width: $icon-button-width;
-    border-radius: 50%;
+    border-radius: $button-icon-border-radius;
     .md-ripple-container {
-      border-radius: 50%;
+      border-radius: $button-icon-border-radius;
       background-clip: padding-box;
       overflow: hidden;
       // The following hack causes Safari/Chrome to respect overflow hidden for ripples
@@ -1426,14 +1450,14 @@ $icon-button-margin: rem(0.600) !default;
     vertical-align: middle;
 
     @include md-shadow-bottom-z-1();
-    border-radius: 50%;
+    border-radius: $button-fab-border-radius;
     background-clip: padding-box;
     overflow: hidden;
 
     transition: 0.2s linear;
     transition-property: background-color, box-shadow;
     .md-ripple-container {
-      border-radius: 50%;
+      border-radius: $button-fab-border-radius;
       background-clip: padding-box;
       overflow: hidden;
       // The following hack causes Safari/Chrome to respect overflow hidden for ripples
@@ -1458,6 +1482,14 @@ $icon-button-margin: rem(0.600) !default;
         @include md-shadow-bottom-z-2();
       }
     }
+  }
+
+  .md-ripple-container {
+    border-radius: $button-border-radius;
+    background-clip: padding-box;
+    overflow: hidden;
+    // The following hack causes Safari/Chrome to respect overflow hidden for ripples
+    -webkit-mask-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC');
   }
 }
 
@@ -1588,12 +1620,6 @@ md-checkbox {
   min-width: $checkbox-width;
   min-height: $checkbox-width;
 
-  *,
-  *:before,
-  *:after {
-    box-sizing: border-box;
-  }
-
   &.md-focused:not([disabled]) {
     .md-container:before {
       left: -8px;
@@ -1613,13 +1639,17 @@ md-checkbox {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+
+    box-sizing: border-box;
     display: inline-block;
+
     width: $checkbox-width;
     height: $checkbox-height;
     @include rtl(left, 0, auto);
     @include rtl(right, auto, 0);
 
     &:before {
+      box-sizing: border-box;
       background-color: transparent;
       border-radius: 50%;
       content: '';
@@ -1635,6 +1665,7 @@ md-checkbox {
     }
 
     &:after {
+      box-sizing: border-box;
       content: '';
       position: absolute;
       top: -10px;
@@ -1661,6 +1692,7 @@ md-checkbox {
 
   // unchecked
   .md-icon {
+    box-sizing: border-box;
     transition: 240ms;
     position: absolute;
     top: 0;
@@ -1683,6 +1715,7 @@ md-checkbox {
 
 
   &.md-checked .md-icon:after {
+    box-sizing: border-box;
     transform: rotate(45deg);
     position: absolute;
     left: $checkbox-width / 3;
@@ -1698,6 +1731,7 @@ md-checkbox {
   }
 
   .md-label {
+    box-sizing: border-box;
     position: relative;
     display: inline-block;
     vertical-align: middle;
@@ -1712,11 +1746,13 @@ md-checkbox {
 
 $chip-font-size: rem(1.6) !default;
 $chip-height: rem(3.2) !default;
-$chip-padding: 0 rem(0.8) 0 rem(1.2) !default;
+$chip-padding: 0 rem(1.2) 0 rem(1.2) !default;
+$chip-remove-padding-right: rem(2.2) !default;
+$chip-remove-line-height: rem(2.2) !default;
 $chip-margin: rem(0.8) rem(0.8) 0 0 !default;
 $chip-wrap-padding: 0 0 rem(0.8) rem(0.3) !default;
 $chip-delete-icon-size: rem(1.8) !default;
-$contact-chip-padding: 0 rem(0.8) 0 0 !default;
+$contact-chip-padding: 0 rem(2.5) 0 0 !default;
 $contact-chip-suggestion-image-height: rem(4.0) !default;
 $contact-chip-suggestion-margin: rem(0.8) !default;
 $contact-chip-name-width: rem(12) !default;
@@ -1762,15 +1798,21 @@ $contact-chip-name-width: rem(12) !default;
 }
 .md-chips {
   @include pie-clearfix();
+
   display: block;
   font-family: $font-family;
   font-size: $chip-font-size;
   padding: $chip-wrap-padding;
   vertical-align: middle;
 
-  &:not('.md-readonly') {
+  &:not(.md-readonly) {
     cursor: text;
+
+    .md-chip {
+      padding-right: $chip-remove-padding-right;
+    }
   }
+
   .md-chip {
     cursor: default;
     border-radius: $chip-height / 2;
@@ -1782,6 +1824,8 @@ $contact-chip-name-width: rem(12) !default;
     float: left;
     box-sizing: border-box;
     max-width: 100%;
+    position: relative;
+
     .md-chip-content {
       display: block;
       padding-right:rem(0.4);
@@ -1795,8 +1839,9 @@ $contact-chip-name-width: rem(12) !default;
       }
     }
     .md-chip-remove-container {
-      display: inline-block;
-      margin-right: rem(-0.5);
+      position: absolute;
+      right: 0;
+      line-height: $chip-remove-line-height;
     }
     .md-chip-remove {
       text-align: center;
@@ -1933,7 +1978,6 @@ $md-calendar-width: (7 * $md-calendar-cell-size) + (2 * $md-calendar-side-paddin
 $md-calendar-height:
     ($md-calendar-weeks-to-show * $md-calendar-cell-size) + $md-calendar-header-height;
 
-
 // Styles for date cells, including day-of-the-week header cells.
 @mixin md-calendar-cell() {
   height: $md-calendar-cell-size;
@@ -2009,6 +2053,10 @@ md-calendar {
 // A single date cell in the calendar table.
 .md-calendar-date {
   @include md-calendar-cell();
+
+  &.md-calendar-date-disabled {
+    cursor: default;
+  }
 }
 
 // Circle element inside of every date cell used to indicate selection or focus.
@@ -2018,11 +2066,13 @@ md-calendar {
   border-radius: 50%;
   display: inline-block;
 
-  cursor: pointer;
-
   width: $md-calendar-cell-emphasis-size;
   height: $md-calendar-cell-emphasis-size;
   line-height: $md-calendar-cell-emphasis-size;
+
+  .md-calendar-date:not(.md-disabled) & {
+    cursor: pointer;
+  }
 }
 
 // The label above each month (containing the month name and the year, e.g. "Jun 2014").
@@ -2066,6 +2116,10 @@ $md-datepicker-button-gap: 12px;  // Space between the text input and the calend
 $md-datepicker-border-bottom-gap: 5px;  // Space between input and the grey underline.
 $md-datepicker-open-animation-duration: 0.2s;
 
+md-datepicker {
+  // Don't let linebreaks happen between the open icon-button and the input.
+  white-space: nowrap;
+}
 
 // The calendar icon button used to open the calendar pane.
 // Need absurd specificty to override md-button.md-icon-button.
@@ -2125,10 +2179,20 @@ $md-datepicker-open-animation-duration: 0.2s;
 .md-datepicker-input-mask {
   height: 40px;
   width: $md-calendar-width;
+  position: relative;
 
   background: transparent;
   pointer-events: none;
   cursor: text;
+}
+
+.md-datepicker-input-mask-opaque {
+  position: absolute;
+  right: 0;
+  left: 120px;
+  background: white;
+
+  height: 100%;
 }
 
 // The calendar portion of the floating pane (vs. the input mask).
@@ -2199,7 +2263,6 @@ md-datepicker[disabled] {
 // Open state for all of the elements of the picker.
 .md-datepicker-open {
   .md-datepicker-input-container {
-    min-width: $md-calendar-width;
     margin-left: -$md-datepicker-button-gap;
     border: none;
   }
@@ -2576,9 +2639,10 @@ md-grid-list {
   display: block;
   position: relative;
 
-  *,
-  *:before,
-  *:after {
+  md-grid-tile,
+  md-grid-tile > figure,
+  md-grid-tile-header,
+  md-grid-tile-footer {
     box-sizing: border-box;
   }
 
@@ -3220,7 +3284,6 @@ $max-dense-menu-height: 2 * $baseline-grid + $max-visible-items * $dense-menu-it
   z-index: $z-index-menu;
   opacity: 0;
   border-radius: $menu-border-radius;
-  overflow: hidden;
 
   md-menu-divider {
     margin-top: $baseline-grid / 2;
@@ -3268,6 +3331,7 @@ md-menu-content {
     max-height: $max-dense-menu-height;
     md-menu-item {
       height: $dense-menu-item-height;
+      min-height: 0px;
     }
   }
 }
@@ -3347,12 +3411,104 @@ md-toolbar {
   }
 }
 
+md-toolbar.md-menu-toolbar {
+  h2.md-toolbar-tools {
+    line-height: 1rem;
+    height: auto;
+    padding: 3.5 * $baseline-grid;
+    padding-bottom: 1.5 * $baseline-grid;
+  }
+}
+
+md-menu-bar {
+  padding: 0 2.5 * $baseline-grid;
+  display: block;
+  position: relative;
+  z-index: 2;
+  .md-menu {
+    display: inline-block;
+    padding: 0;
+    position: relative;
+  }
+  button {
+    font-size: rem(1.4);
+    padding: 0 1.25 * $baseline-grid;
+    margin: 0;
+    border: 0;
+    background-color: transparent;
+    height: 5 * $baseline-grid;
+  }
+
+  md-backdrop.md-menu-backdrop {
+    z-index: -2;
+  }
+}
+
+md-menu-content.md-menu-bar-menu.md-dense {
+  max-height: none;
+  padding: 2 * $baseline-grid 0;
+  md-menu-item.md-indent {
+    position: relative;
+    > md-icon {
+      position: absolute;
+      padding: 0;
+      width: 24px;
+      top: 0.75 * $baseline-grid;
+      left: 3 * $baseline-grid;
+    }
+    > .md-button, .md-menu > .md-button {
+      padding: 0 4 * $baseline-grid 0 8 * $baseline-grid;
+    }
+  }
+  .md-button {
+    min-height: 0;
+    height: 4 * $baseline-grid;
+    display: flex;
+    span {
+      flex-grow: 1;
+    }
+    span.md-alt-text {
+      flex-grow: 0;
+      align-self: flex-end;
+      margin: 0 $baseline-grid;
+    }
+  }
+  md-menu-divider {
+    margin: $baseline-grid 0;
+  }
+
+  .md-menu {
+    padding: 0;
+    > .md-button {
+      position: relative;
+      margin: 0;
+      width: 100%;
+      text-align: left;
+      text-align: start;
+      text-transform: none;
+      font-weight: normal;
+      border-radius: 0px;
+      padding-left: 2 * $baseline-grid;
+      &:after {
+        display: block;
+        content: '\25BC';
+        position: absolute;
+        top: 0px;
+        speak: none;
+        transform: rotate(270deg) scaleY(0.45) scaleX(0.9);
+        right: 3.5 * $baseline-grid;
+      }
+    }
+  }
+}
+
 $progress-circular-ease-in-out : cubic-bezier(0.35, 0, 0.25, 1) !default;
 $progress-circular-duration : 5.25s !default;
 $progress-circular-circle-duration : $progress-circular-duration * 0.25 !default;
 $progress-circular-outer-duration : $progress-circular-duration * (5 / 9) !default;
 $progress-circular-sporadic-duration : $progress-circular-duration !default;
-$progress-circular-size : 50px !default;
+$progress-border-width : 10px;
+$progress-circular-size : 10 * $progress-border-width !default;
 
 @keyframes outer-rotate {
   100% { transform: rotate(360deg); }
@@ -3384,6 +3540,8 @@ md-progress-circular {
   padding-top: 0 !important;
   margin-bottom: 0 !important;
   overflow: hidden;
+  transform: scale(0.5);
+
   .md-inner {
     width: $progress-circular-size;
     height: $progress-circular-size;
@@ -3394,7 +3552,7 @@ md-progress-circular {
       right: $progress-circular-size * 0.5 - 1;
       top: 0;
       bottom: 0;
-      border-top-width: 5px;
+      border-top-width: $progress-border-width;
       border-top-style: solid;
       box-sizing: border-box;
     }
@@ -3402,7 +3560,7 @@ md-progress-circular {
       position: absolute;
       top: 0;
       height: $progress-circular-size;
-      width: $progress-circular-size * 0.5;
+      width: $progress-circular-size * 0.49;
       overflow: hidden;
       .md-half-circle {
         position: absolute;
@@ -3410,7 +3568,7 @@ md-progress-circular {
         width: $progress-circular-size;
         height: $progress-circular-size;
         box-sizing: border-box;
-        border-width: 5px;
+        border-width: $progress-border-width;
         border-style: solid;
         border-bottom-color: transparent;
         border-radius: 50%;
@@ -3440,11 +3598,11 @@ md-progress-circular {
       .md-inner {
         .md-left {
           .md-half-circle {
-            @if $i <= 50 {
+            @if $i < 50 {
               transform: rotate(135deg);
             } @else {
               transition: transform 0.1s linear;
-              $deg: ($i - 50) / 50 * 180 + 135;
+              $deg: ((($i - 50) / 50) * 180) + 135;
               transform: rotate(#{$deg}deg);
             }
           }
@@ -3461,7 +3619,7 @@ md-progress-circular {
           }
         }
         .md-gap {
-          border-bottom-width: 5px;
+          border-bottom-width: $progress-border-width;
           border-bottom-style: solid;
           @if $i <= 50 {
             border-bottom-color: transparent !important;
@@ -3726,17 +3884,8 @@ md-radio-button,
   white-space: nowrap;
   cursor: pointer;
 
-  *,
-  *:before,
-  *:after {
-    box-sizing: border-box;
-  }
-
-  input {
-    display: none;
-  }
-
   .md-container {
+    box-sizing: border-box;
     position: relative;
     top: 4px;
     display: inline-block;
@@ -3754,6 +3903,7 @@ md-radio-button,
     }
 
     &:before {
+      box-sizing: border-box;
       background-color: transparent;
       border-radius: 50%;
       content: '';
@@ -3774,6 +3924,7 @@ md-radio-button,
    }
 
   .md-off {
+    box-sizing: border-box;
     position: absolute;
     top: 0;
     left: 0;
@@ -3786,6 +3937,7 @@ md-radio-button,
   }
 
   .md-on {
+    box-sizing: border-box;
     position: absolute;
     top: 0;
     left: 0;
@@ -3801,6 +3953,7 @@ md-radio-button,
   }
 
   .md-label {
+    box-sizing: border-box;
     position: relative;
     display: inline-block;
 
@@ -3944,6 +4097,7 @@ md-select {
   }
 
   .md-select-icon {
+    display: block;
     align-items: flex-end;
     text-align: end;
     width: 3 * $baseline-grid;
@@ -4067,12 +4221,6 @@ md-sidenav {
   background-color: white;
   overflow: auto;
 
-  *,
-  *:before,
-  *:after {
-    box-sizing: border-box;
-  }
-
   ul {
     list-style: none;
   }
@@ -4083,9 +4231,7 @@ md-sidenav {
   &.md-closed-add,
   &.md-closed-remove {
     display: flex;
-    /* this is required as of 1.3x to properly
-       apply all styling in a show/hide animation */
-    transition: 0s all;
+    transition: 0.2s ease-in all;
   }
 
   &.md-closed-add.md-closed-add-active,
@@ -4359,10 +4505,9 @@ md-slider {
   }
   .md-focus-ring {
     @include slider-thumb-position($slider-focus-thumb-width, $slider-focus-thumb-height);
-    border: 2px solid #D6D6D6;
-    background-color: transparent;
     transform: scale(0);
     transition: all 0.2s linear;
+    opacity: 0.26;
   }
   .md-disabled-thumb {
     @include slider-thumb-position(
@@ -4511,6 +4656,30 @@ $subheader-sticky-shadow: 0px 2px 4px 0 rgba(0,0,0,0.16) !default;
   }
 }
 
+.md-subheader-wrapper {
+
+  &:not(.md-sticky-no-effect) {
+    .md-subheader {
+      margin: 0;
+    }
+
+    transition: 0.2s ease-out margin;
+
+    &.md-sticky-clone {
+      z-index: 2;
+    }
+
+    &[sticky-state="active"] {
+      margin-top: -2px;
+    }
+
+    &:not(.md-sticky-clone)[sticky-prev-state="active"] .md-subheader-inner:after {
+      animation: subheaderStickyHoverOut 0.3s ease-out both;
+    }
+  }
+
+}
+
 .md-subheader {
   display: block;
   font-size: $subheader-font-size;
@@ -4521,32 +4690,12 @@ $subheader-sticky-shadow: 0px 2px 4px 0 rgba(0,0,0,0.16) !default;
   position: relative;
 
   .md-subheader-inner {
+    display: block;
     padding: $subheader-padding;
   }
 
-  &:not(.md-sticky-no-effect) {
-    &:after {
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      top: 0;
-      right: -$subheader-margin-right;
-      content: '';
-    }
-
-    transition: 0.2s ease-out margin;
-    &.md-sticky-clone {
-      z-index: 2;
-    }
-    &[sticky-state="active"] {
-      margin-top: -2px;
-    }
-    &:not(.md-sticky-clone)[sticky-prev-state="active"] .md-subheader-inner:after {
-      animation: subheaderStickyHoverOut 0.3s ease-out both;
-    }
-  }
-
   .md-subheader-content {
+    display: block;
     z-index: 1;
     position: relative;
   }
@@ -4724,9 +4873,6 @@ md-tabs {
   overflow: hidden;
   position: relative;
   flex-shrink: 0;
-  &.ng-animate {
-    transition: height $swift-ease-in-out-duration $swift-ease-in-out-timing-function;
-  }
   &:not(.md-no-tab-content):not(.md-dynamic-height) {
     min-height: 200 + $tabs-header-height;
   }
@@ -5135,10 +5281,21 @@ md-toast {
   }
 }
 
+// Standard/Desktop Heights
 $toolbar-tools-height: 64px !default;
 $toolbar-height: 64px !default;
 $toolbar-medium-tall-height: 88px !default;
 $toolbar-tall-height: 128px !default;
+
+// Mobile portrait heights
+$toolbar-tools-height-mobile-portrait: 56px !default;
+$toolbar-height-mobile-portrait: 56px !default;
+
+// Mobile landscape heights
+$toolbar-tools-height-mobile-landscape: 48px !default;
+$toolbar-height-mobile-landscape: 48px !default;
+
+
 $toolbar-indent-margin: 64px !default;
 $toolbar-padding: 16px !default;
 
@@ -5155,8 +5312,13 @@ md-toolbar {
   font-size: rem(2.0);
   min-height: $baseline-grid * 8;
   width: 100%;
+
   &.md-whiteframe-z1-add, &.md-whiteframe-z1-remove {
     transition: box-shadow $swift-ease-in-out-duration linear;
+  }
+
+  md-toolbar-filler {
+    width: 9 * $baseline-grid;
   }
 
   *,
@@ -5183,7 +5345,7 @@ md-toolbar {
     }
   }
 
-  .md-indent {
+  > .md-indent {
     margin-left: $toolbar-indent-margin;
   }
 
@@ -5203,6 +5365,7 @@ md-toolbar {
 .md-toolbar-tools {
   font-size: $title-font-size-base;
   letter-spacing: 0.005em;
+  box-sizing: border-box;
   font-weight: 400;
   display: flex;
   align-items: center;
@@ -5250,6 +5413,33 @@ md-toolbar {
     border-bottom: 1px solid #fff;
   }
 }
+
+// Handle mobile portrait
+@media only screen and (min-width: 0) and (max-width: $layout-breakpoint-sm) and
+  (orientation: portrait) {
+  md-toolbar {
+    min-height: $toolbar-height-mobile-portrait;
+  }
+
+  .md-toolbar-tools {
+    height: $toolbar-height-mobile-portrait;
+    max-height: $toolbar-height-mobile-portrait;
+  }
+}
+
+// Handle mobile landscape
+@media only screen and (min-width: 0) and (max-width: $layout-breakpoint-sm) and
+  (orientation: landscape) {
+  md-toolbar {
+    min-height: $toolbar-height-mobile-landscape;
+  }
+
+  .md-toolbar-tools {
+    height: $toolbar-height-mobile-landscape;
+    max-height: $toolbar-height-mobile-landscape;
+  }
+}
+
 
 $tooltip-fontsize-lg: rem(1);
 $tooltip-fontsize-sm: rem(1.4);

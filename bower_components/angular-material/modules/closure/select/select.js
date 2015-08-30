@@ -2,7 +2,7 @@
  * Angular Material Design
  * https://github.com/angular/material
  * @license MIT
- * v0.10.1-master-f491e6d
+ * v0.10.1-master-8157dec
  */
 goog.provide('ng.material.components.select');
 goog.require('ng.material.components.backdrop');
@@ -31,9 +31,9 @@ var SELECT_EDGE_MARGIN = 8;
 var selectNextId = 0;
 
 angular.module('material.components.select', [
-  'material.core',
-  'material.components.backdrop'
-])
+    'material.core',
+    'material.components.backdrop'
+  ])
   .directive('mdSelect', SelectDirective)
   .directive('mdSelectMenu', SelectMenuDirective)
   .directive('mdOption', OptionDirective)
@@ -672,7 +672,7 @@ function OptionDirective($mdButtonInkRipple, $mdUtil) {
     if (angular.isDefined(attr.ngValue)) {
       scope.$watch(attr.ngValue, setOptionValue);
     } else if (angular.isDefined(attr.value)) {
-      setOptionValue(attr.value);
+      setOptionValue(isNaN(attr.value) ? attr.value : Number(attr.value));
     } else {
       scope.$watch(function() {
         return element.text();
@@ -1122,6 +1122,7 @@ function SelectProvider($$interimElementProvider) {
 
         function checkCloseMenu(ev) {
           if (ev && ( ev.type == 'mouseup') && (ev.currentTarget != dropDown[0])) return;
+          if ( mouseOnScrollbar() ) return;
 
           if (!selectCtrl.isMultiple) {
             opts.restoreFocus = true;
@@ -1129,6 +1130,23 @@ function SelectProvider($$interimElementProvider) {
             $mdUtil.nextTick(function() {
               $mdSelect.hide(selectCtrl.ngModel.$viewValue);
             }, true);
+          }
+
+          /**
+           * check if the mouseup event was on a scrollbar
+           */
+          function mouseOnScrollbar() {
+            var clickOnScrollbar = false;
+            if(ev.currentTarget.children.length > 0) {
+              var child = ev.currentTarget.children[0];
+              var hasScrollbar = child.scrollHeight > child.clientHeight;
+              if (hasScrollbar && child.children.length > 0) {
+                var relPosX = ev.pageX - ev.currentTarget.getBoundingClientRect().left;
+                if(relPosX > child.children[0].offsetWidth)
+                  clickOnScrollbar = true;
+              }
+            }
+            return clickOnScrollbar;
           }
         }
       }

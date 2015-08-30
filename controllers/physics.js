@@ -11,14 +11,15 @@ klimaChallenge.controller('PhysicsCtrl', function($scope, $timeout) {
 
       // create a renderer
       renderer = Physics.renderer('canvas', {
-         el: 'physics-world'
+          el: 'physics-world', // The DOM element to append the stage to
+          meta: false // Turns debug info on/off
       });
 
       // add the renderer
       world.add(renderer);
       // render on each step
       world.on('step', function () {
-        world.render();
+         world.render();
       });
 
       // constrain objects to these bounds
@@ -41,15 +42,31 @@ klimaChallenge.controller('PhysicsCtrl', function($scope, $timeout) {
        // create some bodies
       for (var i = 0; i < numberProjects; i++) {
          var thisRadius = ballRadius * (Math.random() * 1.05 + 0.95);
-         var project = Physics.body('circle', {
-           x: renderer.width * 0.5,
-           y: -i*1000,
-           vx: 0.3,
-           radius: thisRadius,
-           styles: {
-               fillStyle: '#8bc34a'
-           }
+
+         var icon = Physics.body('rectangle', {
+            x: 0,
+            y: 0,
+            width: thisRadius*2-30,
+            height: thisRadius*2-30
          });
+         icon.view = new Image();
+         icon.view.src = 'img/icons/bike.png';
+
+         var project = Physics.body('circle', {
+            x: renderer.width * 0.5,
+            y: -i*1000,
+            vx: 0.3,
+            radius: thisRadius,
+            styles: {
+               fillStyle: '#8bc34a'
+            }
+         });
+
+         project.view = new Image();
+         project.view.src = 'img/icons/ball.png';
+         project.view.width = thisRadius*2;
+         project.view.height = thisRadius*2;
+
          world.add(project);
       }
 

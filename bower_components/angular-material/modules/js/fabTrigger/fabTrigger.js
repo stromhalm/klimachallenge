@@ -2,7 +2,7 @@
  * Angular Material Design
  * https://github.com/angular/material
  * @license MIT
- * v0.10.1-master-f491e6d
+ * v0.10.1-master-8157dec
  */
 (function( window, angular, undefined ){
 "use strict";
@@ -10,6 +10,10 @@
 (function() {
   'use strict';
 
+  /**
+   * @ngdoc module
+   * @name material.components.fabTrigger
+   */
   angular
     .module('material.components.fabTrigger', ['material.core'])
     .directive('mdFabTrigger', MdFabTriggerDirective);

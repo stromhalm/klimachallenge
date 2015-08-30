@@ -9,7 +9,7 @@ klimaChallenge.config(function($stateProvider, $urlRouterProvider) {
   })
   .state('contract', {
       url: "/contract",
-      templateUrl: "views/news.html"
+      templateUrl: "views/contract.html"
   })
   .state('stats', {
       url: "/statistik",

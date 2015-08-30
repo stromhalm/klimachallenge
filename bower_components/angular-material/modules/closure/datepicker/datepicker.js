@@ -2,7 +2,7 @@
  * Angular Material Design
  * https://github.com/angular/material
  * @license MIT
- * v0.10.1-master-f491e6d
+ * v0.10.1-master-8157dec
  */
 goog.provide('ng.material.components.datepicker');
 goog.require('ng.material.components.icon');
@@ -44,12 +44,19 @@ goog.require('ng.material.core');
    */
   var TBODY_HEIGHT = 265;
 
+  /**
+   * Height of a calendar month with a single row. This is needed to calculate the offset for
+   * rendering an extra month in virtual-repeat that only contains one row.
+   */
+  var TBODY_SINGLE_ROW_HEIGHT = 45;
+
   function calendarDirective() {
     return {
       template:
           '<table aria-hidden="true" class="md-calendar-day-header"><thead></thead></table>' +
           '<div class="md-calendar-scroll-mask">' +
-            '<md-virtual-repeat-container class="md-calendar-scroll-container">' +
+          '<md-virtual-repeat-container class="md-calendar-scroll-container" ' +
+                'md-offset-size="' + (TBODY_SINGLE_ROW_HEIGHT - TBODY_HEIGHT) + '">' +
               '<table role="grid" tabindex="0" class="md-calendar" aria-readonly="true">' +
                 '<tbody role="rowgroup" md-virtual-repeat="i in ctrl.items" md-calendar-month ' +
                     'md-month-offset="$index" class="md-calendar-month" ' +
@@ -58,7 +65,10 @@ goog.require('ng.material.core');
               '</table>' +
             '</md-virtual-repeat-container>' +
           '</div>',
-      scope: {},
+      scope: {
+        minDate: '=mdMinDate',
+        maxDate: '=mdMaxDate',
+      },
       require: ['ngModel', 'mdCalendar'],
       controller: CalendarCtrl,
       controllerAs: 'ctrl',
@@ -97,6 +107,15 @@ goog.require('ng.material.core');
      */
     this.items = {length: 2000};
 
+    if (this.maxDate && this.minDate) {
+      // Limit the number of months if min and max dates are set.
+      var numMonths = $$mdDateUtil.getMonthDistance(this.minDate, this.maxDate) + 1;
+      numMonths = Math.max(numMonths, 1);
+      // Add an additional month as the final dummy month for rendering purposes.
+      numMonths += 1;
+      this.items.length = numMonths;
+    }
+
     /** @final {!angular.$animate} */
     this.$animate = $animate;
 
@@ -133,9 +152,19 @@ goog.require('ng.material.core');
     /** @final {Date} */
     this.today = this.dateUtil.createDateAtMidnight();
 
-    // Set the first renderable date once for all calendar instances.
-    firstRenderableDate =
-        firstRenderableDate || this.dateUtil.incrementMonths(this.today, -this.items.length / 2);
+    /** @type {Date} */
+    this.firstRenderableDate = this.dateUtil.incrementMonths(this.today, -this.items.length / 2);
+
+    if (this.minDate && this.minDate > this.firstRenderableDate) {
+      this.firstRenderableDate = this.minDate;
+    } else if (this.maxDate) {
+      // Calculate the difference between the start date and max date.
+      // Subtract 1 because it's an inclusive difference and 1 for the final dummy month.
+      //
+      var monthDifference = this.items.length - 2;
+      this.firstRenderableDate = this.dateUtil.incrementMonths(this.maxDate, -(this.items.length - 2));
+    }
+
 
     /** @final {number} Unique ID for this calendar instance. */
     this.id = nextUniqueId++;
@@ -290,6 +319,7 @@ goog.require('ng.material.core');
       // Selection isn't occuring, so the key event is either navigation or nothing.
       var date = self.getFocusDateFromKeyEvent(event);
       if (date) {
+        date = self.boundDateByMinAndMax(date);
         event.preventDefault();
         event.stopPropagation();
 
@@ -335,7 +365,8 @@ goog.require('ng.material.core');
    * @returns {number}
    */
   CalendarCtrl.prototype.getSelectedMonthIndex = function() {
-    return this.dateUtil.getMonthDistance(firstRenderableDate, this.selectedDate || this.today);
+    return this.dateUtil.getMonthDistance(this.firstRenderableDate,
+        this.selectedDate || this.today);
   };
 
   /**
@@ -347,7 +378,7 @@ goog.require('ng.material.core');
       return;
     }
 
-    var monthDistance = this.dateUtil.getMonthDistance(firstRenderableDate, date);
+    var monthDistance = this.dateUtil.getMonthDistance(this.firstRenderableDate, date);
     this.calendarScroller.scrollTop = monthDistance * TBODY_HEIGHT;
   };
 
@@ -366,7 +397,7 @@ goog.require('ng.material.core');
    * @param {Date=} opt_date
    */
   CalendarCtrl.prototype.focus = function(opt_date) {
-    var date = opt_date || this.selectedDate;
+    var date = opt_date || this.selectedDate || this.today;
 
     var previousFocus = this.calendarElement.querySelector('.md-focus');
     if (previousFocus) {
@@ -381,6 +412,23 @@ goog.require('ng.material.core');
     } else {
       this.focusDate = date;
     }
+  };
+
+  /**
+   * If a date exceeds minDate or maxDate, returns date matching minDate or maxDate, respectively.
+   * Otherwise, returns the date.
+   * @param {Date} date
+   * @return {Date}
+   */
+  CalendarCtrl.prototype.boundDateByMinAndMax = function(date) {
+    var boundDate = date;
+    if (this.minDate && date < this.minDate) {
+      boundDate = new Date(this.minDate.getTime());
+    }
+    if (this.maxDate && date > this.maxDate) {
+      boundDate = new Date(this.maxDate.getTime());
+    }
+    return boundDate;
   };
 
   /*** Updating the displayed / selected date ***/
@@ -523,7 +571,7 @@ goog.require('ng.material.core');
         // of repeated items that are linked, and then those elements have their bindings updataed.
         // Since the months are not generated by bindings, we simply regenerate the entire thing
         // when the binding (offset) changes.
-        scope.$watch(function() { return monthCtrl.offset }, function(offset, oldOffset) {
+        scope.$watch(function() { return monthCtrl.offset; }, function(offset, oldOffset) {
           if (offset != oldOffset) {
             monthCtrl.generateContent();
           }
@@ -552,11 +600,11 @@ goog.require('ng.material.core');
     this.calendarCtrl = null;
 
     /**
-     * Number of months from the start of the month "items"
-     * that the currently rendered month occurs.
+     * Number of months from the start of the month "items" that the currently rendered month
+     * occurs. Set via angular data binding.
      * @type {number}
      */
-    this.offset = 0;
+    this.offset;
 
     /**
      * Date cell to focus after appending the month to the document.
@@ -569,8 +617,7 @@ goog.require('ng.material.core');
   /** Generate and append the content for this month to the directive element. */
   CalendarMonthCtrl.prototype.generateContent = function() {
     var calendarCtrl = this.calendarCtrl;
-    var offset = (-calendarCtrl.items.length / 2) + this.offset;
-    var date = this.dateUtil.incrementMonths(calendarCtrl.today, offset);
+    var date = this.dateUtil.incrementMonths(calendarCtrl.firstRenderableDate, this.offset);
 
     this.$element.empty();
     this.$element.append(this.buildCalendarForMonth(date));
@@ -599,16 +646,9 @@ goog.require('ng.material.core');
     cell.setAttribute('role', 'gridcell');
 
     if (opt_date) {
-      // Add a indicator for select, hover, and focus states.
-      var selectionIndicator = document.createElement('span');
-      cell.appendChild(selectionIndicator);
-      selectionIndicator.classList.add('md-calendar-date-selection-indicator');
-      selectionIndicator.textContent = this.dateLocale.dates[opt_date.getDate()];
-
       cell.setAttribute('tabindex', '-1');
       cell.setAttribute('aria-label', this.dateLocale.longDateFormatter(opt_date));
       cell.id = calendarCtrl.getDateId(opt_date);
-      cell.addEventListener('click', calendarCtrl.cellClickHandler);
 
       // Use `data-timestamp` attribute because IE10 does not support the `dataset` property.
       cell.setAttribute('data-timestamp', opt_date.getTime());
@@ -625,8 +665,24 @@ goog.require('ng.material.core');
         cell.setAttribute('aria-selected', 'true');
       }
 
-      if (calendarCtrl.focusDate && this.dateUtil.isSameDay(opt_date, calendarCtrl.focusDate)) {
-        this.focusAfterAppend = cell;
+      var cellText = this.dateLocale.dates[opt_date.getDate()];
+
+      if (this.dateUtil.isDateWithinRange(opt_date,
+          this.calendarCtrl.minDate, this.calendarCtrl.maxDate)) {
+        // Add a indicator for select, hover, and focus states.
+        var selectionIndicator = document.createElement('span');
+        cell.appendChild(selectionIndicator);
+        selectionIndicator.classList.add('md-calendar-date-selection-indicator');
+        selectionIndicator.textContent = cellText;
+
+        cell.addEventListener('click', calendarCtrl.cellClickHandler);
+
+        if (calendarCtrl.focusDate && this.dateUtil.isSameDay(opt_date, calendarCtrl.focusDate)) {
+          this.focusAfterAppend = cell;
+        }
+      } else {
+        cell.classList.add('md-calendar-date-disabled');
+        cell.textContent = cellText;
       }
     }
 
@@ -669,25 +725,37 @@ goog.require('ng.material.core');
     var row = this.buildDateRow(rowNumber);
     monthBody.appendChild(row);
 
+    // If this is the final month in the list of items, only the first week should render,
+    // so we should return immediately after the first row is complete and has been
+    // attached to the body.
+    var isFinalMonth = this.offset === this.calendarCtrl.items.length - 1;
+
     // Add a label for the month. If the month starts on a Sun/Mon/Tues, the month label
     // goes on a row above the first of the month. Otherwise, the month label takes up the first
     // two cells of the first row.
     var blankCellOffset = 0;
     var monthLabelCell = document.createElement('td');
     monthLabelCell.classList.add('md-calendar-month-label');
+    // If the entire month is after the max date, render the label as a disabled state.
+    if (this.calendarCtrl.maxDate && firstDayOfMonth > this.calendarCtrl.maxDate) {
+      monthLabelCell.classList.add('md-calendar-month-label-disabled');
+    }
+    monthLabelCell.textContent = this.dateLocale.monthHeaderFormatter(date);
     if (firstDayOfTheWeek <= 2) {
       monthLabelCell.setAttribute('colspan', '7');
 
       var monthLabelRow = this.buildDateRow();
       monthLabelRow.appendChild(monthLabelCell);
       monthBody.insertBefore(monthLabelRow, row);
+
+      if (isFinalMonth) {
+        return monthBody;
+      }
     } else {
       blankCellOffset = 2;
       monthLabelCell.setAttribute('colspan', '2');
       row.appendChild(monthLabelCell);
     }
-
-    monthLabelCell.textContent = this.dateLocale.monthHeaderFormatter(date);
 
     // Add a blank cell for each day of the week that occurs before the first of the month.
     // For example, if the first day of the month is a Tuesday, add blank cells for Sun and Mon.
@@ -703,6 +771,10 @@ goog.require('ng.material.core');
     for (var d = 1; d <= numberOfDaysInMonth; d++) {
       // If we've reached the end of the week, start a new row.
       if (dayOfWeek === 7) {
+        // We've finished the first row, so we're done if this is the final month.
+        if (isFinalMonth) {
+          return monthBody;
+        }
         dayOfWeek = 0;
         rowNumber++;
         row = this.buildDateRow(rowNumber);
@@ -884,7 +956,7 @@ goog.require('ng.material.core');
        * @returns {string}
        */
       function defaultFormatDate(date) {
-        return date.toLocaleDateString();
+        return date ? date.toLocaleDateString() : '';
       }
 
       /**
@@ -1010,6 +1082,9 @@ goog.require('ng.material.core');
    * @module material.components.datepicker
    *
    * @param {Date} ng-model The component's model. Expects a JavaScript Date object.
+   * @param {expression=} ng-change Expression evaluated when the model value changes.
+   * @param {expression=} md-min-date Expression representing a min date (inclusive).
+   * @param {expression=} md-max-date Expression representing a max date (inclusive).
    * @param {boolean=} disabled Whether the datepicker is disabled.
    *
    * @description
@@ -1038,7 +1113,8 @@ goog.require('ng.material.core');
               'ng-class="{\'md-datepicker-focused\': ctrl.isFocused}">' +
             '<input class="md-datepicker-input" aria-haspopup="true" ' +
                 'ng-focus="ctrl.setFocused(true)" ng-blur="ctrl.setFocused(false)">' +
-            '<md-button md-no-ink class="md-datepicker-triangle-button md-icon-button" ' +
+            '<md-button type="button" md-no-ink ' +
+                'class="md-datepicker-triangle-button md-icon-button" ' +
                 'ng-click="ctrl.openCalendarPane($event)" ' +
                 'aria-label="{{::ctrl.dateLocale.msgOpenCalendar}}">' +
               '<div class="md-datepicker-expand-triangle"></div>' +
@@ -1047,14 +1123,20 @@ goog.require('ng.material.core');
 
           // This pane will be detached from here and re-attached to the document body.
           '<div class="md-datepicker-calendar-pane md-whiteframe-z1">' +
-            '<div class="md-datepicker-input-mask"></div>' +
+            '<div class="md-datepicker-input-mask">' +
+              '<div class="md-datepicker-input-mask-opaque"></div>' +
+            '</div>' +
             '<div class="md-datepicker-calendar">' +
               '<md-calendar role="dialog" aria-label="{{::ctrl.dateLocale.msgCalendar}}" ' +
-                  'ng-model="ctrl.date" ng-if="ctrl.isCalendarOpen"></md-calendar>' +
+                  'md-min-date="ctrl.minDate" md-max-date="ctrl.maxDate"' +
+                  'ng-model="ctrl.date" ng-if="ctrl.isCalendarOpen">' +
+              '</md-calendar>' +
             '</div>' +
           '</div>',
       require: ['ngModel', 'mdDatepicker'],
       scope: {
+        minDate: '=mdMinDate',
+        maxDate: '=mdMaxDate',
         placeholder: '@mdPlaceholder'
       },
       controller: DatePickerCtrl,
@@ -1112,6 +1194,9 @@ goog.require('ng.material.core');
     /** @type {HTMLInputElement} */
     this.inputElement = $element[0].querySelector('input');
 
+    /** @final {!angular.JQLite} */
+    this.ngInputElement = angular.element(this.inputElement);
+
     /** @type {HTMLElement} */
     this.inputContainer = $element[0].querySelector('.md-datepicker-input-container');
 
@@ -1120,6 +1205,12 @@ goog.require('ng.material.core');
 
     /** @type {HTMLElement} Calendar icon button. */
     this.calendarButton = $element[0].querySelector('.md-datepicker-button');
+
+    /**
+     * Element covering everything but the input in the top of the floating calendar pane.
+     * @type {HTMLElement}
+     */
+    this.inputMask = $element[0].querySelector('.md-datepicker-input-mask-opaque');
 
     /** @final {!angular.JQLite} */
     this.$element = $element;
@@ -1166,7 +1257,7 @@ goog.require('ng.material.core');
 
     this.installPropertyInterceptors();
     this.attachChangeListeners();
-    this.attachInterationListeners();
+    this.attachInteractionListeners();
 
     var self = this;
     $scope.$on('$destroy', function() {
@@ -1200,24 +1291,27 @@ goog.require('ng.material.core');
 
     self.$scope.$on('md-calendar-change', function(event, date) {
       self.ngModelCtrl.$setViewValue(date);
+      self.date = date;
       self.inputElement.value = self.dateLocale.formatDate(date);
       self.closeCalendarPane();
+      self.resizeInputElement();
+      self.inputContainer.classList.remove(INVALID_CLASS);
     });
 
-    self.inputElement.addEventListener('input', angular.bind(self, self.resizeInputElement));
+    self.ngInputElement.on('input', angular.bind(self, self.resizeInputElement));
     // TODO(chenmike): Add ability for users to specify this interval.
-    self.inputElement.addEventListener('input', self.$mdUtil.debounce(self.handleInputEvent,
+    self.ngInputElement.on('input', self.$mdUtil.debounce(self.handleInputEvent,
         DEFAULT_DEBOUNCE_INTERVAL, self));
   };
 
   /** Attach event listeners for user interaction. */
-  DatePickerCtrl.prototype.attachInterationListeners = function() {
+  DatePickerCtrl.prototype.attachInteractionListeners = function() {
     var self = this;
     var $scope = this.$scope;
     var keyCodes = this.$mdConstant.KEY_CODE;
 
     // Add event listener through angular so that we can triggerHandler in unit tests.
-    angular.element(self.inputElement).on('keydown', function(event) {
+    self.ngInputElement.on('keydown', function(event) {
       if (event.altKey && event.keyCode == keyCodes.DOWN_ARROW) {
         self.openCalendarPane(event);
         $scope.$digest();
@@ -1246,7 +1340,7 @@ goog.require('ng.material.core');
 
     Object.defineProperty(this, 'placeholder', {
       get: function() { return self.inputElement.placeholder; },
-      set: function(value) { self.inputElement.placeholder = value; }
+      set: function(value) { self.inputElement.placeholder = value || ''; }
     });
   };
 
@@ -1274,12 +1368,14 @@ goog.require('ng.material.core');
   DatePickerCtrl.prototype.handleInputEvent = function() {
     var inputString = this.inputElement.value;
     var parsedDate = this.dateLocale.parseDate(inputString);
+    this.dateUtil.setDateTimeToMidnight(parsedDate);
 
-    if (this.dateUtil.isValidDate(parsedDate) && this.dateLocale.isDateComplete(inputString)) {
+    if (this.dateUtil.isValidDate(parsedDate) &&
+        this.dateLocale.isDateComplete(inputString) &&
+        this.dateUtil.isDateWithinRange(parsedDate, this.minDate, this.maxDate)) {
       this.ngModelCtrl.$setViewValue(parsedDate);
       this.date = parsedDate;
       this.inputContainer.classList.remove(INVALID_CLASS);
-      this.$scope.$apply();
     } else {
       // If there's an input string, it's an invalid date.
       this.inputContainer.classList.toggle(INVALID_CLASS, inputString);
@@ -1298,6 +1394,12 @@ goog.require('ng.material.core');
     calendarPane.style.top = (elementRect.top - bodyRect.top) + 'px';
     document.body.appendChild(this.calendarPane);
 
+    // The top of the calendar pane is a transparent box that shows the text input underneath.
+    // Since the pane is flowing, though, the page underneath the pane *adjacent* to the input is
+    // also shown unless we cover it up. The inputMask does this by filling up the remaining space
+    // based on the width of the input.
+    this.inputMask.style.left = elementRect.width + 'px';
+
     // Add CSS class after one frame to trigger open animation.
     this.$$rAF(function() {
       calendarPane.classList.add('md-pane-open');
@@ -1309,9 +1411,11 @@ goog.require('ng.material.core');
     this.$element.removeClass('md-datepicker-open');
     this.calendarPane.classList.remove('md-pane-open');
 
-    // Use native DOM removal because we do not want any of the angular state of this element
-    // to be disposed.
-    this.calendarPane.parentNode.removeChild(this.calendarPane);
+    if (this.calendarPane.parentNode) {
+      // Use native DOM removal because we do not want any of the angular state of this element
+      // to be disposed.
+      this.calendarPane.parentNode.removeChild(this.calendarPane);
+    }
   };
 
   /**
@@ -1416,7 +1520,9 @@ goog.require('ng.material.core');
       isSameDay: isSameDay,
       getMonthDistance: getMonthDistance,
       isValidDate: isValidDate,
-      createDateAtMidnight: createDateAtMidnight
+      setDateTimeToMidnight: setDateTimeToMidnight,
+      createDateAtMidnight: createDateAtMidnight,
+      isDateWithinRange: isDateWithinRange
     };
 
     /**
@@ -1579,7 +1685,15 @@ goog.require('ng.material.core');
      * @return {boolean} Whether the date is a valid Date.
      */
     function isValidDate(date) {
-      return date !== null && date.getTime && !isNaN(date.getTime());
+      return date != null && date.getTime && !isNaN(date.getTime());
+    }
+
+    /**
+     * Sets a date's time to midnight.
+     * @param {Date} date
+     */
+    function setDateTimeToMidnight(date) {
+      date.setHours(0, 0, 0, 0);
     }
 
     /**
@@ -1597,9 +1711,21 @@ goog.require('ng.material.core');
       } else {
         date = new Date(opt_value);
       }
-      date.setHours(0, 0, 0, 0);
+      setDateTimeToMidnight(date);
       return date;
     }
+
+     /**
+      * Checks if a date is within a min and max range.
+      * If minDate or maxDate are not dates, they are ignored.
+      * @param {Date} date
+      * @param {Date} minDate
+      * @param {Date} maxDate
+      */
+     function isDateWithinRange(date, minDate, maxDate) {
+       return (!angular.isDate(minDate) || minDate <= date) &&
+           (!angular.isDate(maxDate) || maxDate >= date);
+     }
   });
 })();
 
