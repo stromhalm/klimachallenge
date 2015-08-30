@@ -7,17 +7,17 @@ klimaChallenge.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: "views/challenge.html",
       controller: "challengeCtrl"
   })
+  .state('contract', {
+      url: "/contract",
+      templateUrl: "views/news.html"
+  })
   .state('stats', {
       url: "/statistik",
       templateUrl: "views/stats.html"
   })
-  .state('news', {
-      url: "/news",
-      templateUrl: "views/news.html"
-  })
-  .state('ideas', {
-      url: "/ideen",
-      templateUrl: "views/ideas.html"
+  .state('participate', {
+      url: "/mitmachen",
+      templateUrl: "views/participate.html"
   });
 })
 .controller('PageCtrl', function($scope, $location, $timeout) {
@@ -29,20 +29,14 @@ klimaChallenge.config(function($stateProvider, $urlRouterProvider) {
             $location.url("/");
             break;
          case 1:
-            $location.url("/statistik");
+            $location.url("/contract");
             break;
          case 2:
-            $location.url("/news");
+            $location.url("/statistik");
             break;
          case 3:
-            $location.url("/ideen");
+            $location.url("/mitmachen");
             break;
-      }
-
-      if (current == 0) {
-         $scope.bigHeader = true;
-      } else {
-         $scope.bigHeader = false;
       }
 
       $timeout(function() {
