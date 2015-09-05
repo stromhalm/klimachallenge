@@ -62,10 +62,12 @@ klimaChallenge.controller('PhysicsCtrl', function($scope, $timeout) {
             }
          });
 
+         /*
          project.view = new Image();
          project.view.src = 'img/icons/ball.png';
          project.view.width = thisRadius*2;
          project.view.height = thisRadius*2;
+         */
 
          world.add(project);
       }

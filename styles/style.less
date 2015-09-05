@@ -95,7 +95,7 @@ header {
 .info-box {
    background-color: @light-grey;
    @media (min-width: 960px) {
-      margin-bottom: -55px;
+      margin-bottom: -57px;
    }
 
    .news-box {
@@ -105,7 +105,7 @@ header {
       min-height: 300px;
 
       @media (min-width: 960px) {
-         margin-bottom: 55px;
+         margin-bottom: 57px;
       }
 
       .news-wrapper {
@@ -204,12 +204,17 @@ md-whiteframe {
    h2 {
       margin: 0;
       color: @green;
-      font-weight: 400;
       font-size: 24px !important;
       line-height: 28px;
+      font-weight: normal !important;
    }
 
    .counter-bar {
+      margin: 0 -18px;
+   }
+
+   .md-actions {
+      border-top: 1px solid #eee;
       margin: 0 -18px;
    }
 }
@@ -331,12 +336,14 @@ md-tabs-wrapper md-prev-button md-icon, md-tabs-wrapper md-next-button md-icon {
    .category-icon {
       margin: 0 auto;
       width: 90px;
-      margin-bottom: 55px;
+      margin-bottom: 65px;
    }
 
    h2 {
       text-align: center;
-      padding-bottom: 14px;
+      padding: 10px 16px;
+      margin: 10px -18px 0 -18px;
+      border-top: 1px solid #eee;
    }
 
    md-list {
