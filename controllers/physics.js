@@ -34,7 +34,7 @@ klimaChallenge.controller('PhysicsCtrl', function($scope, $timeout) {
          edgeBounce.setAABB(viewportBounds);
       }, true);
 
-      // At init the canvas won't load the correct window height, so refresh aufter 0.5s
+      // At init the canvas won't load the correct window height, so refresh aufter 0.7s
       $timeout(function() {
          window.dispatchEvent(new Event('resize'));
       }, 700);
@@ -86,13 +86,13 @@ klimaChallenge.controller('PhysicsCtrl', function($scope, $timeout) {
       $scope.$on('$locationChangeStart', function(event) {
          var bodies = world.getBodies();
          angular.forEach(bodies, function(body) {
-            body.applyForce({x: 0, y: .1});
+            body.applyForce({x: 0, y: .2});
          });
       });
 
       // subscribe to ticker to advance the simulation
-      Physics.util.ticker.on(function( time ) {
-        world.step( time );
+      Physics.util.ticker.on(function(time) {
+         world.step( time );
       });
    });
 
