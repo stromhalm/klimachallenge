@@ -24,7 +24,7 @@
    background-position: 50% 50%;
 }
 
-html, body {
+html, body, #physics-world {
    height: auto;
    background-color: @background-white;
    position: relative;
@@ -222,7 +222,7 @@ md-whiteframe {
    z-index: 200;
 }
 
-#physics-world {
+#physics-spring {
    position: absolute;
    top: 0;
    left: 0;
@@ -400,5 +400,18 @@ md-tabs-wrapper md-prev-button md-icon, md-tabs-wrapper md-next-button md-icon {
          border-width: 1px 0;
       }
    }
+}
 
+footer {
+   padding-top: 4px;
+   background-color: white;
+
+   img {
+      height: 40px;
+      padding: 8px;
+   }
+
+   .links {
+      text-align: right;
+   }
 }

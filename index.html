@@ -12,67 +12,82 @@
 <body ng-controller="PageCtrl">
 
    <div id="physics-world">
-   </div>
 
-   <md-tabs md-center-tabs="false" class="nav md-accent md-whiteframe-z3" md-selected="selectedPage">
-      <md-tab>
-         <md-tab-label>
-            <ng-md-icon style="fill: white" icon="home"></ng-md-icon> <span hide show-gt-md>Challenge</span>
-        </md-tab-label>
-      </md-tab>
-      <md-tab>
-         <md-tab-label>
-            <ng-md-icon style="fill: white" icon="star"></ng-md-icon> <span hide show-gt-sm>Mitmachen</span>
-        </md-tab-label>
-      </md-tab>
-      <md-tab>
-         <md-tab-label>
-            <ng-md-icon style="fill: white" icon="equalizer"></ng-md-icon> <span hide show-gt-sm>Statistik</span>
-        </md-tab-label>
-      </md-tab>
-      <md-tab>
-         <md-tab-label>
-            <ng-md-icon style="fill: white" icon="rate_review"></ng-md-icon> <span hide show-gt-sm>CO<sub>2</sub>ntrACT!</span>
-        </md-tab-label>
-      </md-tab>
-   </md-tabs>
-
-   <div class="social-bar" hide-sm>
-      <md-button target="_blank" ng-href="https://instagram.com/klimachallenge/">
-         <ng-md-icon style="fill: white" icon="photo_camera"></ng-md-icon>
-      </md-button>
-      <md-button target="_blank" ng-href="http://facebook.de">
-         <ng-md-icon style="fill: white" icon="facebook"></ng-md-icon>
-      </md-button>
-   </div>
-
-   <header layout="row" layout-wrap layout-align="start center">
-      <div flex-gt-sm="50" flex="90" offset="5">
-         <img src="img/logo2.png" alt="logo" /><br>
+      <div id="physics-spring">
       </div>
-      <div class="space-box counter" flex-gt-sm="45" flex="100" layout="row" layout-align="center center">
 
-         <md-progress-circular md-mode="determinate" value="85"></md-progress-circular>
-         <legend>
-            <h2>
-               <span count-to="15" value="0" duration=".8"></span>%
-            </h2>
-            Bis zum nächsten Zwischenziel
-         </legend>
+      <md-tabs md-center-tabs="false" class="nav md-accent md-whiteframe-z3" md-selected="selectedPage">
+         <md-tab>
+            <md-tab-label>
+               <ng-md-icon style="fill: white" icon="home"></ng-md-icon> <span hide show-gt-md>Challenge</span>
+           </md-tab-label>
+         </md-tab>
+         <md-tab>
+            <md-tab-label>
+               <ng-md-icon style="fill: white" icon="star"></ng-md-icon> <span hide show-gt-sm>Mitmachen</span>
+           </md-tab-label>
+         </md-tab>
+         <md-tab>
+            <md-tab-label>
+               <ng-md-icon style="fill: white" icon="equalizer"></ng-md-icon> <span hide show-gt-sm>Statistik</span>
+           </md-tab-label>
+         </md-tab>
+         <md-tab>
+            <md-tab-label>
+               <ng-md-icon style="fill: white" icon="rate_review"></ng-md-icon> <span hide show-gt-sm>CO<sub>2</sub>ntrACT!</span>
+           </md-tab-label>
+         </md-tab>
+      </md-tabs>
+
+      <div class="social-bar" hide-sm>
+         <md-button target="_blank" ng-href="https://instagram.com/klimachallenge/">
+            <ng-md-icon style="fill: white" icon="photo_camera"></ng-md-icon>
+         </md-button>
+         <md-button target="_blank" ng-href="http://facebook.de">
+            <ng-md-icon style="fill: white" icon="facebook"></ng-md-icon>
+         </md-button>
       </div>
-   </header>
 
-   <ui-view>
-   </ui-view>
-
-   <section class="space-box ball-box" style="height: {{getBallAreaHeight()}}px;">
-      <div layout="row" layout-align="start center" layout-sm="column">
-         <div flex offset-gt-md="5">
-            <h2>Alle Projekte</h2>
-            Viele Jugendverbände haben bereits Projekte für den Klimaschutz eingereicht. Klick dich durch die Ideen!
+      <header layout="row" layout-wrap layout-align="start center">
+         <div flex-gt-sm="50" flex="90" offset="5">
+            <img src="img/logo2.png" alt="logo" /><br>
          </div>
+         <div class="space-box counter" flex-gt-sm="45" flex="100" layout="row" layout-align="center center">
+
+            <md-progress-circular md-mode="determinate" value="85"></md-progress-circular>
+            <legend>
+               <h2>
+                  <span count-to="15" value="0" duration=".8"></span>%
+               </h2>
+               Bis zum nächsten Zwischenziel
+            </legend>
+         </div>
+      </header>
+
+      <ui-view>
+      </ui-view>
+
+      <section class="space-box ball-box" style="height: {{getBallAreaHeight()}}px;">
+         <div layout="row" layout-align="start center" layout-sm="column">
+            <div flex offset-gt-md="5">
+               <h2>Alle Projekte</h2>
+               Viele Jugendverbände haben bereits Projekte für den Klimaschutz eingereicht. Klick dich durch die Ideen!
+            </div>
+         </div>
+      </section>
+
+   </div>
+
+   <footer layout="row" layout-align="center center" layout-sm="column">
+      <div flex="70" flex-gt-md="65" class="logos" offset-gt-md="5">
+         <a target="_blank" href="http://ljr.de"><img src="img/logos/ljr.gif" alt="LJR" /></a>
+         <a target="_blank" href="http://janun.de"><img src="img/logos/janun.png" alt="JANUN e.V." /></a>
+         <a target="_blank" href="http://www.umwelt.niedersachsen.de/startseite/"><img src="img/logos/ministerium.jpeg" alt="JANUN e.V." /></a>
       </div>
-   </section>
+      <div flex="30" flex-gt-md="25" class="links">
+         <md-button flex="30" ng-href="#kontakt">Kontakt</md-button> <md-button flex="30" ng-href="#impressum">Impressum</md-button>
+      </div>
+   </footer>
 
    <script src="libs/physicsjs/dist/physicsjs-full.min.js"></script>
    <script src="bower_components/angular/angular.min.js"></script>

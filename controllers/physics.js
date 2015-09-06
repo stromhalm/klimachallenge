@@ -11,7 +11,7 @@ klimaChallenge.controller('PhysicsCtrl', function($scope, $timeout) {
 
       // create a renderer
       renderer = Physics.renderer('canvas', {
-          el: 'physics-world', // The DOM element to append the stage to
+          el: 'physics-spring', // The DOM element to append the stage to
           meta: false // Turns debug info on/off
       });
 
@@ -83,11 +83,14 @@ klimaChallenge.controller('PhysicsCtrl', function($scope, $timeout) {
       ]);
 
       // Tick all bodies on page change to awake them
-      $scope.$on('$locationChangeStart', function(event) {
+      $scope.$on('$locationChangeSuccess', function(event) {
          var bodies = world.getBodies();
-         angular.forEach(bodies, function(body) {
-            body.applyForce({x: 0, y: .2});
-         });
+
+         $timeout(function() {
+            angular.forEach(bodies, function(body) {
+               body.applyForce({x: 0, y: .2});
+            });
+         }, 500);
       });
 
       // subscribe to ticker to advance the simulation
