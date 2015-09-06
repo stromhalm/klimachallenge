@@ -25,7 +25,7 @@
 
 <section layout-gt-md="row" class="challenge-actions" layout="column">
    <div flex flex-gt-md="90" offset-gt-md="5" class="info-cards">
-      <md-content layout-wrap layout="row" layout-sm="column">
+      <div layout-wrap layout="row" layout-sm="column">
          <div flex flex-md="50" flex-gt-md="33">
             <md-whiteframe class="md-whiteframe-z2 card action-card">
                <div class="category-icon">
@@ -74,7 +74,8 @@
                <h2>Sonstiges</h2>
             </md-whiteframe>
          </div>
-      </md-content>
+      </div>
+      <md-button ng-href="#mitmachen">Alle Aktionen <ng-md-icon style="fill: #8bc34a" size="30" icon="chevron_right"></ng-md-icon></md-button>
    </div>
 </section>
 
@@ -87,24 +88,24 @@
          Dann reicht euer Projekt ein!
       </div>
       <div flex flex-gt-md="60">
-            <md-whiteframe flex class="md-whiteframe-z2 card">
-               <h2>Projekt einreichen</h2>
-               <p>
-                  Die Jugendverbände in Niedersachsen haben bereits <b><span count-to="12750" value="0" duration="2"></span> Klimapunkte</b> in <b><span count-to="15" value="0" duration="2"></span> Projekten</b> erreicht. Gemeinsam schaffen wir <b>15.000</b>!
-               </p>
-               <div class="md-actions" layout="row" layout-align="end center">
-                  <md-button ng-href="#ideen"><ng-md-icon style="fill: #02bcd4" icon="add"></ng-md-icon> Projekt einreichen</md-button>
-               </div>
-               <div class="counter-bar">
-                  <div class="counter-background">
-                     <div class="counter-filled" style="width: 85%;">
-                        <div class="counter-background counter-inner">
-                           12.750 Klimapunkte
-                        </div>
+         <md-whiteframe flex class="md-whiteframe-z2 card">
+            <h2>Projekt einreichen</h2>
+            <p>
+               Die Jugendverbände in Niedersachsen haben bereits <b><span count-to="12750" value="0" duration="2"></span> Klimapunkte</b> in <b><span count-to="15" value="0" duration="2"></span> Projekten</b> erreicht. Gemeinsam schaffen wir <b>15.000</b>!
+            </p>
+            <div class="md-actions" layout="row" layout-align="end center">
+               <md-button ng-href="#"><ng-md-icon style="fill: #02bcd4" icon="add"></ng-md-icon> Projekt einreichen</md-button>
+            </div>
+            <div class="counter-bar">
+               <div class="counter-background">
+                  <div class="counter-filled" style="width: 85%;">
+                     <div class="counter-background counter-inner">
+                        12.750 Klimapunkte
                      </div>
                   </div>
                </div>
-            </md-whiteframe>
+            </div>
+         </md-whiteframe>
       </div>
    </div>
 </section>
