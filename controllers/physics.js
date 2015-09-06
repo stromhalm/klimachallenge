@@ -85,12 +85,9 @@ klimaChallenge.controller('PhysicsCtrl', function($scope, $timeout) {
       // Tick all bodies on page change to awake them
       $scope.$on('$locationChangeSuccess', function(event) {
          var bodies = world.getBodies();
-
-         $timeout(function() {
-            angular.forEach(bodies, function(body) {
-               body.applyForce({x: 0, y: .2});
-            });
-         }, 500);
+         angular.forEach(bodies, function(body) {
+            body.sleep(false);
+         });
       });
 
       // subscribe to ticker to advance the simulation
