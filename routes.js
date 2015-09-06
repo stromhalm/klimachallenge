@@ -41,6 +41,6 @@ klimaChallenge.config(function($stateProvider, $urlRouterProvider) {
 
       $timeout(function() {
          window.dispatchEvent(new Event('resize'));
-      }, 500);
+      }, 700);
    });
 });

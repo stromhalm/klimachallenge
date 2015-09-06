@@ -95,17 +95,17 @@ header {
 .info-box {
    background-color: @light-grey;
    @media (min-width: 960px) {
-      margin-bottom: -57px;
+      margin-bottom: -61px;
    }
 
    .news-box {
       background-position: center;
       background-size: cover;
       position: relative;
-      min-height: 300px;
+      min-height: 400px;
 
       @media (min-width: 960px) {
-         margin-bottom: 57px;
+         margin-bottom: 61px;
       }
 
       .news-wrapper {
@@ -250,7 +250,7 @@ md-whiteframe {
 }
 
 .space-box {
-   padding: 36px 0 40px 0;
+   padding: 36px 8px 40px 8px;
    font-size: 1.25em;
 
    h2 {
@@ -268,7 +268,7 @@ md-whiteframe {
    padding-bottom: 0;
 
    @media (min-width: 960px) {
-      margin-bottom: -69px;
+      margin-bottom: -53px;
    }
 
    md-whiteframe
@@ -281,9 +281,33 @@ md-whiteframe {
    background-color: #eee;
    color: white;
    font-size: 34px;
-   padding: 40px 0 80px 0;
+   padding-top: 44px;
+   padding-bottom: 80px;
    font-weight: 300;
    line-height: 46px;
+}
+
+.contract {
+   background-color: @green;
+   margin-top: 47px;
+   padding-bottom: 40px;
+
+   h1 {
+      font-weight: 400;
+      font-size: 35px;
+      margin-bottom: 10px;
+      color: @green;
+   }
+
+   h2 {
+      color: @dark-font;
+   }
+
+   md-whiteframe {
+      margin-top: -47px;
+      padding-bottom: 20px !important;
+      color: @dark-font;
+   }
 }
 
 .ball-box {

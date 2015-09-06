@@ -37,7 +37,7 @@ klimaChallenge.controller('PhysicsCtrl', function($scope, $timeout) {
       // At init the canvas won't load the correct window height, so refresh aufter 0.5s
       $timeout(function() {
          window.dispatchEvent(new Event('resize'));
-      }, 500);
+      }, 700);
 
        // create some bodies
       for (var i = 0; i < numberProjects; i++) {
