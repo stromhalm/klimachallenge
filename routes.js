@@ -18,6 +18,14 @@ klimaChallenge.config(function($stateProvider, $urlRouterProvider) {
   .state('participate', {
       url: "/mitmachen",
       templateUrl: "views/participate.html"
+  })
+  .state('impressum', {
+      url: "/impressum",
+      templateUrl: "views/impressum.html"
+  })
+  .state('contact', {
+      url: "/kontakt",
+      templateUrl: "views/contact.html"
   });
 })
 .controller('PageCtrl', function($scope, $location, $timeout, $templateCache) {
@@ -41,6 +49,9 @@ klimaChallenge.config(function($stateProvider, $urlRouterProvider) {
             break;
          case 'contract':
             $scope.selectedPage = 3;
+            break;
+         default: // Unsichtbarer "Sonstiges"-Tab
+            $scope.selectedPage = 4;
             break;
       }
    });

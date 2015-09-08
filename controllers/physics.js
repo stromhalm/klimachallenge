@@ -88,6 +88,9 @@ klimaChallenge.controller('PhysicsCtrl', function($scope, $timeout) {
          angular.forEach(bodies, function(body) {
             body.sleep(false);
          });
+         $timeout(function() {
+            window.dispatchEvent(new Event('resize'));
+         }, 200);
       });
 
       // subscribe to ticker to advance the simulation
