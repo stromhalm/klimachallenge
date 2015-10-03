@@ -28,11 +28,13 @@ klimaChallenge.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: "views/contact.html"
   });
 })
-.controller('PageCtrl', function($scope, $location, $timeout, $templateCache) {
+.controller('PageCtrl', function($scope, $location, $timeout, $templateCache, $rootScope) {
+
+   $rootScope.$on('$viewContentLoaded', function() {
+      $templateCache.removeAll();
+   });
 
    $scope.$on('$locationChangeStart', function(event, next, current) {
-
-      $templateCache.removeAll(); // Prevent caching
 
       var nextPage = next.split('/');
       nextPage = nextPage[nextPage.length-1];
