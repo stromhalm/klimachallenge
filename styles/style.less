@@ -41,16 +41,16 @@ html, body, #physics-world {
 }
 
 header {
-   text-align: center;
-
    img {
       width: 100%;
-      margin: 30px 0 30px -5.4%; // Align subtitle with content
+   }
+
+   .side-header {
+      padding-top: 10px;
    }
 
    .counter {
       font-size: 1em;
-      padding: 70px 0;
 
       h2 {
          color: @dark-font;
@@ -71,6 +71,18 @@ header {
          margin-left: -115px;
          width: 130px;
       }
+   }
+}
+
+.carousel {
+   height: 600px;
+   z-index: 9;
+   margin: 0;
+
+   .background {
+      background-size: cover;
+      background-position: center;
+      height: 100%;
    }
 }
 
@@ -113,8 +125,23 @@ header {
    }
 }
 
+.news-wrapper {
+   position: absolute;
+   padding: 12px;
+   padding-bottom: 15px;
+   background-color: rgba(69, 90, 100, 0.71);
+   color: white;
+   bottom: 0;
+
+   h2 {
+      font-size: 2em;
+      margin: .2em 0;
+   }
+}
+
 .info-box {
    background-color: @light-grey;
+   color: white;
 
    /*
    @media (min-width: 960px) {
@@ -134,19 +161,6 @@ header {
          margin-bottom: 61px;
       }
       */
-
-      .news-wrapper {
-         position: absolute;
-         padding: 12px;
-         padding-bottom: 15px;
-         background-color: rgba(69, 90, 100, 0.71);
-         color: white;
-         bottom: 0;
-
-         h2 {
-            font-size: 2em;
-         }
-      }
 
       .md-button {
          bottom: 10px;
@@ -198,7 +212,7 @@ header {
 }
 
 .general-info {
-   color: white;
+   color: @dark-font;
    padding: 36px 16px 26px 8px;
    font-size: 34px;
    line-height: 46px;
@@ -211,8 +225,14 @@ header {
 }
 
 .info-cards {
-   z-index: 50;
    padding-bottom: 0;
+   font-weight: 300;
+   font-size: 1.2em;
+
+   .md-button {
+      color: white !important;
+      margin-top: 40px;
+   }
 }
 
 md-whiteframe {

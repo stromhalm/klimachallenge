@@ -1,24 +1,34 @@
-<section layout-gt-md="row" layout-wrap class="info-box" layout="column">
-   <div flex flex-gt-md="50" offset-gt-md="5" class="info-cards">
+<header layout="row" layout-wrap layout-align="start center">
+   <div flex-gt-md="70" flex="100">
+      <ul rn-carousel rn-carousel-index="1" rn-carousel-auto-slide="5" class="carousel image" ng-controller="newsCtrl">
+         <li ng-repeat="image in facebookImages">
+            <div class="background" ng-style="{'background-image':'url(' + image.images[0].source + ')'}">
+               <div flex class="news-wrapper" ng-if="image.name">
+                  <h2>News</h2>
+                  {{image.name}}
+               </div>
+            </div>
+         </li>
+      </ul>
+   </div>
+   <div class="space-box side-header" flex-gt-md="30" flex="100">
+      <img class="logo" src="img/logo5.png" alt="logo" />
 
       <div class="general-info">
          Klimaschutz kann Spaß machen! Packen wir's an und fordern die Politik heraus!
       </div>
 
-      <md-whiteframe flex class="md-whiteframe-z2 card">
-         <h2>Die Challenge</h2>
-         <p>
-            Die Klima-Challenge unterstützt euch Jugendliche in Niedersachsen dabei, den Klimaschutz selbst in die Hand zu nehmen. Die Idee des Projektes ist, dass ihr gemeinsame Klimaschutz-Aktionen durchführt und dabei Klimapunkte sammelt. Mit diesen messbaren Erfolgen wird der niedersächsische Umweltminister herausgefordert, denn wenn ihr eine bestimmte Punktzahl erreicht habt, muss er eine vereinbarte Gegenleistung erbringen. Dies ist in einem Vertrag festgehalten.
-         </p>
-         <div class="md-actions" layout="row" layout-align="end center">
-            <md-button class="md-primary" ng-href="#contract"><ng-md-icon style="fill: #8bc34a" icon="rate_review"></ng-md-icon> Zum CO<sub>2</sub>ntrACT!</md-button>
-         </div>
-      </md-whiteframe>
    </div>
-   <div class="news-box space-box" layout-align="start end" layout="row" class="space-box news-caption" flex ng-style="{'background-image':'url(' + newsImageUrl + ')'}">
-      <div flex class="news-wrapper">
-         <h2>News</h2>
-         {{newsCaption}}
+</header>
+
+
+
+<section layout-gt-md="row" layout-wrap class="space-box info-box" layout="column">
+   <div flex flex-gt-md="90" offset-gt-md="5" class="info-cards">
+      <h2>Die Challenge</h2>
+      Die Klima-Challenge unterstützt euch Jugendliche in Niedersachsen dabei, den Klimaschutz selbst in die Hand zu nehmen. Die Idee des Projektes ist, dass ihr gemeinsame Klimaschutz-Aktionen durchführt und dabei Klimapunkte sammelt. Mit diesen messbaren Erfolgen wird der niedersächsische Umweltminister herausgefordert, denn wenn ihr eine bestimmte Punktzahl erreicht habt, muss er eine vereinbarte Gegenleistung erbringen. Dies ist in einem Vertrag festgehalten.
+      <div class="md-actions" layout="row" layout-align="end center">
+         <md-button class="md-raised md-primary" ng-href="#contract"><ng-md-icon style="fill: white" icon="rate_review"></ng-md-icon> Zum CO<sub>2</sub>ntrACT!</md-button>
       </div>
    </div>
 </section>
@@ -85,7 +95,7 @@
    <div layout="column" layout-gt-md="row">
       <div flex offset-gt-md="5">
          <h2>Mitmachen</h2>
-         Ab November könnt ihr eure Aktionen aus euren Jugendgruppen einreichen, bekommt dafür Punkte und nehmt an der Verlosung von tollen Preisen teil!
+         Ab November könnt ihr Aktionen einreichen, sammelt damit Punkte und nehmt an der Verlosung von tollen Preisen teil!
          <!--
          Du bist selbst in einem Jugendverband oder einer Jugendgruppe aktiv?
          Dann reicht eure Aktion ein!

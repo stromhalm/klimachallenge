@@ -53,21 +53,7 @@
          </md-button>
       </div>
 
-      <header layout="row" layout-wrap layout-align="start center">
-         <div flex-gt-sm="50" flex="90" offset="5">
-            <img src="img/logo5.png" alt="logo" /><br>
-         </div>
-         <div class="space-box counter" flex-gt-sm="45" flex="100" layout="row" layout-align="center center">
-
-            <md-progress-circular md-mode="determinate" value="100"></md-progress-circular>
-            <legend>
-               <h2>
-                  <span count-to="100" value="0" duration=".8">100</span>%
-               </h2>
-               Bis zum nächsten Zwischenziel
-            </legend>
-         </div>
-      </header>
+      
 
       <ui-view>
       </ui-view>
@@ -107,16 +93,22 @@
    <script src="bower_components/angular-chart.js/dist/angular-chart.min.js"></script>
    <script src="libs/angular-count-to/angular-count-to.min.js"></script>
 
+   <!-- Carousel -->
+   <link href="bower_components/angular-carousel/dist/angular-carousel.min.css" rel="stylesheet" type="text/css" />
+   <script src="bower_components/angular-touch/angular-touch.min.js"></script>
+   <script src="bower_components/angular-carousel/dist/angular-carousel.min.js"></script>
+
    <script>
-      var klimaChallenge = angular.module('Klima-Challenge', ['ngMaterial', 'ngMdIcons', 'ui.router', 'countTo', 'chart.js']);
+      var klimaChallenge = angular.module('Klima-Challenge', ['ngMaterial', 'ngMdIcons', 'ui.router', 'countTo', 'chart.js', 'angular-carousel']);
    </script>
 
    <!-- Services -->
    <script src="controllers/physics.js?ver=1"></script>
-   <script src="controllers/instamedia.js"></script>
+   <script src="controllers/news.js"></script>
    <script src="controllers/challenge.js"></script>
 
    <script src="routes.js"></script>
    <script src="theme.js"></script>
+
 </body>
 </html>
