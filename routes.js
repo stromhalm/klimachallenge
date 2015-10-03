@@ -28,10 +28,19 @@ klimaChallenge.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: "views/contact.html"
   });
 })
-.controller('PageCtrl', function($scope, $location, $timeout, $templateCache, $rootScope) {
+.controller('PageCtrl', function($scope, $location, $timeout, $cacheFactory, $templateCache, $rootScope, $http) {
 
+   // Clear Cache if new version
    $rootScope.$on('$viewContentLoaded', function() {
-      $templateCache.removeAll();
+      var lastCommit;
+      $http.get("https://api.github.com/repos/stromhalm/klimachallenge/commits?per_page=1").then(function(response) {
+         lastCommit = response.data[0];
+
+         if (lastCommit.sha != $cacheFactory.get('version')) {
+            $templateCache.removeAll();
+            $cacheFactory.put('version', lastCommit.sha);
+         }
+      });
    });
 
    $scope.$on('$locationChangeStart', function(event, next, current) {
