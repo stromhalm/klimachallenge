@@ -1,6 +1,6 @@
 <header layout="row" layout-wrap layout-align="start center">
    <div flex-gt-md="70" flex="100">
-      <ul rn-carousel rn-carousel-index="1" rn-carousel-auto-slide="5" class="carousel image" ng-controller="newsCtrl">
+      <ul rn-carousel rn-carousel-auto-slide="5" class="carousel image" ng-controller="newsCtrl">
          <li ng-repeat="image in facebookImages">
             <div class="background" ng-style="{'background-image':'url(' + image.images[0].source + ')'}">
                <div flex class="news-wrapper" ng-if="image.name">
