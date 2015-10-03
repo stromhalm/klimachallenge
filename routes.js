@@ -30,15 +30,17 @@ klimaChallenge.config(function($stateProvider, $urlRouterProvider) {
 })
 .controller('PageCtrl', function($scope, $location, $timeout, $cacheFactory, $templateCache, $rootScope, $http) {
 
+   var versionCache = $cacheFactory('versionCache');
+
    // Clear Cache if new version
    $rootScope.$on('$viewContentLoaded', function() {
       var lastCommit;
       $http.get("https://api.github.com/repos/stromhalm/klimachallenge/commits?per_page=1").then(function(response) {
          lastCommit = response.data[0];
 
-         if (lastCommit.sha != $cacheFactory.get('version')) {
+         if (lastCommit.sha != versionCache.get('version')) {
             $templateCache.removeAll();
-            $cacheFactory.put('version', lastCommit.sha);
+            versionCache.put('version', lastCommit.sha);
          }
       });
    });
