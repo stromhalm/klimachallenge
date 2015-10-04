@@ -1,4 +1,6 @@
-klimaChallenge.controller('challengeCtrl', function($scope) {
+klimaChallenge.controller('challengeCtrl', function($scope, $rootScope) {
+
+   $rootScope.showHeader = true;
 
    /*
    instaMedia.getRecentPhotos().success(function (instagramResponse) {

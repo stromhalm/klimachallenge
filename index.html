@@ -5,7 +5,7 @@
    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
    <link rel="stylesheet" href="bower_components/angular-material-icons/angular-material-icons.css">
    <link rel="stylesheet" href="bower_components/angular-chart.js/dist/angular-chart.css" />
-   <link rel="stylesheet" href="styles/style.css?ver=3">
+   <link rel="stylesheet" href="styles/style.css?ver=4">
    <meta charset="utf-8">
    <title>Klima-Challenge</title>
 </head>
@@ -53,7 +53,27 @@
          </md-button>
       </div>
 
+      <header layout="row" layout-wrap layout-align="start center" ng-if="showHeader">
+         <div flex-gt-md="60" flex="100">
+            <ul rn-carousel rn-carousel-auto-slide="5" class="carousel image" ng-controller="newsCtrl">
+               <li ng-repeat="image in facebookImages">
+                  <div class="background" ng-style="{'background-image':'url(' + image.images[0].source + ')'}">
+                     <div flex class="news-wrapper" ng-if="image.name">
+                        <h2>News</h2>
+                        {{image.name}}
+                     </div>
+                  </div>
+               </li>
+            </ul>
+         </div>
+         <div class="space-box side-header" flex-gt-md="40" flex="100">
+            <img class="logo" src="img/logo6.png" alt="logo" />
 
+            <div class="general-info">
+               Gemeinsam punkten für den Klimaschutz! Packen wir's an und fordern die Politik heraus!
+            </div>
+         </div>
+      </header>
 
       <ui-view>
       </ui-view>
