@@ -28,8 +28,12 @@ klimaChallenge.controller('PhysicsCtrl', function($scope, $timeout, $interval) {
       });
 
       var updateCanvas = function() {
-         viewportBounds = Physics.aabb(0, 0, newWidth, newHeight);
+         viewportBounds = Physics.aabb(0, 0, renderer.width, renderer.height);
          edgeBounce.setAABB(viewportBounds);
+         var bodies = world.getBodies();
+         angular.forEach(bodies, function(body) {
+            body.sleep(false);
+         });
       }
 
       // resize canvas on window resize
@@ -98,13 +102,7 @@ klimaChallenge.controller('PhysicsCtrl', function($scope, $timeout, $interval) {
 
       // Tick all bodies on page change to awake them
       $scope.$on('$locationChangeSuccess', function(event) {
-         var bodies = world.getBodies();
-         angular.forEach(bodies, function(body) {
-            body.sleep(false);
-         });
-         $timeout(function() {
-            window.dispatchEvent(new Event('resize'));
-         }, 200);
+         updateCanvas();
       });
 
       // subscribe to ticker to advance the simulation
