@@ -1,4 +1,4 @@
-<section layout="row" class="info-box" layout-wrap layout-align="start start" ng-if="showHeader">
+<section layout="row" class="info-box" layout-wrap layout-align="start start">
    <div flex-lg="55" flex-gt-lg="60" flex="100">
       <ul rn-carousel rn-carousel-auto-slide="5" class="carousel image" ng-controller="newsCtrl">
          <li ng-repeat="image in facebookImages">
@@ -98,7 +98,7 @@
             Jugendgruppen in Niedersachsen haben bereits <b><span count-to="0" value="0" duration="2">0</span> Klimapunkte</b> in <b><span count-to="0" value="0" duration="2">0</span> Aktionen</b> erreicht. Gemeinsam schaffen wir <b>30.000</b> Punkte!
          </p>
          <div class="md-actions" layout="row" layout-align="end center">
-            <md-button ng-href="#/mitmachen"><ng-md-icon style="fill: #02bcd4" icon="add"></ng-md-icon> Aktion einreichen</md-button>
+            <md-button ng-click="showProjectForm($event)"><ng-md-icon style="fill: #02bcd4" icon="add"></ng-md-icon> Aktion einreichen</md-button>
          </div>
          <div class="counter-bar">
             <div class="counter-background">
