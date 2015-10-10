@@ -1,13 +1,9 @@
-klimaChallenge.controller('PhysicsCtrl', function($scope, $timeout) {
+klimaChallenge.controller('PhysicsCtrl', function($scope, $timeout, $interval) {
 
    var numberProjects = 15;
    var ballRadius = Math.pow(window.innerWidth, 1/2) * Math.pow(1/numberProjects, 1/10) + 30;
 
    Physics(function (world) {
-      // world bounds to the window
-      var viewportBounds = Physics.aabb(0, 0, window.innerWidth, window.innerHeight),
-      edgeBounce,
-      renderer;
 
       // create a renderer
       renderer = Physics.renderer('canvas', {
@@ -22,6 +18,11 @@ klimaChallenge.controller('PhysicsCtrl', function($scope, $timeout) {
          world.render();
       });
 
+      // world bounds to the window
+      var viewportBounds = Physics.aabb(0, 0, window.innerWidth, window.innerHeight),
+      edgeBounce,
+      renderer;
+
       // constrain objects to these bounds
       edgeBounce = Physics.behavior('edge-collision-detection', {
          aabb: viewportBounds,
@@ -34,10 +35,10 @@ klimaChallenge.controller('PhysicsCtrl', function($scope, $timeout) {
          edgeBounce.setAABB(viewportBounds);
       }, true);
 
-      // At init the canvas won't load the correct window height, so refresh aufter 0.7s
-      $timeout(function() {
+      // Somtimes the canvas height isn't right, so refresh every 3s
+      $interval(function() {
          window.dispatchEvent(new Event('resize'));
-      }, 900);
+      }, 3000);
 
        // create some bodies
       for (var i = 0; i < numberProjects; i++) {
