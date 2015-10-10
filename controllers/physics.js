@@ -19,9 +19,7 @@ klimaChallenge.controller('PhysicsCtrl', function($scope, $timeout, $interval) {
       });
 
       // world bounds to the window
-      var viewportBounds = Physics.aabb(0, 0, window.innerWidth, window.innerHeight),
-      edgeBounce,
-      renderer;
+      var viewportBounds = Physics.aabb(0, 0, renderer.width, renderer.height), edgeBounce, renderer, newWidth, newHeight, oldWidth, oldHeight;
 
       // constrain objects to these bounds
       edgeBounce = Physics.behavior('edge-collision-detection', {
@@ -29,15 +27,30 @@ klimaChallenge.controller('PhysicsCtrl', function($scope, $timeout, $interval) {
          restitution: 0.4
       });
 
-      // resize canvas on canvas resize
-      window.addEventListener('resize', function () {
-         viewportBounds = Physics.aabb(0, 0, renderer.width, renderer.height);
+      var updateCanvas = function() {
+         viewportBounds = Physics.aabb(0, 0, newWidth, newHeight);
          edgeBounce.setAABB(viewportBounds);
+      }
+
+      // resize canvas on window resize
+      window.addEventListener('resize', function () {
+         updateCanvas();
       }, true);
 
       // Somtimes the canvas height isn't right, so refresh every 3s
       $interval(function() {
-         window.dispatchEvent(new Event('resize'));
+
+         newWidth = renderer.width;
+         newHeight = renderer.height;
+
+         if (newWidth != oldWidth || newHeight != oldHeight) {
+            // Event needs to be triggered outside of $digest
+            $timeout(function() {
+               window.dispatchEvent(new Event('resize'));
+            }, 0, false);
+            oldHeight = newHeight;
+            oldWidth = newWidth;
+         }
       }, 3000);
 
        // create some bodies
