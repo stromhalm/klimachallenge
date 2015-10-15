@@ -41,8 +41,8 @@ html, body, #physics-world {
 }
 
 .side-header {
-   padding: 25px 8px 20px 20px !important;
-   font-size: 1.8em;
+   padding: 25px 8px 0px 20px !important;
+   font-size: 1.6em;
    font-weight: 300;
 }
 
@@ -79,7 +79,7 @@ header {
 }
 
 .carousel {
-   height: 595px;
+   height: 400px;
    z-index: 9;
    margin: 0;
 
@@ -88,6 +88,12 @@ header {
       background-position: center;
       height: 100%;
    }
+}
+
+.rn-carousel-controls {
+   top: -215px;
+   z-index: 205;
+   position: relative;
 }
 
 .video {
@@ -154,6 +160,14 @@ header {
       font-size: 2em;
       margin: .2em 0;
       font-weight: 300;
+   }
+
+   a {
+      color: white;
+      text-decoration: none;
+      span {
+         font-size: .8em;
+      }
    }
 }
 
@@ -330,9 +344,9 @@ md-whiteframe {
 }
 
 .add-project, .win {
-   background-color: #02bcd4;
+   background-color: @light-grey;
    color: rgba(255, 255, 255, 0.6);
-   padding-top: 80px;
+   padding-top: 100px;
    padding-bottom: 0;
 
    @media (min-width: 960px) {
@@ -344,16 +358,15 @@ md-whiteframe {
    }
 }
 
-.add-project {
+.win {
+   background-color: #02bcd4;
+   padding-top: 100px;
+   margin-bottom: -61px;
+
    md-whiteframe {
       border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
    }
-}
-
-.win {
-   background-color: @light-grey;
-   padding-top: 120px;
-   margin-bottom: -60px;
 }
 
 .challenge-actions {

@@ -1,4 +1,4 @@
-klimaChallenge.controller('newsCtrl', function($scope, $http) {
+klimaChallenge.controller('newsCtrl', function($scope, $http, $sce) {
 
    $scope.facebookImages = Array();
 
@@ -6,7 +6,21 @@ klimaChallenge.controller('newsCtrl', function($scope, $http) {
    success(function(data, status, headers, config) {
 
       angular.forEach(data.data, function(image, key) {
-            $scope.facebookImages.push(image)
+         if (image.name) {
+
+            // Shorten image text if longer than 160 chars
+            if (image.name.length > 160) {
+               var newText = image.name.substring(0,140);
+               var i = 140;
+               while (image.name.charAt(i) != " ") {
+                  newText = newText + image.name.charAt(i);
+                  i++;
+               }
+               image.name = newText;
+               image.showReadMore = true;
+            }
+         }
+         $scope.facebookImages.push(image);
       });
-   })
+   });
 });
