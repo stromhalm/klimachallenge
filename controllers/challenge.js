@@ -1,14 +1,17 @@
-klimaChallenge.controller('challengeCtrl', function($scope, $rootScope) {
+klimaChallenge.controller('challengeCtrl', function($scope, $mdDialog) {
 
-   $rootScope.showHeader = true;
-
-   /*
-   instaMedia.getRecentPhotos().success(function (instagramResponse) {
-
-      var recentPhoto = instagramResponse.data[0];
-
-      $scope.newsImageUrl = recentPhoto.images.standard_resolution.url;
-      $scope.newsCaption = recentPhoto.caption.text;
-   })
-   */
+   $scope.showProjectForm = function(ev) {
+      $mdDialog.show({
+         controller: 'projectFormCtrl',
+         templateUrl: 'views/projectForm.html',
+         parent: angular.element(document.body),
+         targetEvent: ev,
+         clickOutsideToClose:true
+      })
+      .then(function(answer) {
+         $scope.status = 'You said the information was "' + answer + '".';
+      }, function() {
+         $scope.status = 'You cancelled the dialog.';
+      });
+   }
 });
