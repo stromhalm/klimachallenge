@@ -9,22 +9,22 @@
             </md-button>
          </div>
       </md-toolbar>
-      <md-dialog-content style="max-height:500px;" ng-if="page==1">
+      <md-dialog-content ng-if="page==1">
          <h2 class="md-title">Allgemeine Informationen</h2>
-         <md-content layout-padding layout-wrap layout="row" layout-sm="column">
-            <md-input-container flex="50">
+         <md-content layout-padding layout-wrap layout="row">
+            <md-input-container flex flex-gt-md="50">
                <label>Ansprechpartner (Vor- und Nachname)</label>
                <input ng-model="formal.name">
             </md-input-container>
-            <md-input-container flex="50">
+            <md-input-container flex="100" flex-gt-md="50">
                <label>E-Mail</label>
                <input ng-model="formal.email" type="email">
             </md-input-container>
-            <md-input-container flex="50">
+            <md-input-container flex="100" flex-gt-md="50">
                <label>Jugendverband/Jugendgruppe</label>
                <input ng-model="formal.group">
             </md-input-container>
-            <md-input-container flex="50">
+            <md-input-container flex="100" flex-gt-md="50">
                <label>Träger</label>
                <md-select ng-model="formal.carrier">
                   <md-option>Arbeitsgemeinschaft der Ev. Jugend in Nds.</md-option>
@@ -54,12 +54,12 @@
                   <md-option>Jugendnetzwerk LAMBDA</md-option>
                   <md-option>Nds. Alpenvereinsjugend</md-option>
                </md-select>
-            </md-input-container flex="50">
-            <md-input-container flex="50">
+            </md-input-container>
+            <md-input-container flex="100" flex-gt-md="50">
                <label>Wo hat die Aktion stattgefunden?</label>
                <input ng-model="formal.location">
             </md-input-container>
-            <md-input-container flex="50">
+            <md-input-container flex="100" flex-gt-md="50">
                <label>Welche Aktion habt ihr durchgeführt?</label>
                <md-select ng-model="formal.carrier">
                   <md-option>1</md-option>
@@ -72,79 +72,93 @@
       </md-dialog-content>
       <md-dialog-content style="max-height:500px;" ng-if="page==2">
          <h2 class="md-title">Einsparpotential</h2>
-         <md-content layout-padding layout-wrap layout="row" layout-sm="column">
-            <h3 class="md-title">Wie viele Menschen haben direkt an der Aktion Teilgenommen (inklusive Organisatoren)?</h3>
+         <md-content layout-padding layout-wrap layout="row">
             <md-input-container flex="100">
-               <label>Anzahl der Personen</label>
+               <label>Wie viele Menschen haben direkt an der Aktion Teilgenommen (inklusive Organisatoren)?</label>
                <input ng-model="potential.persons" type="number">
             </md-input-container>
-            <h3 class="md-title">Während der Aktion haben die Teilnehmer-innen … </h3>
             <md-input-container flex="100">
-               <label>Teilnehmerverhalten</label>
+               <label>Während der Aktion haben die Teilnehmer-innen … </label>
                <md-select ng-model="potential.behavior">
                   <md-option>Zugehört und zugesehen</md-option>
                   <md-option>Mit diskutiert</md-option>
                   <md-option>Mit angepackt</md-option>
                </md-select>
             </md-input-container>
-            <h3 class="md-title">Wurden den Teilnehmern Ideen gegeben, was sie konkret tun können, um das Klima zu schützen?</h3>
             <md-input-container flex="100">
-               <label>Ideen</label>
+               <label>Wurden den Teilnehmern Ideen gegeben, was sie konkret tun können, um das Klima zu schützen?</label>
                <md-select ng-model="potential.ideas">
                   <md-option>Nein</md-option>
                   <md-option>Ja</md-option>
                </md-select>
             </md-input-container>
-            <h3 class="md-title">Bewirkt diese Aktion eine langfristige Veränderung?</h3>
             <md-input-container flex="100">
-               <label>Langzeitwirkung</label>
+               <label>Bewirkt diese Aktion eine langfristige Veränderung?</label>
                <md-select ng-model="potential.longRange">
                   <md-option>Diese Aktion war einmalig und beinhaltet keine wiederkehrenden Tätigkeiten.</md-option>
                   <md-option>Diese Aktion beinhaltet mehre wiederkehrende Tätigkeiten bevor die Aktion als beendet angesehen wird.</md-option>
                   <md-option>Diese Aktion führt zu einer langfristigen Veränderung in unserem Verband / unserer Jugendgruppe.</md-option>
                </md-select>
             </md-input-container>
-            <h3 class="md-title">In welchem Rahmen habt Ihr eure Aktion durchgeführt?</h3>
             <md-input-container flex="100">
-               <label>Zugänglichkeit</label>
+               <label>In welchem Rahmen habt Ihr eure Aktion durchgeführt?</label>
                <md-select ng-model="potential.setting">
                   <md-option>Geschlossene Gruppe</md-option>
                   <md-option>In der Öffentlichkeit</md-option>
                   <md-option>Für alle zugänglich</md-option>
                </md-select>
             </md-input-container>
-            <h3 class="md-title">Über die Aktion konnte man (vorher oder hinterher) etwas in den folgenden Medien erfahren</h3>
-            <md-input-container flex="100">
-               <label>Medien</label>
-               <md-select ng-model="potential.media">
-                  <md-option>Nein</md-option>
-                  <md-option>Ja</md-option>
-               </md-select>
+         </md-content>
+      </md-dialog-content>
+      <md-dialog-content style="max-height:500px;" ng-if="page==3">
+         <h2 class="md-title">Über die Aktion konnte man (vorher oder hinterher) etwas in den folgenden Medien erfahren:</h2>
+         <md-content layout-padding layout-wrap layout="row">
+            <md-input-container flex="100" flex-lg="50" flex-gt-lg="25">
+               <md-checkbox ng-checked="media.email">E-Mail</md-checkbox>
+               <md-checkbox ng-checked="media.facebook">Facebook</md-checkbox>
+               <md-checkbox ng-checked="media.twitter">Twitter</md-checkbox>
             </md-input-container>
-            <h3 class="md-title">Wieviel Zeit habt Ihr für Planung, Durchführung und Nachbereitung gebraucht? (z.B. 5 Personen à 5 Stunden = 25)</h3>
+            <md-input-container flex="100" flex-lg="50" flex-gt-lg="25">
+               <md-checkbox ng-checked="media.email">Instagram</md-checkbox>
+               <md-checkbox ng-checked="media.facebook">Vereinsmedien</md-checkbox>
+               <md-checkbox ng-checked="media.facebook">Flyer</md-checkbox>
+            </md-input-container>
+            <md-input-container flex="100" flex-lg="50" flex-gt-lg="25">
+               <md-checkbox ng-checked="media.email">Poster</md-checkbox>
+               <md-checkbox ng-checked="media.facebook">Webseite</md-checkbox>
+               <md-checkbox ng-checked="media.facebook">Radio</md-checkbox>
+            </md-input-container>
+            <md-input-container flex="100" flex-lg="50" flex-gt-lg="25">
+               <md-checkbox ng-checked="media.email">Fernsehen</md-checkbox>
+               <md-checkbox ng-checked="media.facebook">Zeitung</md-checkbox>
+               <md-checkbox ng-checked="media.facebook">Sonstiges</md-checkbox>
+            </md-input-container>
+         </md-content>
+      </md-dialog-content>
+      <md-dialog-content style="max-height:500px;" ng-if="page==4">
+         <h2 class="md-title">Aufwand</h2>
+         <md-content layout-padding layout-wrap layout="row">
             <md-input-container flex="100">
-               <label>Zeit</label>
-               <md-select ng-model="potential.time">
+               <label>Wieviel Zeit habt Ihr für Planung, Durchführung und Nachbereitung gebraucht? (z.B. 5 Personen à 5 Stunden = 25)</label>
+               <md-select ng-model="effort.time">
                   <md-option>&lt;10 Stunden</md-option>
                   <md-option>10-50 Stunden</md-option>
                   <md-option>50-100 Stunden</md-option>
                   <md-option>&gt;100 Stunden</md-option>
                </md-select>
             </md-input-container>
-            <h3 class="md-title">Habt ihr die Aktion gemeinsam mit Menschen organisiert, die nicht in eurem Verein oder Verband sind?</h3>
             <md-input-container flex="100">
-               <label>Netzwerk</label>
-               <md-select ng-model="potential.networking">
+               <label>Habt ihr die Aktion gemeinsam mit Menschen organisiert, die nicht in eurem Verein oder Verband sind?</label>
+               <md-select ng-model="effort.networking">
                   <md-option>Nein, wir haben die Aktion nur aus unserem Verein heraus organisiert.</md-option>
                   <md-option>Wir haben uns mit Menschen aus einem anderen Verband/Verein zusammengetan um die Aktion zu organisieren.</md-option>
                   <md-option>Wir haben mit Menschen zusammengearbeitet, die nicht in einem Verein, einer Initiative o.ä. organisiert sind.</md-option>
                   <md-option>Wir konnten lokale Geschäfte, Schulen (…) davon überzeugen, mit uns gemeinsam diese Aktion durchzuführen.</md-option>
                </md-select>
             </md-input-container>
-            <h3 class="md-title">Habt ihr etwas entwickelt (z.B. Infos, Methoden, Objekte, etc.)?</h3>
             <md-input-container flex="100">
-               <label>Ergebnisse</label>
-               <md-select ng-model="potential.outcome">
+               <label>Habt ihr etwas entwickelt (z.B. Infos, Methoden, Objekte, etc.)?</label>
+               <md-select ng-model="effort.outcome">
                   <md-option>Nein, wir haben nichts entwickelt.</md-option>
                   <md-option>Ja, wir haben etwas entwickelt, was für den internen Gebrauch verwendet werden kann.</md-option>
                   <md-option>Ja, wir haben etwas entwickelt, was auch von anderen weiter verwendet werden kann.</md-option>
@@ -160,10 +174,10 @@
          <md-button ng-disabled="page==1" ng-click="previousPage()">
             <ng-md-icon style="fill: #222e34" icon="chevron_left"></ng-md-icon> Zurück
          </md-button>
-         <md-button style="margin-right:20px;" md-autofocus ng-click="nextPage()" ng-if="page!=2">
+         <md-button style="margin-right:20px;" md-autofocus ng-click="nextPage()" ng-if="page!=4">
             Weiter <ng-md-icon style="fill: #222e34" icon="chevron_right"></ng-md-icon>
          </md-button>
-         <md-button class="md-raised" style="margin-right:20px;" md-autofocus ng-click="submitForm()" ng-if="page==2">
+         <md-button class="md-raised" style="margin-right:20px;" md-autofocus ng-click="submitForm()" ng-if="page==4">
             Abschicken
          </md-button>
       </div>

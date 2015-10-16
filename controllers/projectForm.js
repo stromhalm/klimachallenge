@@ -1,6 +1,9 @@
 klimaChallenge.controller('projectFormCtrl', function($scope, $mdDialog) {
 
    $scope.page = 1;
+   $scope.formal = {};
+   $scope.media = {};
+   $scope.effort = {};
 
 
    $scope.nextPage = function() {
