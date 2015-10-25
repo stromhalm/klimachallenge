@@ -4,7 +4,7 @@
          <div class="md-toolbar-tools">
             <h2>Aktion einreichen</h2>
             <span flex></span>
-            <md-button class="md-icon-button" ng-click="cancel()">
+            <md-button class="md-icon-button" ng-click="hide()">
                <ng-md-icon style="fill: #222e34" icon="close"></ng-md-icon>
             </md-button>
          </div>
@@ -14,59 +14,58 @@
          <md-content layout-padding layout-wrap layout="row">
             <md-input-container flex flex-gt-md="50">
                <label>Ansprechpartner (Vor- und Nachname)</label>
-               <input ng-model="formal.name">
+               <input ng-model="formal.name" required>
             </md-input-container>
             <md-input-container flex="100" flex-gt-md="50">
                <label>E-Mail</label>
-               <input ng-model="formal.email" type="email">
+               <input ng-model="formal.email" type="email" required>
             </md-input-container>
             <md-input-container flex="100" flex-gt-md="50">
                <label>Jugendverband/Jugendgruppe</label>
-               <input ng-model="formal.group">
+               <input ng-model="formal.group" required>
             </md-input-container>
             <md-input-container flex="100" flex-gt-md="50">
-               <label>Träger</label>
-               <md-select ng-model="formal.carrier">
-                  <md-option>Arbeitsgemeinschaft der Ev. Jugend in Nds.</md-option>
-                  <md-option>BDKJ-Landesstelle Niedersachsen</md-option>
-                  <md-option>Bund Deutscher Pfadfinder_innen</md-option>
-                  <md-option>Jugend im Niedersächsischen Beamtenbund und Tarifunion (NBB-Jugend)</md-option>
-                  <md-option>Deutsche Schreberjugend</md-option>
-                  <md-option>Deutsches Jugendrotkreuz</md-option>
-                  <md-option>DGB-Gewerkschaftsjugend</md-option>
-                  <md-option>DJO-Dt. Jugend in Europa</md-option>
-                  <md-option>DLRG-Jugend</md-option>
-                  <md-option>JugendAktion Natur und Umweltschutz</md-option>
-                  <md-option>Jugendwerk der Arbeiterwohlfahrt</md-option>
-                  <md-option>Naturfreundejugend Deutschlands</md-option>
-                  <md-option>Nds. Jugendfeuerwehr</md-option>
-                  <md-option>Nds. Landjugend</md-option>
-                  <md-option>Ring dt. Pfadfinderinnenverbände</md-option>
-                  <md-option>Ring dt. Pfadfinderverbände</md-option>
-                  <md-option>SJD-Die Falken</md-option>
-                  <md-option>THW-Jugend e.V.</md-option>
-                  <md-option>Arbeitskreis Nds. Jugendgemeinschaften (ANJ)</md-option>
-                  <md-option>Junge Presse Nds (Geschäftsstelle ANJ)</md-option>
-                  <md-option>Arbeiter-Samariter-Jugend (ASJ)</md-option>
-                  <md-option>Bund der Alevitischen Jugendlichen in Deutschland e.V.</md-option>
-                  <md-option>Deutsche Wanderjugend</md-option>
-                  <md-option>DITIB LJV Niedersachsen und Bremen</md-option>
-                  <md-option>Jugendnetzwerk LAMBDA</md-option>
-                  <md-option>Nds. Alpenvereinsjugend</md-option>
-               </md-select>
+               <label class="md-no-float">Träger</label>
+               <select ng-model="formal.carrier">
+                  <option>Arbeitsgemeinschaft der Ev. Jugend in Nds.</option>
+                  <option>BDKJ-Landesstelle Niedersachsen</option>
+                  <option>Bund Deutscher Pfadfinder_innen</option>
+                  <option>Jugend im Niedersächsischen Beamtenbund und Tarifunion (NBB-Jugend)</option>
+                  <option>Deutsche Schreberjugend</option>
+                  <option>Deutsches Jugendrotkreuz</option>
+                  <option>DGB-Gewerkschaftsjugend</option>
+                  <option>DJO-Dt. Jugend in Europa</option>
+                  <option>DLRG-Jugend</option>
+                  <option>JugendAktion Natur und Umweltschutz</option>
+                  <option>Jugendwerk der Arbeiterwohlfahrt</option>
+                  <option>Naturfreundejugend Deutschlands</option>
+                  <option>Nds. Jugendfeuerwehr</option>
+                  <option>Nds. Landjugend</option>
+                  <option>Ring dt. Pfadfinderinnenverbände</option>
+                  <option>Ring dt. Pfadfinderverbände</option>
+                  <option>SJD-Die Falken</option>
+                  <option>Sportjugend Niedersachsen</option>
+                  <option>THW-Jugend e.V.</option>
+                  <option>Arbeitskreis Nds. Jugendgemeinschaften (ANJ)</option>
+                  <option>Junge Presse Nds (Geschäftsstelle ANJ)</option>
+                  <option>Arbeiter-Samariter-Jugend (ASJ)</option>
+                  <option>Bund der Alevitischen Jugendlichen in Deutschland e.V.</option>
+                  <option>Deutsche Wanderjugend</option>
+                  <option>DITIB LJV Niedersachsen und Bremen</option>
+                  <option>Jugendnetzwerk LAMBDA</option>
+                  <option>Nds. Alpenvereinsjugend</option>
+                  <option>Sonstige / kein Träger</option>
+               </select>
             </md-input-container>
             <md-input-container flex="100" flex-gt-md="50">
-               <label>Wo hat die Aktion stattgefunden?</label>
-               <input ng-model="formal.location">
+               <label>Wo hat die Aktion stattgefunden (Ort/Stadt)?</label>
+               <input ng-model="formal.location" required>
             </md-input-container>
             <md-input-container flex="100" flex-gt-md="50">
-               <label>Welche Aktion habt ihr durchgeführt?</label>
-               <md-select ng-model="formal.carrier">
-                  <md-option>1</md-option>
-                  <md-option>2</md-option>
-                  <md-option>3</md-option>
-                  <md-option>4</md-option>
-               </md-select>
+               <label class="md-no-float">Welche Aktion habt ihr durchgeführt?</label>
+               <select ng-model="formal.event">
+                  <option ng-repeat="(key, event) in events" ng-value="key">{{event.name}}</option>
+               </select>
             </md-input-container>
          </md-content>
       </md-dialog-content>
@@ -75,38 +74,38 @@
          <md-content layout-padding layout-wrap layout="row">
             <md-input-container flex="100">
                <label>Wie viele Menschen haben direkt an der Aktion Teilgenommen (inklusive Organisatoren)?</label>
-               <input ng-model="potential.persons" type="number">
+               <input ng-model="potential.persons" type="number" required>
             </md-input-container>
             <md-input-container flex="100">
-               <label>Während der Aktion haben die Teilnehmer-innen … </label>
-               <md-select ng-model="potential.behavior">
-                  <md-option>Zugehört und zugesehen</md-option>
-                  <md-option>Mit diskutiert</md-option>
-                  <md-option>Mit angepackt</md-option>
-               </md-select>
+               <label class="md-no-float">Während der Aktion haben die Teilnehmer-innen … </label>
+               <select ng-model="potential.behavior">
+                  <option value="1">Zugehört und zugesehen</option>
+                  <option value="2">Mit diskutiert</option>
+                  <option value="3">Mit angepackt</option>
+               </select>
             </md-input-container>
             <md-input-container flex="100">
-               <label>Wurden den Teilnehmern Ideen gegeben, was sie konkret tun können, um das Klima zu schützen?</label>
-               <md-select ng-model="potential.ideas">
-                  <md-option>Nein</md-option>
-                  <md-option>Ja</md-option>
-               </md-select>
+               <label class="md-no-float">Wurden den Teilnehmern Ideen gegeben, was sie konkret tun können, um das Klima zu schützen?</label>
+               <select ng-model="potential.ideas">
+                  <option value="0">Nein</option>
+                  <option value="3">Ja</option>
+               </select>
             </md-input-container>
             <md-input-container flex="100">
-               <label>Bewirkt diese Aktion eine langfristige Veränderung?</label>
-               <md-select ng-model="potential.longRange">
-                  <md-option>Diese Aktion war einmalig und beinhaltet keine wiederkehrenden Tätigkeiten.</md-option>
-                  <md-option>Diese Aktion beinhaltet mehre wiederkehrende Tätigkeiten bevor die Aktion als beendet angesehen wird.</md-option>
-                  <md-option>Diese Aktion führt zu einer langfristigen Veränderung in unserem Verband / unserer Jugendgruppe.</md-option>
-               </md-select>
+               <label class="md-no-float">Bewirkt diese Aktion eine langfristige Veränderung?</label>
+               <select ng-model="potential.longRange">
+                  <option value="1">Diese Aktion war einmalig und beinhaltet keine wiederkehrenden Tätigkeiten.</option>
+                  <option value="2">Diese Aktion beinhaltet mehre wiederkehrende Tätigkeiten bevor die Aktion als beendet angesehen wird.</option>
+                  <option value="3">Diese Aktion führt zu einer langfristigen Veränderung in unserem Verband / unserer Jugendgruppe.</option>
+               </select>
             </md-input-container>
             <md-input-container flex="100">
-               <label>In welchem Rahmen habt Ihr eure Aktion durchgeführt?</label>
-               <md-select ng-model="potential.setting">
-                  <md-option>Geschlossene Gruppe</md-option>
-                  <md-option>In der Öffentlichkeit</md-option>
-                  <md-option>Für alle zugänglich</md-option>
-               </md-select>
+               <label class="md-no-float">In welchem Rahmen habt Ihr eure Aktion durchgeführt?</label>
+               <select ng-model="potential.setting">
+                  <option value="0">Geschlossene Gruppe</option>
+                  <option value="2">In der Öffentlichkeit</option>
+                  <option value="3">Für alle zugänglich</option>
+               </select>
             </md-input-container>
          </md-content>
       </md-dialog-content>
@@ -114,24 +113,24 @@
          <h2 class="md-title">Über die Aktion konnte man (vorher oder hinterher) etwas in den folgenden Medien erfahren:</h2>
          <md-content layout-padding layout-wrap layout="row">
             <md-input-container flex="100" flex-lg="50" flex-gt-lg="25">
-               <md-checkbox ng-checked="media.email">E-Mail</md-checkbox>
-               <md-checkbox ng-checked="media.facebook">Facebook</md-checkbox>
-               <md-checkbox ng-checked="media.twitter">Twitter</md-checkbox>
+               <md-checkbox ng-model="media.email">E-Mail</md-checkbox>
+               <md-checkbox ng-model="media.facebook">Facebook</md-checkbox>
+               <md-checkbox ng-model="media.twitter">Twitter</md-checkbox>
             </md-input-container>
             <md-input-container flex="100" flex-lg="50" flex-gt-lg="25">
-               <md-checkbox ng-checked="media.email">Instagram</md-checkbox>
-               <md-checkbox ng-checked="media.facebook">Vereinsmedien</md-checkbox>
-               <md-checkbox ng-checked="media.facebook">Flyer</md-checkbox>
+               <md-checkbox ng-model="media.instagram">Instagram</md-checkbox>
+               <md-checkbox ng-model="media.clubmedia">Vereinsmedien</md-checkbox>
+               <md-checkbox ng-model="media.flyer">Flyer</md-checkbox>
             </md-input-container>
             <md-input-container flex="100" flex-lg="50" flex-gt-lg="25">
-               <md-checkbox ng-checked="media.email">Poster</md-checkbox>
-               <md-checkbox ng-checked="media.facebook">Webseite</md-checkbox>
-               <md-checkbox ng-checked="media.facebook">Radio</md-checkbox>
+               <md-checkbox ng-model="media.poster">Poster</md-checkbox>
+               <md-checkbox ng-model="media.website">Webseite</md-checkbox>
+               <md-checkbox ng-model="media.radio">Radio</md-checkbox>
             </md-input-container>
             <md-input-container flex="100" flex-lg="50" flex-gt-lg="25">
-               <md-checkbox ng-checked="media.email">Fernsehen</md-checkbox>
-               <md-checkbox ng-checked="media.facebook">Zeitung</md-checkbox>
-               <md-checkbox ng-checked="media.facebook">Sonstiges</md-checkbox>
+               <md-checkbox ng-model="media.tv">Fernsehen</md-checkbox>
+               <md-checkbox ng-model="media.newspaper">Zeitung</md-checkbox>
+               <md-checkbox ng-model="media.other">Sonstiges</md-checkbox>
             </md-input-container>
          </md-content>
       </md-dialog-content>
@@ -139,45 +138,62 @@
          <h2 class="md-title">Aufwand</h2>
          <md-content layout-padding layout-wrap layout="row">
             <md-input-container flex="100">
-               <label>Wieviel Zeit habt Ihr für Planung, Durchführung und Nachbereitung gebraucht? (z.B. 5 Personen à 5 Stunden = 25)</label>
-               <md-select ng-model="effort.time">
-                  <md-option>&lt;10 Stunden</md-option>
-                  <md-option>10-50 Stunden</md-option>
-                  <md-option>50-100 Stunden</md-option>
-                  <md-option>&gt;100 Stunden</md-option>
-               </md-select>
+               <label class="md-no-float">Wieviel Zeit habt Ihr für Planung, Durchführung und Nachbereitung gebraucht? (z.B. 5 Personen à 5 Stunden = 25)</label>
+               <select ng-model="effort.time">
+                  <option value="0.5">&lt;10 Stunden</option>
+                  <option value="1">10-50 Stunden</option>
+                  <option value="2">50-100 Stunden</option>
+                  <option value="3">&gt;100 Stunden</option>
+               </select>
             </md-input-container>
             <md-input-container flex="100">
-               <label>Habt ihr die Aktion gemeinsam mit Menschen organisiert, die nicht in eurem Verein oder Verband sind?</label>
-               <md-select ng-model="effort.networking">
-                  <md-option>Nein, wir haben die Aktion nur aus unserem Verein heraus organisiert.</md-option>
-                  <md-option>Wir haben uns mit Menschen aus einem anderen Verband/Verein zusammengetan um die Aktion zu organisieren.</md-option>
-                  <md-option>Wir haben mit Menschen zusammengearbeitet, die nicht in einem Verein, einer Initiative o.ä. organisiert sind.</md-option>
-                  <md-option>Wir konnten lokale Geschäfte, Schulen (…) davon überzeugen, mit uns gemeinsam diese Aktion durchzuführen.</md-option>
-               </md-select>
+               <label class="md-no-float">Habt ihr die Aktion gemeinsam mit Menschen organisiert, die nicht in eurem Verein oder Verband sind?</label>
+               <select ng-model="effort.networking">
+                  <option value="0">Nein, wir haben die Aktion nur aus unserem Verein heraus organisiert.</option>
+                  <option value="3">Wir haben uns mit Menschen aus einem anderen Verband/Verein zusammengetan um die Aktion zu organisieren.</option>
+                  <option value="2">Wir haben mit Menschen zusammengearbeitet, die nicht in einem Verein, einer Initiative o.ä. organisiert sind.</option>
+                  <option value="2">Wir konnten lokale Geschäfte, Schulen (…) davon überzeugen, mit uns gemeinsam diese Aktion durchzuführen.</option>
+               </select>
             </md-input-container>
             <md-input-container flex="100">
-               <label>Habt ihr etwas entwickelt (z.B. Infos, Methoden, Objekte, etc.)?</label>
-               <md-select ng-model="effort.outcome">
-                  <md-option>Nein, wir haben nichts entwickelt.</md-option>
-                  <md-option>Ja, wir haben etwas entwickelt, was für den internen Gebrauch verwendet werden kann.</md-option>
-                  <md-option>Ja, wir haben etwas entwickelt, was auch von anderen weiter verwendet werden kann.</md-option>
-               </md-select>
+               <label class="md-no-float">Habt ihr etwas entwickelt (z.B. Infos, Methoden, Objekte, etc.)?</label>
+               <select ng-model="effort.outcome">
+                  <option value="0">Nein, wir haben nichts entwickelt.</option>
+                  <option value="2">Ja, wir haben etwas entwickelt, was für den internen Gebrauch verwendet werden kann.</option>
+                  <option value="3">Ja, wir haben etwas entwickelt, was auch von anderen weiter verwendet werden kann.</option>
+               </select>
+            </md-input-container>
+         </md-content>
+      </md-dialog-content>
+      <md-dialog-content style="max-height:500px;" ng-if="page==5">
+         <h2 class="md-title">Aufwand</h2>
+         <md-content layout-padding layout-wrap layout="row">
+            <md-input-container flex="100" ng-if="events[formal.event].question">
+               <label class="md-no-float">{{events[formal.event].question}}</label>
+               <input ng-model="custom.quantity" type="number" required>
+            </md-input-container>
+            <md-input-container flex="100">
+               <label class="md-no-float">Hat sich Euer Verband schonmal für den Klimaschutz engagiert?</label>
+               <select ng-model="custom.repeat">
+                  <option>Ja, mein Verband hat sich schon einmal für Klimaschutz eingesetzt.</option>
+                  <option>Nein, der Verband hat sich bis jetzt nicht für Klimaschutz engagiert.</option>
+                  <option>Ich bin mir nicht sicher.</option>
+               </select>
             </md-input-container>
          </md-content>
       </md-dialog-content>
       <div class="md-actions" layout="row">
-         <md-button ng-click="cancel()">
+         <md-button ng-click="hide()">
             <ng-md-icon style="fill: #222e34" icon="cancel"></ng-md-icon> Abbrechen
          </md-button>
          <span flex></span>
          <md-button ng-disabled="page==1" ng-click="previousPage()">
             <ng-md-icon style="fill: #222e34" icon="chevron_left"></ng-md-icon> Zurück
          </md-button>
-         <md-button style="margin-right:20px;" md-autofocus ng-click="nextPage()" ng-if="page!=4">
+         <md-button ng-disabled="!isValid(page)" style="margin-right:20px;" md-autofocus ng-click="nextPage()" ng-if="page!=5">
             Weiter <ng-md-icon style="fill: #222e34" icon="chevron_right"></ng-md-icon>
          </md-button>
-         <md-button class="md-raised" style="margin-right:20px;" md-autofocus ng-click="submitForm()" ng-if="page==4">
+         <md-button ng-disabled="!isValid(page)" class="md-raised" style="margin-right:20px;" md-autofocus ng-click="submitForm()" ng-if="page==5">
             Abschicken
          </md-button>
       </div>

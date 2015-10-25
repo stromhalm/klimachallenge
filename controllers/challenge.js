@@ -5,8 +5,7 @@ klimaChallenge.controller('challengeCtrl', function($scope, $mdDialog) {
          controller: 'projectFormCtrl',
          templateUrl: 'views/projectForm.html',
          parent: angular.element(document.body),
-         targetEvent: ev,
-         clickOutsideToClose:true
+         targetEvent: ev
       })
       .then(function(answer) {
          $scope.status = 'You said the information was "' + answer + '".';
