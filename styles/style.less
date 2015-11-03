@@ -132,7 +132,7 @@ header {
 .info-phrase {
    background-color: @background-grey;
    color: @dark-grey;
-   font-size: 32px !important;
+   font-size: 25px !important;
 
    h2 {
       color: @blue !important;
@@ -258,10 +258,6 @@ header {
 
 .info-cards {
    padding-bottom: 0;
-
-   .md-button {
-      color: white;
-   }
 }
 
 md-whiteframe {
@@ -280,17 +276,16 @@ md-whiteframe {
    }
 
    .counter-bar {
-      margin: 0 -18px;
+      margin: 18px -18px -18px -18px;
    }
 
    .md-actions {
       border-top: 1px solid @background-grey;
-      margin: 0 -18px;
+      margin: 16px -18px -16px -18px;
    }
 }
 
 .card {
-   padding-bottom: 0 !important;
    display: block;
    margin: 8px;
    z-index: 201;
@@ -377,8 +372,8 @@ md-whiteframe {
    background-color: @background-grey;
    color: white;
    font-size: 34px;
-   padding-top: 61px;
-   padding-bottom: 61px;
+   padding-top: 100px;
+   padding-bottom: 50px;
    font-weight: 300;
    line-height: 46px;
 
@@ -395,12 +390,56 @@ md-whiteframe {
 }
 
 .participate {
-   background-color: @green;
-   margin-top: 70px;
+   padding-top: 30px;
+   padding-bottom: 30px;
 
-   .info-cards {
-      margin-top: -116px;
+   h2 {
+      font-size: 45px;
+      font-weight: 300;
+      margin: 0;
+      margin-top: 30px;
+      margin-bottom: 10px;
    }
+
+   .sub-heading {
+      font-size: 1.2em;
+      margin-bottom: 15px;
+      opacity: 0.65;
+   }
+
+   md-whiteframe {
+      padding-bottom: 16px !important;
+      padding-top: 8px !important;
+
+      h3 {
+         font-size: 18px;
+         font-weight: 300;
+         text-align: center;
+         margin-top: 0;
+      }
+   }
+}
+
+.participate.edu {
+   background-color: @green;
+
+   h2, .sub-heading {
+      color: white;
+   }
+
+   md-whiteframe {
+      h2 {
+         color: @green;
+      }
+   }
+}
+
+.participate.infos {
+   background-color: @background-grey;
+}
+
+.md-dialog-container {
+   z-index: 800;
 }
 
 .contract {
@@ -481,12 +520,13 @@ md-tabs-wrapper md-prev-button md-icon, md-tabs-wrapper md-next-button md-icon {
 
    h2 {
       text-align: center;
-      padding: 10px 16px;
+      padding: 16px 16px 0px 16px;
       margin: 10px -18px 0 -18px;
       border-top: 1px solid @background-grey;
    }
 
    md-list {
+
       padding: 0;
 
       md-list-item {
@@ -498,35 +538,6 @@ md-tabs-wrapper md-prev-button md-icon, md-tabs-wrapper md-next-button md-icon {
          border-width: 1px 0;
       }
    }
-}
-
-.md-dialog-container {
-   z-index: 99999;
-
-   @media (max-width: 900px) {
-      md-dialog {
-         max-width: 95%;
-      }
-   }
-
-   .md-title {
-      margin-top: 40px;
-      margin-bottom: 0;
-      font-size: 17px;
-   }
-
-   md-input-container {
-      padding: 16px !important;
-
-      label,
-      .md-placeholder {
-         color: rgba(0, 0, 0, 0.6)
-      }
-   }
-}
-
-.md-select-menu-container {
-   z-index: 999999;
 }
 
 .footer {
