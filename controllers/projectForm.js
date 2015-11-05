@@ -63,7 +63,10 @@ klimaChallenge.controller('projectFormCtrl', function($scope, $mdDialog) {
    };
 
    $scope.nextPage = function() {
-      $scope.page++;
+      // nextPage() could be triggered by key
+      if ($scope.isValid($scope.page)) {
+         $scope.page++;
+      }
    };
    $scope.previousPage = function() {
       $scope.page--;

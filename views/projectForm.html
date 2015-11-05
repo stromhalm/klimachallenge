@@ -1,14 +1,14 @@
 <md-dialog aria-label="Aktion einreichen" ng-cloak>
-   <form>
-      <md-toolbar>
-         <div class="md-toolbar-tools">
-            <h2>Aktion einreichen</h2>
-            <span flex></span>
-            <md-button class="md-icon-button" ng-click="hide()">
-               <ng-md-icon style="fill: #222e34" icon="close"></ng-md-icon>
-            </md-button>
-         </div>
-      </md-toolbar>
+   <md-toolbar>
+      <div class="md-toolbar-tools">
+         <h2>Aktion einreichen</h2>
+         <span flex></span>
+         <md-button class="md-icon-button" ng-click="hide()">
+            <ng-md-icon style="fill: #222e34" icon="close"></ng-md-icon>
+         </md-button>
+      </div>
+   </md-toolbar>
+   <form ng-submit="nextPage()">
       <md-dialog-content ng-if="page==1">
          <h2 class="md-title">Allgemeine Informationen</h2>
          <md-content layout-padding layout-wrap layout="row">
@@ -73,7 +73,7 @@
          <h2 class="md-title">Einsparpotential</h2>
          <md-content layout-padding layout-wrap layout="row">
             <md-input-container flex="100">
-               <label>Wie viele Menschen haben direkt an der Aktion Teilgenommen (inklusive Organisatoren)?</label>
+               <label>Wie viele Menschen haben direkt an der Aktion teilgenommen (inklusive Organisatoren)?</label>
                <input ng-model="potential.f1" type="number" required>
             </md-input-container>
             <md-input-container flex="100">
@@ -195,20 +195,20 @@
          {{potential | json }}
          {{effort | json }}
       </md-dialog-content>
-      <div class="md-actions" layout="row">
-         <md-button ng-click="hide()">
-            <ng-md-icon style="fill: #222e34" icon="cancel"></ng-md-icon> Abbrechen
-         </md-button>
-         <span flex></span>
-         <md-button ng-disabled="page==1" ng-click="previousPage()">
-            <ng-md-icon style="fill: #222e34" icon="chevron_left"></ng-md-icon> Zurück
-         </md-button>
-         <md-button ng-disabled="!isValid(page)" style="margin-right:20px;" md-autofocus ng-click="nextPage()" ng-if="page!=6">
-            Weiter <ng-md-icon style="fill: #222e34" icon="chevron_right"></ng-md-icon>
-         </md-button>
-         <md-button ng-disabled="!isValid(page)" class="md-raised" style="margin-right:20px;" md-autofocus ng-click="submitForm()" ng-if="page==6">
-            Abschicken
-         </md-button>
-      </div>
    </form>
+   <div class="md-actions" layout="row">
+      <md-button ng-click="hide()">
+         <ng-md-icon style="fill: #222e34" icon="cancel"></ng-md-icon> Abbrechen
+      </md-button>
+      <span flex></span>
+      <md-button ng-disabled="page==1" ng-click="previousPage()">
+         <ng-md-icon style="fill: #222e34" icon="chevron_left"></ng-md-icon> Zurück
+      </md-button>
+      <md-button ng-disabled="!isValid(page)" style="margin-right:20px;" md-autofocus ng-click="nextPage()" ng-if="page!=6">
+         Weiter <ng-md-icon style="fill: #222e34" icon="chevron_right"></ng-md-icon>
+      </md-button>
+      <md-button ng-disabled="!isValid(page)" class="md-raised" style="margin-right:20px;" md-autofocus ng-click="submitForm()" ng-if="page==6">
+         Abschicken
+      </md-button>
+   </div>
 </md-dialog>
