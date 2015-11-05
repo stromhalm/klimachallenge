@@ -74,26 +74,33 @@
          <md-content layout-padding layout-wrap layout="row">
             <md-input-container flex="100">
                <label>Wie viele Menschen haben direkt an der Aktion Teilgenommen (inklusive Organisatoren)?</label>
-               <input ng-model="potential.persons" type="number" required>
+               <input ng-model="potential.f1" type="number" required>
             </md-input-container>
             <md-input-container flex="100">
-               <label class="md-no-float">Während der Aktion haben die Teilnehmer-innen … </label>
-               <select ng-model="potential.behavior">
+               <label class="md-no-float">Während der Aktion haben die Teilnehmer_innen … </label>
+               <select ng-model="potential.f2">
                   <option value="1">Zugehört und zugesehen</option>
                   <option value="2">Mit diskutiert</option>
                   <option value="3">Mit angepackt</option>
                </select>
             </md-input-container>
             <md-input-container flex="100">
+               <label class="md-no-float">Haben sich die Teilnehmer_innen damit beschäftigt, wie sich ihr persönliches Verhalten auf das Klima auswirkt?</label>
+               <select ng-model="potential.z1">
+                  <option value="0">Nein</option>
+                  <option value="3">Ja</option>
+               </select>
+            </md-input-container>
+            <md-input-container flex="100">
                <label class="md-no-float">Wurden den Teilnehmern Ideen gegeben, was sie konkret tun können, um das Klima zu schützen?</label>
-               <select ng-model="potential.ideas">
+               <select ng-model="potential.f3">
                   <option value="0">Nein</option>
                   <option value="3">Ja</option>
                </select>
             </md-input-container>
             <md-input-container flex="100">
                <label class="md-no-float">Bewirkt diese Aktion eine langfristige Veränderung?</label>
-               <select ng-model="potential.longRange">
+               <select ng-model="potential.f4">
                   <option value="1">Diese Aktion war einmalig und beinhaltet keine wiederkehrenden Tätigkeiten.</option>
                   <option value="2">Diese Aktion beinhaltet mehre wiederkehrende Tätigkeiten bevor die Aktion als beendet angesehen wird.</option>
                   <option value="3">Diese Aktion führt zu einer langfristigen Veränderung in unserem Verband / unserer Jugendgruppe.</option>
@@ -101,7 +108,7 @@
             </md-input-container>
             <md-input-container flex="100">
                <label class="md-no-float">In welchem Rahmen habt Ihr eure Aktion durchgeführt?</label>
-               <select ng-model="potential.setting">
+               <select ng-model="potential.f5">
                   <option value="0">Geschlossene Gruppe</option>
                   <option value="2">In der Öffentlichkeit</option>
                   <option value="3">Für alle zugänglich</option>
@@ -139,7 +146,7 @@
          <md-content layout-padding layout-wrap layout="row">
             <md-input-container flex="100">
                <label class="md-no-float">Wieviel Zeit habt Ihr für Planung, Durchführung und Nachbereitung gebraucht? (z.B. 5 Personen à 5 Stunden = 25)</label>
-               <select ng-model="effort.time">
+               <select ng-model="effort.f7">
                   <option value="0.5">&lt;10 Stunden</option>
                   <option value="1">10-50 Stunden</option>
                   <option value="2">50-100 Stunden</option>
@@ -148,16 +155,16 @@
             </md-input-container>
             <md-input-container flex="100">
                <label class="md-no-float">Habt ihr die Aktion gemeinsam mit Menschen organisiert, die nicht in eurem Verein oder Verband sind?</label>
-               <select ng-model="effort.networking">
+               <select ng-model="effort.f8">
                   <option value="0">Nein, wir haben die Aktion nur aus unserem Verein heraus organisiert.</option>
                   <option value="3">Wir haben uns mit Menschen aus einem anderen Verband/Verein zusammengetan um die Aktion zu organisieren.</option>
-                  <option value="2">Wir haben mit Menschen zusammengearbeitet, die nicht in einem Verein, einer Initiative o.ä. organisiert sind.</option>
-                  <option value="2">Wir konnten lokale Geschäfte, Schulen (…) davon überzeugen, mit uns gemeinsam diese Aktion durchzuführen.</option>
+                  <option value="3">Wir haben mit Menschen zusammengearbeitet, die nicht in einem Verein, einer Initiative o.ä. organisiert sind.</option>
+                  <option value="3">Wir konnten lokale Geschäfte, Schulen (…) davon überzeugen, mit uns gemeinsam diese Aktion durchzuführen.</option>
                </select>
             </md-input-container>
             <md-input-container flex="100">
                <label class="md-no-float">Habt ihr etwas entwickelt (z.B. Infos, Methoden, Objekte, etc.)?</label>
-               <select ng-model="effort.outcome">
+               <select ng-model="effort.f9">
                   <option value="0">Nein, wir haben nichts entwickelt.</option>
                   <option value="2">Ja, wir haben etwas entwickelt, was für den internen Gebrauch verwendet werden kann.</option>
                   <option value="3">Ja, wir haben etwas entwickelt, was auch von anderen weiter verwendet werden kann.</option>
@@ -170,17 +177,23 @@
          <md-content layout-padding layout-wrap layout="row">
             <md-input-container flex="100" ng-if="events[formal.event].question">
                <label class="md-no-float">{{events[formal.event].question}}</label>
-               <input ng-model="custom.quantity" type="number" required>
+               <input ng-model="custom.f10" type="number" required>
             </md-input-container>
             <md-input-container flex="100">
                <label class="md-no-float">Hat sich Euer Verband schonmal für den Klimaschutz engagiert?</label>
                <select ng-model="custom.repeat">
-                  <option>Ja, mein Verband hat sich schon einmal für Klimaschutz eingesetzt.</option>
-                  <option>Nein, der Verband hat sich bis jetzt nicht für Klimaschutz engagiert.</option>
-                  <option>Ich bin mir nicht sicher.</option>
+                  <option value="1">Ja, mein Verband hat sich schon einmal für Klimaschutz eingesetzt.</option>
+                  <option value="2">Nein, der Verband hat sich bis jetzt nicht für Klimaschutz engagiert.</option>
+                  <option value="3">Ich bin mir nicht sicher.</option>
                </select>
             </md-input-container>
          </md-content>
+      </md-dialog-content>
+      <md-dialog-content style="max-height:500px;" ng-if="page==6">
+         <h2 class="md-title">Klima-Punkte</h2>
+         Deine erreichten Klima-Punkte: {{getClimatePoints()}}
+         {{potential | json }}
+         {{effort | json }}
       </md-dialog-content>
       <div class="md-actions" layout="row">
          <md-button ng-click="hide()">
@@ -190,10 +203,10 @@
          <md-button ng-disabled="page==1" ng-click="previousPage()">
             <ng-md-icon style="fill: #222e34" icon="chevron_left"></ng-md-icon> Zurück
          </md-button>
-         <md-button ng-disabled="!isValid(page)" style="margin-right:20px;" md-autofocus ng-click="nextPage()" ng-if="page!=5">
+         <md-button ng-disabled="!isValid(page)" style="margin-right:20px;" md-autofocus ng-click="nextPage()" ng-if="page!=6">
             Weiter <ng-md-icon style="fill: #222e34" icon="chevron_right"></ng-md-icon>
          </md-button>
-         <md-button ng-disabled="!isValid(page)" class="md-raised" style="margin-right:20px;" md-autofocus ng-click="submitForm()" ng-if="page==5">
+         <md-button ng-disabled="!isValid(page)" class="md-raised" style="margin-right:20px;" md-autofocus ng-click="submitForm()" ng-if="page==6">
             Abschicken
          </md-button>
       </div>

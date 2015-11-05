@@ -175,24 +175,12 @@ header {
    background-color: @light-grey;
    color: white;
 
-   /*
-   @media (min-width: 960px) {
-      margin-bottom: -61px;
-   }
-   */
-
    .news-box {
       background-position: center;
       padding-left: 0;
       background-size: cover;
       position: relative;
       min-height: 400px;
-
-      /*
-      @media (min-width: 960px) {
-         margin-bottom: 61px;
-      }
-      */
 
       .md-button {
          bottom: 10px;
@@ -537,6 +525,12 @@ md-tabs-wrapper md-prev-button md-icon, md-tabs-wrapper md-next-button md-icon {
          border: solid @background-grey;
          border-width: 1px 0;
       }
+   }
+}
+
+md-input-container {
+   label, .md-placeholder {
+      color: rgba(0,0,0,0.6);
    }
 }
 
