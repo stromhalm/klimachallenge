@@ -190,25 +190,40 @@
          </md-content>
       </md-dialog-content>
       <md-dialog-content style="max-height:500px;" ng-if="page==6">
-         <h2 class="md-title">Klima-Punkte</h2>
-         Deine erreichten Klima-Punkte: {{getClimatePoints()}}
-         {{potential | json }}
-         {{effort | json }}
+         <h2 class="md-title">Auswertung</h2>
+         Eure Aktion bewerten wir voraussichtlich mit:
+
+         <div class="giant-font">
+            {{getClimatePoints()}}
+            <legend>Klima-Punkte</legend>
+         </div>
+
+         Das entspricht etwa {{getCo2()}} kg eingesparten CO<sub>2</sub>.
+
+      </md-dialog-content>
+      <md-dialog-content style="max-height:500px;" ng-if="page==7">
+         <h2 class="md-title">Erfolgreich eingereicht</h2>
+         Vielen Dank für das Einreichen eurer Klima-Aktion!<br>
+         Wir prüfen deine Angaben und veröffentlichen die Aktion so schnell es geht auf dieser Seite.
       </md-dialog-content>
    </form>
    <div class="md-actions" layout="row">
-      <md-button ng-click="hide()">
+      <md-button ng-if="page!=7" ng-click="hide()">
          <ng-md-icon style="fill: #222e34" icon="cancel"></ng-md-icon> Abbrechen
       </md-button>
       <span flex></span>
-      <md-button ng-disabled="page==1" ng-click="previousPage()">
+      <md-button ng-disabled="page==1" ng-click="previousPage()" ng-if="page<6">
          <ng-md-icon style="fill: #222e34" icon="chevron_left"></ng-md-icon> Zurück
       </md-button>
-      <md-button ng-disabled="!isValid(page)" style="margin-right:20px;" md-autofocus ng-click="nextPage()" ng-if="page!=6">
+      <md-button ng-disabled="!isValid(page)" style="margin-right:20px;" md-autofocus ng-click="nextPage()" ng-if="page<6">
          Weiter <ng-md-icon style="fill: #222e34" icon="chevron_right"></ng-md-icon>
       </md-button>
-      <md-button ng-disabled="!isValid(page)" class="md-raised" style="margin-right:20px;" md-autofocus ng-click="submitForm()" ng-if="page==6">
-         Abschicken
+      <md-button ng-if="page==6 && !submitting" class="md-raised" style="margin-right:20px;" ng-click="submitForm()">
+         Aktion einreichen
       </md-button>
+      <md-button class="md-raised" style="margin-right:20px;" ng-click="hide()" ng-if="page==7">
+         Fertig
+      </md-button>
+      <md-progress-circular ng-if="submitting" md-mode="indeterminate"></md-progress-circular>
    </div>
 </md-dialog>

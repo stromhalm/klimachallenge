@@ -1,4 +1,4 @@
-klimaChallenge.controller('projectFormCtrl', function($scope, $mdDialog) {
+klimaChallenge.controller('projectFormCtrl', function($scope, $mdDialog, $timeout, projects) {
 
    // Start at page 1
    $scope.page = 1;
@@ -12,6 +12,7 @@ klimaChallenge.controller('projectFormCtrl', function($scope, $mdDialog) {
 
    // Check if all input elements of a given form page are filled
    $scope.isValid = function(page) {
+
       switch (page) {
          case 1:
             if (
@@ -78,15 +79,35 @@ klimaChallenge.controller('projectFormCtrl', function($scope, $mdDialog) {
       $mdDialog.cancel();
    };
    $scope.submitForm = function() {
-      $scope.cancel();
-   }
+
+      $scope.submitting = true;
+      projects.$add({
+         formal: $scope.formal,
+         potential: $scope.potential,
+         media: $scope.media,
+         effort: $scope.effort,
+         custom: $scope.custom,
+         climatePoints: $scope.getClimatePoints()
+      })
+      .then(function(p) {
+         $scope.submitting = false;
+         $scope.page = 7;
+      });
+   };
 
    // Calculate the final climate points
    $scope.getClimatePoints = function() {
 
       var fz = 5; // Zielzahlfaktor
       var um = 0.75; // Umrechnungsfaktor
-      var type = $scope.events[$scope.formal.event].type;
+
+      try {
+         var type = $scope.events[$scope.formal.event].type;
+      } catch (e) {
+         var type = 0;
+      }
+
+      var climatePoints = 0;
 
       if (
          $scope.isValid(1) &&
@@ -99,7 +120,7 @@ klimaChallenge.controller('projectFormCtrl', function($scope, $mdDialog) {
 
          // Type A1
          if (type == 1) {
-            var climatePoints = parseFloat($scope.potential.f1) *
+            climatePoints = parseFloat($scope.potential.f1) *
                (
                   parseFloat($scope.potential.f2) +
                   parseFloat($scope.potential.f3) +
@@ -110,12 +131,11 @@ klimaChallenge.controller('projectFormCtrl', function($scope, $mdDialog) {
                   parseFloat($scope.effort.f8) +
                   parseFloat($scope.effort.f9)
                ) * parseFloat(fz);
-            return climatePoints;
          } else
 
          // Type A2
          if (type == 2) {
-            var climatePoints = (
+            climatePoints = (
                   parseFloat($scope.potential.f1) *
                   (
                      (
@@ -141,12 +161,11 @@ klimaChallenge.controller('projectFormCtrl', function($scope, $mdDialog) {
                      parseFloat($scope.potential.f1)
                   )
                ) * parseFloat(fz);
-            return climatePoints;
          } else
 
          // Type A3
          if (type == 3) {
-            var climatePoints =
+            climatePoints =
                (
                   parseFloat($scope.potential.f1) *
                   (
@@ -173,12 +192,11 @@ klimaChallenge.controller('projectFormCtrl', function($scope, $mdDialog) {
                      parseFloat($scope.custom.f10)
                   )
                ) * parseFloat(fz);
-            return climatePoints;
          } else
 
          // Type A4
          if (type == 4) {
-            var climatePoints =
+            climatePoints =
                (
                   parseFloat($scope.potential.f1) *
                   (
@@ -206,10 +224,16 @@ klimaChallenge.controller('projectFormCtrl', function($scope, $mdDialog) {
                      parseFloat($scope.custom.f10)
                   )
                ) * parseFloat(fz);
-            return climatePoints;
          }
       }
-      return false;
+      climatePoints = Math.round(climatePoints);
+      return climatePoints;
+   }
+
+   $scope.getCo2 = function() {
+      var um = 0.75; // Umrechnungsfaktor
+      var co2 = Math.round($scope.getClimatePoints() * (1/um));
+      return co2;
    }
 
    // Calculate the current media points (media checkboxes)

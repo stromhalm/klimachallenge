@@ -6,6 +6,7 @@
    <link rel="stylesheet" href="bower_components/angular-material-icons/angular-material-icons.css">
    <link rel="stylesheet" href="bower_components/angular-chart.js/dist/angular-chart.css" />
    <link rel="stylesheet" href="styles/style.css?ver=10">
+
    <meta charset="utf-8">
    <title>Klima-Challenge</title>
 </head>
@@ -57,7 +58,7 @@
          <div flex-gt-sm="45" flex="90" offset="5">
             <img src="img/logo5.png" alt="logo" /><br>
          </div>
-         <div class="space-box counter" flex-gt-sm="50" flex="100" layout="row" layout-align="center center">
+         <div class="space-box counter" flex-gt-sm="40" flex="100" layout="row" layout-align="center center">
 
             <md-progress-circular md-mode="determinate" value="100"></md-progress-circular>
             <legend>
@@ -107,6 +108,8 @@
    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
    <script src="bower_components/Chart.js/Chart.min.js"></script>
    <script src="bower_components/angular-chart.js/dist/angular-chart.min.js"></script>
+   <script src="bower_components/firebase/firebase.js"></script>
+   <script src="bower_components/angularfire/dist/angularfire.min.js"></script>
    <script src="libs/angular-count-to/angular-count-to.min.js"></script>
 
    <!-- Carousel -->
@@ -115,14 +118,15 @@
    <script src="bower_components/angular-carousel/dist/angular-carousel.min.js"></script>
 
    <script>
-      var klimaChallenge = angular.module('Klima-Challenge', ['ngMaterial', 'ngMdIcons', 'ui.router', 'countTo', 'chart.js', 'angular-carousel']);
+      var klimaChallenge = angular.module('Klima-Challenge', ['ngMaterial', 'ngMdIcons', 'ui.router', 'countTo', 'chart.js', 'angular-carousel', 'firebase']);
    </script>
 
    <!-- Services -->
    <script src="controllers/physics.js?ver=2"></script>
    <script src="controllers/news.js?ver=2"></script>
    <script src="controllers/challenge.js?ver=2"></script>
-   <script src="controllers/projectForm.js?ver=2"></script>
+   <script src="controllers/projectForm.js?ver=3"></script>
+   <script src="controllers/projects.js?ver=1"></script>
 
    <script src="routes.js?ver=3"></script>
    <script src="theme.js"></script>

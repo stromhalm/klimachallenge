@@ -52,29 +52,29 @@ header {
    img {
       width: 100%;
    }
+}
 
-   .counter {
-      font-size: 1em;
+.counter {
+   font-size: 1em;
 
-      h2 {
-         color: @dark-font;
-         font-size: 3.5em;
-         margin-bottom: -5px;
+   h2 {
+      color: @dark-font !important;
+      font-size: 3.5em;
+      margin-bottom: -5px;
+   }
+
+   md-progress-circular {
+      transform: scale(2.2) !important;
+      margin-left: 60px;
+
+      .md-gap, .md-half-circle {
+         border-width: 1px !important;
       }
+   }
 
-      md-progress-circular {
-         transform: scale(2.2) !important;
-         margin-left: 45px;
-
-         .md-gap, .md-half-circle {
-            border-width: 1px !important;
-         }
-      }
-
-      legend {
-         margin-left: -115px;
-         width: 130px;
-      }
+   legend {
+      margin-left: -115px;
+      width: 130px;
    }
 }
 
@@ -428,6 +428,10 @@ md-whiteframe {
 
 .md-dialog-container {
    z-index: 800;
+
+   md-dialog {
+      min-width: 50%;
+   }
 }
 
 .contract {
@@ -514,7 +518,6 @@ md-tabs-wrapper md-prev-button md-icon, md-tabs-wrapper md-next-button md-icon {
    }
 
    md-list {
-
       padding: 0;
 
       md-list-item {
@@ -531,6 +534,19 @@ md-tabs-wrapper md-prev-button md-icon, md-tabs-wrapper md-next-button md-icon {
 md-input-container {
    label, .md-placeholder {
       color: rgba(0,0,0,0.6);
+   }
+}
+
+.giant-font {
+   display: block;
+   font-size: 4em;
+   text-align: center;
+   margin: 20px;
+
+   legend {
+      font-size: .25em;
+      margin: 0 auto;
+      margin-top: -3px;
    }
 }
 
