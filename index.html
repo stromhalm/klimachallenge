@@ -110,7 +110,7 @@
    <script src="bower_components/angular-chart.js/dist/angular-chart.min.js"></script>
    <script src="bower_components/firebase/firebase.js"></script>
    <script src="bower_components/angularfire/dist/angularfire.min.js"></script>
-   <script src="bower_components/angular-piwik/angular-piwik.js"></script>
+   <script src="bower_components/angulartics/angulartics-piwik.min.js"></script>
    <script src="libs/angular-count-to/angular-count-to.min.js"></script>
 
    <!-- Carousel -->
@@ -119,7 +119,7 @@
    <script src="bower_components/angular-carousel/dist/angular-carousel.min.js"></script>
 
    <script>
-      var klimaChallenge = angular.module('Klima-Challenge', ['ngMaterial', 'ngMdIcons', 'ui.router', 'countTo', 'chart.js', 'angular-carousel', 'firebase', 'piwik']);
+      var klimaChallenge = angular.module('Klima-Challenge', ['ngMaterial', 'ngMdIcons', 'ui.router', 'countTo', 'chart.js', 'angular-carousel', 'firebase', 'angulartics.piwik']);
    </script>
 
    <!-- Services -->
@@ -132,8 +132,22 @@
    <script src="routes.js?ver=3"></script>
    <script src="theme.js"></script>
 
-   <!-- Piwik Analytics -->
-   <ngp-piwik ngp-set-js-url="http://jumax.net/piwik/piwik.js" ngp-set-tracker-url="http://jumax.net/piwik/piwik.php" ngp-set-site-id="13"> </ngp-piwik>
+   <!-- Piwik -->
+   <script type="text/javascript">
+     var _paq = _paq || [];
+     // _paq.push(['trackPageView']); USE ANGULAR ROUTES
+     _paq.push(['enableLinkTracking']);
+     (function() {
+       var u="//jumax.net/piwik/";
+       _paq.push(['setTrackerUrl', u+'piwik.php']);
+       _paq.push(['setSiteId', 13]);
+       var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+       g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+     })();
+   </script>
+   <noscript><p><img src="//jumax.net/piwik/piwik.php?idsite=13" style="border:0;" alt="" /></p></noscript>
+   <!-- End Piwik Code -->
+
 
 </body>
 </html>
