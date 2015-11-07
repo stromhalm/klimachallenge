@@ -110,6 +110,7 @@
    <script src="bower_components/angular-chart.js/dist/angular-chart.min.js"></script>
    <script src="bower_components/firebase/firebase.js"></script>
    <script src="bower_components/angularfire/dist/angularfire.min.js"></script>
+   <script src="bower_components/angular-piwik/angular-piwik.js"></script>
    <script src="libs/angular-count-to/angular-count-to.min.js"></script>
 
    <!-- Carousel -->
@@ -118,7 +119,7 @@
    <script src="bower_components/angular-carousel/dist/angular-carousel.min.js"></script>
 
    <script>
-      var klimaChallenge = angular.module('Klima-Challenge', ['ngMaterial', 'ngMdIcons', 'ui.router', 'countTo', 'chart.js', 'angular-carousel', 'firebase']);
+      var klimaChallenge = angular.module('Klima-Challenge', ['ngMaterial', 'ngMdIcons', 'ui.router', 'countTo', 'chart.js', 'angular-carousel', 'firebase', 'piwik']);
    </script>
 
    <!-- Services -->
@@ -130,6 +131,9 @@
 
    <script src="routes.js?ver=3"></script>
    <script src="theme.js"></script>
+
+   <!-- Piwik Analytics -->
+   <ngp-piwik ngp-set-js-url="http://jumax.net/piwik/piwik.js" ngp-set-tracker-url="http://jumax.net/piwik/piwik.php" ngp-set-site-id="13"> </ngp-piwik>
 
 </body>
 </html>

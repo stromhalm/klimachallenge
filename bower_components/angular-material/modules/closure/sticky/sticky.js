@@ -2,7 +2,7 @@
  * Angular Material Design
  * https://github.com/angular/material
  * @license MIT
- * v0.10.1-master-8157dec
+ * v1.0.0-rc3-master-1ae16cb
  */
 goog.provide('ng.material.components.sticky');
 goog.require('ng.material.components.content');
@@ -79,7 +79,6 @@ function MdSticky($document, $mdConstant, $$rAF, $mdUtil) {
     contentEl.on('$scroll', onScroll);
 
     var self;
-    var stickyBaseoffset = contentEl.prop('offsetTop');
     return self = {
       prev: null,
       current: null, //the currently stickied item
@@ -95,7 +94,6 @@ function MdSticky($document, $mdConstant, $$rAF, $mdUtil) {
     // Add an element and its sticky clone to this content's sticky collection
     function add(element, stickyClone) {
       stickyClone.addClass('md-sticky-clone');
-      stickyClone.css('top', stickyBaseoffset + 'px');
 
       var item = {
         element: element,
@@ -307,7 +305,7 @@ function MdSticky($document, $mdConstant, $$rAF, $mdUtil) {
     element.on('scroll touchmove', function() {
       if (!isScrolling) {
         isScrolling = true;
-        $$rAF(loopScrollEvent);
+        $$rAF.throttle(loopScrollEvent);
         element.triggerHandler('$scrollstart');
       }
       element.triggerHandler('$scroll');
@@ -320,7 +318,7 @@ function MdSticky($document, $mdConstant, $$rAF, $mdUtil) {
         element.triggerHandler('$scrollend');
       } else {
         element.triggerHandler('$scroll');
-        $$rAF(loopScrollEvent);
+        $$rAF.throttle(loopScrollEvent);
       }
     }
   }
