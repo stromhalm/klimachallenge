@@ -13,7 +13,7 @@
          <h2 class="md-title">Allgemeine Informationen</h2>
          <md-content layout-padding layout-wrap layout="row">
             <md-input-container flex flex-gt-md="50">
-               <label>Ansprechpartner (Vor- und Nachname)</label>
+               <label>Ansprechpartner_in (Vor- und Nachname)</label>
                <input ng-model="formal.name" required>
             </md-input-container>
             <md-input-container flex="100" flex-gt-md="50">
@@ -21,26 +21,26 @@
                <input ng-model="formal.email" type="email" required>
             </md-input-container>
             <md-input-container flex="100" flex-gt-md="50">
-               <label>Jugendverband/Jugendgruppe</label>
+               <label>Jugendgruppe</label>
                <input ng-model="formal.group" required>
             </md-input-container>
             <md-input-container flex="100" flex-gt-md="50">
                <label class="md-no-float">Träger</label>
                <select ng-model="formal.carrier">
-                  <option>Arbeitsgemeinschaft der Ev. Jugend in Nds.</option>
+                  <option>Arbeitsgemeinschaft der Ev. Jugend in Nds.(AEJN)</option>
                   <option>BDKJ-Landesstelle Niedersachsen</option>
                   <option>Bund Deutscher Pfadfinder_innen</option>
                   <option>Jugend im Niedersächsischen Beamtenbund und Tarifunion (NBB-Jugend)</option>
                   <option>Deutsche Schreberjugend</option>
-                  <option>Deutsches Jugendrotkreuz</option>
+                  <option>Deutsches Jugendrotkreuz (JRK)</option>
                   <option>DGB-Gewerkschaftsjugend</option>
                   <option>DJO-Dt. Jugend in Europa</option>
                   <option>DLRG-Jugend</option>
-                  <option>JugendAktion Natur und Umweltschutz</option>
+                  <option>Jugendumweltnetzwerk JANUN</option>
                   <option>Jugendwerk der Arbeiterwohlfahrt</option>
                   <option>Naturfreundejugend Deutschlands</option>
                   <option>Nds. Jugendfeuerwehr</option>
-                  <option>Nds. Landjugend</option>
+                  <option>Nds. Landjugend (NLJ)</option>
                   <option>Ring dt. Pfadfinderinnenverbände</option>
                   <option>Ring dt. Pfadfinderverbände</option>
                   <option>SJD-Die Falken</option>
@@ -79,9 +79,9 @@
             <md-input-container flex="100">
                <label class="md-no-float">Während der Aktion haben die Teilnehmer_innen … </label>
                <select ng-model="potential.f2">
-                  <option value="1">Zugehört und zugesehen</option>
-                  <option value="2">Mit diskutiert</option>
-                  <option value="3">Mit angepackt</option>
+                  <option value="1">...zugehört und zugesehen.</option>
+                  <option value="2">...mit diskutiert.</option>
+                  <option value="3">...selbst mit angepackt oder sind aktiv geworden.</option>
                </select>
             </md-input-container>
             <md-input-container flex="100">
@@ -92,7 +92,7 @@
                </select>
             </md-input-container>
             <md-input-container flex="100">
-               <label class="md-no-float">Wurden den Teilnehmern Ideen gegeben, was sie konkret tun können, um das Klima zu schützen?</label>
+               <label class="md-no-float">Wurden den Teilnehmer_innen Ideen gegeben, was sie konkret tun können, um das Klima zu schützen?</label>
                <select ng-model="potential.f3">
                   <option value="0">Nein</option>
                   <option value="3">Ja</option>
@@ -103,15 +103,15 @@
                <select ng-model="potential.f4">
                   <option value="1">Diese Aktion war einmalig und beinhaltet keine wiederkehrenden Tätigkeiten.</option>
                   <option value="2">Diese Aktion beinhaltet mehre wiederkehrende Tätigkeiten bevor die Aktion als beendet angesehen wird.</option>
-                  <option value="3">Diese Aktion führt zu einer langfristigen Veränderung in unserem Verband / unserer Jugendgruppe.</option>
+                  <option value="3">Diese Aktion führt zu einer langfristigen Veränderung (in unserem Verband/ unserer Jugendgruppe).</option>
                </select>
             </md-input-container>
             <md-input-container flex="100">
                <label class="md-no-float">In welchem Rahmen habt Ihr eure Aktion durchgeführt?</label>
                <select ng-model="potential.f5">
-                  <option value="1">Geschlossene Gruppe</option>
-                  <option value="2">In der Öffentlichkeit</option>
-                  <option value="3">Für alle zugänglich</option>
+                  <option value="1">Feste Gruppe im geschlossenen Rahmen</option>
+                  <option value="2">Geschlossene Gruppe in der Öffentlichkeit</option>
+                  <option value="3">Frei zugängliche Mitmach-Aktion</option>
                </select>
             </md-input-container>
          </md-content>
@@ -203,7 +203,7 @@
       </md-dialog-content>
       <md-dialog-content style="max-height:500px;" ng-if="page==7">
          <h2 class="md-title">Erfolgreich eingereicht</h2>
-         Vielen Dank für das Einreichen eurer Klima-Aktion!<br>
+         Vielen Dank, dass ihr euch für den Klimaschutz engagiert und dazu beitragt, unser gemeinsames Punkteziel zu erreichen! :-)<br>
          Wir prüfen deine Angaben und veröffentlichen die Aktion so schnell es geht auf dieser Seite.
       </md-dialog-content>
    </form>
