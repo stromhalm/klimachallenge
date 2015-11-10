@@ -2,7 +2,7 @@
  * Angular Material Design
  * https://github.com/angular/material
  * @license MIT
- * v1.0.0-rc3-master-1ae16cb
+ * v1.0.0-rc3-master-89d285f
  */
 (function( window, angular, undefined ){
 "use strict";
@@ -12926,10 +12926,12 @@ function SelectDirective($mdSelect, $mdUtil, $mdTheming, $mdAria, $compile, $par
 
       if (attr.name && formCtrl) {
         var selectEl = element.parent()[0].querySelector('select[name=".' + attr.name + '"]');
-        var controller = angular.element(selectEl).controller();
-        if (controller) {
-          formCtrl.$removeControl(controller);
-        }
+        $mdUtil.nextTick(function() {
+          var controller = angular.element(selectEl).controller('ngModel');
+          if (controller) {
+            formCtrl.$removeControl(controller);
+          }
+        });
       }
 
       if (formCtrl) {
@@ -15834,6 +15836,10 @@ MdToastDirective.$inject = ["$mdToast"];
   * @name $mdToast#cancel
   *
   * @description
+  * `DEPRECATED` - The promise returned from opening a toast is used only to notify about the closing of the toast.
+  * As such, there isn't any reason to also allow that promise to be rejected,
+  * since it's not clear what the difference between resolve and reject would be.
+  *
   * Hide the existing toast and reject the promise returned from
   * `$mdToast.show()`.
   *
@@ -20512,7 +20518,7 @@ function MenuController($mdMenu, $attrs, $element, $scope, $mdUtil, $timeout) {
         } else if (nestedMenu && !nestedMenu.isOpen && nestedMenu.open) {
           self.isAlreadyOpening = true;
         }
-        nestedMenu.open();
+        nestedMenu && nestedMenu.open();
       }, nestedMenu ? 100 : 250);
       var focusableTarget = event.currentTarget.querySelector('button:not([disabled])');
       focusableTarget && focusableTarget.focus();
@@ -20746,6 +20752,23 @@ MenuController.$inject = ["$mdMenu", "$attrs", "$element", "$scope", "$mdUtil", 
  * <md-menu md-offset="2 0">
  *   <!-- menu-content -->
  * </md-menu>
+ * </hljs>
+
+ * ### Preventing close
+ *
+ * Sometimes you would like to be able to click on a menu item without having the menu
+ * close. To do this, ngMaterial exposes the `md-prevent-menu-close` attribute which
+ * can be added to a button inside a menu to stop the menu from automatically closing.
+ * You can then close the menu programatically by injecting `$mdMenu` and calling 
+ * `$mdMenu.hide()`.
+ *
+ * <hljs lang="html">
+ * <md-menu-item>
+ *   <md-button ng-click="doSomething()" aria-label="Do something" md-prevent-menu-close="md-prevent-menu-close">
+ *     <md-icon md-menu-align-target md-svg-icon="call:phone"></md-icon>
+ *     Do Something
+ *   </md-button>
+ * </md-menu-item>
  * </hljs>
  *
  * @usage
@@ -21145,8 +21168,8 @@ function MenuProvider($$interimElementProvider) {
           // there is an ng-click and that the ng-click is not disabled
           do {
             if (target == opts.menuContentEl[0]) return;
-            if (hasAnyAttribute(target, ['ng-click', 'ng-href', 'ui-sref']) ||
-                target.nodeName == 'BUTTON' || target.nodeName == 'MD-BUTTON') {
+            if ((hasAnyAttribute(target, ['ng-click', 'ng-href', 'ui-sref']) ||
+                target.nodeName == 'BUTTON' || target.nodeName == 'MD-BUTTON') && !hasAnyAttribute(target, ['md-prevent-menu-close'])) {
               var closestMenu = $mdUtil.getClosest(target, 'MD-MENU');
               if (!target.hasAttribute('disabled') && (!closestMenu || closestMenu == opts.parent[0])) {
                 close();
@@ -23121,4 +23144,4 @@ angular.module("material.core").constant("$MD_THEME_CSS", "md-autocomplete.md-TH
 })();
 
 
-})(window, window.angular);;window.ngMaterial={version:{full: "1.0.0-rc3-master-1ae16cb"}};
+})(window, window.angular);;window.ngMaterial={version:{full: "1.0.0-rc3-master-89d285f"}};
