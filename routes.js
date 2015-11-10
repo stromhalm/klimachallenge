@@ -17,7 +17,8 @@ klimaChallenge.config(function($stateProvider, $urlRouterProvider) {
   })
   .state('participate', {
       url: "/mitmachen",
-      templateUrl: "views/participate.html"
+      templateUrl: "views/participate.html",
+      controller: "challengeCtrl"
   })
   .state('impressum', {
       url: "/impressum",
