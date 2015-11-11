@@ -27,7 +27,6 @@
 html, body, #physics-world {
    height: auto;
    background-color: @background-white;
-   position: relative;
    font-family: 'Roboto', sans-serif;
    color: @dark-font;
 }
@@ -246,6 +245,7 @@ header {
 
 .info-cards {
    padding-bottom: 0;
+   z-index: 100;
 }
 
 md-whiteframe {
@@ -277,6 +277,12 @@ md-whiteframe {
    display: block;
    margin: 8px;
    z-index: 201;
+   text-decoration: none;
+
+   .hidden-link {
+      text-decoration: none;
+      color: @green;
+   }
 }
 
 .leftCard {
@@ -291,7 +297,7 @@ md-whiteframe {
    top: 0;
    left: 0;
    right: 0;
-   bottom: 0;
+   bottom: 56px;
    z-index: 5;
 }
 
