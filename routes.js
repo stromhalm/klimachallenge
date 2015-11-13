@@ -18,7 +18,11 @@ klimaChallenge.config(function($stateProvider, $urlRouterProvider) {
   .state('participate', {
       url: "/mitmachen",
       templateUrl: "views/participate.html",
-      controller: "challengeCtrl"
+      controller: "projectFormCtrl"
+  })
+  .state('actions', {
+      url: "/aktionen",
+      templateUrl: "views/actions.html"
   })
   .state('impressum', {
       url: "/impressum",
@@ -57,10 +61,10 @@ klimaChallenge.config(function($stateProvider, $urlRouterProvider) {
          case '':
             $scope.selectedPage = 0;
             break;
-         case 'mitmachen':
+         case 'aktionen':
             $scope.selectedPage = 1;
             break;
-         case 'statistik':
+         case 'mitmachen':
             $scope.selectedPage = 2;
             break;
          case 'contract':
@@ -79,10 +83,10 @@ klimaChallenge.config(function($stateProvider, $urlRouterProvider) {
             $location.url("/");
             break;
          case 1:
-            $location.url("/mitmachen");
+            $location.url("/aktionen");
             break;
          case 2:
-            $location.url("/statistik");
+            $location.url("/mitmachen");
             break;
          case 3:
             $location.url("/contract");

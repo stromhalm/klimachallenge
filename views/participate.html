@@ -12,268 +12,255 @@
          <br>
       </p>
 
-      <!--
-      <md-whiteframe class="md-whiteframe-z2 card" flex flex-gt-md="40" style="float: right;">
-         <h2>Aktion einreichen</h2>
-         <p>
-            Jugendgruppen in Niedersachsen haben bereits <b><span count-to="0" value="0" duration="2">0</span> Klimapunkte</b> in <b><span count-to="0" value="0" duration="2">0</span> Aktionen</b> erreicht. Gemeinsam schaffen wir <b>30.000</b> Punkte!
-         </p>
-         <div class="md-actions" layout="row" layout-align="end center">
-            <md-button ng-click="showProjectForm($event)"><ng-md-icon style="fill: #02bcd4" icon="add"></ng-md-icon> Aktion einreichen</md-button>
-         </div>
-      </md-whiteframe>
-
-   -->
-
       <p><b>Reicht eure Aktion ein!</b></p>
       <p>Eure Aktionen könnt ihr bereits über uns Formular einreichen. Bald findet ihr alle gelaufenen Aktionen auch hier zum Nachlsesen!</p>
 
    </div>
 </section>
 
-<section layout-gt-md="row" class="participate edu">
-   <div flex flex-gt-md="80" flex-offset-gt-md="10" class="info-cards">
-      <h2>Bildungsangebote</h2>
-      <div class="sub-heading">
-         Unsere Teamenden kommen kostenlos zu euch
-      </div>
-      <div layout-wrap layout="row" layout-sm="column">
-         <div flex flex-gt-sm="50">
-            <md-whiteframe class="md-whiteframe-z2 card action-card">
-               <div class="category-icon">
-                  <ng-md-icon style="fill: #8bc34a" size="90" icon="content_paste"></ng-md-icon>
-               </div>
-               <h2>Interaktive Klima-Workshops</h2>
-               <h3>Dauer variabel, Indoor oder Outdoor</h3>
-               <p>
-                  Ob bei der Juleica-Schulung, der Landesversammlung oder im Zeltlager: Wir bieten euch abwechslungsreiche Workshops zum Thema – zeitlich und vom Niveau her anpassbar auf eure Teilnehmenden.<br>
-                  Zudem bieten wir an, besonders interessierte Jugendliche selbst zu Teamer*innen auszubilden.
-               </p>
-            </md-whiteframe>
-         </div>
-         <div flex flex-gt-sm="50">
-            <md-whiteframe class="md-whiteframe-z2 card action-card">
-               <div class="category-icon">
-                  <ng-md-icon style="fill: #8bc34a" size="90" icon="location_city"></ng-md-icon>
-               </div>
-               <h2>TemperaTour: Die Klima-Stadtführung</h2>
-               <h3>ca. 90 min. Outdoor</h3>
-               <p>
-                  Unterwegs für's Klima: An fünf Stationen in der Stadt oder auch im Ferienlager werden verschiedene Aspekte des Klimawandels und die eigenen Handlungsmöglichkeiten vorgestellt. Bucht eine interaktive Stadtführung mit vielen Mitmach-Stationen oder lasst euch selbst zur/m Stadtführer*in ausbilden und bietet dann selbst Führungen an!
-               </p>
-            </md-whiteframe>
-         </div>
-      </div>
-   </div>
-</section>
-<section layout-gt-md="row" class="participate edu">
-   <div flex flex-gt-md="80" flex-offset-gt-md="10" class="info-cards">
-      <div class="sub-heading">
-         Leihmaterial, um Aktionen selbst durchzuführen
-      </div>
-      <div layout-wrap layout="row" layout-sm="column">
-         <div flex flex-gt-sm="50">
-            <md-whiteframe class="md-whiteframe-z2 card action-card">
-               <div class="category-icon">
-                  <ng-md-icon style="fill: #8bc34a" size="90" icon="satellite"></ng-md-icon>
-               </div>
-               <h2>GPS-Bildungsroute mit Klima-Quiz</h2>
-               <p>
-                  Geocaching einmal anders: Wir schicken euch die fertigen Stationen zu, ihr legt nur noch die Route an – ca. 3 Stunden Spaß in der Natur mit Klimarätseln bei den einzelnen Stationen sind garantiert. GPS-Geräte können bei uns geliehen werden. Außerdem legen wir auch gerne feste Routen bei euren Tagungshäusern an.
-               </p>
-            </md-whiteframe>
-         </div>
-         <div flex flex-gt-sm="50">
-            <md-whiteframe class="md-whiteframe-z2 card action-card">
-               <div class="category-icon">
-                  <ng-md-icon style="fill: #8bc34a" size="90" icon="wb_sunny"></ng-md-icon>
-               </div>
-               <h2>Solar- und Windpumpe</h2>
-               <p>
-                  Ob Muskelkraft Sonne und Wind schafft? Veranstaltet ein Wettpumpen gegen Sonnen- und Windenergie! Ein Mensch pumpt per Hand gegen eine Pumpe an, die per Solarmodul und/oder Windrad betrieben wird. Am Wasserstand lässt sich ablesen, wer stärker ist. So wird erneuerbare Energie erlebbar!<br>
-                  Die Pumpe wurde von der Jugendfeuerwehr Niedersachsen für uns entwickelt, kann bei uns ausgeliehen werden und wird von einer kleinen Ausstellung begleitet.
-               </p>
-            </md-whiteframe>
-         </div>
-      </div>
-   </div>
-</section>
-
-<section layout-gt-md="row" class="participate infos">
-   <div flex flex-gt-md="80" flex-offset-gt-md="10" class="info-cards">
-      <div layout-wrap layout="row" layout-sm="column">
-         <div flex flex-gt-sm="50">
-            <h2>Infos und Tipps</h2>
-            <div class="sub-heading">
-               Das <b>Praxisbuch K</b> ist eine kostenlose Veröffentlichung des Niedersächsischen Landesjugendrings.
+<section layout-gt-md="row" class="project-form space-box">
+   <div flex flex-gt-md="90" flex-offset-gt-md="5" class="info-cards" layout-align="end end">
+      <h2>Projekt einreichen</h2>
+      <md-whiteframe class="md-whiteframe-z2 card action-card">
+         <form ng-submit="nextPage()">
+            <div class="form-page" ng-if="page==1">
+               <h2 class="md-title">Allgemeine Informationen</h2>
+               <md-content layout-padding layout-wrap layout="row">
+                  <md-input-container flex flex-gt-md="50">
+                     <label>Ansprechpartner_in (Vor- und Nachname)</label>
+                     <input ng-model="formal.name" required>
+                  </md-input-container>
+                  <md-input-container flex="100" flex-gt-md="50">
+                     <label>E-Mail</label>
+                     <input ng-model="formal.email" type="email" required>
+                  </md-input-container>
+                  <md-input-container flex="100" flex-gt-md="50">
+                     <label>Jugendgruppe</label>
+                     <input ng-model="formal.group" required>
+                  </md-input-container>
+                  <md-input-container flex="100" flex-gt-md="50">
+                     <label>Name eurer Aktion</label>
+                     <input ng-model="formal.actionName" required>
+                  </md-input-container>
+                  <md-datepicker ng-model="formal.date" md-placeholder="Datum der Aktion" flex="100" flex-gt-md="50">
+                  </md-datepicker>
+                  <md-input-container flex="100" flex-gt-md="50">
+                     <label class="md-no-float">Träger</label>
+                     <select ng-model="formal.carrier">
+                        <option>Arbeitsgemeinschaft der Ev. Jugend in Nds.(AEJN)</option>
+                        <option>BDKJ-Landesstelle Niedersachsen</option>
+                        <option>Bund Deutscher Pfadfinder_innen</option>
+                        <option>Jugend im Niedersächsischen Beamtenbund und Tarifunion (NBB-Jugend)</option>
+                        <option>Deutsche Schreberjugend</option>
+                        <option>Deutsches Jugendrotkreuz (JRK)</option>
+                        <option>DGB-Gewerkschaftsjugend</option>
+                        <option>DJO-Dt. Jugend in Europa</option>
+                        <option>DLRG-Jugend</option>
+                        <option>Jugendumweltnetzwerk JANUN</option>
+                        <option>Jugendwerk der Arbeiterwohlfahrt</option>
+                        <option>Naturfreundejugend Deutschlands</option>
+                        <option>Nds. Jugendfeuerwehr</option>
+                        <option>Nds. Landjugend (NLJ)</option>
+                        <option>Ring dt. Pfadfinderinnenverbände</option>
+                        <option>Ring dt. Pfadfinderverbände</option>
+                        <option>SJD-Die Falken</option>
+                        <option>Sportjugend Niedersachsen</option>
+                        <option>THW-Jugend e.V.</option>
+                        <option>Arbeitskreis Nds. Jugendgemeinschaften (ANJ)</option>
+                        <option>Junge Presse Nds (Geschäftsstelle ANJ)</option>
+                        <option>Arbeiter-Samariter-Jugend (ASJ)</option>
+                        <option>Bund der Alevitischen Jugendlichen in Deutschland e.V.</option>
+                        <option>Deutsche Wanderjugend</option>
+                        <option>DITIB LJV Niedersachsen und Bremen</option>
+                        <option>Jugendnetzwerk LAMBDA</option>
+                        <option>Nds. Alpenvereinsjugend</option>
+                        <option>Sonstige / kein Träger</option>
+                     </select>
+                  </md-input-container>
+                  <md-input-container flex="100" flex-gt-md="50">
+                     <label>Wo hat die Aktion stattgefunden (Ort/Stadt)?</label>
+                     <input ng-model="formal.location" required>
+                  </md-input-container>
+                  <md-input-container flex="100" flex-gt-md="50">
+                     <label class="md-no-float">Welche Aktion habt ihr durchgeführt?</label>
+                     <select ng-model="formal.event">
+                        <option ng-repeat="(key, event) in events" ng-value="key">{{event.name}}</option>
+                     </select>
+                  </md-input-container>
+                  <md-input-container class="md-block" flex>
+                     <label>Kurzbeschreibung der Aktion (ca. 2-5 Sätze)</label>
+                     <textarea ng-model="formal.description" colums="5"></textarea>
+                  </md-input-container>
+               </md-content>
             </div>
-         </div>
-         <div flex flex-gt-sm="50">
-            <md-whiteframe class="md-whiteframe-z2 card action-card">
-               <div class="category-icon">
-                  <ng-md-icon style="fill: #8bc34a" size="90" icon="assignment_turned_in"></ng-md-icon>
-               </div>
-               <h2>Praxisbuch K</h2>
-               <h3>Für eine klimafreundliche Jugendarbeit</h3>
-               <p>Hier findet ihr theoretisches Wissen, Tipps und anschauliche Praxisbeispiele etwa zu folgenden Fragen: Wie können wir eine Veranstaltung nach ökologischen Gesichtspunkten gestalten? Wie können wir Gruppenstunden klimafreundlicher machen? Welche verbandspolitischen Möglichkeiten gibt es?<br><p>
-               <div class="md-actions" layout="row" layout-align="end center">
-                  <md-button target="_blank" ng-href="http://www.ljr.de/fileadmin/productdownloads/PraxisbuchK_web_01.pdf"><ng-md-icon style="fill: #455a64" size="24" icon="file_download"></ng-md-icon> Download</md-button>
-               </div>
-            </md-whiteframe>
-         </div>
-      </div>
-   </div>
-</section>
+            <div class="form-page" ng-if="page==2">
+               <h2 class="md-title">Einsparpotential</h2>
+               <md-content layout-padding layout-wrap layout="row">
+                  <md-input-container flex="100">
+                     <label>Wie viele Menschen haben direkt an der Aktion teilgenommen (inklusive Organisatoren)?</label>
+                     <input ng-model="potential.f1" type="number" min="1" required>
+                  </md-input-container>
+                  <md-input-container flex="100">
+                     <label class="md-no-float">Während der Aktion haben die Teilnehmer_innen … </label>
+                     <select ng-model="potential.f2">
+                        <option value="1">...zugehört und zugesehen.</option>
+                        <option value="2">...mit diskutiert.</option>
+                        <option value="3">...selbst mit angepackt oder sind aktiv geworden.</option>
+                     </select>
+                  </md-input-container>
+                  <md-input-container flex="100">
+                     <label class="md-no-float">Haben sich die Teilnehmer_innen damit beschäftigt, wie sich ihr persönliches Verhalten auf das Klima auswirkt?</label>
+                     <select ng-model="potential.z1">
+                        <option value="0">Nein</option>
+                        <option value="3">Ja</option>
+                     </select>
+                  </md-input-container>
+                  <md-input-container flex="100">
+                     <label class="md-no-float">Wurden den Teilnehmer_innen Ideen gegeben, was sie konkret tun können, um das Klima zu schützen?</label>
+                     <select ng-model="potential.f3">
+                        <option value="0">Nein</option>
+                        <option value="3">Ja</option>
+                     </select>
+                  </md-input-container>
+                  <md-input-container flex="100">
+                     <label class="md-no-float">Bewirkt diese Aktion eine langfristige Veränderung?</label>
+                     <select ng-model="potential.f4">
+                        <option value="1">Diese Aktion war einmalig und beinhaltet keine wiederkehrenden Tätigkeiten.</option>
+                        <option value="2">Diese Aktion beinhaltet mehre wiederkehrende Tätigkeiten bevor die Aktion als beendet angesehen wird.</option>
+                        <option value="3">Diese Aktion führt zu einer langfristigen Veränderung (in unserem Verband/ unserer Jugendgruppe).</option>
+                     </select>
+                  </md-input-container>
+                  <md-input-container flex="100">
+                     <label class="md-no-float">In welchem Rahmen habt Ihr eure Aktion durchgeführt?</label>
+                     <select ng-model="potential.f5">
+                        <option value="1">Feste Gruppe im geschlossenen Rahmen</option>
+                        <option value="2">Geschlossene Gruppe in der Öffentlichkeit</option>
+                        <option value="3">Frei zugängliche Mitmach-Aktion</option>
+                     </select>
+                  </md-input-container>
+               </md-content>
+            </div>
+            <div class="form-page" ng-if="page==3">
+               <h2 class="md-title">Über die Aktion konnte man (vorher oder hinterher) etwas in den folgenden Medien erfahren:</h2>
+               <md-content layout-padding layout-wrap layout="row">
+                  <md-input-container flex="100" flex-gt-md="50">
+                     <md-checkbox ng-model="media.email">E-Mail</md-checkbox>
+                     <md-checkbox ng-model="media.facebook">Facebook</md-checkbox>
+                     <md-checkbox ng-model="media.twitter">Twitter</md-checkbox>
+                  </md-input-container>
+                  <md-input-container flex="100" flex-gt-md="50">
+                     <md-checkbox ng-model="media.instagram">Instagram</md-checkbox>
+                     <md-checkbox ng-model="media.clubmedia">Vereinsmedien</md-checkbox>
+                     <md-checkbox ng-model="media.flyer">Flyer</md-checkbox>
+                  </md-input-container>
+                  <md-input-container flex="100" flex-gt-md="50">
+                     <md-checkbox ng-model="media.poster">Poster</md-checkbox>
+                     <md-checkbox ng-model="media.website">Webseite</md-checkbox>
+                     <md-checkbox ng-model="media.radio">Radio</md-checkbox>
+                  </md-input-container>
+                  <md-input-container flex="100" flex-gt-md="50">
+                     <md-checkbox ng-model="media.tv">Fernsehen</md-checkbox>
+                     <md-checkbox ng-model="media.newspaper">Zeitung</md-checkbox>
+                     <md-checkbox ng-model="media.other">Sonstiges</md-checkbox>
+                  </md-input-container>
+               </md-content>
+            </div>
+            <div class="form-page" ng-if="page==4">
+               <h2 class="md-title">Aufwand</h2>
+               <md-content layout-padding layout-wrap layout="row">
+                  <md-input-container flex="100">
+                     <label class="md-no-float">Wieviel Zeit habt Ihr für Planung, Durchführung und Nachbereitung gebraucht? (z.B. 5 Personen à 5 Stunden = 25)</label>
+                     <select ng-model="effort.f7">
+                        <option value="0.5">&lt;10 Stunden</option>
+                        <option value="1">10-50 Stunden</option>
+                        <option value="2">50-100 Stunden</option>
+                        <option value="3">&gt;100 Stunden</option>
+                     </select>
+                  </md-input-container>
+                  <md-input-container flex="100">
+                     <label class="md-no-float">Habt ihr die Aktion gemeinsam mit Menschen organisiert, die nicht in eurem Verein oder Verband sind?</label>
+                     <select ng-model="effort.f8">
+                        <option value="0">Nein, wir haben die Aktion nur aus unserem Verein heraus organisiert.</option>
+                        <option value="3">Wir haben uns mit Menschen aus einem anderen Verband/Verein zusammengetan um die Aktion zu organisieren.</option>
+                        <option value="3">Wir haben mit Menschen zusammengearbeitet, die nicht in einem Verein, einer Initiative o.ä. organisiert sind.</option>
+                        <option value="3">Wir konnten lokale Geschäfte, Schulen (…) davon überzeugen, mit uns gemeinsam diese Aktion durchzuführen.</option>
+                     </select>
+                  </md-input-container>
+                  <md-input-container flex="100">
+                     <label class="md-no-float">Habt ihr etwas entwickelt (z.B. Infos, Methoden, Objekte, etc.)?</label>
+                     <select ng-model="effort.f9">
+                        <option value="0">Nein, wir haben nichts entwickelt.</option>
+                        <option value="2">Ja, wir haben etwas entwickelt, was für den internen Gebrauch verwendet werden kann.</option>
+                        <option value="3">Ja, wir haben etwas entwickelt, was auch von anderen weiter verwendet werden kann.</option>
+                     </select>
+                  </md-input-container>
+               </md-content>
+            </div>
+            <div class="form-page" ng-if="page==5">
+               <h2 class="md-title">Aufwand</h2>
+               <md-content layout-padding layout-wrap layout="row">
+                  <md-input-container flex="100" ng-if="events[formal.event].question">
+                     <label class="md-no-float">{{events[formal.event].question}}</label>
+                     <input ng-model="custom.f10" type="number" required>
+                  </md-input-container>
+                  <md-input-container flex="100">
+                     <label class="md-no-float">Hat sich Euer Verband schonmal für den Klimaschutz engagiert?</label>
+                     <select ng-model="custom.repeat">
+                        <option value="1">Ja, mein Verband hat sich schon einmal für Klimaschutz eingesetzt.</option>
+                        <option value="2">Nein, der Verband hat sich bis jetzt nicht für Klimaschutz engagiert.</option>
+                        <option value="3">Ich bin mir nicht sicher.</option>
+                     </select>
+                  </md-input-container>
+                  <md-input-container flex="100">
+                     <label class="md-no-float">Bitte lade noch ein Bild von eurer Aktion hoch!</label>
+                     <select ng-model="formal.imageUpload">
+                        <option value="upload">Bild jetzt hochladen</option>
+                        <option value="later">Bild nachreichen</option>
+                     </select>
+                  </md-input-container>
+                  <input ng-if="formal.imageUpload == 'upload'" type='file' ng-model='formal.image' base-sixty-four-input accept="image/*">
+                  <div ng-if="formal.imageUpload == 'later'">
+                     Bitte sende sobald es geht eine E-Mail mit einem Bild von eurer Aktion an <a href="mailto:a.besold@janun.de">a.besold@janun.de</a>!
+                  </div>
+               </md-content>
+            </div>
+            <div class="form-page" ng-if="page==6">
+               <h2 class="md-title">Auswertung</h2>
+               <md-content layout-padding layout-wrap layout="row">
+                  <div flex>
+                     Eure Aktion bewerten wir voraussichtlich mit:
 
-<section layout-gt-md="row" class="participate edu">
-   <div flex flex-gt-md="80" flex-offset-gt-md="10" class="info-cards">
-      <h2>Weitere Aktionen</h2>
-      <div class="sub-heading">
-         Anregungen und Ideen für Aktionen in Gruppen
-      </div>
-      <div layout-wrap layout="row" layout-sm="column">
-         <div flex flex-gt-sm="50">
-            <md-whiteframe class="md-whiteframe-z2 card action-card">
-               <div class="category-icon">
-                  <ng-md-icon style="fill: #8bc34a" size="90" icon="file_upload"></ng-md-icon>
-               </div>
-               <h2>Upcycling</h2>
-               <h3>Ressourcen schonen</h3>
-               <p>
-                  Beim Upcycling wird Abfall für die Herstellung neuer Produkte verwendet. Im Gegensatz zu Recycling ist weniger Energie nötig, um Neues zu schaffen. Dabei entstehen unglaublich viele schöne Produkte, z.B. Möbel aus alten Palletten, Taschen aus Fahrradschläuchen, Schmuck aus Besteck, fescher Weihnachtsschmuck aus Teelichthüllen, ...
-               </p>
-            </md-whiteframe>
+                     <div class="giant-font">
+                        {{getClimatePoints()}}
+                        <legend>Klima-Punkte</legend>
+                     </div>
+
+                     Das entspricht etwa {{getCo2()}} kg eingesparten CO<sub>2</sub>.
+                  </div>
+            </div>
+            <div class="form-page" ng-if="page==7">
+               <h2 class="md-title">Erfolgreich eingereicht</h2>
+               <md-content layout-padding layout-wrap layout="row">
+                  <div flex>
+                     Vielen Dank, dass ihr euch für den Klimaschutz engagiert und dazu beitragt, unser gemeinsames Punkteziel zu erreichen! :-)<br>
+                     Wir prüfen deine Angaben und veröffentlichen die Aktion so schnell es geht auf dieser Seite.
+                  </div>
+               </md-content>
+            </div>
+         </form>
+         <div class="md-actions" layout="row">
+            <span flex></span>
+            <md-button ng-disabled="page==1" ng-click="previousPage()" ng-if="page<6">
+               <ng-md-icon style="fill: #222e34" icon="chevron_left"></ng-md-icon> Zurück
+            </md-button>
+            <md-button ng-disabled="!isValid(page)" style="margin-right:20px;" md-autofocus ng-click="nextPage()" ng-if="page<6">
+               Weiter <ng-md-icon style="fill: #222e34" icon="chevron_right"></ng-md-icon>
+            </md-button>
+            <md-button ng-if="page==6 && !submitting" class="md-raised" style="margin-right:20px;" ng-click="submitForm()">
+               Aktion einreichen
+            </md-button>
+            <md-progress-circular ng-if="submitting" md-mode="indeterminate"></md-progress-circular>
          </div>
-         <div flex flex-gt-sm="50">
-            <md-whiteframe class="md-whiteframe-z2 card action-card">
-               <div class="category-icon">
-                  <ng-md-icon style="fill: #8bc34a" size="90" icon="settings"></ng-md-icon>
-               </div>
-               <h2>Repair-Café</h2>
-               <p>
-                  „Repair Cafès“ sind Treffen, bei denen Freiwillige anderen Menschen helfen, ihre defekten Besitztümer zu reparieren und sie so vor der Mülltonne zu retten. So können kaputte Elektrogeräten, Möbel, Kleider und Fahrräder wieder zum Leben erweckt werden. Anleitungen zum Reparieren bietet z.B. die App „ifixit“ - oder ihr sucht euch einfach Leute aus eurer Gruppe, die technisch oder Bastel-begabt sind!
-               </p>
-            </md-whiteframe>
-         </div>
-         <div flex flex-gt-sm="50">
-            <md-whiteframe class="md-whiteframe-z2 card action-card">
-               <div class="category-icon">
-                  <ng-md-icon style="fill: #8bc34a" size="90" icon="whatshot"></ng-md-icon>
-               </div>
-               <h2>Grillparty mal anders!</h2>
-               <p>
-                  Wie schmeckt eigentlich... vegetarisch/vegan grillen? Probiert's aus und schützt damit das Klima, denn vegane Ernährung verursacht nur ca. ein Fünftel der Emissionen einer durchschnittlichen Ernährung...
-               </p>
-            </md-whiteframe>
-         </div>
-         <div flex flex-gt-sm="50">
-            <md-whiteframe class="md-whiteframe-z2 card action-card">
-               <div class="category-icon">
-                  <ng-md-icon style="fill: #8bc34a" size="90" icon="phone_android"></ng-md-icon>
-               </div>
-               <h2>Handy-Sammel-Aktion</h2>
-               <h3>Aktion bis 15.12.</h3>
-               <p>
-                  Rettet wertvolle Rohstoffe und bessert gleichzeitig die Vereinskasse auf.
-               </p>
-               <div class="md-actions" layout="row" layout-align="end center">
-                  <md-button target="_blank" ng-href="https://www.altes-handy-neuer-sinn.de/sammelaktionen/sammelaktion-fuer-vereine">Mehr Infos</md-button>
-               </div>
-            </md-whiteframe>
-         </div>
-         <div flex flex-gt-sm="50">
-            <md-whiteframe class="md-whiteframe-z2 card action-card">
-               <div class="category-icon">
-                  <ng-md-icon style="fill: #8bc34a" size="90" icon="nature"></ng-md-icon>
-               </div>
-               <h2>Baumpflanz-Aktion</h2>
-               <p>
-                  Ihr könnt z.B. Bäume pflanzen, deren Früchte essbar sind. So profitiert nicht nur das Klima, sondern auch ihr!
-               </p>
-            </md-whiteframe>
-         </div>
-         <div flex flex-gt-sm="50">
-            <md-whiteframe class="md-whiteframe-z2 card action-card">
-               <div class="category-icon">
-                  <ng-md-icon style="fill: #8bc34a" size="90" icon="content_cut"></ng-md-icon>
-               </div>
-               <h2>Kleidertauschparty</h2>
-            </md-whiteframe>
-         </div>
-      </div>
-   </div>
-</section>
-<section layout-gt-md="row" class="participate edu">
-   <div flex flex-gt-md="80" flex-offset-gt-md="10" class="info-cards">
-         <h2>... für Einzelpersonen</h2>
-      <div layout-wrap layout="row" layout-sm="column">
-         <div flex flex-gt-sm="50">
-            <md-whiteframe class="md-whiteframe-z2 card action-card">
-               <div class="category-icon">
-                  <ng-md-icon style="fill: #8bc34a" size="90" icon="restaurant_menu"></ng-md-icon>
-               </div>
-               <h2>Alltagsexperiente</h2>
-               <h3>Zum Beispiel zur Fastenzeit</h3>
-               <p>
-                  Wie wäre es mit Shopping-Fasten (Keine neue Kleidung für eine bestimmte Zeit) oder Plastikfasten (eine zeit lang keine Produkte mit Plastik kaufen). Du könntest dich auch als „Versuchs-Veganer“ eine Weile vegan ernähren oder dir eine andere Challenge fürs Klima ausdenken.
-               </p>
-            </md-whiteframe>
-         </div>
-         <div flex flex-gt-sm="50">
-            <md-whiteframe class="md-whiteframe-z2 card action-card">
-               <div class="category-icon">
-                  <ng-md-icon style="fill: #8bc34a" size="90" icon="directions_bus"></ng-md-icon>
-               </div>
-               <h2>Umweltfreundlich mobil</h2>
-               <p>
-                  Du fährst öfter mit dem Auto, Bus o.ä. zu Schule oder Uni? Dann wäre es eine Klima-Challenge, wo möglich zeitweise oder sogar dauerhaft aufs Fahrrad umzusteigen. Das bringt nicht nur Punkte sondern auch Muskeln ;)
-               </p>
-            </md-whiteframe>
-         </div>
-      </div>
-   </div>
-</section>
-<section layout-gt-md="row" class="participate edu">
-   <div flex flex-gt-md="80" flex-offset-gt-md="10" class="info-cards">
-      <h2>... für Verbände</h2>
-      <div layout-wrap layout="row" layout-sm="column">
-         <div flex flex-gt-sm="50">
-            <md-whiteframe class="md-whiteframe-z2 card action-card">
-               <div class="category-icon">
-                  <ng-md-icon style="fill: #8bc34a" size="90" icon="wb_sunny"></ng-md-icon>
-               </div>
-               <h2>Stromanbieterwechsel</h2>
-               <h3>zu einem Öko-Strom-Anbieter</h3>
-               <p>
-                  z.B. Naturstrom, Elektrizitätswerke Schönau oder Greenpeace Energy
-               </p>
-            </md-whiteframe>
-         </div>
-         <div flex flex-gt-sm="50">
-            <md-whiteframe class="md-whiteframe-z2 card action-card">
-               <div class="category-icon">
-                  <ng-md-icon style="fill: #8bc34a" size="90" icon="directions_bike"></ng-md-icon>
-               </div>
-               <h2>Ein umweltfreundliches Gefährt anschaffen</h2>
-               <h3>Erdgas-Bus, E-Bike, ...</h3>
-            </md-whiteframe>
-         </div>
-         <div flex flex-gt-sm="50">
-            <md-whiteframe class="md-whiteframe-z2 card action-card">
-               <div class="category-icon">
-                  <ng-md-icon style="fill: #8bc34a" size="90" icon="wb_incandescent"></ng-md-icon>
-               </div>
-               <h2>Umstieg auf Energiesparlampen und/oder Recyclingpapier</h2>
-            </md-whiteframe>
-         </div>
-         <div flex flex-gt-sm="50">
-            <md-whiteframe class="md-whiteframe-z2 card action-card">
-               <div class="category-icon">
-                  <ng-md-icon style="fill: #8bc34a" size="90" icon="home"></ng-md-icon>
-               </div>
-               <h2>Solaranlage für's Vereinsheim anschaffen</h2>
-            </md-whiteframe>
-         </div>
-      </div>
+      </md-whiteframe>
    </div>
 </section>

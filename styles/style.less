@@ -432,19 +432,35 @@ md-whiteframe {
    background-color: @background-grey;
 }
 
-.md-dialog-container {
-   z-index: 800;
+.project-form {
+   background-color: @green;
+   padding-bottom: 85px;
 
-   md-dialog {
-      min-width: 50%;
+   .form-page {
 
-      md-dialog-content {
-         padding: 16px 16px 0 16px;
+      margin-top: 24px;
 
-         select {
-            width: 100%;
-         }
+      h2 {
+         text-align: left;
+         background-color: white;
+         margin-bottom: 0;
+         color: @green;
+         padding-left: 24px;
+         padding-top: 16px;
+         font-size: 2em;
       }
+   }
+
+   md-content {
+      padding: 16px;
+   }
+
+   select {
+      width: 100%;
+   }
+
+   .md-actions {
+      background-color: white;
    }
 }
 
@@ -549,6 +565,10 @@ md-input-container {
    label, .md-placeholder {
       color: rgba(0,0,0,0.6);
    }
+}
+
+.md-pane-open {
+   z-index: 200;
 }
 
 .giant-font {

@@ -25,12 +25,12 @@
          </md-tab>
          <md-tab>
             <md-tab-label>
-               <ng-md-icon style="fill: white" icon="star"></ng-md-icon> <span hide show-gt-sm>Mitmachen</span>
+               <ng-md-icon style="fill: white" icon="dashboard"></ng-md-icon> <span hide show-gt-sm>Aktionen</span>
            </md-tab-label>
          </md-tab>
          <md-tab>
             <md-tab-label>
-               <ng-md-icon style="fill: white" icon="equalizer"></ng-md-icon> <span hide show-gt-sm>Ziele</span>
+               <ng-md-icon style="fill: white" icon="flag"></ng-md-icon> <span hide show-gt-sm>Mitmachen</span>
            </md-tab-label>
          </md-tab>
          <md-tab>
@@ -112,6 +112,7 @@
    <script src="bower_components/angularfire/dist/angularfire.min.js"></script>
    <script src="bower_components/angulartics/dist/angulartics.min.js"></script>
    <script src="bower_components/angulartics/dist/angulartics-piwik.min.js"></script>
+   <script src="bower_components/angular-base64-upload/dist/angular-base64-upload.min.js"></script>
    <script src="libs/angular-count-to/angular-count-to.min.js"></script>
 
    <!-- Carousel -->
@@ -120,7 +121,7 @@
    <script src="bower_components/angular-carousel/dist/angular-carousel.min.js"></script>
 
    <script>
-      var klimaChallenge = angular.module('Klima-Challenge', ['ngMaterial', 'ngMdIcons', 'ui.router', 'countTo', 'chart.js', 'angular-carousel', 'firebase', 'angulartics', 'angulartics.piwik']);
+      var klimaChallenge = angular.module('Klima-Challenge', ['ngMaterial', 'ngMdIcons', 'ui.router', 'countTo', 'chart.js', 'angular-carousel', 'firebase', 'angulartics', 'angulartics.piwik', 'naif.base64']);
    </script>
 
    <!-- Services -->

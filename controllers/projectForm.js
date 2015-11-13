@@ -19,8 +19,11 @@ klimaChallenge.controller('projectFormCtrl', function($scope, $mdDialog, $timeou
                $scope.formal.name &&
                $scope.formal.email &&
                $scope.formal.group &&
+               $scope.formal.actionName &&
+               $scope.formal.date &&
                $scope.formal.carrier &&
                $scope.formal.location &&
+               $scope.formal.description &&
                $scope.formal.event)
                   return true;
             break;
@@ -52,7 +55,14 @@ klimaChallenge.controller('projectFormCtrl', function($scope, $mdDialog, $timeou
                   !$scope.events[$scope.formal.event].question ||
                   $scope.custom.f10
                ) &&
-               $scope.custom.repeat
+               $scope.custom.repeat &&
+               (
+                  $scope.formal.imageUpload == "later" ||
+                  (
+                     $scope.formal.imageUpload == "upload" &&
+                     $scope.formal.image
+                  )
+               )
             )
                return true;
             break;
