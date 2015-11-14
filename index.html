@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de" ng-app="Klima-Challenge" ng-controller="PhysicsCtrl">
+<html lang="de" ng-app="Klima-Challenge">
 <head>
    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
@@ -13,9 +13,6 @@
 <body ng-controller="PageCtrl">
 
    <div id="physics-world">
-
-      <div id="physics-spring">
-      </div>
 
       <md-tabs md-center-tabs="false" class="nav md-accent md-whiteframe-z3" md-selected="selectedPage">
          <md-tab>
@@ -125,7 +122,6 @@
    </script>
 
    <!-- Services -->
-   <script src="controllers/physics.js?ver=2"></script>
    <script src="controllers/news.js?ver=2"></script>
    <script src="controllers/challenge.js?ver=2"></script>
    <script src="controllers/projectForm.js?ver=3"></script>

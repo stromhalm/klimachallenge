@@ -30,7 +30,6 @@ klimaChallenge.controller('projectFormCtrl', function($scope, $mdDialog, $timeou
          case 2:
             if (
                $scope.potential.f1 &&
-               $scope.potential.f2 &&
                $scope.potential.z1 &&
                $scope.potential.f3 &&
                $scope.potential.f4 &&
@@ -132,7 +131,7 @@ klimaChallenge.controller('projectFormCtrl', function($scope, $mdDialog, $timeou
          if (type == 1) {
             climatePoints = parseFloat($scope.potential.f1) *
                (
-                  parseFloat($scope.potential.f2) +
+                  parseFloat($scope.countEngagementPoints()) +
                   parseFloat($scope.potential.f3) +
                   parseFloat($scope.potential.f4) +
                   parseFloat($scope.potential.f5) +
@@ -149,7 +148,7 @@ klimaChallenge.controller('projectFormCtrl', function($scope, $mdDialog, $timeou
                   parseFloat($scope.potential.f1) *
                   (
                      (
-                        parseFloat($scope.potential.f2) +
+                        parseFloat($scope.countEngagementPoints()) +
                         parseFloat($scope.potential.f3) +
                         parseFloat($scope.potential.f4) +
                         parseFloat($scope.potential.f5) +
@@ -180,7 +179,7 @@ klimaChallenge.controller('projectFormCtrl', function($scope, $mdDialog, $timeou
                   parseFloat($scope.potential.f1) *
                   (
                      (
-                        parseFloat($scope.potential.f2) +
+                        parseFloat($scope.countEngagementPoints()) +
                         parseFloat($scope.potential.f3) +
                         parseFloat($scope.potential.f4) +
                         parseFloat($scope.potential.f5) +
@@ -211,7 +210,7 @@ klimaChallenge.controller('projectFormCtrl', function($scope, $mdDialog, $timeou
                   parseFloat($scope.potential.f1) *
                   (
                      (
-                        parseFloat($scope.potential.f2) +
+                        parseFloat($scope.countEngagementPoints()) +
                         parseFloat($scope.potential.f3) +
                         parseFloat($scope.potential.f4) +
                         parseFloat($scope.potential.f5) +
@@ -264,6 +263,16 @@ klimaChallenge.controller('projectFormCtrl', function($scope, $mdDialog, $timeou
       if ($scope.media.newspaper && mediaPoints < 3) mediaPoints = 3;
       if ($scope.media.other && mediaPoints < 1) mediaPoints = 1;
       return mediaPoints;
+   }
+
+   $scope.countEngagementPoints = function() {
+
+      // Get the highest checked checkbox value
+      var engagementPoints = 0;
+      if ($scope.potential.f21) engagementPoints = 1;
+      if ($scope.potential.f22) engagementPoints = 2;
+      if ($scope.potential.f23) engagementPoints = 3;
+      return engagementPoints;
    }
 
    // All events with type (A1-4), custom question and CO2 / unit

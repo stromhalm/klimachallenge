@@ -101,12 +101,14 @@
                      <input ng-model="potential.f1" type="number" min="1" required>
                   </md-input-container>
                   <md-input-container flex="100">
-                     <label class="md-no-float">Während der Aktion haben die Teilnehmer_innen … </label>
-                     <select ng-model="potential.f2">
-                        <option value="1">...zugehört und zugesehen.</option>
-                        <option value="2">...mit diskutiert.</option>
-                        <option value="3">...selbst mit angepackt oder sind aktiv geworden.</option>
-                     </select>
+                     Während der Aktion haben die Teilnehmer_innen …
+                     <md-content layout-padding layout-wrap layout="row">
+                        <md-input-container flex>
+                           <md-checkbox ng-model="potential.f21">… zugehört und zugesehen.</md-checkbox>
+                           <md-checkbox ng-model="potential.f22">… mit diskutiert.</md-checkbox>
+                           <md-checkbox ng-model="potential.f23">… selbst mit angepackt oder sind aktiv geworden.</md-checkbox>
+                        </md-input-container>
+                     </md-content>
                   </md-input-container>
                   <md-input-container flex="100">
                      <label class="md-no-float">Haben sich die Teilnehmer_innen damit beschäftigt, wie sich ihr persönliches Verhalten auf das Klima auswirkt?</label>
