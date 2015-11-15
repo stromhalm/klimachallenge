@@ -1,4 +1,4 @@
-klimaChallenge.controller('projectFormCtrl', function($scope, $mdDialog, $timeout, projects) {
+klimaChallenge.controller('projectFormCtrl', function($scope, $mdDialog, $timeout, projects, $q) {
 
    // Start at page 1
    $scope.page = 1;
@@ -47,11 +47,14 @@ klimaChallenge.controller('projectFormCtrl', function($scope, $mdDialog, $timeou
                   return true;
             break;
          case 5:
+
+            var eventId = $scope.getEventId($scope.formal.event);
+
             if
             (
                (
                   // If custom question is active, the field is required
-                  !$scope.events[$scope.formal.event].question ||
+                  ($scope.formal.event && !$scope.events[eventId].question) ||
                   $scope.custom.f10
                ) &&
                $scope.custom.repeat &&
@@ -70,6 +73,36 @@ klimaChallenge.controller('projectFormCtrl', function($scope, $mdDialog, $timeou
             break;
          return false;
       }
+   };
+
+   $scope.resizeImage = function (file, base64) {
+      var deferred = $q.defer();
+      // We create an image to receive the Data URI
+      var img = document.createElement('img');
+
+      // When the event "onload" is triggered we can resize the image.
+      img.onload = function()
+         {
+             // We create a canvas and get its context.
+             var canvas = document.createElement('canvas');
+             var ctx = canvas.getContext('2d');
+
+             // We set the dimensions at the wanted size.
+             canvas.width = 300;
+             canvas.height = canvas.width/img.width*img.height;
+
+             // We resize the image with the canvas method drawImage();
+             ctx.drawImage(this, 0, 0, canvas.width, canvas.height);
+
+             var dataURI = canvas.toDataURL();
+             base64.resizedDataURI = dataURI;
+             deferred.resolve(base64);
+
+             $scope.formal.image = base64.resizedDataURI;
+             $scope.$apply();
+         };
+      img.src = 'data:'+base64.filetype+';base64,'+base64.base64;
+      return deferred.promise;
    };
 
    $scope.nextPage = function() {
@@ -110,8 +143,10 @@ klimaChallenge.controller('projectFormCtrl', function($scope, $mdDialog, $timeou
       var fz = 5; // Zielzahlfaktor
       var um = 0.75; // Umrechnungsfaktor
 
+      var eventId = $scope.getEventId($scope.formal.event);
+
       try {
-         var type = $scope.events[$scope.formal.event].type;
+         var type = $scope.events[eventId].type;
       } catch (e) {
          var type = 0;
       }
@@ -158,14 +193,14 @@ klimaChallenge.controller('projectFormCtrl', function($scope, $mdDialog, $timeou
                         parseFloat($scope.effort.f9)
                      ) +
                      (
-                        $scope.events[$scope.formal.event].assessment *
+                        $scope.events[eventId].assessment *
                         parseFloat(um) *
                         parseFloat($scope.potential.f1) /
                         parseFloat(50)
                      )
                   ) +
                   (
-                     $scope.events[$scope.formal.event].assessment *
+                     $scope.events[eventId].assessment *
                      parseFloat(um) *
                      parseFloat($scope.potential.f1)
                   )
@@ -189,14 +224,14 @@ klimaChallenge.controller('projectFormCtrl', function($scope, $mdDialog, $timeou
                         parseFloat($scope.effort.f9)
                      ) +
                      (
-                        $scope.events[$scope.formal.event].assessment *
+                        $scope.events[eventId].assessment *
                         parseFloat(um) *
                         parseFloat($scope.potential.f1) /
                         50
                      )
                   ) +
                   (
-                     $scope.events[$scope.formal.event].assessment *
+                     $scope.events[eventId].assessment *
                      parseFloat(um) *
                      parseFloat($scope.custom.f10)
                   )
@@ -220,14 +255,14 @@ klimaChallenge.controller('projectFormCtrl', function($scope, $mdDialog, $timeou
                         parseFloat($scope.effort.f9)
                      ) +
                      (
-                        $scope.events[$scope.formal.event].assessment *
+                        $scope.events[eventId].assessment *
                         parseFloat(um) *
                         parseFloat($scope.potential.f1) /
                         50
                      )
                   ) +
                   (
-                     $scope.events[$scope.formal.event].assessment *
+                     $scope.events[eventId].assessment *
                      parseFloat(um) *
                      parseFloat($scope.potential.f1) *
                      parseFloat($scope.custom.f10)
@@ -277,28 +312,38 @@ klimaChallenge.controller('projectFormCtrl', function($scope, $mdDialog, $timeou
 
    // All events with type (A1-4), custom question and CO2 / unit
    $scope.events = [
-      {name: 'Bildungsmodule buchen (inkl. Teamer)', type: 1},
       {name: 'Bildungsaktivitäten selber durchführen', type: 1},
-      {name: 'Solarpumpe', type: 1},
-      {name: 'Stromerzeuger-Fahrrad', type: 1},
-      {name: 'Solarbetriebene Handy-Aufladestation', type: 3, question: 'Wie viele Handys wurden geladen?', assessment: 0.0033},
-      {name: 'Veranstaltung plastikfrei gestalten', type: 2, assessment: 0.01},
-      {name: 'Upcycling', type: 1},
-      {name: 'Kleidertauschparty', type: 3, question: 'Wie viele Kleidungsstücke wurden getauscht?', assessment: 15},
-      {name: 'Handy-Sammel-Aktion', type: 1},
-      {name: 'Repair-Cafe', type: 1},
-      {name: 'Fahrrad-Reparatur-Service', type: 3, question: 'Wie viele Fahrräder wurden repariert?', assessment: 50},
-      {name: 'Politische Partizipation', type: 1},
-      {name: 'Shopping-Fasten', type: 3, question: 'Auf wie viele neue Kleidungsstücke wurde verzichtet?', assessment: 15},
-      {name: 'Versuchs-Vegetarier', type: 4, question: 'Wie viele Tage wurde vegetarisch gelebt?', assessment: 2.1},
-      {name: 'Versuchs-Veganer', type: 4, question: 'Wie viele Tage wurde vegan gelebt?', assessment: 3.7},
-      {name: 'Stromanbieterwechsel', type: 3, question: 'Wie hoch ist der monatliche Stromverbrauch (in kWh)?', assessment: 0.2},
-      {name: 'Solaranlage fürs Vereinsheim', type: 3, question: 'Wie viel Strom produziert die Anlage monatlich (in kWh)?', assessment: 0.5},
-      {name: 'Energiesparlampen', type: 3, question: 'Wie viele Lampen wurden ersetzt?', assessment: 13.7},
-      {name: 'Umstieg auf Recyclingpapier', type: 3, question: 'Wie viel Papier wird monatlich gekauft (in Blatt Papier)?', assessment: 0.001}, // 100 Blatt = 0.1
+      {name: 'Bildungsmodule buchen (inkl. Teamer)', type: 1},
+      {name: 'Bäume pflanzen', type: 3, question: 'Wieviele Bäume wurden gepflanzt?', assessment: 10}
       {name: 'Elektro-Auto statt Benziner', type: 1},
+      {name: 'Energiesparlampen', type: 3, question: 'Wie viele Lampen wurden ersetzt?', assessment: 13.7},
+      {name: 'Fahrrad-Reparatur-Service', type: 3, question: 'Wie viele Fahrräder wurden repariert?', assessment: 50},
+      {name: 'Handy-Sammel-Aktion', type: 1},
+      {name: 'Kleidertauschparty', type: 3, question: 'Wie viele Kleidungsstücke wurden getauscht?', assessment: 15},
       {name: 'Klimafreundliche Veranstaltung', type: 1},
       {name: 'Müll sammeln', type: 1, question: 'Wieviel Müll (in kg) wurde gesammelt?', assessment: 1.25}, // Mittelwert für Verpackungsmüll (1) und Papiermüll (1,5)
-      {name: 'Bäume pflanzen', type: 3, question: 'Wieviele Bäume wurden gepflanzt?', assessment: 10}
-   ]
+      {name: 'Politische Partizipation', type: 1},
+      {name: 'Repair-Cafe', type: 1},
+      {name: 'Shopping-Fasten', type: 3, question: 'Auf wie viele neue Kleidungsstücke wurde verzichtet?', assessment: 15},
+      {name: 'Solaranlage fürs Vereinsheim', type: 3, question: 'Wie viel Strom produziert die Anlage monatlich (in kWh)?', assessment: 0.5},
+      {name: 'Solarbetriebene Handy-Aufladestation', type: 3, question: 'Wie viele Handys wurden geladen?', assessment: 0.0033},
+      {name: 'Solarpumpe', type: 1},
+      {name: 'Stromanbieterwechsel', type: 3, question: 'Wie hoch ist der monatliche Stromverbrauch (in kWh)?', assessment: 0.2},
+      {name: 'Stromerzeuger-Fahrrad', type: 1},
+      {name: 'Umstieg auf Recyclingpapier', type: 3, question: 'Wie viel Papier wird monatlich gekauft (in Blatt Papier)?', assessment: 0.001}, // 100 Blatt = 0.1
+      {name: 'Upcycling', type: 1},
+      {name: 'Veranstaltung plastikfrei gestalten', type: 2, assessment: 0.01},
+      {name: 'Versuchs-Veganer', type: 4, question: 'Wie viele Tage wurde vegan gelebt?', assessment: 3.7},
+      {name: 'Versuchs-Vegetarier', type: 4, question: 'Wie viele Tage wurde vegetarisch gelebt?', assessment: 2.1},
+   ];
+
+   $scope.getEventId = function(name) {
+      var id = null;
+      angular.forEach($scope.events, function(event, key) {
+         if ($scope.events[key].name == name) {
+            id = key;
+         }
+      });
+      return id;
+   };
 });
