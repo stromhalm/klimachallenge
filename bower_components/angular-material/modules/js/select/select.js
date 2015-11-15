@@ -2,7 +2,7 @@
  * Angular Material Design
  * https://github.com/angular/material
  * @license MIT
- * v1.0.0-rc3-master-89d285f
+ * v1.0.0-rc4-master-9d52697
  */
 (function( window, angular, undefined ){
 "use strict";
@@ -341,8 +341,9 @@ function SelectDirective($mdSelect, $mdUtil, $mdTheming, $mdAria, $compile, $par
             ngModelCtrl.$render = function() {
               originalRender();
               syncLabelText();
+              inputCheckValue();
             };
-            selectMenuCtrl.refreshViewValue();
+            ngModelCtrl.$render();
           }
         });
       });
@@ -1216,14 +1217,16 @@ function SelectProvider($$interimElementProvider) {
           if (ev && ( ev.type == 'mouseup') && (ev.currentTarget != dropDown[0])) return;
           if ( mouseOnScrollbar() ) return;
 
-          if (!selectCtrl.isMultiple) {
-            opts.restoreFocus = true;
+          var option = $mdUtil.getClosest(ev.target, 'md-option');
+          if (option && option.hasAttribute && !option.hasAttribute('disabled')) {
+            if (!selectCtrl.isMultiple) {
+              opts.restoreFocus = true;
 
-            $mdUtil.nextTick(function() {
-              $mdSelect.hide(selectCtrl.ngModel.$viewValue);
-            }, true);
+              $mdUtil.nextTick(function () {
+                $mdSelect.hide(selectCtrl.ngModel.$viewValue);
+              }, true);
+            }
           }
-
           /**
            * check if the mouseup event was on a scrollbar
            */

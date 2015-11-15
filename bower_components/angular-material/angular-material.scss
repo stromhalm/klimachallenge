@@ -1061,7 +1061,13 @@ md-autocomplete {
       position: absolute;
       bottom: -2px;
       left: 0;
-
+      // When `md-inline` is present, we adjust the offset to go over the `ng-message` space
+      &.md-inline {
+        bottom: 40px;
+        right: 2px;
+        left: 2px;
+        width: auto;
+      }
       .md-mode-indeterminate {
         position: absolute;
         top: 0;
@@ -2264,11 +2270,16 @@ md-calendar {
 $md-datepicker-button-gap: 12px;  // Space between the text input and the calendar-icon button.
 $md-datepicker-border-bottom-gap: 5px;  // Space between input and the grey underline.
 $md-datepicker-open-animation-duration: 0.2s;
+$md-datepicker-triangle-button-width: 36px;
 
 md-datepicker {
   // Don't let linebreaks happen between the open icon-button and the input.
   white-space: nowrap;
   overflow: hidden;
+
+  // Leave room for the down-triangle button to "overflow" it's parent without modifying scrollLeft
+  padding-right: $md-datepicker-triangle-button-width / 2;
+  margin-right: -$md-datepicker-triangle-button-width / 2;
 }
 
 .md-inline-form {
@@ -2399,7 +2410,7 @@ $md-date-arrow-size: 5px;
 // Only apply this high specifiy to the property we need to override.
 .md-datepicker-triangle-button.md-button.md-icon-button {
   height: 100%;
-  width: 36px;
+  width: $md-datepicker-triangle-button-width;
   position: absolute;
 }
 
@@ -3157,12 +3168,22 @@ md-input-container {
     bottom: 7px;
   }
 
+  &.md-input-invalid {
+    ng-messages, data-ng-messages, x-ng-messages,
+    [ng-messages], [data-ng-messages], [x-ng-messages] {
+      opacity: 1;
+    }
+  }
+
   ng-messages, data-ng-messages, x-ng-messages,
   [ng-messages], [data-ng-messages], [x-ng-messages] {
     position: relative;
     order: 4;
     min-height: $input-error-height;
     overflow: hidden;
+    transition: $swift-ease-out;
+    transition-duration: $swift-ease-out-duration / 1.5;
+    opacity: 0;
 
     .md-char-counter {
       position: absolute;
@@ -3357,6 +3378,11 @@ md-list-item {
       white-space: normal;
       flex-direction: inherit;
       align-items: inherit;
+      border-radius: 0;
+
+      & > .md-ripple-container {
+        border-radius: 0;
+      }
     }
     &:focus {
       outline: none
@@ -3581,6 +3607,8 @@ $max-dense-menu-height: 2 * $baseline-grid + $max-visible-items * $dense-menu-it
     margin-top: $baseline-grid / 2;
     margin-bottom: $baseline-grid / 2;
     height: 1px;
+    min-height: 1px;
+    max-height: 1px;
     width: 100%;
   }
 
@@ -3687,6 +3715,7 @@ md-toolbar {
   .md-menu {
     height: auto;
     margin: auto;
+    padding: 0;
   }
 }
 
