@@ -52,6 +52,7 @@ klimaChallenge.config(function($stateProvider, $urlRouterProvider) {
 
    $scope.$on('$locationChangeStart', function(event, next, current) {
 
+      window.scrollTo(0, 0);
       $rootScope.showHeader = false;
 
       var nextPage = next.split('/');

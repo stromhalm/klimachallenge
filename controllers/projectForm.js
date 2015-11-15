@@ -314,7 +314,7 @@ klimaChallenge.controller('projectFormCtrl', function($scope, $mdDialog, $timeou
    $scope.events = [
       {name: 'Bildungsaktivitäten selber durchführen', type: 1},
       {name: 'Bildungsmodule buchen (inkl. Teamer)', type: 1},
-      {name: 'Bäume pflanzen', type: 3, question: 'Wieviele Bäume wurden gepflanzt?', assessment: 10}
+      {name: 'Bäume pflanzen', type: 3, question: 'Wieviele Bäume wurden gepflanzt?', assessment: 10},
       {name: 'Elektro-Auto statt Benziner', type: 1},
       {name: 'Energiesparlampen', type: 3, question: 'Wie viele Lampen wurden ersetzt?', assessment: 13.7},
       {name: 'Fahrrad-Reparatur-Service', type: 3, question: 'Wie viele Fahrräder wurden repariert?', assessment: 50},
@@ -334,7 +334,7 @@ klimaChallenge.controller('projectFormCtrl', function($scope, $mdDialog, $timeou
       {name: 'Upcycling', type: 1},
       {name: 'Veranstaltung plastikfrei gestalten', type: 2, assessment: 0.01},
       {name: 'Versuchs-Veganer', type: 4, question: 'Wie viele Tage wurde vegan gelebt?', assessment: 3.7},
-      {name: 'Versuchs-Vegetarier', type: 4, question: 'Wie viele Tage wurde vegetarisch gelebt?', assessment: 2.1},
+      {name: 'Versuchs-Vegetarier', type: 4, question: 'Wie viele Tage wurde vegetarisch gelebt?', assessment: 2.1}
    ];
 
    $scope.getEventId = function(name) {
