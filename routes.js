@@ -31,6 +31,11 @@ klimaChallenge.config(function($stateProvider, $urlRouterProvider) {
   .state('contact', {
       url: "/kontakt",
       templateUrl: "views/contact.html"
+  })
+  .state('admin', {
+      url: "/admin",
+      templateUrl: "views/admin.html",
+      controller: "adminCtrl"
   });
 })
 .controller('PageCtrl', function($scope, $location, $timeout, $cacheFactory, $templateCache, $rootScope, $http) {

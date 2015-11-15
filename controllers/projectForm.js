@@ -1,4 +1,4 @@
-klimaChallenge.controller('projectFormCtrl', function($scope, $mdDialog, $timeout, projects, $q) {
+klimaChallenge.controller('projectFormCtrl', function($scope, $timeout, projects, $q) {
 
    // Start at page 1
    $scope.page = 1;
@@ -114,12 +114,7 @@ klimaChallenge.controller('projectFormCtrl', function($scope, $mdDialog, $timeou
    $scope.previousPage = function() {
       $scope.page--;
    };
-   $scope.hide = function() {
-      $mdDialog.hide();
-   };
-   $scope.cancel = function() {
-      $mdDialog.cancel();
-   };
+
    $scope.submitForm = function() {
 
       $scope.submitting = true;
