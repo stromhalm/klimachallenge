@@ -36,7 +36,10 @@
                      <label>Name eurer Aktion</label>
                      <input ng-model="formal.actionName" ng-required="true">
                   </md-input-container>
-                  <md-datepicker ng-model="formal.date" md-placeholder="Datum der Aktion" flex="100" flex-gt-md="50" ng-required="true">
+                  <md-input-container flex="100" flex-gt-md="50">
+                     <label>Start-Datum (TT.MM.JJJJ)</label>
+                     <input type="date" ng-model="formal.date" ng-required="true">
+                  </md-input-container>
                   </md-datepicker>
                   <md-input-container flex="100" flex-gt-md="50">
                      <label class="md-no-float">Träger</label>
