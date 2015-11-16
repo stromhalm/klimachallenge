@@ -22,22 +22,17 @@
          </md-tab>
          <md-tab>
             <md-tab-label>
-               <ng-md-icon style="fill: white" icon="dashboard"></ng-md-icon> <span hide show-gt-sm>Aktionen</span>
+               <ng-md-icon style="fill: white" icon="star"></ng-md-icon> <span hide show-gt-sm>Mitmachen</span>
            </md-tab-label>
          </md-tab>
          <md-tab>
             <md-tab-label>
-               <ng-md-icon style="fill: white" icon="flag"></ng-md-icon> <span hide show-gt-sm>Mitmachen</span>
+               <ng-md-icon style="fill: white" icon="equalizer"></ng-md-icon> <span hide show-gt-sm>Ziele</span>
            </md-tab-label>
          </md-tab>
          <md-tab>
             <md-tab-label>
                <ng-md-icon style="fill: white" icon="rate_review"></ng-md-icon> <span hide show-gt-sm>CO<sub>2</sub>ntrACT!</span>
-           </md-tab-label>
-         </md-tab>
-         <md-tab hide>
-            <md-tab-label hide>
-               <span hide>Sonstiges</span>
            </md-tab-label>
          </md-tab>
       </md-tabs>
@@ -69,18 +64,6 @@
 
       <ui-view>
       </ui-view>
-
-      <section class="space-box ball-box" style="height: {{getBallAreaHeight()}}px;">
-         <div layout="row" layout-align="start center" layout-sm="column">
-            <div flex flex-offset-gt-md="5">
-               <h2>Alle Aktionen</h2>
-               <div class="sub-heading">
-                  Noch gibt es keine Aktionen. Schau bald nochmal vorbei!
-               </div>
-               <!-- Viele Jugendverbände haben bereits Projekte für den Klimaschutz eingereicht. Klick dich durch die Ideen! -->
-            </div>
-         </div>
-      </section>
 
    </div>
 
@@ -127,6 +110,7 @@
    <script src="controllers/admin.js?ver=1"></script>
    <script src="controllers/projectForm.js?ver=3"></script>
    <script src="controllers/projects.js?ver=1"></script>
+   <script src="controllers/allActions.js?ver=1"></script>
 
    <script src="routes.js?ver=4"></script>
    <script src="theme.js"></script>
