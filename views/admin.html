@@ -1,22 +1,35 @@
-<section class="participate edu">
+<section class="participate edu" ng-if="!authData">
    <div layout="row" layout-align="start center" layout-sm="column">
       <div flex-gt-md="33" flex-offset-gt-md="33" class="info-cards">
          <h2>Admin-Login</h2>
          <md-whiteframe class="md-whiteframe-z2 card action-card">
             <form class="login-form">
                <md-input-container>
-                  <label>Login</label>
-                  <input type="text" ng-model="login" ng-required="true">
+                  <label>E-Mail-Adresse</label>
+                  <input type="text" ng-model="email" ng-required="true">
+                  {{email}}
                </md-input-container>
                <md-input-container>
                   <label>Passwort</label>
                   <input type="password" ng-model="password" ng-required="true">
                </md-input-container>
+               <b ng-if="loginError">Fehlerhafte Benutzerdaten!</b>
                <center>
-                  <md-button class="md-raised md-primary">Login</md-button>
+                  <md-button type="submit" ng-disabled="!email || !password" ng-click="login(email, password)" class="md-raised md-primary">Login</md-button>
                </center>
             </form>
          </md-whiteframe>
+      </div>
+   </div>
+</section>
+
+<section class="participate edu" ng-if="authData">
+   <div layout="row" layout-align="start center" layout-sm="column">
+      <div flex-gt-md="90" flex-offset-gt-md="5" class="info-cards">
+         <md-button ng-click="auth.$unauth()" class="md-raised md-accent logout">Logout</md-button>
+         <h2>Projektverwaltung</h2>
+
+
       </div>
    </div>
 </section>
