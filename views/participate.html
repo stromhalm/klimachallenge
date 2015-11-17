@@ -22,11 +22,17 @@
                <md-content layout-padding layout-wrap layout="row">
                   <md-input-container flex flex-gt-md="50">
                      <label>Ansprechpartner_in (Vor- und Nachname)</label>
+                     <md-tooltip md-direction="bottom">
+                        Dein Name wird nicht veröffentlicht!
+                     </md-tooltip>
                      <input ng-model="formal.name" ng-required="true">
                   </md-input-container>
                   <md-input-container flex="100" flex-gt-md="50">
                      <label>E-Mail</label>
                      <input ng-model="formal.email" type="email" ng-required="true">
+                     <md-tooltip md-direction="bottom">
+                        Deine E-Mail-Adresse wird nicht veröffentlicht!
+                     </md-tooltip>
                   </md-input-container>
                   <md-input-container flex="100" flex-gt-md="50">
                      <label>Jugendgruppe</label>
