@@ -93,9 +93,6 @@ klimaChallenge.config(function($stateProvider, $urlRouterProvider) {
             $location.url("/contract");
             break;
       }
-
-      $timeout(function() {
-         window.dispatchEvent(new Event('resize'));
-      }, 500);
    });
+
 });
