@@ -89,7 +89,7 @@ klimaChallenge.controller('projectFormCtrl', function($scope, $timeout, projects
              var ctx = canvas.getContext('2d');
 
              // We set the dimensions at the wanted size.
-             canvas.width = 300;
+             canvas.width = 600;
              canvas.height = canvas.width/img.width*img.height;
 
              // We resize the image with the canvas method drawImage();
