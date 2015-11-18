@@ -228,6 +228,11 @@
                   <div ng-if="formal.imageUpload == 'later'">
                      Ein Foto der Aktion ist Voraussetzung zum Punktesammeln. Bitte sende daher baldmöglichst eine E-Mail mit einem Bild von eurer Aktion an <a href="mailto:anna-maria@janun.de">a.besold@janun.de</a>!
                   </div>
+                  <div ng-if="formal.imageUpload == 'upload'">
+                     <md-input-container flex>
+                        <md-checkbox ng-model="formal.confirmUpload">Mit dem Hochladen des Bildes stimme ich zu, dass JANUN dieses im Rahmen seiner (nicht-kommerziellen) Öffentlichkeitsarbeit verwenden darf (z.B. um die Klima-Challenge bekannter zu machen).</md-checkbox>
+                     </md-input-container>
+                  </div>
                </md-content>
             </div>
             <div class="form-page" ng-if="page==6">

@@ -62,7 +62,8 @@ klimaChallenge.controller('projectFormCtrl', function($scope, $timeout, projects
                   $scope.formal.imageUpload == "later" ||
                   (
                      $scope.formal.imageUpload == "upload" &&
-                     $scope.formal.image
+                     $scope.formal.image &&
+                     $scope.formal.confirmUpload
                   )
                )
             )
