@@ -329,8 +329,8 @@ klimaChallenge.controller('projectFormCtrl', function($scope, $timeout, projects
       {name: 'Umstieg auf Recyclingpapier', type: 3, question: 'Wie viel Papier wird monatlich gekauft (in Blatt Papier)?', assessment: 0.001}, // 100 Blatt = 0.1
       {name: 'Upcycling', type: 1},
       {name: 'Veranstaltung plastikfrei gestalten', type: 2, assessment: 0.01},
-      {name: 'Versuchs-Veganer', type: 4, question: 'Wie viele Tage wurde vegan gelebt?', assessment: 3.7},
-      {name: 'Versuchs-Vegetarier', type: 4, question: 'Wie viele Tage wurde vegetarisch gelebt?', assessment: 2.1}
+      {name: 'Versuchsveganer_in', type: 4, question: 'Wie viele Tage wurde vegan gelebt?', assessment: 3.7},
+      {name: 'Versuchsvegetarier_in', type: 4, question: 'Wie viele Tage wurde vegetarisch gelebt?', assessment: 2.1}
    ];
 
    $scope.getEventId = function(name) {
