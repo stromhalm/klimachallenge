@@ -48,7 +48,7 @@ klimaChallenge.controller('adminCtrl', function($scope, Auth, projects, filepick
    }
 
    $scope.deleteProject = function(project) {
-      if (confirm("Soll die Aktion \"" + project.actionName + "\"wirklich gelöscht werden?")) {
+      if (confirm("Soll die Aktion \"" + project.formal.actionName + "\" wirklich gelöscht werden?")) {
          projects.db.$remove(project);
       }
    }
