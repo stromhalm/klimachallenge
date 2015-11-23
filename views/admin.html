@@ -7,7 +7,6 @@
                <md-input-container>
                   <label>E-Mail-Adresse</label>
                   <input type="text" ng-model="email" ng-required="true">
-                  {{email}}
                </md-input-container>
                <md-input-container>
                   <label>Passwort</label>
@@ -28,8 +27,61 @@
       <div flex-gt-md="90" flex-offset-gt-md="5" class="info-cards">
          <md-button ng-click="auth.$unauth()" class="md-raised md-accent logout">Logout</md-button>
          <h2>Projektverwaltung</h2>
-
-
+         <md-whiteframe class="md-whiteframe-z2 card action-card">
+            <md-list class="event-list">
+               <div ng-repeat="project in projects">
+                  <md-switch class="md-secondary md-block" md-no-ink aria-label="Public" ng-model="project.public" ng-change="saveToDb(project)">
+                  </md-switch>
+                  <md-list-item class="md-3-line">
+                     <md-button ng-if="project.formal.image.url" class="open-extern" ng-href="{{ project.formal.image.url }}" target="_blank">
+                        <ng-md-icon style="fill: grey" icon="open_in_new"></ng-md-icon>
+                     </md-button>
+                     <md-button class="upload-dialog" ng-click="pickImage(project)">
+                        <ng-md-icon style="fill: grey" icon="file_upload"></ng-md-icon>
+                     </md-button>
+                     <img ng-if="project.formal.image.url" ng-src="{{project.formal.image.url | fpConvert: {w:40} }}" class="md-avatar" alt="{{project.formal.actionName}}" /><br>
+                     <div class="image-placeholder" ng-if="!project.formal.image.url"></div>
+                     <div class="md-list-item-text" layout="row" layout-margin>
+                        <div flex-gt-sm="40">
+                           <p class="action-name">
+                              <span>Name der Aktion:</span> <a href="#" onaftersave="saveToDb(project)" editable-text="project.formal.actionName">{{ project.formal.actionName || "leer" }}</a>
+                           </p>
+                           <p>
+                              <span>Ort, Datum:</span> <a href="#" onaftersave="saveToDb(project)" editable-text="project.formal.location">{{ project.formal.location || "leer" }}</a>, <a href="#" editable-text="project.formal.date">{{ project.formal.date || "leer" }}</a>
+                           </p>
+                           <p>
+                              <span>Aktion:</span> <a href="#" onaftersave="saveToDb(project)" editable-select="project.formal.event" e-ng-options="e.name as e.name for e in allEvents">{{ project.formal.event || "leer" }}</a>
+                           </p>
+                           <p>
+                              <span>Gruppe:</span> <a href="#" onaftersave="saveToDb(project)" editable-text="project.formal.group">{{ project.formal.group || "leer" }}</a>
+                           </p>
+                           <p>
+                              <span>Träger:</span> <a href="#" onaftersave="saveToDb(project)" editable-select="project.formal.carrier" e-ng-options="carrier as carrier for carrier in carriers">{{ project.formal.carrier || "leer" }}</a>
+                           </p>
+                           <p>
+                              <span>Klimapunkte:</span> <a href="#" onaftersave="saveToDb(project)" editable-number="project.climatePoints" e-min="0">{{ project.climatePoints || "leer" }}</a>
+                           </p>
+                        </div>
+                        <div flex-gt-sm="60">
+                           <p>
+                              <span>Beschreibung:</span><br>
+                              <a href="#" onaftersave="saveToDb(project)" editable-textarea="project.formal.description" e-rows="5">{{ project.formal.description || "leer" }}</a></p>
+                           </p>
+                           <p>
+                              <span>Kontakt:</span> <a ng-href="mailto:{{ project.formal.email }}">{{ project.formal.name }}</a>
+                           </p>
+                        </div>
+                     </div>
+                  </md-list-item>
+                  <md-button class="delete-project" ng-click="deleteProject(project)">
+                     <ng-md-icon style="fill: grey" icon="delete"></ng-md-icon>
+                  </md-button>
+               </div>
+            </md-list>
+            <center>
+               <md-progress-circular ng-if="!loaded" md-mode="indeterminate"></md-progress-circular>
+            </center>
+         </md-whiteframe>
       </div>
    </div>
 </section>

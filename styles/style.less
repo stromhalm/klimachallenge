@@ -332,6 +332,7 @@ md-whiteframe {
 
    .sub-heading {
       font-size: 1.2em;
+      margin-bottom: 15px;
    }
 
    a {
@@ -418,6 +419,37 @@ md-whiteframe {
          font-weight: 300;
          text-align: center;
          margin-top: 0;
+      }
+   }
+}
+
+.event-list {
+
+   .image-placeholder {
+      width: 56px;
+   }
+
+   span {
+      font-weight: 300;
+      font-size: 13px;
+   }
+
+   p {
+      line-height: 17px !important;
+      margin-bottom: 5px !important;
+   }
+
+   a {
+      color: @dark-grey;
+      text-decoration: none;
+      border-bottom: none;
+   }
+
+   .editable-textarea {
+      width: 100%;
+
+      textarea {
+         width: 70%;
       }
    }
 }
@@ -509,10 +541,61 @@ md-whiteframe {
    }
 }
 
-.ball-box {
-   height: 600px;
+.all-projects {
    background-color: @blue;
    color: rgba(255, 255, 255, 0.6);
+
+   md-whiteframe {
+      padding-bottom: 0 !important;
+      font-size: 15px;
+   }
+
+   .image-frame {
+
+      margin-left: -18px;
+      margin-top: -18px;
+      margin-right: -18px;
+      border-top-left-radius: 2px;
+      border-top-right-radius: 2px;
+
+      .project-image {
+         width: 100%;
+         border-top-left-radius: 2px;
+         border-top-right-radius: 2px
+      }
+   }
+
+   .card-header {
+
+      border-bottom: 1px solid @background-grey;
+      margin: -5px -18px 0 -18px;
+      padding: 0 18px;
+      border-radius: 2px;
+
+      h3 {
+         color: @blue;
+         font-weight: 400;
+         line-height: 21px;
+      }
+
+      .date {
+         font-size: 13px;
+         margin-top: -15px;
+         margin-bottom: 16px;
+      }
+   }
+
+   .description {
+      border-bottom: 1px solid @background-grey;
+      margin: 0 -18px 0 -18px;
+      padding: 0 18px;
+      margin-top: 16px;
+      padding-bottom: 16px;
+   }
+
+   .details {
+      padding: 18px 0;
+   }
 }
 
 .md-button, md-tabs {
@@ -575,6 +658,33 @@ md-tabs-wrapper md-prev-button md-icon, md-tabs-wrapper md-next-button md-icon {
 
    md-list {
       padding: 0;
+      margin-top: -8px;
+      margin-bottom: -16px;
+
+      .open-extern {
+         position: absolute;
+         margin-top: 100px;
+         margin-left: 3px;
+      }
+
+      .upload-dialog {
+         position: absolute;
+         margin-top: 60px;
+         margin-left: 3px;
+      }
+
+      .delete-project {
+         float: right;
+         margin-top: -45px;
+         margin-right: 0;
+      }
+
+      md-switch {
+         float: right;
+         margin-bottom: -50px;
+         margin-top: 5px;
+         margin-right: 0;
+      }
 
       md-list-item {
          line-height: 1.2em;

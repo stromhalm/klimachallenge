@@ -60,35 +60,7 @@
                   <md-input-container flex="100" flex-gt-md="50">
                      <label class="md-no-float">Träger</label>
                      <select ng-model="formal.carrier" ng-required="true">
-                        <option>Arbeiter-Samariter-Jugend ASJ </option>
-                        <option>Arbeitsgemeinschaft der Ev Jugend in Nds AEJN </option>
-                        <option>Arbeitskreis Nds Jugendgemeinschaften ANJ </option>
-                        <option>BDKJ-Landesstelle Niedersachsen</option>
-                        <option>Bund der Alevitischen Jugendlichen in Deutschland e V </option>
-                        <option>Bund Deutscher Pfadfinder_innen</option>
-                        <option>Deutsche Schreberjugend</option>
-                        <option>Deutsche Wanderjugend</option>
-                        <option>Deutsches Jugendrotkreuz JRK </option>
-                        <option>DGB-Gewerkschaftsjugend</option>
-                        <option>DITIB LJV Niedersachsen und Bremen</option>
-                        <option>DJO-Dt Jugend in Europa</option>
-                        <option>DLRG-Jugend</option>
-                        <option>Jugend im Niedersächsischen Beamtenbund und Tarifunion NBB-Jugend </option>
-                        <option>Jugendnetzwerk LAMBDA</option>
-                        <option>Jugendumweltnetzwerk JANUN</option>
-                        <option>Jugendwerk der Arbeiterwohlfahrt</option>
-                        <option>Junge Presse Nds Geschäftsstelle ANJ </option>
-                        <option>Landesjugendring Niedersachsen ljr </option>
-                        <option>Naturfreundejugend Deutschlands</option>
-                        <option>Nds Alpenvereinsjugend</option>
-                        <option>Nds Jugendfeuerwehr</option>
-                        <option>Nds Landjugend NLJ </option>
-                        <option>Ring dt Pfadfinderinnenverbände</option>
-                        <option>Ring dt Pfadfinderverbände</option>
-                        <option>SJD-Die Falken</option>
-                        <option>Sportjugend Niedersachsen</option>
-                        <option>THW-Jugend e V </option>
-                        <option>Sonstige / kein Träger</option>
+                        <option ng-repeat="carrier in carriers">{{ carrier }}</option>
                      </select>
                   </md-input-container>
                   <md-input-container flex="100" flex-gt-md="50">
@@ -212,7 +184,7 @@
                   </md-input-container>
                </md-content>
             </div>
-            <div class="form-page" ng-if="page==5">
+            <div class="form-page" ng-show="page==5">
                <h2 class="md-title">Aufwand</h2>
                <md-content layout-padding layout-wrap layout="row">
                   <md-input-container flex="100" ng-if="events[getEventId(formal.event)].question">
@@ -234,7 +206,13 @@
                         <option value="later">Bild nachreichen</option>
                      </select>
                   </md-input-container>
-                  <input ng-if="formal.imageUpload == 'upload'" type='file' ng-model='upload' base-sixty-four-input accept="image/*" parser="resizeImage">
+                  <div ng-show="formal.imageUpload == 'upload'">
+
+                     <md-button ng-click="pickImage()">
+                        <ng-md-icon style="fill: #222e34" icon="file_upload"></ng-md-icon> Bild hochladen
+                     </md-button>
+
+                  </div>
                   <div ng-if="formal.imageUpload == 'later'">
                      Ein Foto der Aktion ist Voraussetzung zum Punktesammeln. Bitte sende daher baldmöglichst eine E-Mail mit einem Bild von eurer Aktion an <a href="mailto:anna-maria@janun.de">anna-maria@janun.de</a>!
                   </div>
@@ -277,7 +255,7 @@
             <md-button ng-disabled="!isValid(page)" style="margin-right:20px;" md-autofocus ng-click="nextPage()" ng-if="page<6">
                Weiter <ng-md-icon style="fill: #222e34" icon="chevron_right"></ng-md-icon>
             </md-button>
-            <md-button ng-if="page==6 && !submitting" class="md-raised" style="margin-right:20px;" ng-click="submitForm()">
+            <md-button ng-if="page==6 && !submitting" class="md-raised md-accent" style="margin-right:20px;" ng-click="submitForm()">
                Aktion einreichen
             </md-button>
             <md-progress-circular ng-if="submitting" md-mode="indeterminate"></md-progress-circular>

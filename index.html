@@ -5,6 +5,7 @@
    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
    <link rel="stylesheet" href="bower_components/angular-material-icons/angular-material-icons.css">
    <link rel="stylesheet" href="bower_components/angular-chart.js/dist/angular-chart.css" />
+   <link href="bower_components/angular-xeditable/dist/css/xeditable.css" rel="stylesheet">
    <link rel="stylesheet" href="styles/style.css?ver=11">
 
    <meta charset="utf-8">
@@ -101,6 +102,7 @@
    <script src="bower_components/angulartics/dist/angulartics-piwik.min.js"></script>
    <script src="bower_components/angular-base64-upload/dist/angular-base64-upload.min.js"></script>
    <script src="libs/angular-count-to/angular-count-to.min.js"></script>
+   <script src="bower_components/angular-xeditable/dist/js/xeditable.min.js"></script>
 
    <!-- Carousel -->
    <link href="bower_components/angular-carousel/dist/angular-carousel.min.css" rel="stylesheet" type="text/css" />
@@ -108,7 +110,10 @@
    <script src="bower_components/angular-carousel/dist/angular-carousel.min.js"></script>
 
    <script>
-      var klimaChallenge = angular.module('Klima-Challenge', ['ngMaterial', 'ngMdIcons', 'ui.router', 'countTo', 'chart.js', 'angular-carousel', 'firebase', 'angulartics', 'angulartics.piwik', 'naif.base64']);
+      var klimaChallenge = angular.module('Klima-Challenge', ['ngMaterial', 'ngMdIcons', 'ui.router', 'countTo', 'chart.js', 'angular-carousel', 'firebase', 'angulartics', 'angulartics.piwik', 'naif.base64', 'xeditable', 'angular-filepicker']);
+      klimaChallenge.config(function (filepickerProvider) {
+         filepickerProvider.setKey('AE6TNlQRmWgepbmTSFEwxz');
+      });
    </script>
 
    <!-- Services -->
@@ -118,6 +123,10 @@
    <script src="controllers/projectForm.js?ver=3"></script>
    <script src="controllers/projects.js?ver=1"></script>
    <script src="controllers/allActions.js?ver=1"></script>
+
+   <!-- filepicker.io -->
+   <script type="text/javascript" src="bower_components/filepicker-js/filepicker.min.js"></script>
+   <script type="text/javascript" src="bower_components/angular-filepicker/dist/angular_filepicker.min.js"></script>
 
    <script src="routes.js?ver=4"></script>
    <script src="theme.js"></script>

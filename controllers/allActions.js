@@ -1,7 +1,7 @@
-klimaChallenge.directive('allActions', function () {
+klimaChallenge.directive('allActions', function (projects, filepickerService) {
+	function link($scope, element, filepickerService) {
 
-	function link($scope, element) {
-
+		$scope.projects = projects.db;
 	}
 
 	return {
