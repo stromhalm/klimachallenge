@@ -7,10 +7,10 @@
          </div>
 
          <div layout="row" layout-wrap layout-sm="column">
-            <div flex-md="50" flex-lg="33" flex-gt-lg="25" ng-repeat="project in projects | filter:{ public: true } | orderBy:['formal.image.url', 'formal.description']">
+            <div flex-md="50" flex-lg="33" flex-gt-lg="25" ng-repeat="project in projects | filter:{ public: true } | orderBy:['!!(formal.image.url)', '-formal.description.length']">
                <md-whiteframe class="md-whiteframe-z2 card">
                   <div class="image-frame">
-                     <img class="project-image" ng-if="project.formal.image.url" ng-src="{{ project.formal.image.url | fpConvert: {w:500} }}" alt="{{ project.formal.actionName }}"/>
+                     <img class="project-image" ng-if="project.formal.image.url" ng-src="{{ project.formal.image.url | fpConvert: {w:500, rotate:'exif'} }}" alt="{{ project.formal.actionName }}"/>
                   </div>
 
                   <div class="card-header">

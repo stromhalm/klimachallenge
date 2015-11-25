@@ -253,7 +253,12 @@
                <ng-md-icon style="fill: #222e34" icon="chevron_left"></ng-md-icon> Zurück
             </md-button>
             <md-button ng-disabled="!isValid(page)" style="margin-right:20px;" md-autofocus ng-click="nextPage()" ng-if="page<6">
-               Weiter <ng-md-icon style="fill: #222e34" icon="chevron_right"></ng-md-icon>
+               <span>
+                  Weiter <ng-md-icon style="fill: #222e34" icon="chevron_right"></ng-md-icon>
+                  <md-tooltip ng-if="!isValid(page)" md-direction="left">
+                     Es müssen alle Pflichtfelder korrekt ausgefüllt werden!
+                  </md-tooltip>
+               </span>
             </md-button>
             <md-button ng-if="page==6 && !submitting" class="md-raised md-accent" style="margin-right:20px;" ng-click="submitForm()">
                Aktion einreichen
