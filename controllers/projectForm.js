@@ -33,10 +33,10 @@ klimaChallenge.controller('projectFormCtrl', function($scope, $timeout, projects
          case 2:
             if (
                $scope.potential.f1 &&
-               $scope.potential.z1 &&
                $scope.potential.f3 &&
                $scope.potential.f4 &&
-               $scope.potential.f5)
+               $scope.potential.f5 &&
+               $scope.potential.f6)
                   return true;
             break;
          case 3:
@@ -44,9 +44,9 @@ klimaChallenge.controller('projectFormCtrl', function($scope, $timeout, projects
             break;
          case 4:
             if (
-               $scope.effort.f7 &&
                $scope.effort.f8 &&
-               $scope.effort.f9)
+               $scope.effort.f9 &&
+               $scope.effort.f10)
                   return true;
             break;
          case 5:
@@ -58,7 +58,7 @@ klimaChallenge.controller('projectFormCtrl', function($scope, $timeout, projects
                (
                   // If custom question is active, the field is required
                   (eventId != null && !projects.events[eventId].question) ||
-                  $scope.custom.f10
+                  $scope.custom.f11
                ) &&
                $scope.custom.repeat &&
                (
@@ -124,10 +124,11 @@ klimaChallenge.controller('projectFormCtrl', function($scope, $timeout, projects
    // Calculate the final climate points
    $scope.getClimatePoints = function() {
 
-      var fz = 5; // Zielzahlfaktor
-      var um = 0.75; // Umrechnungsfaktor
-
+      var fz = parseFloat(5); // Zielzahlfaktor
+      var um = parseFloat(0.75); // Umrechnungsfaktor
+      var n2 = parseFloat(50); // Normierungsfaktor 2
       var eventId = $scope.getEventId($scope.formal.event);
+      var dco2 = parseFloat(projects.events[eventId].assessment);
 
       try {
          var type = projects.events[eventId].type;
@@ -154,11 +155,12 @@ klimaChallenge.controller('projectFormCtrl', function($scope, $timeout, projects
                   parseFloat($scope.potential.f3) +
                   parseFloat($scope.potential.f4) +
                   parseFloat($scope.potential.f5) +
-                  $scope.countMediaPoints() +
-                  parseFloat($scope.effort.f7) +
+                  parseFloat($scope.potential.f6) +
+                  parseFloat($scope.countMediaPoints()) +
                   parseFloat($scope.effort.f8) +
-                  parseFloat($scope.effort.f9)
-               ) * parseFloat(fz);
+                  parseFloat($scope.effort.f9) +
+                  parseFloat($scope.effort.f10)
+               ) * fz;
          } else
 
          // Type A2
@@ -171,24 +173,25 @@ klimaChallenge.controller('projectFormCtrl', function($scope, $timeout, projects
                         parseFloat($scope.potential.f3) +
                         parseFloat($scope.potential.f4) +
                         parseFloat($scope.potential.f5) +
-                        $scope.countMediaPoints() +
-                        parseFloat($scope.effort.f7) +
+                        parseFloat($scope.potential.f6) +
+                        parseFloat($scope.countMediaPoints()) +
                         parseFloat($scope.effort.f8) +
-                        parseFloat($scope.effort.f9)
+                        parseFloat($scope.effort.f9) +
+                        parseFloat($scope.effort.f10)
                      ) +
                      (
-                        projects.events[eventId].assessment *
-                        parseFloat(um) *
+                        dco2 *
+                        um *
                         parseFloat($scope.potential.f1) /
-                        parseFloat(50)
+                        n2
                      )
                   ) +
                   (
-                     projects.events[eventId].assessment *
-                     parseFloat(um) *
+                     dco2 *
+                     um *
                      parseFloat($scope.potential.f1)
                   )
-               ) * parseFloat(fz);
+               ) * fz;
          } else
 
          // Type A3
@@ -202,24 +205,25 @@ klimaChallenge.controller('projectFormCtrl', function($scope, $timeout, projects
                         parseFloat($scope.potential.f3) +
                         parseFloat($scope.potential.f4) +
                         parseFloat($scope.potential.f5) +
-                        $scope.countMediaPoints() +
-                        parseFloat($scope.effort.f7) +
+                        parseFloat($scope.potential.f6) +
+                        parseFloat($scope.countMediaPoints()) +
                         parseFloat($scope.effort.f8) +
-                        parseFloat($scope.effort.f9)
+                        parseFloat($scope.effort.f9) +
+                        parseFloat($scope.effort.f10)
                      ) +
                      (
-                        projects.events[eventId].assessment *
-                        parseFloat(um) *
-                        parseFloat($scope.potential.f1) /
-                        50
+                        dco2 *
+                        um *
+                        parseFloat($scope.custom.f11) /
+                        n2
                      )
                   ) +
                   (
-                     projects.events[eventId].assessment *
-                     parseFloat(um) *
-                     parseFloat($scope.custom.f10)
+                     dco2 *
+                     um *
+                     parseFloat($scope.custom.f11)
                   )
-               ) * parseFloat(fz);
+               ) * fz;
          } else
 
          // Type A4
@@ -233,25 +237,27 @@ klimaChallenge.controller('projectFormCtrl', function($scope, $timeout, projects
                         parseFloat($scope.potential.f3) +
                         parseFloat($scope.potential.f4) +
                         parseFloat($scope.potential.f5) +
-                        $scope.countMediaPoints() +
-                        parseFloat($scope.effort.f7) +
+                        parseFloat($scope.potential.f6) +
+                        parseFloat($scope.countMediaPoints()) +
                         parseFloat($scope.effort.f8) +
-                        parseFloat($scope.effort.f9)
+                        parseFloat($scope.effort.f9) +
+                        parseFloat($scope.effort.f10)
                      ) +
                      (
-                        projects.events[eventId].assessment *
-                        parseFloat(um) *
-                        parseFloat($scope.potential.f1) /
-                        50
+                        dco2 *
+                        um *
+                        parseFloat($scope.potential.f1) *
+                        parseFloat($scope.custom.f11) /
+                        n2
                      )
                   ) +
                   (
-                     projects.events[eventId].assessment *
-                     parseFloat(um) *
+                     dco2 *
+                     um *
                      parseFloat($scope.potential.f1) *
-                     parseFloat($scope.custom.f10)
+                     parseFloat($scope.custom.f11)
                   )
-               ) * parseFloat(fz);
+               ) * fz;
          }
       }
       climatePoints = Math.round(climatePoints);
@@ -260,7 +266,8 @@ klimaChallenge.controller('projectFormCtrl', function($scope, $timeout, projects
 
    $scope.getCo2 = function() {
       var um = 0.75; // Umrechnungsfaktor
-      var co2 = Math.round($scope.getClimatePoints() * (1/um));
+      var zf = 5; // Umrechnungsfaktor
+      var co2 = Math.round($scope.getClimatePoints() * (um/zf));
       return co2;
    }
 

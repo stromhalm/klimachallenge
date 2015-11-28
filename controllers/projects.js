@@ -6,17 +6,20 @@ klimaChallenge.factory("projects", function($firebaseArray) {
    var events = [
       {name: 'Bildungsaktivitäten selber durchführen', type: 1},
       {name: 'Bildungsmodule buchen (inkl. Teamer)', type: 1},
+      {name: 'Biologische Ernährung', type: 1},
+      {name: 'Bus statt Auto', type: 3, question: 'Wie ist die durchschnittliche Distanz in km pro Person?', assessment: 0.109},
       {name: 'Bäume pflanzen', type: 3, question: 'Wieviele Bäume wurden gepflanzt?', assessment: 10},
       {name: 'Elektro-Auto statt Benziner', type: 1},
       {name: 'Energiesparlampen', type: 3, question: 'Wie viele Lampen wurden ersetzt?', assessment: 13.7},
-      {name: 'Fahrrad-Reparatur-Service', type: 3, question: 'Wie viele Fahrräder wurden repariert?', assessment: 50},
+      {name: 'Fahrrad-Reparatur-Service', type: 3, question: 'Wie viele Fahrräder wurden repariert?', assessment: 25},
+      {name: 'Fahrrad statt Auto', type: 3, question: 'Wie ist die durchschnittliche Distanz in km pro Person?', assessment: 0.139},
       {name: 'Handy-Sammel-Aktion', type: 1},
-      {name: 'Kleidertauschparty', type: 3, question: 'Wie viele Kleidungsstücke wurden getauscht?', assessment: 15},
+      {name: 'Kleidertauschparty', type: 3, question: 'Wie viele Kleidungsstücke wurden getauscht?', assessment: 5},
       {name: 'Klimafreundliche Veranstaltung', type: 1},
-      {name: 'Müll sammeln', type: 1, question: 'Wieviel Müll (in kg) wurde gesammelt?', assessment: 1.25}, // Mittelwert für Verpackungsmüll (1) und Papiermüll (1,5)
+      {name: 'Müll sammeln', type: 3, question: 'Wieviel Müll (in kg) wurde gesammelt?', assessment: 1.25}, // Mittelwert für Verpackungsmüll (1) und Papiermüll (1,5)
       {name: 'Politische Partizipation', type: 1},
-      {name: 'Repair-Cafe', type: 1},
-      {name: 'Shopping-Fasten', type: 3, question: 'Auf wie viele neue Kleidungsstücke wurde verzichtet?', assessment: 15},
+      {name: 'Repair-Café', type: 1},
+      {name: 'Shopping-Fasten', type: 3, question: 'Auf wie viele neue Kleidungsstücke wurde verzichtet?', assessment: 5},
       {name: 'Solaranlage fürs Vereinsheim', type: 3, question: 'Wie viel Strom produziert die Anlage monatlich (in kWh)?', assessment: 0.5},
       {name: 'Solarbetriebene Handy-Aufladestation', type: 3, question: 'Wie viele Handys wurden geladen?', assessment: 0.0033},
       {name: 'Solarpumpe', type: 1},
@@ -25,8 +28,11 @@ klimaChallenge.factory("projects", function($firebaseArray) {
       {name: 'Umstieg auf Recyclingpapier', type: 3, question: 'Wie viel Papier wird monatlich gekauft (in Blatt Papier)?', assessment: 0.001}, // 100 Blatt = 0.1
       {name: 'Upcycling', type: 1},
       {name: 'Veranstaltung plastikfrei gestalten', type: 2, assessment: 0.01},
+      {name: 'Vereinsbus mit Erdgas', type: 1},
       {name: 'Versuchsveganer_in', type: 4, question: 'Wie viele Tage wurde vegan gelebt?', assessment: 3.7},
-      {name: 'Versuchsvegetarier_in', type: 4, question: 'Wie viele Tage wurde vegetarisch gelebt?', assessment: 2.1}
+      {name: 'Versuchsvegetarier_in', type: 4, question: 'Wie viele Tage wurde vegetarisch gelebt?', assessment: 2.1},
+      {name: 'Zug statt Auto', type: 3, question: 'Wie ist die durchschnittliche Distanz in km pro Person?', assessment: 0.096},
+      {name: 'Sonstige Aktionen', type: 3, question: 'Wie viele kg CO2 habt ihr durch die Aktion eingespart?', assessment: 1}
    ];
 
    var carriers = [
