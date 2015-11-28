@@ -1,0 +1,20 @@
+<md-whiteframe class="md-whiteframe-z2 card">
+   <div class="image-frame">
+      <img class="project-image" ng-if="project.formal.image.url" ng-src="{{ project.formal.image.url | fpConvert: {w:500, rotate:'exif'} }}" alt="{{ project.formal.actionName }}"/>
+   </div>
+
+   <div class="card-header">
+      <h3 ng-if="project.formal.actionName">{{ project.formal.actionName }}</h3>
+      <div ng-if="project.formal.date" class="date">am {{ project.formal.date }}</div>
+   </div>
+
+   <div ng-if="project.formal.description" class="description">
+      {{ project.formal.description }}
+   </div>
+   <div class="details">
+      <b>Gruppe: </b>{{ project.formal.group }}<br>
+      <b>Träger: </b>{{ project.formal.carrier }}<br>
+      <b>Anzahl Teilnerhmer_innen: </b>{{ project.potential.f1 }}
+   </div>
+
+</md-whiteframe>
