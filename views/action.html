@@ -7,7 +7,9 @@
       <h3 ng-if="project.formal.actionName">{{ project.formal.actionName }}</h3>
       <div ng-if="project.formal.date" class="date">
          am {{ project.formal.date }} |
-         <ng-md-icon icon="people" style="fill: #455a64" size="19"></ng-md-icon>{{ project.potential.f1 }}</div>
+         <ng-md-icon icon="people" style="fill: #455a64" size="19"></ng-md-icon>{{ project.potential.f1 }} |
+         <ng-md-icon icon="flag" style="fill: #455a64" size="18"></ng-md-icon>{{ project.climatePoints }}
+      </div>
    </div>
 
    <div ng-if="project.formal.description" class="description">
@@ -15,7 +17,7 @@
    </div>
    <div class="details">
       <b>Gruppe: </b>{{ project.formal.group }}<br>
-      <b>Träger: </b>{{ project.formal.carrier }}<br>
+      <b>Träger: </b>{{ project.formal.carrier }}
    </div>
 
 </md-whiteframe>

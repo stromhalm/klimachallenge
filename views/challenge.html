@@ -56,16 +56,16 @@
       <md-whiteframe class="md-whiteframe-z2 card" flex flex-gt-md="60">
          <h2>Aktion einreichen</h2>
          <p>
-            Jugendgruppen in Niedersachsen haben bereits <b>19.895 Klimapunkte</b> in <b>8 Aktionen</b> erreicht. Gemeinsam schaffen wir <b>30.000</b> Punkte!
+            Jugendgruppen in Niedersachsen haben bereits <b><span count-to="{{ climatePointsTotal }}" value="0" duration="2"></span> Klimapunkte</b> in <b><span count-to="{{ publicProjectsCount }}" value="0" duration=".8"></span> Aktionen</b> erreicht. Gemeinsam schaffen wir <b>30.000</b> Punkte!
          </p>
          <div class="md-actions" layout="row" layout-align="end center">
             <md-button ng-href="#/mitmachen"><ng-md-icon style="fill: #02bcd4" icon="add"></ng-md-icon> Aktion einreichen</md-button>
          </div>
          <div class="counter-bar">
             <div class="counter-background">
-               <div class="counter-filled" style="width: 0%;">
+               <div class="counter-filled" style="width: {{ goalPercentage }}%;">
                   <div class="counter-background counter-inner">
-                     19.895 Klimapunkte
+                     <span count-to="{{ climatePointsTotal }}" value="0" duration="2"></span> Klimapunkte
                   </div>
                </div>
             </div>

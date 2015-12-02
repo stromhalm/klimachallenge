@@ -1,4 +1,4 @@
-<section class="space-box project-progress">
+<section class="space-box project-progress" ng-controller="challengeCtrl">
    <div layout="row" layout-align="start center" layout-sm="column">
       <div style="width: 100%;" flex-gt-sm="65" flex-offset-gt-md="5">
          <h2>Ziele</h2>
@@ -16,8 +16,8 @@
                <p class="goal-points">?</p>
             </div>
          </div>
-         <md-progress-linear class="project-bar md-accent" md-mode="buffer" value="0" md-buffer-value="100"></md-progress-linear>
-         <p class="inline-points"><span count-to="0" value="0" duration=".8">19.895</span> Klimapunkte</p>
+         <md-progress-linear class="project-bar md-accent" md-mode="buffer" value="{{ goalPercentage/4 }}"></md-progress-linear>
+         <p class="inline-points"><span count-to="{{ climatePointsTotal }}" value="0" duration="1"></span> Klimapunkte</p>
       </div>
       <div flex flex-offset-gt-sm="5" style="width: 100%">
          <md-tabs md-center-tabs="false" class="md-accent md-whiteframe-z3" md-selected="selectedGoal">

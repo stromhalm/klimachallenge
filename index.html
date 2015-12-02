@@ -56,17 +56,15 @@
          <div flex-gt-sm="45" flex="90" flex-offset="5">
             <img src="img/logo5.png" alt="logo" /><br>
          </div>
-         <div class="space-box counter" flex-gt-sm="40" flex="100" layout="row" layout-align="center center">
+         <div ng-controller="challengeCtrl" class="space-box counter" flex-gt-sm="40" flex="100" layout="row" layout-align="center center">
 
-            <!--
-               <md-progress-circular md-mode="determinate" value="100"></md-progress-circular>
-               <legend>
-                  <h2>
-                     <span count-to="100" value="0" duration=".8">100</span>%
-                  </h2>
-                  Bis zum nächsten Zwischenziel
-               </legend>
-            -->
+            <md-progress-circular md-mode="determinate" value="{{ goalPercentage }}"></md-progress-circular>
+            <legend>
+               <h2>
+                  <span count-to="{{ goalPercentage }}" value="0" duration="1"></span>%
+               </h2>
+               Des Zwischenziels erfüllt
+            </legend>
          </div>
       </header>
 
@@ -124,6 +122,7 @@
    <script src="controllers/projects.js?ver=1"></script>
    <script src="controllers/allActions.js?ver=1"></script>
    <script src="controllers/action.js?ver=1"></script>
+   <script src="controllers/challenge.js?ver=1"></script>
 
    <!-- filepicker.io -->
    <script type="text/javascript" src="bower_components/filepicker-js/filepicker.min.js"></script>

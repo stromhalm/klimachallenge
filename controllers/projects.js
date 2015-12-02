@@ -67,10 +67,45 @@ klimaChallenge.factory("projects", function($firebaseArray) {
       'Sonstige / kein Träger'
    ];
 
-   // this uses AngularFire to create the synchronized array
-   return {
-      db: $firebaseArray(ref),
-      events: events,
-      carriers: carriers
+   function getClimatePointsSum() {
+      var sum = 0;
+      angular.forEach(interface.db, function(project) {
+         if (project.public) {
+            sum += project.climatePoints;
+         }
+      });
+
+      return sum;
    };
+
+   function getPublicProjectsCount() {
+      var sum = 0;
+      angular.forEach(interface.db, function(project) {
+         if (project.public) {
+            sum += 1;
+         }
+      });
+      return sum;
+   }
+
+   function getPercentage() {
+      var goal = 30000;
+      var rate = parseFloat(getClimatePointsSum()) / parseFloat(goal);
+      if (rate < 1) {
+         return Math.round(rate*100);
+      } else {
+         return 100;
+      }
+   }
+
+   // this uses AngularFire to create the synchronized array
+   var interface = {
+      db: $firebaseArray(ref),
+      climatePointsSum: getClimatePointsSum,
+      publicProjectsCount: getPublicProjectsCount,
+      getPercentage: getPercentage,
+      events: events,
+      carriers: carriers,
+   };
+   return interface;
 });
