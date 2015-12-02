@@ -9,7 +9,6 @@ klimaChallenge.factory("projects", function($firebaseArray) {
       {name: 'Biologische Ernährung', type: 1},
       {name: 'Bus statt Auto', type: 3, question: 'Wie ist die durchschnittliche Distanz in km pro Person?', assessment: 0.109},
       {name: 'Bäume pflanzen', type: 3, question: 'Wieviele Bäume wurden gepflanzt?', assessment: 10},
-      {name: 'Elektro-Auto statt Benziner', type: 1},
       {name: 'Energiesparlampen', type: 3, question: 'Wie viele Lampen wurden ersetzt?', assessment: 13.7},
       {name: 'Fahrrad-Reparatur-Service', type: 3, question: 'Wie viele Fahrräder wurden repariert?', assessment: 25},
       {name: 'Fahrrad statt Auto', type: 3, question: 'Wie ist die durchschnittliche Distanz in km pro Person?', assessment: 0.139},
