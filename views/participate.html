@@ -188,9 +188,11 @@
                <h2 class="md-title">Aufwand</h2>
                <md-content layout-padding layout-wrap layout="row">
                   <md-input-container flex="100" ng-if="events[getEventId(formal.event)].question">
-                     <label class="md-no-float">{{events[getEventId(formal.event)].question}}</label>
+                     <label class="md-no-float">{{ events[getEventId(formal.event)].question }}</label>
                      <input ng-model="custom.f11" type="number" ng-required="true">
+                     <legend ng-if="events[getEventId(formal.event)].placeholder" ng-bind-html="events[getEventId(formal.event)].placeholder | to_trusted"></legend>
                   </md-input-container>
+
                   <md-input-container flex="100">
                      <label class="md-no-float">Hat sich Euer Verband schonmal für den Klimaschutz engagiert?</label>
                      <select ng-model="custom.repeat">
@@ -477,7 +479,7 @@
                </div>
                <h2>Umweltfreundlich mobil</h2>
                <p>
-                  Du fährst öfter mit dem Auto, Bus o.ä. zu Schule oder Uni? Dann wäre es eine Klima-Challenge, wo möglich zeitweise oder sogar dauerhaft aufs Fahrrad umzusteigen. Das bringt nicht nur Punkte sondern auch Muskeln ;)
+                  Du fährst öfter mit dem Auto, Bus o.ä. zur Schule oder Uni? Dann wäre es eine Klima-Challenge, wo möglich zeitweise oder sogar dauerhaft aufs Fahrrad umzusteigen. Das bringt nicht nur Punkte, sondern auch Muskeln! ;)
                </p>
             </md-whiteframe>
          </div>

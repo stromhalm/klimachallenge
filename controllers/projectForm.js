@@ -310,4 +310,8 @@ klimaChallenge.controller('projectFormCtrl', function($scope, $timeout, projects
       });
       return id;
    };
+}).filter('to_trusted', function($sce) {
+   return function(text) {
+      return $sce.trustAsHtml(text);
+   };
 });
