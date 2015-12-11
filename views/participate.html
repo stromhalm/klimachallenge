@@ -74,7 +74,7 @@
                      </select>
                   </md-input-container>
                   <md-input-container class="md-block" flex>
-                     <label>Kurzbeschreibung der Aktion (ca. 2-5 Sätze)</label>
+                     <label>Kurzbeschreibung der Aktion (ca. 2-5 Sätze). Dabei interessiert uns besonders: Habt ihr konkret etwas zugunsten des Klimas eingespart? Wenn ja, was genau (falls nicht durch die Aktionsart klar) und wie viel davon?</label>
                      <textarea ng-model="formal.description" colums="5" ng-required="true" placeholder="Dabei interessiert uns besonders: Habt ihr konkret etwas zugunsten des Klimas eingespart? Wenn ja, was genau (falls nicht durch die Aktionsart klar) und wie viel davon?"></textarea>
                   </md-input-container>
                </md-content>
@@ -87,24 +87,24 @@
                      <input ng-model="potential.f1" type="number" min="1" ng-required="true">
                   </md-input-container>
                   <md-input-container flex="100">
-                     Während der Aktion haben die Teilnehmer_innen …
+                     In Bezug auf die klimafreundliche Aktion haben die Teilnehmer_innen …
                      <md-content layout-padding layout-wrap layout="row">
                         <md-input-container flex>
-                           <md-checkbox ng-model="potential.f21">… zugehört und zugesehen.</md-checkbox>
+                           <md-checkbox ng-model="potential.f21">… nur zugehört, zugesehen oder konsumiert.</md-checkbox>
                            <md-checkbox ng-model="potential.f22">… mit diskutiert.</md-checkbox>
-                           <md-checkbox ng-model="potential.f23">… selbst mit angepackt oder sind aktiv geworden.</md-checkbox>
+                           <md-checkbox ng-model="potential.f23">… sich engagiert, selbst mit angepackt oder sind aktiv geworden.</md-checkbox>
                         </md-input-container>
                      </md-content>
                   </md-input-container>
                   <md-input-container flex="100">
-                     <label class="md-no-float">Haben sich die Teilnehmer_innen damit beschäftigt, wie sich ihr persönliches Verhalten auf das Klima auswirkt?</label>
+                     <label class="md-no-float">Haben sich die Teilnehmer_innen umfassend und konkret damit beschäftigt, wie sich ihr persönliches Verhalten auf das Klima auswirkt?</label>
                      <select ng-model="potential.f3" ng-required="true">
                         <option value="0">Nein</option>
                         <option value="3">Ja</option>
                      </select>
                   </md-input-container>
                   <md-input-container flex="100" ng-required="true">
-                     <label class="md-no-float">Wurden den Teilnehmer_innen Ideen gegeben, was sie konkret tun können, um das Klima zu schützen?</label>
+                     <label class="md-no-float">Wurden den Teilnehmer*innen Ideen mitgegeben, was sie über diese Aktion hinaus konkret selbst tun können, um das Klima zu schützen?</label>
                      <select ng-model="potential.f4">
                         <option value="0">Nein</option>
                         <option value="3">Ja</option>
@@ -113,7 +113,7 @@
                   <md-input-container flex="100" ng-required="true">
                      <label class="md-no-float">Bewirkt diese Aktion eine langfristige Veränderung?</label>
                      <select ng-model="potential.f5" ng-required="true">
-                        <option value="1">Diese Aktion war einmalig und beinhaltet keine wiederkehrenden Tätigkeiten.</option>
+                        <option value="1">Diese Aktion war einmalig.</option>
                         <option value="2">Diese Aktion beinhaltet mehre wiederkehrende Tätigkeiten bevor die Aktion als beendet angesehen wird.</option>
                         <option value="3">Diese Aktion führt zu einer langfristigen Veränderung in unserem Verband / unserer Jugendgruppe.</option>
                      </select>
@@ -175,10 +175,10 @@
                      </select>
                   </md-input-container>
                   <md-input-container flex="100">
-                     <label class="md-no-float">Habt ihr etwas entwickelt (z.B. Infos, Methoden, Objekte, etc.)?</label>
+                     <label class="md-no-float">Habt ihr etwas entwickelt, das für Bildungsarbeit einsetzbar ist (z.B. Infos, Methoden, Objekte)?</label>
                      <select ng-model="effort.f10" ng-required="true">
                         <option value="0">Nein, wir haben nichts entwickelt.</option>
-                        <option value="2">Ja, wir haben etwas entwickelt, was für den internen Gebrauch verwendet werden kann.</option>
+                        <option value="2">Ja, wir haben etwas entwickelt, was in unserer Gruppe/unserem Verband verwendet werden kann.</option>
                         <option value="3">Ja, wir haben etwas entwickelt, was auch von anderen weiter verwendet werden kann.</option>
                      </select>
                   </md-input-container>
