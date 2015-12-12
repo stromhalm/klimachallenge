@@ -188,7 +188,7 @@
                <h2 class="md-title">Aufwand</h2>
                <md-content layout-padding layout-wrap layout="row">
                   <md-input-container flex="100" ng-if="events[getEventId(formal.event)].question">
-                     <label class="md-no-float">{{ events[getEventId(formal.event)].question }}</label>
+                     <label class="md-no-float" ng-bind-html="events[getEventId(formal.event)].question | to_trusted"></label>
                      <input ng-model="custom.f11" type="number" ng-required="true">
                      <legend ng-if="events[getEventId(formal.event)].placeholder" ng-bind-html="events[getEventId(formal.event)].placeholder | to_trusted"></legend>
                   </md-input-container>
