@@ -295,7 +295,7 @@ klimaChallenge.controller('projectFormCtrl', function($scope, $timeout, projects
 
       // Get the highest checked checkbox value
       var engagementPoints = 0;
-      if ($scope.potential.f21) engagementPoints = 1;
+      if ($scope.potential.f21) engagementPoints = 0;
       if ($scope.potential.f22) engagementPoints = 2;
       if ($scope.potential.f23) engagementPoints = 3;
       return engagementPoints;
