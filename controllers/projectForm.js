@@ -58,7 +58,8 @@ klimaChallenge.controller('projectFormCtrl', function($scope, $timeout, projects
                (
                   // If custom question is active, the field is required
                   (eventId != null && !projects.events[eventId].question) ||
-                  $scope.custom.f11
+                  $scope.custom.f11 ||
+                  $scope.custom.f11 == 0
                ) &&
                $scope.custom.repeat &&
                (
