@@ -274,26 +274,30 @@ klimaChallenge.controller('projectFormCtrl', function($scope, $timeout, projects
    // Calculate the current media points (media checkboxes)
    $scope.countMediaPoints = function() {
 
-      // Get the highest checked checkbox value
+      // Get the sum of the media checkboxes (max 3)
       var mediaPoints = 0;
-      if ($scope.media.email && mediaPoints < 1) mediaPoints = 1;
-      if ($scope.media.facebook && mediaPoints < 1) mediaPoints = 1;
-      if ($scope.media.twitter && mediaPoints < 1) mediaPoints = 1;
-      if ($scope.media.instagram && mediaPoints < 1) mediaPoints = 1;
-      if ($scope.media.clubmedia && mediaPoints < 1) mediaPoints = 1;
-      if ($scope.media.flyer && mediaPoints < 2) mediaPoints = 2;
-      if ($scope.media.poster && mediaPoints < 2) mediaPoints = 2;
-      if ($scope.media.website && mediaPoints < 3) mediaPoints = 3;
-      if ($scope.media.radio && mediaPoints < 3) mediaPoints = 3;
-      if ($scope.media.tv && mediaPoints < 3) mediaPoints = 3;
-      if ($scope.media.newspaper && mediaPoints < 3) mediaPoints = 3;
-      if ($scope.media.other && mediaPoints < 1) mediaPoints = 1;
+      if ($scope.media.email) mediaPoints += 1;
+      if ($scope.media.facebook) mediaPoints += 1;
+      if ($scope.media.twitter) mediaPoints += 1;
+      if ($scope.media.instagram) mediaPoints += 1;
+      if ($scope.media.clubmedia) mediaPoints += 1;
+      if ($scope.media.flyer) mediaPoints += 2;
+      if ($scope.media.poster) mediaPoints += 2;
+      if ($scope.media.website) mediaPoints += 3;
+      if ($scope.media.radio) mediaPoints += 3;
+      if ($scope.media.tv) mediaPoints += 3;
+      if ($scope.media.newspaper) mediaPoints += 3;
+      if ($scope.media.other) mediaPoints += 1;
+
+      if (mediaPoints > 3) {
+         mediaPoints = 3;
+      }
       return mediaPoints;
    }
 
    $scope.countEngagementPoints = function() {
 
-      // Get the highest checked checkbox value
+      // Get the sum of the engagement checkboxes (max 3)
       var engagementPoints = 0;
       if ($scope.potential.f21) engagementPoints = 0;
       if ($scope.potential.f22) engagementPoints = 2;
