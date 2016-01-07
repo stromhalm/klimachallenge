@@ -126,7 +126,7 @@ klimaChallenge.controller('projectFormCtrl', function($scope, $timeout, projects
    $scope.getClimatePoints = function() {
 
       var fz = parseFloat(5); // Zielzahlfaktor
-      var um = parseFloat(0.75); // Umrechnungsfaktor
+      var um = parseFloat(1/0.75); // Umrechnungsfaktor
       var n2 = parseFloat(50); // Normierungsfaktor 2
       var eventId = $scope.getEventId($scope.formal.event);
       var dco2 = parseFloat(projects.events[eventId].assessment);
