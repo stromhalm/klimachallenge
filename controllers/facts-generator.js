@@ -39,7 +39,6 @@ klimaChallenge.directive('factsGenerator', function () {
 		// Get next fact from the list
 		$scope.new = function() {
 			random = (random+1) % facts.length;
-			$scope.fact = null;
 			$scope.fact = facts[random];
 		}
 
