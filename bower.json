@@ -28,12 +28,12 @@
     "angular-flip": "*",
     "angular-material-icons": "~0.5.0",
     "angular-ui-router": "~0.2.15",
-    "angular-material": "master",
+    "angular-material": "0.11",
     "angulartics": "~0.20.1",
     "angularfire": "~1.1.3",
     "firebase": "~2.3.1"
   },
   "resolutions": {
-    "angular": "1.4.7"
+    "angular": ">= 1.0.8"
   }
 }

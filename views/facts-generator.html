@@ -1,0 +1,8 @@
+<md-whiteframe class="md-whiteframe-z2 card">
+   <h2>Wusstest du schon...?</h2>
+      <p class="climate-fact" ng-if="fact" ng-bind-html="fact | to_trusted">
+      </p>
+   <div class="md-actions" layout="row" layout-align="end center">
+      <md-button ng-click="new()"><ng-md-icon style="fill: #8bc34a" icon="sync"></ng-md-icon> Weiter</md-button>
+   </div>
+</md-whiteframe>

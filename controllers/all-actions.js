@@ -5,7 +5,7 @@ klimaChallenge.directive('allActions', function (projects, filepickerService) {
 		$scope.projects = projects.db;
 	}
 	return {
-		templateUrl: 'views/allActions.html',
+		templateUrl: 'views/all-actions.html',
 		link: link
 	};
 

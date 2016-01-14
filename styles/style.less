@@ -41,8 +41,12 @@ html, body, #physics-world {
 
 .side-header {
    padding: 25px 8px 0px 20px !important;
-   font-size: 1.6em;
+   font-size: 1.5em;
    font-weight: 300;
+
+   @media (min-width: 1260px) {
+      font-size: 1.6em;
+   }
 }
 
 header {
@@ -325,6 +329,11 @@ md-whiteframe {
 .space-box {
    padding: 60px 8px 40px 8px;
 
+   .section-icon {
+      margin-bottom: 100px;
+      opacity: 0.7;
+   }
+
    h2 {
       font-size: 45px;
       font-weight: 300;
@@ -342,11 +351,15 @@ md-whiteframe {
       color: white;
       text-decoration: none;
    }
+
+   .category-text {
+      margin-top: -50px;
+   }
 }
 
 .add-project, .win {
    background-color: @light-grey;
-   color: rgba(255, 255, 255, 0.6);
+   color: rgba(255, 255, 255, 0.7);
    padding-top: 100px;
    padding-bottom: 0;
 
@@ -359,10 +372,20 @@ md-whiteframe {
    }
 }
 
+.facts {
+   background-color: @green;
+   color: rgba(255, 255, 255, 0.7);
+   padding-top: 80px;
+
+   md-whiteframe h2, .md-button {
+      color: @green;
+   }
+}
+
 .win {
    background-color: #02bcd4;
    padding-top: 100px;
-   margin-bottom: -61px;
+   margin-bottom: -63px;
 
    h2 {
       margin-bottom: -10px;
@@ -410,7 +433,7 @@ md-whiteframe {
    .sub-heading {
       font-size: 1.2em;
       margin-bottom: 15px;
-      opacity: 0.65;
+      opacity: 0.7;
    }
 
    md-whiteframe {
@@ -546,7 +569,7 @@ md-whiteframe {
 
 .all-projects {
    background-color: @blue;
-   color: rgba(255, 255, 255, 0.6);
+   color: rgba(255, 255, 255, 0.7);
 
    md-whiteframe {
       padding-bottom: 0 !important;
@@ -756,4 +779,16 @@ md-input-container {
    .links {
       text-align: right;
    }
+}
+
+.climate-fact {
+   transition: 2s linear all;
+
+   &.ng-enter {
+     opacity: 0;
+   }
+
+   &.ng-enter.ng-enter-active {
+     opacity: 1;
+  }
 }
