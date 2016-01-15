@@ -11,6 +11,10 @@ klimaChallenge.config(function($stateProvider, $urlRouterProvider) {
       url: "/contract",
       templateUrl: "views/contract.html"
   })
+  .state('climateChange', {
+      url: "/klimawandel",
+      templateUrl: "views/climate-change.html"
+  })
   .state('stats', {
       url: "/statistik",
       templateUrl: "views/stats.html"

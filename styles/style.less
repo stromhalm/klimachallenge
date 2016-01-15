@@ -103,7 +103,7 @@ header {
 .video {
    z-index: 200;
    position: relative;
-   margin: 8px;
+   margin: 16px 8px 8px 8px;
    margin-left: 0;
 
    .youtube {
@@ -285,7 +285,7 @@ md-whiteframe {
 
 .card {
    display: block;
-   margin: 8px;
+   margin: 16px 8px 8px 8px;
    z-index: 201;
    text-decoration: none;
 
@@ -334,6 +334,12 @@ md-whiteframe {
       opacity: 0.7;
    }
 
+   .section-image {
+      width: 350px;
+      margin-top: -40px;
+      opacity: 0.7;
+   }
+
    h2 {
       font-size: 45px;
       font-weight: 300;
@@ -360,7 +366,7 @@ md-whiteframe {
 .add-project, .win {
    background-color: @light-grey;
    color: rgba(255, 255, 255, 0.7);
-   padding-top: 100px;
+   padding-top: 120px;
    padding-bottom: 0;
 
    @media (min-width: 960px) {
@@ -397,7 +403,7 @@ md-whiteframe {
    }
 }
 
-.challenge-actions {
+.challenge-actions, .climate-weather {
    background-color: @background-grey;
    color: white;
    font-size: 34px;
@@ -405,6 +411,13 @@ md-whiteframe {
    padding-bottom: 50px;
    font-weight: 300;
    line-height: 46px;
+
+   .card-description {
+      line-height: 19px;
+      border-top: 1px solid #eee;
+      padding: 16px;
+      margin: 13px -16px -16px -16px;
+   }
 
    .md-button {
       color: @dark-grey;
@@ -778,5 +791,47 @@ md-input-container {
 
    .links {
       text-align: right;
+   }
+}
+
+.video-card {
+   padding: 0 !important;
+
+   .info-video {
+      width: 100%;
+      min-height: 230px;
+   }
+
+   .credits {
+      text-align: right;
+      font-size: 0.8em;
+      padding: 8px;
+      padding-top: 5px;
+
+      a {
+         color: black;
+      }
+   }
+}
+
+.climate-change {
+   background-color: @green;
+   color: white;
+
+   .card h2 {
+      color: @green;
+   }
+
+   .section-image {
+      width: 200px;
+   }
+}
+
+.state-info {
+   background-color: @blue;
+   color: white;
+
+   .card h2 {
+      color: @blue;
    }
 }
