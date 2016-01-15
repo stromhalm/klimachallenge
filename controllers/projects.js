@@ -40,7 +40,7 @@ klimaChallenge.factory("projects", function($firebaseArray) {
       'Arbeitskreis Nds Jugendgemeinschaften ANJ',
       'BDKJ-Landesstelle Niedersachsen',
       'Bund der Alevitischen Jugendlichen in Deutschland e.V.',
-      'Bund der Pfadfinderinnen und Pfadfinder (BdP) Niedersachsen'
+      'Bund der Pfadfinderinnen und Pfadfinder (BdP) Niedersachsen',
       'Bund Deutscher Pfadfinder_innen (BDP), Landesverband Niedersachsen',
       'Deutsche Schreberjugend',
       'Deutsche Wanderjugend',
