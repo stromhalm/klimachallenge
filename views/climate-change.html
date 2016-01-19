@@ -1,6 +1,6 @@
 <section class="space-box climate-change" ng-controller="challengeCtrl">
-   <div layout="row" layout-align="start center" layout-sm="column">
-      <div flex-gt-sm="55" flex-offset-gt-md="5">
+   <div layout="row" layout-align="start start" layout-wrap>
+      <div flex-sm="100" flex-gt-sm="45" flex-offset-gt-md="5">
          <img alt="Die Erde" src="img/icons/globe.png" class="section-image">
          <h2>Was ist Klimawandel?</h2>
          Klimawandel ist die Veränderung des Klimas:
@@ -10,13 +10,18 @@
          an Kohlenstoffdioxid (CO<sub>2</sub>) und andere Treibhausgase, die in die Atmosphäre gelangen. Als Folge
          wird es im Schnitt wärmer.
       </div>
-      <div flex-gt-md="30" flex-offset-gt-md="5" flex-md="45">
+      <div flex-sm="100" flex-md="55" flex-gt-md="40" flex-offset-gt-md="5">
          <md-whiteframe class="md-whiteframe-z2 card video-card">
             <iframe class="info-video" src="https://www.youtube.com/embed/YNSNulqBqhE" frameborder="0" allowfullscreen></iframe>
             <div class="credits">
                Ein Video von <a href="http://www.zukunftsprojekt-erde.de" target="_blank">www.zukunftsprojekt-erde.de</a>
             </div>
          </md-whiteframe>
+      </div>
+   </div>
+   <div layout="row" layout-align="center start" layout-sm="column">
+      <div flex flex-md="75" flex-gt-md="50">
+         <facts-generator more="false"></facts-generator>
       </div>
    </div>
 </section>
@@ -79,12 +84,7 @@
             Einige Folgen sind bereits jetzt spürbar, andere werden erst in der Zukunft erwartet.
          </md-whiteframe>
          <div class="links">
-            Weitere Informationen: <a href="http://www.co2online.de/klima-schuetzen/klimawandel/" target="_blank">
-               CO2online.de
-               <md-tooltip md-direction="left">
-                  Infos über Hintergründe, Ursachen und Folgen des Klimawandels auf regionaler und globaler Ebene
-               </md-tooltip>
-            </a>,
+            Weitere Informationen: <a href="http://www.co2online.de/klima-schuetzen/klimawandel/" target="_blank">CO2online.de<md-tooltip md-direction="left">Infos über Hintergründe, Ursachen und Folgen des Klimawandels auf regionaler und globaler Ebene</md-tooltip></a>,
             <a href="http://www.klimafakten.de/" target="_blank">
                KlimaFakten.de
                <md-tooltip md-direction="left">
