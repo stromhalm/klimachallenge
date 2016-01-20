@@ -45,8 +45,9 @@ klimaChallenge.directive('factsGenerator', function () {
 	}
 	return {
 		templateUrl: 'views/facts-generator.html',
-		link: link
+		link: link,
+		scope: {
+			more: "=more"
+		}
 	};
-
-	// only filter the nth (1st, 2nd, 3rd, ...) element
 });

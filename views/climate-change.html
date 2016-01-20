@@ -1,0 +1,97 @@
+<section class="space-box climate-change" ng-controller="challengeCtrl">
+   <div layout="row" layout-align="start start" layout-wrap>
+      <div flex-sm="100" flex-gt-sm="45" flex-offset-gt-md="5">
+         <img alt="Die Erde" src="img/icons/globe.png" class="section-image">
+         <h2>Was ist Klimawandel?</h2>
+         Klimawandel ist die Veränderung des Klimas:
+         Seit etwa 100 Jahren ist die globale Mitteltemperatur um 0,7 Grad Celsius gestiegen –
+         das ist stärker als jemals zuvor in den letzten 10.000 Jahren. Verursacht wird dieser Anstieg
+         vor allem durch uns Menschen. Wir verbrennen Kohle, Gas und Öl und produzieren somit enorme Mengen
+         an Kohlenstoffdioxid (CO<sub>2</sub>) und andere Treibhausgase, die in die Atmosphäre gelangen. Als Folge
+         wird es im Schnitt wärmer.
+      </div>
+      <div flex-sm="100" flex-md="55" flex-gt-md="40" flex-offset-gt-md="5">
+         <md-whiteframe class="md-whiteframe-z2 card video-card">
+            <iframe class="info-video" src="https://www.youtube.com/embed/YNSNulqBqhE" frameborder="0" allowfullscreen></iframe>
+            <div class="credits">
+               Ein Video von <a href="http://www.zukunftsprojekt-erde.de" target="_blank">www.zukunftsprojekt-erde.de</a>
+            </div>
+         </md-whiteframe>
+      </div>
+   </div>
+   <div layout="row" layout-align="center start" layout-sm="column">
+      <div flex flex-md="75" flex-gt-md="50">
+         <facts-generator more="false"></facts-generator>
+      </div>
+   </div>
+</section>
+
+<section layout-wrap layout="row" layout-sm="column" class="climate-weather">
+   <div flex flex-gt-md="90" flex-offset-gt-md="5" class="info-cards">
+      <div layout-wrap layout="row" layout-sm="column">
+         <div flex flex-gt-sm="50">
+            <md-whiteframe class="md-whiteframe-z2 card action-card">
+               <div class="category-icon">
+                  <ng-md-icon style="fill: #8bc34a" size="90" icon="cloud"></ng-md-icon>
+               </div>
+               <h2>Wetter</h2>
+               <div class="card-description">
+                  Wetter ist ein örtlich und zeitlich begrenzter Zustand und bezieht sich auf das 'hier' und 'jetzt' (maximal 1 Tag).
+               </div>
+            </md-whiteframe>
+         </div>
+         <div flex flex-gt-sm="50">
+            <md-whiteframe class="md-whiteframe-z2 card action-card">
+               <div class="category-icon">
+                  <ng-md-icon style="fill: #8bc34a" size="90" icon="public"></ng-md-icon>
+               </div>
+               <h2>Klima</h2>
+               <div class="card-description">
+                  Mit Klima wird ein langzeitiges Muster von Wetterzuständen beschrieben. Um das Klima einer bestimmten Region, z.B. Norddeutschland oder Europa, zu charakterisieren, muss das Wetter über einen längeren Zeitraum beobachtet werden, in der Regel mehrere Jahrzehnte. Das Klima beschreibt also die durchschnittlichen Wetterverhältnisse an einem Ort oder in einer Region.
+               </div>
+            </md-whiteframe>
+         </div>
+      </div>
+   </div>
+</section>
+
+<section class="space-box state-info" ng-controller="challengeCtrl">
+   <div layout="row" layout-align="start center" layout-sm="column" layout-md="column">
+      <div flex flex-gt-md="45" flex-offset-gt-md="5">
+         <img alt="Niedersachsen" src="img/icons/niedersachsen.png" class="section-image">
+         <h2>Ist Niedersachsen vom Klimawandel betroffen?</h2>
+         Der Klimawandel ist auch in Norddeutschland bereits in vollem Gang:
+         Die Durchschnittstemperatur steigt und Extremwetterereignisse häufen sich
+         (wie z.B. Hitzesommer, Starkregen, Dürren, Winterstürme). Außerdem steigt der Meeresspiegel
+         an und es kommt zu erhöhten Sturmfluten (Hochwasser, welches mit Sturm einhergeht).
+         Der Frühling beginnt in Deutschland mittlerweile etwa 8 Tage früher als noch vor 50 Jahren.
+         Dadurch überwintern Zugvögel zunehmend in unseren Breiten und Krankheitserreger
+         (wie z.B. die Malaria übertragende Anopheles-Mücke) können sich besser ausbreiten.
+      </div>
+      <div flex flex-gt-md="40" flex-offset-gt-md="5">
+         <md-whiteframe class="md-whiteframe-z2 card">
+            <h2>Welche Folgen hat der Klimawandel?</h2>
+            Die Folgen der globalen Erwärmung sind zahlreiche weltweite Veränderungen, die den Menschen und seine Umwelt betreffen. Dazu gehören:
+            <ul>
+               <li>Steigende Meeresspiegel</li>
+               <li>Schmelzende Gletscher</li>
+               <li>Verschiebung von Klimazonen</li>
+               <li>Verändertes Auftreten von Niederschlägen</li>
+               <li>Stärkere oder häufigere Wetterextreme wie Überschwemmungen und Dürren</li>
+               <li>Ausbreitung von Parasiten und tropischen Krankheiten</li>
+               <li>Mehr Menschen, die flüchten müssen</li>
+            </ul>
+            Einige Folgen sind bereits jetzt spürbar, andere werden erst in der Zukunft erwartet.
+         </md-whiteframe>
+         <div class="links">
+            Weitere Informationen: <a href="http://www.co2online.de/klima-schuetzen/klimawandel/" target="_blank">CO2online.de<md-tooltip md-direction="left">Infos über Hintergründe, Ursachen und Folgen des Klimawandels auf regionaler und globaler Ebene</md-tooltip></a>,
+            <a href="http://www.klimafakten.de/" target="_blank">
+               KlimaFakten.de
+               <md-tooltip md-direction="left">
+                  Diese Seite räumt mit den häufigsten Irrtümern der Klima-Skeptiker_innen auf
+               </md-tooltip>
+            </a>
+         </div>
+      </div>
+   </div>
+</section>

@@ -11,6 +11,10 @@ klimaChallenge.config(function($stateProvider, $urlRouterProvider) {
       url: "/contract",
       templateUrl: "views/contract.html"
   })
+  .state('climateChange', {
+      url: "/klimawandel",
+      templateUrl: "views/climate-change.html"
+  })
   .state('stats', {
       url: "/statistik",
       templateUrl: "views/stats.html"
@@ -19,6 +23,10 @@ klimaChallenge.config(function($stateProvider, $urlRouterProvider) {
       url: "/mitmachen",
       templateUrl: "views/participate.html",
       controller: "projectFormCtrl"
+  })
+  .state('offers', {
+      url: "/angebote",
+      templateUrl: "views/offers.html"
   })
   .state('impressum', {
       url: "/impressum",
@@ -63,17 +71,20 @@ klimaChallenge.config(function($stateProvider, $urlRouterProvider) {
          case '':
             $scope.selectedPage = 0;
             break;
-         case 'mitmachen':
+         case 'klimawandel':
             $scope.selectedPage = 1;
             break;
-         case 'statistik':
+         case 'angebote':
             $scope.selectedPage = 2;
             break;
-         case 'contract':
+         case 'mitmachen':
             $scope.selectedPage = 3;
             break;
-         default: // Unsichtbarer "Sonstiges"-Tab
+         case 'statistik':
             $scope.selectedPage = 4;
+            break;
+         default: // Unsichtbarer "Sonstiges"-Tab
+            $scope.selectedPage = 5;
             break;
       }
    });
@@ -85,15 +96,17 @@ klimaChallenge.config(function($stateProvider, $urlRouterProvider) {
             $location.url("/");
             break;
          case 1:
-            $location.url("/mitmachen");
+            $location.url("/klimawandel");
             break;
          case 2:
-            $location.url("/statistik");
+            $location.url("/angebote");
             break;
          case 3:
-            $location.url("/contract");
+            $location.url("/mitmachen");
+            break;
+         case 4:
+            $location.url("/statistik");
             break;
       }
    });
-
 });

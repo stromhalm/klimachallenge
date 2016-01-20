@@ -6,72 +6,72 @@
    <link rel="stylesheet" href="bower_components/angular-material-icons/angular-material-icons.css">
    <link rel="stylesheet" href="bower_components/angular-chart.js/dist/angular-chart.css" />
    <link href="bower_components/angular-xeditable/dist/css/xeditable.css" rel="stylesheet">
-   <link rel="stylesheet" href="styles/style.css?ver=14">
+   <link rel="stylesheet" href="styles/style.css?ver=16">
 
    <meta charset="utf-8">
    <title>Klima-Challenge</title>
 </head>
 <body ng-controller="PageCtrl">
+   <md-tabs md-center-tabs="false" class="nav md-accent md-whiteframe-z3" md-selected="selectedPage">
+      <md-tab>
+         <md-tab-label>
+            <ng-md-icon style="fill: white" icon="home"></ng-md-icon>
+        </md-tab-label>
+      </md-tab>
+      <md-tab>
+         <md-tab-label>
+            <ng-md-icon style="fill: white" icon="public"></ng-md-icon> <span hide show-gt-sm>Klimawandel</span>
+        </md-tab-label>
+      </md-tab>
+      <md-tab>
+         <md-tab-label>
+            <ng-md-icon style="fill: white" icon="assignment"></ng-md-icon> <span hide show-gt-sm>Angebote</span>
+        </md-tab-label>
+      </md-tab>
+      <md-tab>
+         <md-tab-label>
+            <ng-md-icon style="fill: white" icon="star"></ng-md-icon> <span hide show-gt-sm>Mitmachen</span>
+        </md-tab-label>
+      </md-tab>
+      <md-tab>
+         <md-tab-label>
+            <ng-md-icon style="fill: white" icon="equalizer"></ng-md-icon> <span hide show-gt-sm>Ziele</span>
+        </md-tab-label>
+      </md-tab>
+      <md-tab hide>
+         <md-tab-label hide>
+            <span hide>Sonstiges</span>
+        </md-tab-label>
+      </md-tab>
+   </md-tabs>
 
-   <div id="physics-world">
-
-      <md-tabs md-center-tabs="false" class="nav md-accent md-whiteframe-z3" md-selected="selectedPage">
-         <md-tab>
-            <md-tab-label>
-               <ng-md-icon style="fill: white" icon="home"></ng-md-icon> <span hide show-gt-md>Challenge</span>
-           </md-tab-label>
-         </md-tab>
-         <md-tab>
-            <md-tab-label>
-               <ng-md-icon style="fill: white" icon="star"></ng-md-icon> <span hide show-gt-sm>Mitmachen</span>
-           </md-tab-label>
-         </md-tab>
-         <md-tab>
-            <md-tab-label>
-               <ng-md-icon style="fill: white" icon="equalizer"></ng-md-icon> <span hide show-gt-sm>Ziele</span>
-           </md-tab-label>
-         </md-tab>
-         <md-tab>
-            <md-tab-label>
-               <ng-md-icon style="fill: white" icon="rate_review"></ng-md-icon> <span hide show-gt-sm>CO<sub>2</sub>ntrACT!</span>
-           </md-tab-label>
-         </md-tab>
-         <md-tab hide>
-            <md-tab-label hide>
-               <span hide>Sonstiges</span>
-           </md-tab-label>
-         </md-tab>
-      </md-tabs>
-
-      <div class="social-bar" hide-sm>
-         <md-button target="_blank" ng-href="https://instagram.com/klimachallenge/">
-            <ng-md-icon style="fill: white" icon="photo_camera"></ng-md-icon>
-         </md-button>
-         <md-button target="_blank" ng-href="https://www.facebook.com/klimachallenge">
-            <ng-md-icon style="fill: white" icon="facebook"></ng-md-icon>
-         </md-button>
-      </div>
-
-      <header layout="row" layout-wrap layout-align="start center">
-         <div flex-gt-sm="45" flex="90" flex-offset="5">
-            <img src="img/logo5.png" alt="logo" /><br>
-         </div>
-         <div ng-controller="challengeCtrl" class="space-box counter" flex-gt-sm="40" flex="100" layout="row" layout-align="center center">
-
-            <md-progress-circular md-mode="determinate" value="{{ goalPercentage }}"></md-progress-circular>
-            <legend>
-               <h2>
-                  <span count-to="{{ goalPercentage }}" value="0" duration="1"></span>%
-               </h2>
-               Des Zwischenziels erfüllt
-            </legend>
-         </div>
-      </header>
-
-      <ui-view>
-      </ui-view>
-
+   <div class="social-bar" hide-sm>
+      <md-button target="_blank" ng-href="https://instagram.com/klimachallenge/">
+         <ng-md-icon style="fill: white" icon="photo_camera"></ng-md-icon>
+      </md-button>
+      <md-button target="_blank" ng-href="https://www.facebook.com/klimachallenge">
+         <ng-md-icon style="fill: white" icon="facebook"></ng-md-icon>
+      </md-button>
    </div>
+
+   <header layout="row" layout-wrap layout-align="start center">
+      <div flex-gt-sm="45" flex="90" flex-offset="5">
+         <img src="img/logo5.png" alt="logo" /><br>
+      </div>
+      <div ng-controller="challengeCtrl" class="space-box counter" flex-gt-sm="40" flex="100" layout="row" layout-align="center center">
+
+         <md-progress-circular md-mode="determinate" value="{{ goalPercentage }}"></md-progress-circular>
+         <legend>
+            <h2>
+               <span count-to="{{ goalPercentage }}" value="0" duration="1"></span>%
+            </h2>
+            Des Zwischenziels erfüllt
+         </legend>
+      </div>
+   </header>
+
+   <ui-view>
+   </ui-view>
 
    <div class="footer" layout="row" layout-align="left center">
       <div flex="70" flex-gt-md="65" class="logos" flex-offset-gt-md="5">
@@ -128,7 +128,7 @@
    <script type="text/javascript" src="bower_components/filepicker-js/filepicker.min.js"></script>
    <script type="text/javascript" src="bower_components/angular-filepicker/dist/angular_filepicker.min.js"></script>
 
-   <script src="routes.js?ver=4"></script>
+   <script src="routes.js?ver=5"></script>
    <script src="theme.js"></script>
 
    <!-- Piwik -->
