@@ -1,8 +1,6 @@
 klimaChallenge.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 
-   if (!document.location.hostname == "localhost") {
       $locationProvider.html5Mode(true).hashPrefix('!');
-   }
 
   $urlRouterProvider.otherwise('/');
   $stateProvider
