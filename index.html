@@ -8,6 +8,12 @@
    <link href="bower_components/angular-xeditable/dist/css/xeditable.css" rel="stylesheet">
    <link rel="stylesheet" href="styles/style.css?ver=16">
 
+   <script type="text/javascript">
+      if (!document.location.hostname == "localhost") {
+         document.write("<base href='http://" + document.location.host + "' /klimachallenge>");
+      }
+   </script>
+
    <meta charset="utf-8">
    <title>Klima-Challenge</title>
 </head>
@@ -128,7 +134,7 @@
    <script type="text/javascript" src="bower_components/filepicker-js/filepicker.min.js"></script>
    <script type="text/javascript" src="bower_components/angular-filepicker/dist/angular_filepicker.min.js"></script>
 
-   <script src="routes.js?ver=5"></script>
+   <script src="routes.js?ver=6"></script>
    <script src="theme.js"></script>
 
    <!-- Piwik -->
