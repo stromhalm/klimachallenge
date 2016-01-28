@@ -289,6 +289,11 @@ md-whiteframe {
    z-index: 201;
    text-decoration: none;
 
+   a {
+      text-decoration: none;
+      color: @dark-grey;
+   }
+
    .hidden-link {
       text-decoration: none;
       color: @green;
@@ -369,7 +374,7 @@ md-whiteframe {
    }
 }
 
-.facts {
+.facts, .green {
    background-color: @green;
    color: rgba(255, 255, 255, 0.7);
    padding-top: 80px;
@@ -394,7 +399,17 @@ md-whiteframe {
    }
 }
 
-.challenge-actions, .climate-weather {
+.challenge-actions, .compare {
+
+   h2 {
+      font-size: 45px;
+      font-weight: 300;
+      margin: 0;
+      color: @green;
+      margin-bottom: 30px;
+      margin-top: -30px;
+   }
+
    background-color: @background-grey;
    color: white;
    font-size: 34px;
