@@ -6,7 +6,7 @@ klimaChallenge.config(function($stateProvider, $urlRouterProvider, $locationProv
   $stateProvider
   .state('challenge', {
       url: "/",
-      templateUrl: "views/challenge.html",
+      templateUrl: "views/challenge.html?ver=2",
       controller: "challengeCtrl"
   })
   .state('contract', {
@@ -45,11 +45,12 @@ klimaChallenge.config(function($stateProvider, $urlRouterProvider, $locationProv
   })
   .state('klimafasten', {
       url: "/klimafasten",
-      templateUrl: "views/klimafasten.html"
+      templateUrl: "views/klimafasten.html?ver=2"
   });
 })
 .controller('PageCtrl', function($scope, $location, $timeout, $cacheFactory, $templateCache, $rootScope, $http) {
 
+   /*
    var versionCache = $cacheFactory('versionCache');
 
    // Clear Cache if new version
@@ -64,6 +65,7 @@ klimaChallenge.config(function($stateProvider, $urlRouterProvider, $locationProv
          }
       });
    });
+   */
 
    $scope.$on('$locationChangeStart', function(event, next, current) {
 
