@@ -1,9 +1,9 @@
 <md-whiteframe class="md-whiteframe-z2 card">
-   <h2>Der KLIMA-FAKTENGENERATOR: Wusstest du schon...?</h2>
+   <img class="headline-image" src="/img/faktengenerator.png" alt="Der Klima-Faktengenerator">
       <p class="climate-fact" ng-if="fact" ng-bind-html="fact | to_trusted">
       </p>
    <div class="md-actions" layout="row" layout-align="end center">
-      <md-button ng-click="new()"><ng-md-icon style="fill: #8bc34a" icon="sync"></ng-md-icon> Nächster Fakt</md-button>
+      <md-button ng-click="new()"><ng-md-icon style="fill: white" icon="sync"></ng-md-icon> Nächster Fakt</md-button>
       <md-button ng-if="more" ng-href="klimawandel"></ng-md-icon> Mehr erfahren <ng-md-icon style="fill: #8bc34a" icon="chevron_right"></md-button>
    </div>
 </md-whiteframe>
