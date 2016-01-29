@@ -15,7 +15,7 @@ klimaChallenge.config(function($stateProvider, $urlRouterProvider, $locationProv
   })
   .state('climateChange', {
       url: "/klimawandel",
-      templateUrl: "views/climate-change.html"
+      templateUrl: "views/climate-change.html?ver=2"
   })
   .state('stats', {
       url: "/statistik",
@@ -45,7 +45,7 @@ klimaChallenge.config(function($stateProvider, $urlRouterProvider, $locationProv
   })
   .state('klimafasten', {
       url: "/klimafasten",
-      templateUrl: "views/klimafasten.html?ver=2"
+      templateUrl: "views/klimafasten.html?ver=3"
   });
 })
 .controller('PageCtrl', function($scope, $location, $timeout, $cacheFactory, $templateCache, $rootScope, $http) {
