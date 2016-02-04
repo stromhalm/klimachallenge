@@ -13,4 +13,8 @@ klimaChallenge.controller('challengeCtrl', function($scope, projects) {
    $scope.$watch(function() {return projects.getPercentage() }, function(percentage) {
       $scope.goalPercentage = percentage;
    });
+
+   $scope.$watch(function() {return projects.getCleanPercentage() }, function(percentage) {
+      $scope.goalCleanPercentage = percentage;
+   });
 });
