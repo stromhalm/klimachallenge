@@ -142,6 +142,11 @@ header {
    h2 {
       color: @blue !important;
    }
+
+   a {
+      color: @dark-grey !important;
+      text-decoration: underline;
+   }
 }
 
 .neutral {
@@ -290,7 +295,7 @@ md-whiteframe {
    text-decoration: none;
 
    a {
-      text-decoration: none;
+      text-decoration: underline;
       color: @dark-grey;
    }
 
@@ -356,7 +361,6 @@ md-whiteframe {
 
    a {
       color: white;
-      text-decoration: none;
    }
 
    .category-text {
@@ -667,6 +671,7 @@ md-whiteframe {
 .md-button, md-tabs {
    z-index: 200;
    min-width: 0;
+   text-decoration: none !important;
 }
 
 .md-button.md-fab {
