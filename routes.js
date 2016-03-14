@@ -46,6 +46,10 @@ klimaChallenge.config(function($stateProvider, $urlRouterProvider, $locationProv
   .state('klimafasten', {
       url: "/klimafasten",
       templateUrl: "views/klimafasten.html?ver=3"
+  })
+  .state('aktionstage', {
+      url: "/aktionstage",
+      templateUrl: "views/aktionstage.html?ver=1"
   });
 })
 .controller('PageCtrl', function($scope, $location, $timeout, $cacheFactory, $templateCache, $rootScope, $http) {

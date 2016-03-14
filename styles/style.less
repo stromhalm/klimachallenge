@@ -6,6 +6,7 @@
 /* Colors */
 @green: #8bc34a;
 @blue: #0288d1;
+@light-blue: #02bcd4;
 @dark-font: #222e34;
 @light-grey: #607d8b;
 @dark-grey: #455a64;
@@ -28,6 +29,10 @@ html, body {
    height: auto;
    background-color: @background-white;
    font-family: 'Roboto', sans-serif;
+   color: @dark-font;
+}
+
+a {
    color: @dark-font;
 }
 
@@ -294,6 +299,15 @@ md-whiteframe {
    z-index: 201;
    text-decoration: none;
 
+   &.small-frame {
+      padding: 8px 8px 4px 8px !important;
+   }
+
+   &.small-card {
+      width: 40%;
+      margin: 0 auto;
+   }
+
    a {
       text-decoration: underline;
       color: @dark-grey;
@@ -307,6 +321,22 @@ md-whiteframe {
    .headline-image {
       max-height: 33px;
       max-width: 100%;
+   }
+
+   .card-image {
+      width: 100%;
+   }
+
+   .image-caption {
+      text-align: center;
+   }
+
+   &.rotate-left {
+      transform: rotate(-2deg);
+   }
+
+   &.rotate-right {
+      transform: rotate(2deg);
    }
 }
 
@@ -346,12 +376,29 @@ md-whiteframe {
       opacity: 0.7;
    }
 
+   .section-card {
+      margin-top: -20px;
+      margin-bottom: 30px;
+   }
+
    h2 {
       font-size: 45px;
       font-weight: 300;
       color: white;
       margin: 0;
       margin-bottom: 10px;
+
+      &.green {
+         color: @green;
+      }
+
+      &.blue {
+         color: @blue;
+      }
+   }
+
+   h3 {
+      margin-bottom: 8px;
    }
 
    .sub-heading {
@@ -359,48 +406,79 @@ md-whiteframe {
       margin-bottom: 15px;
    }
 
-   a {
-      color: white;
-   }
-
    .category-text {
       margin-top: -50px;
+   }
+
+   ul, ol {
+      padding-left: 22px;
+   }
+
+   &.box-green {
+      background-color: @green;
+      color: rgba(255, 255, 255, 0.75);
+
+      md-whiteframe h2, .md-button {
+         color: @green;
+      }
+
+      a {
+         color: white;
+      }
+   }
+
+   &.box-grey {
+      background-color: @light-grey;
+      color: rgba(255, 255, 255, 0.7);
+
+      md-whiteframe h2, .md-button {
+         color: @light-blue;
+      }
+
+      a {
+         color: white;
+      }
+   }
+
+   &.box-light-blue {
+      background-color: @light-blue;
+      color: rgba(255, 255, 255, 0.8);
+
+      md-whiteframe h2, .md-button {
+         color: @light-blue;
+      }
+
+      a {
+         color: white;
+      }
+   }
+
+   &.box-blue {
+      background-color: @blue;
+      color: rgba(255, 255, 255, 0.8);
+
+      md-whiteframe h2, .md-button {
+         color: @blue;
+      }
+
+      a {
+         color: white;
+      }
    }
 }
 
 .add-project, .win {
-   background-color: @light-grey;
-   color: rgba(255, 255, 255, 0.7);
-   padding-top: 120px;
+   padding-top: 80px;
    padding-bottom: 0;
 
    @media (min-width: 960px) {
       margin-bottom: -53px;
    }
-
-   md-whiteframe h2, .md-button {
-      color: #02bcd4;
-   }
-}
-
-.facts, .green {
-   background-color: @green;
-   color: rgba(255, 255, 255, 0.7);
-   padding-top: 80px;
-
-   md-whiteframe h2, .md-button {
-      color: @green;
-   }
 }
 
 .win {
-   background-color: #02bcd4;
    padding-top: 100px;
    margin-bottom: -63px;
-
-   h2 {
-      margin-bottom: -10px;
-   }
 
    md-whiteframe {
       border-top-right-radius: 0;
@@ -720,10 +798,6 @@ md-tabs-wrapper md-prev-button md-icon, md-tabs-wrapper md-next-button md-icon {
       margin-bottom: 65px;
    }
 
-   ul, ol {
-      padding-left: 22px;
-   }
-
    h2 {
       text-align: center;
       padding: 16px 16px 0px 16px;
@@ -859,13 +933,6 @@ md-input-container {
 }
 
 .state-info {
-   background-color: @blue;
-   color: white;
-
-   .card h2 {
-      color: @blue;
-   }
-
    .links {
       text-align: right;
       padding: 8px 8px 0 0;

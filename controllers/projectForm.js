@@ -1,4 +1,4 @@
-klimaChallenge.controller('projectFormCtrl', function($scope, $timeout, projects, $q, filepickerService) {
+klimaChallenge.controller('projectFormCtrl', function($scope, $timeout, projects, filepickerService) {
 
    // Start at page 1
    $scope.page = 1;

@@ -1,0 +1,113 @@
+<section class="space-box box-green" ng-controller="challengeCtrl">
+   <div layout="row" layout-align="start center" layout-wrap>
+      <div flex-sm="100" flex-gt-sm="50" flex-offset-gt-md="5">
+         <h2>Klima-Aktionstage</h2>
+         Vom <b>2.-5. Juni 2016</b> bekommt ihr als Jugendgruppe 96 Stunden Zeit, um eine klimafreundliche Aktion durchzuführen. Vier Tage lang gilt es, mit geballter Energie durch viele unterschiedliche Aktionen in ganz Niedersachsen Klimapunkte zu sammeln. Ihr wetteifert mit anderen Jugendgruppen um die coolste Aktion und erreicht mit uns gemeinsam das nächste Etappenziel der Klima-Challenge.<br />
+         Den teilnehmenden Gruppen winken neben vielen Klimapunkten auch attraktive Preise, wie angesagtes Fahrradzubehör, Action-Kameras und eine Saftpresse.
+      </div>
+      <div flex-sm="100" flex-md="50" flex-gt-md="35" flex-offset-gt-md="5">
+         <md-whiteframe class="md-whiteframe-z2 card small-frame rotate-right">
+            <img class="card-image" ng-src="/img/aktionstage/KC_aktionstag-000.jpg" alt="Klima-Aktionstage" />
+            <div class="image-caption">
+               Klima-Aktionstage vom <b>2.-5. Juni 2016</b>
+            </div>
+         </md-whiteframe>
+      </div>
+   </div>
+</section>
+
+<section layout-wrap layout="row" layout-sm="column" class="space-box">
+   <div flex flex-gt-md="90" flex-offset-gt-md="5" class="info-cards">
+      <h2 class="green">Wie kann deine Jugendgruppe für das Klima punkten?</h2>
+      <div layout="row" layout-align="start center" layout-wrap>
+         <div flex-sm="100" flex-md="50" flex-gt-md="35">
+            <md-whiteframe class="md-whiteframe-z2 card small-frame rotate-left">
+               <img class="card-image" ng-src="/img/aktionstage/KC_aktionstag-001.jpg" alt="Klima-Aktionstage" />
+            </md-whiteframe>
+         </div>
+         <div flex-sm="100" flex-gt-sm="55" flex-offset-gt-md="5">
+            Bei den Aktionen ist alles erlaubt, solange es klimafreundlich und gut für euren Ort / eure Region / euren Verband ist. Überlegt euch was, meldet euch an und los geht's!<br />
+            Ihr wisst noch nicht, was ihr machen könntet? Wie wäre es mit ...
+            <ul>
+               <li>
+                  einer Solarboot-Rallye, einem Fahrradausflug mit Klimapicknick, Gärtnern mit Geflüchteten oder Upcycling-Aktionen (Neues aus Altem <i>zaubern</i>).
+               </li>
+               <li>
+                  kostenlosen Angeboten der Klima-Challenge, z.B. einer thematischen GPS-Tour, Klima-Workshops oder einer Solarpumpe
+               </li>
+               <li>
+                  der Idee, sozialen Einrichtungen vor Ort eure Hilfe anzubieten (z.B. in Nationalparks, Kindergärten, Flüchtlingsunterkünften etc.)
+               </li>
+            </ul>
+            Euren Ideen sind keine Grenzen gesetzt! Mehr Ideen und Vorschläge findet ihr unter <a ng-href="angebote" title="Zu den Angeboten">Angebote</a>.
+         </div>
+      </div>
+   </div>
+</section>
+
+<section class="space-box box-light-blue">
+   <div layout="row" layout-align="start center" layout-wrap>
+      <div flex-sm="100" flex-gt-sm="45" flex-offset-gt-md="5">
+         <md-whiteframe class="md-whiteframe-z2 card small-frame small-card section-card">
+            <img class="card-image" ng-src="/img/aktionstage/KC_aktionstag-002.jpg" alt="Klima-Aktionstage" />
+         </md-whiteframe>
+         <h2>Warum sich mitmachen lohnt?</h2>
+         Weil es Spaß macht, gemeinsam an einem lohnenswerten Ziel zu arbeiten und dabei was für's Klima zu tun! Außerdem fördert ihr den Zusammenhalt eurer Gruppe und tut etwas für euer Umfeld oder euren Verband. Ihr erntet Anerkennung und zeigt, wie viel Energie und Kreativität in eurer Gruppe steckt.<br />
+         Mit etwas Glück gewinnt ihr zudem einen unserer attraktiven Preise!
+         <h3>Wer kann mitmachen?</h3>
+         Mitmachen können alle Jugendgruppen in Niedersachsen. Wenn ihr mitmachen wollt, meldet euch direkt hier an! Auch bei Fragen oder für Aktionsvorschläge stehen wir euch jederzeit zur Verfügung!
+      </div>
+      <div flex-sm="100" flex-md="55" flex-gt-md="40" flex-offset-gt-md="5" ng-controller="aktionstage as ctrl">
+         <md-whiteframe class="md-whiteframe-z2 card">
+            <form name="form" ng-submit="submitForm()">
+               <div ng-if="!submitted">
+                  <h2>Jetzt anmelden</h2>
+                  <md-input-container>
+                     <label>Ansprechpartner_in</label>
+                     <input ng-model="formData.name" ng-required="true" placeholder="Vor- und Nachname">
+                  </md-input-container>
+                  <md-input-container>
+                     <label>E-Mail</label>
+                     <input ng-model="formData.email" type="email" ng-required="true" placeholder="Die E-Mail-Adresse wird nicht veröffentlicht">
+                  </md-input-container>
+                  <md-input-container>
+                     <label>Jugendgruppe</label>
+                     <input ng-model="formData.group" ng-required="true" placeholder="Name deiner Gruppe">
+                  </md-input-container>
+                  <md-input-container>
+                     <label class="md-no-float">Träger</label>
+                     <select ng-model="formData.carrier" ng-required="true">
+                        <option ng-repeat="carrier in carriers">{{ carrier }}</option>
+                     </select>
+                  </md-input-container>
+                  <md-input-container>
+                     <label class="md-no-float">Geplante Aktion</label>
+                     <select ng-model="formData.event" ng-required="true">
+                        <option ng-repeat="(key, event) in events" ng-value="event.name">{{event.name}}</option>
+                     </select>
+                  </md-input-container>
+                  <md-input-container class="md-block">
+                     <label>Anmerkungen / Fragen</label>
+                     <textarea ng-model="formData.description" colums="5" placeholder="optional"></textarea>
+                  </md-input-container>
+                  <div class="md-actions" ng-if="!submitting" layout="row" layout-align="end center">
+                     <md-button ng-click="submitForm()">
+                        Aktion anmelden
+                     </md-button>
+                     <md-progress-circular ng-if="submitting" md-mode="indeterminate"></md-progress-circular>
+                  </div>
+               </div>
+            </form>
+            <div ng-if="submitted">
+               <h2>Vielen Dank!</h2>
+               Wir haben eure Aktion erhalten und werden sie bald hier ankündigen.
+               <div class="md-actions" layout="row" layout-align="end center">
+                  <md-button ng-click="setSubmitted(false)">
+                     Zurück
+                  </md-button>
+               </div>
+            </div>
+         </md-whiteframe>
+      </div>
+   </div>
+</section>

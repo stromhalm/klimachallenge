@@ -1,7 +1,7 @@
 klimaChallenge.factory("projects", function($firebaseArray) {
 
    // create a reference to the database location where we will store our data
-   var ref = new Firebase("https://klima-challenge.firebaseio.com/projects");
+   var ref = new Firebase("https://klima-challenge.firebaseio.com");
 
    var events = [
       {name: 'Bildungsaktivitäten selber durchführen', type: 1},
@@ -105,13 +105,14 @@ klimaChallenge.factory("projects", function($firebaseArray) {
 
    // this uses AngularFire to create the synchronized array
    var interface = {
-      db: $firebaseArray(ref),
+      db: $firebaseArray(ref.child('projects')),
       climatePointsSum: getClimatePointsSum,
       publicProjectsCount: getPublicProjectsCount,
       getPercentage: getPercentage,
       getCleanPercentage: getCleanPercentage,
       events: events,
       carriers: carriers,
+      aktionstage: $firebaseArray(ref.child('aktionstage'))
    };
    return interface;
 });
