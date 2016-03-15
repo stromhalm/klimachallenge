@@ -6,7 +6,7 @@ klimaChallenge.config(function($stateProvider, $urlRouterProvider, $locationProv
   $stateProvider
   .state('challenge', {
       url: "/",
-      templateUrl: "views/challenge.html?ver=3",
+      templateUrl: "views/challenge.html?ver=4",
       controller: "challengeCtrl"
   })
   .state('contract', {
@@ -49,7 +49,7 @@ klimaChallenge.config(function($stateProvider, $urlRouterProvider, $locationProv
   })
   .state('aktionstage', {
       url: "/aktionstage",
-      templateUrl: "views/aktionstage.html?ver=1"
+      templateUrl: "views/aktionstage.html?ver=2"
   });
 })
 .controller('PageCtrl', function($scope, $location, $timeout, $cacheFactory, $templateCache, $rootScope, $http) {
