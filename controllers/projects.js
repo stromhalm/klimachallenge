@@ -89,7 +89,7 @@ klimaChallenge.factory("projects", function($firebaseArray) {
    }
 
    function getPercentage() {
-      var goal = 30000;
+      var goal = 200000;
       var rate = parseFloat(getClimatePointsSum()) / parseFloat(goal);
       return Math.round(rate*100);
    }
