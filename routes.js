@@ -49,7 +49,7 @@ klimaChallenge.config(function($stateProvider, $urlRouterProvider, $locationProv
   })
   .state('aktionstage', {
       url: "/aktionstage",
-      templateUrl: "views/aktionstage.html?ver=3"
+      templateUrl: "views/aktionstage.html?ver=4"
   });
 })
 .controller('PageCtrl', function($scope, $location, $timeout, $cacheFactory, $templateCache, $rootScope, $http) {
