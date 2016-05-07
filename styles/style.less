@@ -340,16 +340,16 @@ header {
       padding-left: 22px;
    }
 
+   a {
+      color: white;
+   }
+
    &.box-green {
       background-color: @green;
       color: rgba(255, 255, 255, 0.75);
 
       md-whiteframe h2, .md-button {
          color: @green;
-      }
-
-      a {
-         color: white;
       }
    }
 
@@ -360,10 +360,6 @@ header {
       md-whiteframe h2, .md-button {
          color: @light-blue;
       }
-
-      a {
-         color: white;
-      }
    }
 
    &.box-light-blue {
@@ -373,10 +369,6 @@ header {
       md-whiteframe h2, .md-button {
          color: @light-blue;
       }
-
-      a {
-         color: white;
-      }
    }
 
    &.box-blue {
@@ -385,10 +377,6 @@ header {
 
       md-whiteframe h2, .md-button {
          color: @blue;
-      }
-
-      a {
-         color: white;
       }
    }
 }
@@ -432,7 +420,7 @@ md-whiteframe {
 
 .card {
    display: block;
-   margin: 16px 8px 8px 8px;
+   margin: 8px;
    z-index: 201;
    text-decoration: none;
 
@@ -963,6 +951,16 @@ md-input-container {
       font-size: 0.9em;
       opacity: 0.8em;
    }
+}
+
+.info-table {
+   td {
+      vertical-align: top;
+   }
+}
+
+.full-width {
+   width: 100%;
 }
 
 .clear {
