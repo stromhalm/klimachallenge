@@ -49,11 +49,11 @@ klimaChallenge.config(function($stateProvider, $urlRouterProvider, $locationProv
   })
   .state('aktionstage', {
       url: "/aktionstage",
-      templateUrl: "views/aktionstage.html?ver=5"
+      templateUrl: "views/aktionstage.html?ver=6"
   })
   .state('climateParade', {
       url: "/scp",
-      templateUrl: "views/climateParade.html?ver=1"
+      templateUrl: "views/climateParade.html?ver=2"
   });
 })
 .controller('PageCtrl', function($scope, $location, $timeout, $cacheFactory, $templateCache, $rootScope, $http) {
