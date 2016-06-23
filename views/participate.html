@@ -249,9 +249,9 @@
                </md-content>
             </div>
          </form>
-         <div class="md-actions" layout="row">
+         <div ng-if="page<7" class="md-actions" layout="row">
             <span flex></span>
-            <md-button ng-if="page<7" ng-disabled="page==1" ng-click="previousPage()">
+            <md-button ng-disabled="page==1" ng-click="previousPage()">
                <ng-md-icon style="fill: #222e34" icon="chevron_left"></ng-md-icon> Zurück
             </md-button>
             <md-button ng-disabled="!isValid(page)" style="margin-right:20px;" md-autofocus ng-click="nextPage()" ng-if="page<6">
