@@ -53,7 +53,7 @@ klimaChallenge.config(function($stateProvider, $urlRouterProvider, $locationProv
   })
   .state('climateParade', {
       url: "/scp",
-      templateUrl: "views/climateParade.html?ver=2"
+      templateUrl: "views/climateParade.html?ver=3"
   });
 })
 .controller('PageCtrl', function($scope, $location, $timeout, $cacheFactory, $templateCache, $rootScope, $http) {
