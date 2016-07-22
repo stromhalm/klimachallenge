@@ -47,7 +47,7 @@
                               <span>Name der Aktion:</span> <a href="#" onaftersave="saveToDb(project)" editable-text="project.formal.actionName">{{ project.formal.actionName || "leer" }}</a>
                            </p>
                            <p>
-                              <span>Ort, Datum:</span> <a href="#" onaftersave="saveToDb(project)" editable-text="project.formal.location">{{ project.formal.location || "leer" }}</a>, <a href="#" editable-text="project.formal.date">{{ project.formal.date || "leer" }}</a>
+                              <span>Ort, Datum:</span> <a href="#" onaftersave="saveToDb(project)" editable-text="project.formal.location">{{ project.formal.location || "leer" }}</a>, <a href="#" onaftersave="saveToDb(project)" editable-text="project.formal.date">{{ project.formal.date || "leer" }}</a>
                            </p>
                            <p>
                               <span>Aktion:</span> <a href="#" onaftersave="saveToDb(project)" editable-select="project.formal.event" e-ng-options="e.name as e.name for e in allEvents">{{ project.formal.event || "leer" }}</a>
