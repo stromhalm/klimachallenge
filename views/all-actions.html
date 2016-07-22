@@ -8,22 +8,22 @@
 
          <div layout="row" hide show-gt-lg>
             <div flex ng-repeat="nth in [0,1,2,3]">
-               <action action-data="project" ng-repeat="project in projects | filter:{ public: true } | reverse | nthFilter:4:nth"></action>
+               <action action-data="project" ng-repeat="project in projects | filter:{ public: true } | orderByStartDate | reverse | nthFilter:4:nth"></action>
             </div>
          </div>
          <div layout="row" hide show-lg>
             <div flex ng-repeat="nth in [0,1,2]">
-               <action action-data="project" ng-repeat="project in projects | filter:{ public: true } | reverse | nthFilter:3:nth"></action>
+               <action action-data="project" ng-repeat="project in projects | filter:{ public: true } | orderByStartDate | reverse | nthFilter:3:nth"></action>
             </div>
          </div>
          <div layout="row" hide show-md>
             <div flex ng-repeat="nth in [0,1]">
-               <action action-data="project" ng-repeat="project in projects | filter:{ public: true } | reverse | nthFilter:2:nth"></action>
+               <action action-data="project" ng-repeat="project in projects | filter:{ public: true } | orderByStartDate | reverse | nthFilter:2:nth"></action>
             </div>
          </div>
          <div layout="row" hide show-sm>
             <div flex>
-               <action action-data="project" ng-repeat="project in projects | filter:{ public: true } | reverse"></action>
+               <action action-data="project" ng-repeat="project in projects | filter:{ public: true } | orderByStartDate | reverse"></action>
             </div>
          </div>
       </div>

@@ -5,7 +5,7 @@ klimaChallenge.directive('allActions', function (projects, filepickerService) {
 		$scope.projects = projects.db;
 	}
 	return {
-		templateUrl: 'views/all-actions.html',
+		templateUrl: 'views/all-actions.html?ver=2',
 		link: link
 	};
 
@@ -25,5 +25,37 @@ klimaChallenge.directive('allActions', function (projects, filepickerService) {
 }).filter('reverse', function() {
 	return function(items) {
 		return items.slice().reverse();
+	};
+}).filter('orderByStartDate', function() {
+	return function(items) {
+		items.sort(function(a, b) {
+			var aTag = a.formal.date.split(".")[0];
+			var aMonth = a.formal.date.split(".")[1];
+			var aYear = a.formal.date.split(".")[2];
+			var bTag = b.formal.date.split(".")[0];
+			var bMonth = b.formal.date.split(".")[1];
+			var bYear = b.formal.date.split(".")[2];
+
+			if (aYear < bYear) {
+				return -1;
+			} else if (aYear > bYear) {
+				return 1
+			} else {
+				if (aMonth < bMonth) {
+					return -1;
+				} else if (aMonth > bMonth) {
+					return 1;
+				} else {
+					if (aTag < bTag) {
+						return -1;
+					} else if (aTag > bTag) {
+						return 1;
+					} else {
+						return 0;
+					}
+				}
+			}
+		});
+		return items;
 	};
 });
