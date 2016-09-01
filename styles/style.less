@@ -113,14 +113,31 @@ header {
 .video {
    z-index: 200;
    position: relative;
-   margin: 16px 8px 8px 8px;
+   margin: 8px;
    margin-left: 0;
+}
 
-   .youtube {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-   }
+.corner-top {
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+
+.top-video-container {
+	margin-left: 8px;
+	margin-right: 8px;
+	margin-top: 8px;
+	margin-bottom: -12px;
+
+	.video-card-top {
+		min-height: 250px;
+		width: 100%;
+	}
+}
+
+.youtube {
+	position: absolute;
+	width: 100%;
+	height: 100%;
 }
 
 .counter-bar {
@@ -475,28 +492,24 @@ md-whiteframe {
 
 .leftCard {
    margin-right: 0;
+   border-top-right-radius: 0;
+   border-bottom-right-radius: 0;
 }
 .rightCard {
    padding-left: 16px;
 }
 
-.add-project, .win {
+.overlap-card {
    padding-top: 80px;
    padding-bottom: 0;
 
    @media (min-width: 960px) {
-      margin-bottom: -53px;
+      margin-bottom: -59px;
    }
 }
 
-.win {
-   padding-top: 100px;
-   margin-bottom: -63px;
-
-   md-whiteframe {
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
-   }
+.add-project {
+   margin-bottom: -53px;
 }
 
 .challenge-actions, .compare {
