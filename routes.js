@@ -51,9 +51,9 @@ klimaChallenge.config(function($stateProvider, $urlRouterProvider, $locationProv
       url: "/aktionstage",
       templateUrl: "views/aktionstage.html?ver=6"
   })
-  .state('schnippeldisko', {
-      url: "/schnippeldisko",
-      templateUrl: "views/schnippeldisko.html?ver=1"
+  .state('schnippeldisco', {
+      url: "/schnippeldisco",
+      templateUrl: "views/schnippeldisco.html?ver=1"
   })
   .state('climateParade', {
       url: "/scp",
