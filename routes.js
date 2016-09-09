@@ -53,7 +53,7 @@ klimaChallenge.config(function($stateProvider, $urlRouterProvider, $locationProv
   })
   .state('schnippeldisco', {
       url: "/schnippeldisco",
-      templateUrl: "views/schnippeldisco.html?ver=1"
+      templateUrl: "views/schnippeldisco.html?ver=2"
   })
   .state('climateParade', {
       url: "/scp",
