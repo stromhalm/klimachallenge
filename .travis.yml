@@ -4,3 +4,4 @@ deploy:
   access_key_id: "$GOOGLE_ACCESS_KEY"
   secret_access_key: "$GOOGLE_SECRET_KEY"
   bucket: "$GOOGLE_BUCKET_NAME"
+  skip_cleanup: true
