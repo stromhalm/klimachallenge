@@ -5,3 +5,4 @@ deploy:
   secret_access_key: "$GOOGLE_SECRET_KEY"
   bucket: "$GOOGLE_BUCKET_NAME"
   skip_cleanup: true
+  acl: public-read
