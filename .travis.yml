@@ -1,4 +1,4 @@
-script: echo "0"
+script: echo "0";
 deploy:
   provider: gcs
   access_key_id: "$GOOGLE_ACCESS_KEY"
