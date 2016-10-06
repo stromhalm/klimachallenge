@@ -3,20 +3,20 @@
       <div style="width: 100%;" flex-gt-sm="65" flex-offset-gt-md="5">
          <h2>Ziele</h2>
          <div class="progress-legend">
-            <div style="margin-left: 7.5%;" class="goal" ng-click="selectedGoal=0">
+            <div style="margin-left: 6%;" class="goal" ng-click="selectedGoal=0">
                <b>1</b><br>
                <p class="goal-points">30.000</p>
             </div>
-            <div style="margin-left: 50%;" class="goal" ng-click="selectedGoal=1">
+            <div style="margin-left: 40%;" class="goal" ng-click="selectedGoal=1">
                <b>2</b><br>
                <p class="goal-points">200.000</p>
             </div>
-            <div style="margin-left: 75%;" class="goal" ng-click="selectedGoal=2">
+            <div style="margin-left: 80%;" class="goal" ng-click="selectedGoal=2">
                <b>3</b><br>
                <p class="goal-points">400.000</p>
             </div>
          </div>
-         <md-progress-linear class="project-bar md-accent" md-mode="buffer" value="{{ goalPercentage/2 }}"></md-progress-linear>
+         <md-progress-linear class="project-bar md-accent" md-mode="buffer" value="{{ goalPercentage*0.8 }}"></md-progress-linear>
          <p class="inline-points"><span count-to="{{ climatePointsTotal }}" value="0" duration="1"></span> Klimapunkte</p>
       </div>
       <div flex flex-offset-gt-sm="5" style="width: 100%">
