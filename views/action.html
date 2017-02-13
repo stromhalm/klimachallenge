@@ -1,6 +1,6 @@
 <md-whiteframe class="md-whiteframe-z2 card">
    <div class="image-frame">
-      <img class="project-image" ng-if="project.formal.image.url" ng-src="{{ project.formal.image.url | fpConvert: {w:500, rotate:'exif'} }}" alt="{{ project.formal.actionName }}"/>
+      <img class="project-image" ng-if="project.formal.image.url" ng-src="{{ project.formal.image.url | imageResizer: {w:500, rotate:'exif'} }}" alt="{{ project.formal.actionName }}"/>
    </div>
 
    <div class="card-header">

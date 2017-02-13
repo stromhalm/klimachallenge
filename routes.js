@@ -40,7 +40,7 @@ klimaChallenge.config(function($stateProvider, $urlRouterProvider, $locationProv
   })
   .state('admin', {
       url: "/admin",
-      templateUrl: "views/admin.html?ver=2",
+      templateUrl: "views/admin.html?ver=3",
       controller: "adminCtrl"
   })
   .state('klimafasten', {

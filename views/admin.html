@@ -39,7 +39,7 @@
                      <md-button class="upload-dialog" ng-click="pickImage(project)">
                         <ng-md-icon style="fill: grey" icon="file_upload"></ng-md-icon>
                      </md-button>
-                     <img ng-if="project.formal.image.url" ng-src="{{project.formal.image.url | fpConvert: {w:40} }}" class="md-avatar" alt="{{project.formal.actionName}}" /><br>
+                     <img ng-if="project.formal.image.url" ng-src="{{project.formal.image.url | imageResizer: {w:40, rotate:'exif'} }}" class="md-avatar" alt="{{project.formal.actionName}}" /><br>
                      <div class="image-placeholder" ng-if="!project.formal.image.url"></div>
                      <div class="md-list-item-text" layout="row" layout-margin>
                         <div flex-gt-sm="40">

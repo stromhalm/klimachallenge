@@ -4,7 +4,7 @@ klimaChallenge.directive('action', function () {
 	}
 
 	return {
-		templateUrl: 'views/action.html',
+		templateUrl: 'views/action.html?ver=2',
 		link: link,
 		$scope: {
 			project: '=projectData'
