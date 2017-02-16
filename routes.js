@@ -6,7 +6,7 @@ klimaChallenge.config(function($stateProvider, $urlRouterProvider, $locationProv
   $stateProvider
   .state('challenge', {
       url: "/",
-      templateUrl: "views/challenge.html?ver=14",
+      templateUrl: "views/challenge.html?ver=15",
       controller: "challengeCtrl"
   })
   .state('contract', {
@@ -45,7 +45,7 @@ klimaChallenge.config(function($stateProvider, $urlRouterProvider, $locationProv
   })
   .state('klimafasten', {
       url: "/klimafasten",
-      templateUrl: "views/klimafasten.html?ver=4"
+      templateUrl: "views/klimafasten.html?ver=5"
   })
   .state('aktionstage', {
       url: "/aktionstage",
