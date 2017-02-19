@@ -271,8 +271,14 @@ header {
 	}
 }
 
+.header-size {
+	font-size: 20px;
+}
+
 .space-box {
+
 	padding: 60px 8px 40px 8px;
+
 	.section-icon {
 		margin-bottom: 100px;
 		opacity: 0.7;
@@ -326,6 +332,12 @@ header {
 	a {
 		color: white;
 	}
+	&.box-clean-white {
+		background-color: white;
+		a {
+			color: @dark-font;
+		}
+	}
 	&.box-white {
 		a {
 			color: @dark-font;
@@ -338,6 +350,9 @@ header {
 		.md-button {
 			color: @green;
 		}
+		.md-button.md-primary {
+			background-color: @green;
+		}
 	}
 	&.box-grey {
 		background-color: @light-grey;
@@ -346,13 +361,18 @@ header {
 		.md-button {
 			color: @light-blue;
 		}
+		.md-button.md-primary {
+			background-color: @light-blue;
+		}
 	}
 	&.box-light-blue {
 		background-color: @light-blue;
 		color: rgba(255, 255, 255, 0.8);
-		md-whiteframe h2,
-		.md-button {
+		md-whiteframe h2, .md-button {
 			color: @light-blue;
+		}
+		.md-button.md-primary {
+			background-color: @light-blue;
 		}
 	}
 	&.box-blue {
@@ -361,6 +381,9 @@ header {
 		md-whiteframe h2,
 		.md-button {
 			color: @blue;
+		}
+		.md-button.md-primary {
+			background-color: @blue;
 		}
 	}
 }
@@ -472,25 +495,28 @@ md-whiteframe {
 	}
 	background-color: @background-grey;
 	color: white;
-	font-size: 34px;
 	padding-top: 100px;
 	padding-bottom: 50px;
 	font-weight: 300;
-	line-height: 46px;
 	.card-description {
 		line-height: 19px;
 		border-top: 1px solid #eee;
 		padding: 16px;
 		margin: 13px -16px -16px -16px;
 	}
-	.md-button {
-		color: @dark-grey;
-		font-size: 18px;
+
+	.compare-text {
+		margin-top: -70px;
+		margin-bottom: 40px;
+		margin-left: 10px;
+		margin-right: 10px;
+		font-weight: 400;
+		color: white;
+	}
+
+	.info-line {
+		margin: 10px;
 		margin-top: 30px;
-		float: right;
-		ng-md-icon {
-			margin-top: -8px;
-		}
 	}
 }
 
@@ -735,6 +761,7 @@ md-tabs-wrapper md-next-button md-icon {
 	.category-icon {
 		margin: 0 auto;
 		width: 90px;
+		line-height: 50px;
 		margin-bottom: 65px;
 	}
 	h2 {
@@ -853,6 +880,10 @@ md-input-container {
 			border-color: #72b2d5;
 		}
 	}
+}
+
+.md-select-menu-container {
+	z-index: 300;
 }
 
 .state-info {

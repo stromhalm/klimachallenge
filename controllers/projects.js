@@ -112,7 +112,8 @@ klimaChallenge.factory("projects", function($firebaseArray) {
       getCleanPercentage: getCleanPercentage,
       events: events,
       carriers: carriers,
-      aktionstage: $firebaseArray(ref.child('aktionstage'))
+      aktionstage: ref.child('aktionstage'),
+		klimafasten: ref.child('klimafasten')
    };
    return interface;
 });
