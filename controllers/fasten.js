@@ -15,9 +15,11 @@ klimaChallenge.controller('fastenCtrl', function($scope, projects, Auth, $fireba
 
 	// any time auth status updates, add the user data to scope
    $scope.auth.$onAuth(function(authData) {
-      $scope.authData = authData;
-		$scope.messengerParticipants = $firebaseArray(projects.klimafasten.child('messenger'));
-		$scope.emailParticipants = $firebaseArray(projects.klimafasten.child('email'));
+		if (authData) {
+			$scope.authData = authData;
+			$scope.messengerParticipants = $firebaseArray(projects.klimafasten.child('messenger'));
+			$scope.emailParticipants = $firebaseArray(projects.klimafasten.child('email'));
+		}
    });
 
    $scope.addMessenger = function() {
