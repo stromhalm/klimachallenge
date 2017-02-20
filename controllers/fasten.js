@@ -7,7 +7,7 @@ klimaChallenge.controller('fastenCtrl', function($scope, projects, Auth, $fireba
 		'Ich ernähre mich vegan',
 		'Ich wechsle zu Ökostrom',
 		'Ich lege eine Shopping-Pause ein',
-		'Ich fahre überall mit dem Fahhrad hin',
+		'Ich fahre überall mit dem Fahrrad hin',
 		'Ich vermeide Plastik/Müll, wo es geht',
 		'Sonstiges',
 		'Ich lass mich erstmal inspirieren'

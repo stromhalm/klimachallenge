@@ -53,7 +53,7 @@
                   <ng-md-icon style="fill: #02bcd4" size="90" icon="email"></ng-md-icon>
                </div>
                <h2>Mitmachen per E-Mail</h2>
-					<div class="card-description" ng-if="authData">
+					<div class="card-description" ng-show="authData">
 						<div class="admin-note">Liste der TeilnehmerInnen (nur für Admins sichtbar):</div>
 						<md-list>
 							<md-list-item class="md-3-line" ng-repeat="participant in emailParticipants">
@@ -64,7 +64,7 @@
 							</md-list-item>
 						</md-list>
 					</div>
-               <div class="card-description" ng-if="!authData">
+               <div class="card-description" ng-show="!authData">
 						<div ng-show="emailSubmitted">
 							Vielen Dank fürs Mitmachen!
 						</div>
@@ -82,7 +82,7 @@
 							<md-button class="md-raised md-primary" style="float: right">Mitmachen</md-button>
 							<md-input-container flex>
 	                     <label>E-Mail-Adresse eintragen</label>
-	                     <input type="email" ng-model="email">
+	                     <input type="email" ng-model="email" ng-required="true">
 	                  </md-input-container>
 						</form>
                   Du erhältst während des Klimafastens eine wöchentliche E-Mail von uns.
@@ -95,7 +95,7 @@
                   <ng-md-icon style="fill: #02bcd4" size="90" icon="whatsapp"></ng-md-icon>
                </div>
                <h2>Mitmachen per Messenger</h2>
-					<div class="card-description" ng-if="authData">
+					<div class="card-description" ng-show="authData">
 						<div class="admin-note">Liste der TeilnehmerInnen (nur für Admins sichtbar):</div>
 						<md-list>
 							<md-list-item class="md-3-line" ng-repeat="participant in messengerParticipants">
@@ -107,7 +107,7 @@
 							</md-list-item>
 						</md-list>
 					</div>
-               <div class="card-description" ng-if="!authData">
+               <div class="card-description" ng-show="!authData">
 						<div ng-show="messengerSubmitted">
 							Vielen Dank fürs Mitmachen!
 						</div>
