@@ -26,7 +26,18 @@
                   <ng-md-icon style="fill: #02bcd4" size="90" icon="email"></ng-md-icon>
                </div>
                <h2>Mitmachen per E-Mail</h2>
-               <div class="card-description">
+					<div class="card-description" ng-if="authData">
+						<div class="admin-note">Liste der TeilnehmerInnen (nur für Admins sichtbar):</div>
+						<md-list>
+							<md-list-item class="md-3-line" ng-repeat="participant in emailParticipants">
+							  <div class="md-list-item-text" layout="column">
+							    <h3>{{ participant.email }}</h3>
+							    <h4>{{ participant.selectedOffer == 'Sonstiges' ? participant.customOffer : participant.selectedOffer }}</h4>
+							  </div>
+							</md-list-item>
+						</md-list>
+					</div>
+               <div class="card-description" ng-if="!authData">
 						<div ng-show="emailSubmitted">
 							Vielen Dank fürs Mitmachen!
 						</div>
@@ -57,7 +68,19 @@
                   <ng-md-icon style="fill: #02bcd4" size="90" icon="whatsapp"></ng-md-icon>
                </div>
                <h2>Mitmachen per Messenger</h2>
-               <div class="card-description">
+					<div class="card-description" ng-if="authData">
+						<div class="admin-note">Liste der TeilnehmerInnen (nur für Admins sichtbar):</div>
+						<md-list>
+							<md-list-item class="md-3-line" ng-repeat="participant in messengerParticipants">
+							  <div class="md-list-item-text" layout="column">
+							    <h3>{{ participant.mobile }}</h3>
+							    <h4>{{ participant.selectedOffer == 'Sonstiges' ? participant.customOffer : participant.selectedOffer }}</h4>
+							    <p>{{ participant.messengerType }}</p>
+							  </div>
+							</md-list-item>
+						</md-list>
+					</div>
+               <div class="card-description" ng-if="!authData">
 						<div ng-show="messengerSubmitted">
 							Vielen Dank fürs Mitmachen!
 						</div>

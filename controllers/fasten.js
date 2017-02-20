@@ -1,4 +1,6 @@
-klimaChallenge.controller('fastenCtrl', function($scope, projects, filepickerService, $firebaseArray) {
+klimaChallenge.controller('fastenCtrl', function($scope, projects, Auth, $firebaseArray) {
+
+	$scope.auth = Auth;
 
    $scope.offers = [
 		'Ich ernähre mich vegetarisch',
@@ -9,7 +11,14 @@ klimaChallenge.controller('fastenCtrl', function($scope, projects, filepickerSer
 		'Ich vermeide Plastik/Müll, wo es geht',
 		'Sonstiges',
 		'Ich lass mich erstmal inspirieren'
-	]
+	];
+
+	// any time auth status updates, add the user data to scope
+   $scope.auth.$onAuth(function(authData) {
+      $scope.authData = authData;
+		$scope.messengerParticipants = $firebaseArray(projects.klimafasten.child('messenger'));
+		$scope.emailParticipants = $firebaseArray(projects.klimafasten.child('email'));
+   });
 
    $scope.addMessenger = function() {
 
