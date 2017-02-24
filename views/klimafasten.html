@@ -13,36 +13,54 @@
    </div>
 </section>
 
-<section class="space-box box-light-blue compare header-size">
-   <div flex flex-gt-md="90" flex-offset-gt-md="5" class="info-cards">
-		<div class="compare-text">
-			<h3>Das erwartet dich</h3>
-			Diese Fastenzeit (1. März bis zum 15. April) steht ganz im Zeichen des Klimaschutzes. Neben einem Fastenziel, das du dir persönlich steckst, erkunden wir gemeinsam die Ursachen und Auswirkungen des Klimawandels und vor allem, was wir konkret dagegen tun können. Egal ob du mit deiner Jugendgruppe fastest, deiner Familie, oder nur für dich – gemeinsam schaffen wir mehr. Wir unterstützen dich in der Zeit mit regelmäßigen Tipps, Infos und Anregungen, wie du durch dein Fasten das Klima schützen kannst und motvieren dich, am Ball zu bleiben sowie Neues zu wagen.
-
-			<h3>Wähle deine Challenge</h3>
+<section class="space-box box-grey">
+   <div layout="row" layout-align="start center" layout-wrap>
+      <div flex-sm="100" flex-gt-sm="50" flex-offset-gt-md="5">
+			<h2>Wähle deine Challenge</h2>
 			Setze dir vorab für die Fastenzeit ein konkretes Ziel. Das kann zum Beispiel sein:
-			<ul>
+			<ul class="separated-list">
 				<li>
-					Ernähre dich vegetarisch, spare über 100kg CO2 (und sammle dadurch bis zu 800 Klimapunkte)
+					Ernähre dich vegetarisch, spare über 100kg CO2<br />
+					<i>und sammle dadurch bis zu 800 Klimapunkte</i>
 				</li>
 				<li>
-					Ernähre dich vegan, spare bis zu 200kg CO2 (und sammle bis zu 1500 Klimapunkte)
+					Ernähre dich vegan, spare bis zu 200kg CO2<br />
+					<i>und sammle bis zu 1500 Klimapunkte</i>
 				</li>
 				<li>
-					Wechsle zu Ökostrom, spare schon jetzt über 350kg CO2 (und erhalte bis zu 3000 Klimapunkte)
+					Wechsle zu Ökostrom, spare schon jetzt über 350kg CO2<br />
+					<i>und erhalte bis zu 3000 Klimapunkte</i>
 				</li>
 				<li>
-					Eine Shopping-Pause einlegen: spare über 50kg CO2 (und erhalte bis zu 500 Punkte)
+					Eine Shopping-Pause einlegen: spare über 50kg CO2<br />
+					<i>und erhalte bis zu 500 Punkte</i>
 				</li>
 				<li>
-					Fahre überall mit dem Fahrrad hin, spare über 50kg CO2 (und erhalte bis zu 500 Punkte)
+					Fahre überall mit dem Fahrrad hin, spare über 50kg CO2<br />
+					<i>und erhalte bis zu 500 Punkte</i>
 				</li>
 				<li>
-					Vermeide Plastik/Müll, wo es geht  (z.B. 7 Wochen ohne Plastiktüten, ohne Einwegbecher und -flaschen; oder schaffst du es sogar ganz plastikfrei?...)
+					Vermeide Plastik/Müll, wo es geht (z.B. Plastiktüten, Einwegbecher und -flaschen)<br />
+					<i>...oder schaffst du es sogar ganz plastikfrei?</i>
 				</li>
 			</ul>
+      </div>
+      <div flex-sm="100" flex-md="50" flex-gt-md="35" flex-offset-gt-md="5">
+			<md-whiteframe class="md-whiteframe-z2 card">
 
-			<h3>Mitmachen - so geht's!</h3>
+				<h2>Das erwartet dich</h2>
+				Diese Fastenzeit (1. März bis zum 15. April) steht ganz im Zeichen des Klimaschutzes. Neben einem Fastenziel, das du dir persönlich steckst, erkunden wir gemeinsam die Ursachen und Auswirkungen des Klimawandels und vor allem, was wir konkret dagegen tun können. Egal ob du mit deiner Jugendgruppe fastest, deiner Familie, oder nur für dich – gemeinsam schaffen wir mehr. Wir unterstützen dich in der Zeit mit regelmäßigen Tipps, Infos und Anregungen, wie du durch dein Fasten das Klima schützen kannst und motvieren dich, am Ball zu bleiben sowie Neues zu wagen.
+
+			</md-whiteframe>
+      </div>
+   </div>
+</section>
+
+<section class="space-box box-light-blue compare">
+   <div flex flex-gt-md="90" flex-offset-gt-md="5" class="info-cards">
+		<div class="compare-text">
+
+			<h2>Mitmachen - so geht's!</h2>
 			<p>Wähle aus folgenden Kanälen, um unsere Tipps und Tricks zu entdecken: Messenger (Whatsapp oder Telegram), <a href="http://instagram.com/klimachallenge" target="_blank">Instagram</a>, <a href="https://www.facebook.com/groups/397052697323423/?fref=ts"target="_blank">unsere Facebook-Gruppe</a> oder E-Mail. Für Whatsapp/Telegram und E-Mail melde dich in den folgenden Formularen an, für Instagram und Facebook folge den Links.
 
 		</div>
@@ -71,8 +89,8 @@
 						<form name="emailForm" ng-submit="addEmail()" ng-hide="emailSubmitted">
 							<md-input-container flex>
 								<label class="md-no-float">Dein Beitrag</label>
-								<md-select ng-model="selectedOffer" ng-required="true">
-									<md-option ng-repeat="offer in offers">{{ offer }}</md-option>
+								<select ng-model="selectedOffer" required>
+									<option ng-repeat="offer in offers">{{ offer }}</option>
 								</select>
 							</md-input-container>
 							<md-input-container ng-show="selectedOffer == 'Sonstiges'" flex>
@@ -114,8 +132,8 @@
 						<form name="messengerForm" ng-submit="addMessenger()" ng-hide="messengerSubmitted">
 							<md-input-container flex>
 								<label class="md-no-float">Dein Beitrag</label>
-								<md-select ng-model="selectedOffer" ng-required="true">
-									<md-option ng-repeat="offer in offers">{{ offer }}</md-option>
+								<select ng-model="selectedOffer" required>
+									<option ng-repeat="offer in offers">{{ offer }}</option>
 								</select>
 							</md-input-container>
 							<md-input-container ng-show="selectedOffer == 'Sonstiges'" flex>
@@ -137,16 +155,13 @@
             </md-whiteframe>
          </div>
       </div>
-		<div class="info-line">
-			<ng-md-icon style="fill: white" size="20" icon="info_outline"></ng-md-icon> Abonniere uns auch auf <a target="_blank" href="http://instagram.com/klimachallenge" target="_blank">Instagram</a> oder tritt unserer <a href="https://www.facebook.com/groups/397052697323423" target="_blank">Facebook-Gruppe</a> bei!
-		</div>
    </div>
 </section>
 
 <section class="space-box box-green">
    <div layout="row" layout-align="start center" layout-wrap>
       <div flex-sm="100" flex-gt-sm="50" flex-offset-gt-md="5">
-			<h2> Deine Belohnung: Punkte, Poetry und Preise</h2>
+			<h2>Deine Belohnung:<br />Punkte, Poetry und Preise</h2>
          Neben der wohligen Gewissheit, etwas Gutes getan zu haben, kannst du nach Ende der Fastenzeit deine Erfolge bei uns auf der Seite eintragen und so Punkte für die Klima-Challenge sammeln.
 			<p>
 				Wenn wir das letzte Etappenziel erreichen, stellt sich Minister Wenzel der finalen Herausforderung und tritt bei unserem Poetry Slam auf der IdeenExpo auf!

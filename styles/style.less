@@ -325,6 +325,11 @@ header {
 	.category-text {
 		margin-top: -50px;
 	}
+
+	.separated-list li {
+		margin-bottom: 5px;
+	}
+
 	ul,
 	ol {
 		padding-left: 22px;
@@ -345,7 +350,7 @@ header {
 	}
 	&.box-green {
 		background-color: @green;
-		color: rgba(255, 255, 255, 0.75);
+		color: rgba(255, 255, 255, 0.9);
 		md-whiteframe h2,
 		.md-button {
 			color: @green;
@@ -356,7 +361,7 @@ header {
 	}
 	&.box-grey {
 		background-color: @light-grey;
-		color: rgba(255, 255, 255, 0.7);
+		color: rgba(255, 255, 255, 0.8);
 		md-whiteframe h2,
 		.md-button {
 			color: @light-blue;
@@ -367,7 +372,7 @@ header {
 	}
 	&.box-light-blue {
 		background-color: @light-blue;
-		color: rgba(255, 255, 255, 0.8);
+		color: white;
 		md-whiteframe h2, .md-button {
 			color: @light-blue;
 		}
@@ -485,19 +490,13 @@ md-whiteframe {
 
 .challenge-actions,
 .compare {
-	h2 {
-		font-size: 45px;
-		font-weight: 300;
-		margin: 0;
-		color: @green;
-		margin-bottom: 30px;
-		margin-top: -30px;
-	}
+
 	background-color: @background-grey;
 	color: white;
 	padding-top: 100px;
 	padding-bottom: 50px;
 	font-weight: 300;
+
 	.card-description {
 		line-height: 19px;
 		border-top: 1px solid #eee;
@@ -506,17 +505,8 @@ md-whiteframe {
 	}
 
 	.compare-text {
-		margin-top: -70px;
+		margin-top: -50px;
 		margin-bottom: 40px;
-		margin-left: 10px;
-		margin-right: 10px;
-		font-weight: 400;
-		color: white;
-	}
-
-	.info-line {
-		margin: 10px;
-		margin-top: 30px;
 	}
 }
 
