@@ -66,49 +66,7 @@
 		</div>
       <div layout-wrap layout="row" layout-sm="column">
          <div flex flex-gt-sm="50">
-            <md-whiteframe class="md-whiteframe-z2 card action-card">
-               <div class="category-icon">
-                  <ng-md-icon style="fill: #02bcd4" size="90" icon="email"></ng-md-icon>
-               </div>
-               <h2>Mitmachen per E-Mail</h2>
-					<div class="card-description" ng-show="authData">
-						<div class="admin-note">Liste der TeilnehmerInnen (nur für Admins sichtbar):</div>
-						<md-list>
-							<md-list-item class="md-3-line" ng-repeat="participant in emailParticipants">
-							  <div class="md-list-item-text" layout="column">
-							    <h3>{{ participant.email }}</h3>
-							    <h4>{{ participant.selectedOffer == 'Sonstiges' ? participant.customOffer : participant.selectedOffer }}</h4>
-							  </div>
-							</md-list-item>
-						</md-list>
-					</div>
-               <div class="card-description" ng-show="!authData">
-						<div ng-show="emailSubmitted">
-							Vielen Dank fürs Mitmachen!
-						</div>
-						<form name="emailForm" ng-submit="addEmail()" ng-hide="emailSubmitted">
-							<md-input-container flex>
-								<label class="md-no-float">Dein Beitrag</label>
-								<select ng-model="selectedOffer" required>
-									<option ng-repeat="offer in offers">{{ offer }}</option>
-								</select>
-							</md-input-container>
-							<md-input-container ng-show="selectedOffer == 'Sonstiges'" flex>
-	                     <label>Was ist dein Ziel?</label>
-	                     <input type="text" ng-model="customOffer">
-	                  </md-input-container>
-							<md-button class="md-raised md-primary" style="float: right">Mitmachen</md-button>
-							<md-input-container flex>
-	                     <label>E-Mail-Adresse eintragen</label>
-	                     <input type="email" ng-model="email" ng-required="true">
-	                  </md-input-container>
-						</form>
-                  Du erhältst während des Klimafastens eine wöchentliche Zusammenfassung unserer Posts und Kurznachrichten per E-Mail von uns.
-               </div>
-            </md-whiteframe>
-         </div>
-         <div flex flex-gt-sm="50">
-            <md-whiteframe class="md-whiteframe-z2 card action-card">
+				<md-whiteframe class="md-whiteframe-z2 card action-card">
                <div class="category-icon">
                   <ng-md-icon style="fill: #02bcd4" size="90" icon="whatsapp"></ng-md-icon>
                </div>
@@ -118,6 +76,7 @@
 						<md-list>
 							<md-list-item class="md-3-line" ng-repeat="participant in messengerParticipants">
 							  <div class="md-list-item-text" layout="column">
+								 <h3 ng-if="participant.fullName">{{ participant.fullName }}</h3>
 							    <h3>{{ participant.mobile }}</h3>
 							    <h4>{{ participant.selectedOffer == 'Sonstiges' ? participant.customOffer : participant.selectedOffer }}</h4>
 							    <p>{{ participant.messengerType }}</p>
@@ -130,6 +89,10 @@
 							Vielen Dank fürs Mitmachen!
 						</div>
 						<form name="messengerForm" ng-submit="addMessenger()" ng-hide="messengerSubmitted">
+							<md-input-container flex>
+								<label class="md-no-float">Name (+ ggf. Verband)</label>
+								<input type="text" ng-model="fullName" ng-required="true">
+							</md-input-container>
 							<md-input-container flex>
 								<label class="md-no-float">Dein Beitrag</label>
 								<select ng-model="selectedOffer" required>
@@ -150,7 +113,54 @@
 								<md-radio-button value="Telegram">Telegram</md-radio-button>
 							</md-radio-group>
 						</form>
-                  Wir nehmen dich gerne in unsere Telegram- oder Whatsapp-Broadcast-Gruppe auf (d.h. ohne Gruppenchat). WICHTIG! Nur, wenn du unsere Nummer in deinen Kontakten abspeicherst, können wir dich hinzufügen: +491772730898. 
+                  Wir nehmen dich gerne in unsere Telegram- oder Whatsapp-Broadcast-Gruppe auf (d.h. ohne Gruppenchat). WICHTIG! Nur, wenn du unsere Nummer in deinen Kontakten abspeicherst, können wir dich hinzufügen: +491772730898.
+               </div>
+            </md-whiteframe>
+         </div>
+         <div flex flex-gt-sm="50">
+				<md-whiteframe class="md-whiteframe-z2 card action-card">
+               <div class="category-icon">
+                  <ng-md-icon style="fill: #02bcd4" size="90" icon="email"></ng-md-icon>
+               </div>
+               <h2>Mitmachen per E-Mail</h2>
+					<div class="card-description" ng-show="authData">
+						<div class="admin-note">Liste der TeilnehmerInnen (nur für Admins sichtbar):</div>
+						<md-list>
+							<md-list-item class="md-3-line" ng-repeat="participant in emailParticipants">
+							  <div class="md-list-item-text" layout="column">
+								 <h3 ng-if="participant.fullName">{{ participant.fullName }}</h3>
+							    <h3>{{ participant.email }}</h3>
+							    <h4>{{ participant.selectedOffer == 'Sonstiges' ? participant.customOffer : participant.selectedOffer }}</h4>
+							  </div>
+							</md-list-item>
+						</md-list>
+					</div>
+               <div class="card-description" ng-show="!authData">
+						<div ng-show="emailSubmitted">
+							Vielen Dank fürs Mitmachen!
+						</div>
+						<form name="emailForm" ng-submit="addEmail()" ng-hide="emailSubmitted">
+							<md-input-container flex>
+								<label class="md-no-float">Name (+ ggf. Verband)</label>
+								<input type="text" ng-model="fullName" ng-required="true">
+							</md-input-container>
+							<md-input-container flex>
+								<label class="md-no-float">Dein Beitrag</label>
+								<select ng-model="selectedOffer" required>
+									<option ng-repeat="offer in offers">{{ offer }}</option>
+								</select>
+							</md-input-container>
+							<md-input-container ng-show="selectedOffer == 'Sonstiges'" flex>
+	                     <label>Was ist dein Ziel?</label>
+	                     <input type="text" ng-model="customOffer">
+	                  </md-input-container>
+							<md-button class="md-raised md-primary" style="float: right">Mitmachen</md-button>
+							<md-input-container flex>
+	                     <label>E-Mail-Adresse eintragen</label>
+	                     <input type="email" ng-model="email" ng-required="true">
+	                  </md-input-container>
+						</form>
+                  Du erhältst während des Klimafastens eine wöchentliche Zusammenfassung unserer Posts und Kurznachrichten per E-Mail von uns.
                </div>
             </md-whiteframe>
          </div>

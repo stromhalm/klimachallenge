@@ -27,6 +27,7 @@ klimaChallenge.controller('fastenCtrl', function($scope, projects, Auth, $fireba
 		if ($scope.messengerType) {
 			projects.klimafasten.child('messenger').push(
 				{
+					fullName: $scope.fullName,
 					mobile: $scope.mobile,
 					messengerType: $scope.messengerType,
 					selectedOffer: $scope.selectedOffer,
@@ -41,6 +42,7 @@ klimaChallenge.controller('fastenCtrl', function($scope, projects, Auth, $fireba
 
       projects.klimafasten.child('email').push(
 			{
+				fullName: $scope.fullName,
 				email: $scope.email,
 				selectedOffer: $scope.selectedOffer,
 				customOffer: $scope.customOffer ? $scope.customOffer : ""
