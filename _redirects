@@ -1,0 +1,6 @@
+# Redirect domain aliases to primary domain
+https://klimachallenge.de/* https://www.klima-challenge.de/:splat 301!
+https://www.klimachallenge.de/* https://www.klima-challenge.de/:splat 301!
+
+# Optional: Redirect default Netlify subdomain to primary domain
+https://amazing-agnesi-5908ae.netlify.com/* https://www.klima-challenge.de/:splat 301!
